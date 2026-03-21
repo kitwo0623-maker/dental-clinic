@@ -1,0 +1,151 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}請求書作成{% endblock %}
+{% block page_title %}請求書作成{% endblock %}
+{% block content %}
+<div class="card border-0 shadow-sm">
+  <div class="card-body p-4">
+    <form method="post" id="invoiceForm">
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">患者 <span class="text-danger">*</span></label>
+          <select name="patient_id" class="form-select" required>
+            <option value="">患者を選択...</option>
+            {% for p in patients %}
+            <option value="{{ p.id }}">{{ p.name }}（{{ p.patient_number }}）</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">発行日</label>
+          <input type="date" name="issue_date" class="form-control" value="{{ today.isoformat() }}" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">支払期限</label>
+          <input type="date" name="due_date" class="form-control">
+        </div>
+      </div>
+
+      <!-- Invoice Items -->
+      <h6 class="fw-bold mb-3">診療明細</h6>
+      <div class="table-responsive mb-3">
+        <table class="table table-bordered" id="itemsTable">
+          <thead class="table-light">
+            <tr>
+              <th>項目名</th>
+              <th style="width:80px;">数量</th>
+              <th style="width:120px;">単価（円）</th>
+              <th style="width:120px;">金額（円）</th>
+              <th style="width:40px;"></th>
+            </tr>
+          </thead>
+          <tbody id="itemsBody">
+            <tr>
+              <td><input type="text" name="item_desc" class="form-control form-control-sm" placeholder="例：初診料、処置料" list="treatmentItems"></td>
+              <td><input type="number" name="item_qty" class="form-control form-control-sm item-qty" value="1" min="1"></td>
+              <td><input type="number" name="item_price" class="form-control form-control-sm item-price" value="0" min="0"></td>
+              <td><input type="number" name="item_amount" class="form-control form-control-sm item-amount" value="0" readonly></td>
+              <td><button type="button" class="btn btn-sm btn-outline-danger remove-row">×</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <datalist id="treatmentItems">
+        {% for item in ['初診料', '再診料', '処置料', 'レントゲン撮影', '歯石除去（全顎）', '抜歯', '充填処置', 'クラウン', 'ホワイトニング', '矯正調整料'] %}
+        <option value="{{ item }}">
+        {% endfor %}
+      </datalist>
+      <button type="button" class="btn btn-outline-primary btn-sm mb-4" id="addRow">
+        <i class="fas fa-plus me-1"></i>行を追加
+      </button>
+
+      <!-- Summary -->
+      <div class="row justify-content-end">
+        <div class="col-md-5">
+          <table class="table table-borderless">
+            <tr>
+              <td class="text-muted">小計</td>
+              <td class="text-end fw-semibold" id="subtotalDisplay">¥0</td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label text-muted mb-0">保険負担額</label>
+              </td>
+              <td class="text-end">
+                <div class="input-group input-group-sm justify-content-end" style="width:150px;margin-left:auto;">
+                  <span class="input-group-text">-¥</span>
+                  <input type="number" name="insurance_covered" id="insuranceCovered" class="form-control text-end" value="0" min="0">
+                </div>
+              </td>
+            </tr>
+            <tr class="border-top">
+              <td class="text-muted">患者負担（税抜）</td>
+              <td class="text-end" id="patientPortionDisplay">¥0</td>
+            </tr>
+            <tr>
+              <td class="text-muted">消費税（10%）</td>
+              <td class="text-end" id="taxDisplay">¥0</td>
+            </tr>
+            <tr class="border-top">
+              <td class="fw-bold fs-5">合計（税込）</td>
+              <td class="text-end fw-bold fs-5 text-primary" id="totalDisplay">¥0</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">備考</label>
+        <textarea name="notes" class="form-control" rows="2"></textarea>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary px-4">
+          <i class="fas fa-file-invoice me-2"></i>請求書を作成
+        </button>
+        <a href="{{ url_for('billing') }}" class="btn btn-outline-secondary">キャンセル</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+function calcRow(row) {
+  const qty = parseInt(row.querySelector('.item-qty').value) || 0;
+  const price = parseInt(row.querySelector('.item-price').value) || 0;
+  const amount = qty * price;
+  row.querySelector('.item-amount').value = amount;
+  return amount;
+}
+
+function updateTotals() {
+  let subtotal = 0;
+  document.querySelectorAll('#itemsBody tr').forEach(row => { subtotal += calcRow(row); });
+  const insurance = parseInt(document.getElementById('insuranceCovered').value) || 0;
+  const patientPortion = Math.max(0, subtotal - insurance);
+  const tax = Math.round(patientPortion * 0.1);
+  const total = patientPortion + tax;
+  document.getElementById('subtotalDisplay').textContent = '¥' + subtotal.toLocaleString();
+  document.getElementById('patientPortionDisplay').textContent = '¥' + patientPortion.toLocaleString();
+  document.getElementById('taxDisplay').textContent = '¥' + tax.toLocaleString();
+  document.getElementById('totalDisplay').textContent = '¥' + total.toLocaleString();
+}
+
+document.getElementById('itemsBody').addEventListener('input', updateTotals);
+document.getElementById('insuranceCovered').addEventListener('input', updateTotals);
+
+document.getElementById('addRow').addEventListener('click', () => {
+  const tbody = document.getElementById('itemsBody');
+  const newRow = tbody.rows[0].cloneNode(true);
+  newRow.querySelectorAll('input').forEach(i => { if(i.type !== 'number' || i.classList.contains('item-amount')) i.value = i.readOnly ? 0 : ''; else i.value = i.name === 'item_qty' ? 1 : 0; });
+  tbody.appendChild(newRow);
+});
+
+document.getElementById('itemsBody').addEventListener('click', e => {
+  if (e.target.classList.contains('remove-row') && document.querySelectorAll('#itemsBody tr').length > 1) {
+    e.target.closest('tr').remove();
+    updateTotals();
+  }
+});
+</script>
+{% endblock %}

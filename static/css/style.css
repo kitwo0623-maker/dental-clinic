@@ -1,0 +1,24 @@
+:root {
+  --primary: #1976d2;
+  --primary-light: #e3f2fd;
+}
+
+body {
+  font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+}
+
+.hero-section {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-brand {
+  font-size: 1.1rem;
+}
+
+.card {
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+}

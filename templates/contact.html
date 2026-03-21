@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}お問い合わせ - スマイル歯科クリニック{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h2 class="fw-bold mb-2">お問い合わせ・予約</h2>
+      <p class="text-muted mb-5">診療に関するご相談・ご予約はお気軽にご連絡ください。</p>
+
+      <div class="row g-4 mb-5">
+        <div class="col-md-4 text-center">
+          <div class="card border-0 shadow-sm p-4">
+            <i class="fas fa-phone-alt text-primary mb-2" style="font-size:2rem;"></i>
+            <h6 class="fw-bold">電話予約</h6>
+            <p class="text-primary fw-bold mb-0">03-0000-0000</p>
+            <small class="text-muted">受付時間: 診療時間内</small>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="card border-0 shadow-sm p-4">
+            <i class="fas fa-envelope text-primary mb-2" style="font-size:2rem;"></i>
+            <h6 class="fw-bold">メール</h6>
+            <p class="text-primary fw-bold mb-0">info@smile-dental.jp</p>
+            <small class="text-muted">24時間受付</small>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="card border-0 shadow-sm p-4">
+            <i class="fas fa-map-marker-alt text-primary mb-2" style="font-size:2rem;"></i>
+            <h6 class="fw-bold">住所</h6>
+            <p class="fw-bold mb-0 small">〒000-0000<br>東京都○○区○○ 1-2-3</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <h5 class="fw-bold mb-4">お問い合わせフォーム</h5>
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">お名前 <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="山田 太郎" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">電話番号</label>
+                <input type="tel" class="form-control" placeholder="090-0000-0000">
+              </div>
+              <div class="col-12">
+                <label class="form-label">メールアドレス</label>
+                <input type="email" class="form-control" placeholder="example@email.com">
+              </div>
+              <div class="col-12">
+                <label class="form-label">お問い合わせ種別</label>
+                <select class="form-select">
+                  <option>診療のご予約</option>
+                  <option>診療内容について</option>
+                  <option>料金について</option>
+                  <option>その他</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">ご要望・ご質問</label>
+                <textarea class="form-control" rows="4" placeholder="ご自由にお書きください"></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary px-5" onclick="alert('送信しました。後ほどご連絡いたします。'); return false;">
+                  <i class="fas fa-paper-plane me-2"></i>送信する
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}スマイル歯科クリニック - ホーム{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section py-5" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+  <div class="container py-4">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-primary mb-3">あなたの笑顔を守る<br>歯科クリニック</h1>
+        <p class="lead text-muted mb-4">最新の設備と経験豊富なスタッフが、お口の健康をトータルサポート。<br>お気軽にご相談ください。</p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg px-4">
+            <i class="fas fa-calendar-plus me-2"></i>予約する
+          </a>
+          <a href="{{ url_for('shop') }}" class="btn btn-outline-primary btn-lg px-4">
+            <i class="fas fa-shopping-bag me-2"></i>ショップ
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center mt-4 mt-lg-0">
+        <div style="font-size:10rem; line-height:1;">🦷</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5">診療内容</h2>
+    <div class="row g-4">
+      {% set services = [
+        ('fas fa-tooth', '一般歯科', '虫歯の治療から予防歯科まで、お口の健康を守ります。'),
+        ('fas fa-smile', '審美歯科', 'ホワイトニング、セラミック治療で美しい笑顔を実現。'),
+        ('fas fa-child', '小児歯科', 'お子様の歯の健康を大切に育てます。定期検診もおすすめ。'),
+        ('fas fa-align-center', '矯正歯科', 'ワイヤー矯正からマウスピース矯正まで対応。'),
+        ('fas fa-user-md', 'インプラント', '失った歯を自然な形で補う最先端治療。'),
+        ('fas fa-shield-alt', '予防歯科', '定期的なクリーニングで歯周病・虫歯を予防。'),
+      ] %}
+      {% for icon, title, desc in services %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-4">
+          <div class="text-primary mb-3" style="font-size:2.5rem;"><i class="{{ icon }}"></i></div>
+          <h5 class="fw-bold">{{ title }}</h5>
+          <p class="text-muted small mb-0">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Info Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h4 class="fw-bold mb-4"><i class="fas fa-clock text-primary me-2"></i>診療時間</h4>
+            <table class="table table-borderless mb-0">
+              <tbody>
+                <tr><td>月・火・水・金</td><td class="fw-bold">9:00 〜 18:00</td></tr>
+                <tr><td>木・土</td><td class="fw-bold">9:00 〜 13:00</td></tr>
+                <tr class="text-danger"><td>日・祝</td><td>休診</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h4 class="fw-bold mb-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>アクセス</h4>
+            <p class="mb-2"><strong>住所：</strong>〒000-0000 東京都○○区○○ 1-2-3</p>
+            <p class="mb-2"><strong>TEL：</strong>03-0000-0000</p>
+            <p class="mb-2"><strong>最寄駅：</strong>○○線「○○駅」徒歩3分</p>
+            <p class="mb-0"><strong>駐車場：</strong>10台完備</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Online Shop Preview -->
+{% if products %}
+<section class="py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <h2 class="fw-bold mb-0">オンラインショップ</h2>
+      <a href="{{ url_for('shop') }}" class="btn btn-outline-primary">すべて見る</a>
+    </div>
+    <div class="row g-4">
+      {% for product in products %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card border-0 shadow-sm h-100">
+          {% if product.image_url %}
+          <img src="{{ product.image_url }}" class="card-img-top" style="height:200px;object-fit:cover;" alt="{{ product.name }}">
+          {% else %}
+          <div class="bg-light d-flex align-items-center justify-content-center" style="height:200px;">
+            <i class="fas fa-box text-muted" style="font-size:3rem;"></i>
+          </div>
+          {% endif %}
+          <div class="card-body">
+            <span class="badge bg-light text-secondary mb-2">{{ product.category }}</span>
+            <h6 class="fw-bold">{{ product.name }}</h6>
+            <p class="text-muted small">{{ product.description[:60] }}{% if product.description|length > 60 %}...{% endif %}</p>
+            <p class="fw-bold text-primary fs-5 mb-0">¥{{ '{:,}'.format(product.price) }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

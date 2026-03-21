@@ -1,0 +1,38 @@
+body.admin-body {
+  font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  font-size: 0.9rem;
+}
+
+.sidebar .nav-link {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin: 1px 0;
+  transition: background 0.15s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: rgba(255,255,255,0.12);
+}
+
+.sidebar .nav-link.active {
+  background: rgba(255,255,255,0.2);
+  font-weight: 600;
+}
+
+.table th {
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.badge {
+  font-weight: 500;
+}
+
+.tooth-chart .tooth-btn:hover {
+  background-color: #e3f2fd !important;
+  border-color: #1976d2 !important;
+}

@@ -1,0 +1,138 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}ダッシュボード - スマイル歯科{% endblock %}
+{% block page_title %}ダッシュボード{% endblock %}
+{% block content %}
+
+<!-- Stats Cards -->
+<div class="row g-4 mb-4">
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body d-flex align-items-center">
+        <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
+          <i class="fas fa-users text-primary fs-4"></i>
+        </div>
+        <div>
+          <div class="text-muted small">総患者数</div>
+          <div class="fw-bold fs-4">{{ total_patients }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body d-flex align-items-center">
+        <div class="rounded-circle bg-success bg-opacity-10 p-3 me-3">
+          <i class="fas fa-calendar-check text-success fs-4"></i>
+        </div>
+        <div>
+          <div class="text-muted small">本日の予約</div>
+          <div class="fw-bold fs-4">{{ today_appointments|length }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body d-flex align-items-center">
+        <div class="rounded-circle bg-info bg-opacity-10 p-3 me-3">
+          <i class="fas fa-yen-sign text-info fs-4"></i>
+        </div>
+        <div>
+          <div class="text-muted small">今月の売上</div>
+          <div class="fw-bold fs-4">¥{{ '{:,}'.format(monthly_revenue) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body d-flex align-items-center">
+        <div class="rounded-circle bg-warning bg-opacity-10 p-3 me-3">
+          <i class="fas fa-file-invoice text-warning fs-4"></i>
+        </div>
+        <div>
+          <div class="text-muted small">未払い件数</div>
+          <div class="fw-bold fs-4">{{ unpaid_count }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Today's Appointments -->
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0"><i class="fas fa-calendar-day text-primary me-2"></i>本日の予約（{{ today.strftime('%Y年%m月%d日') }}）</h6>
+        <a href="{{ url_for('appointments') }}" class="btn btn-sm btn-outline-primary">予約管理へ</a>
+      </div>
+      <div class="card-body p-0">
+        {% if today_appointments %}
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="ps-3">時間</th>
+                <th>患者名</th>
+                <th>治療内容</th>
+                <th>担当</th>
+                <th>ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for appt in today_appointments %}
+              <tr>
+                <td class="ps-3 fw-bold">{{ appt.appointment_date.strftime('%H:%M') }}</td>
+                <td>
+                  <a href="{{ url_for('patient_detail', patient_id=appt.patient.id) }}" class="text-decoration-none">
+                    {{ appt.patient.name }}
+                  </a>
+                </td>
+                <td class="text-muted small">{{ appt.treatment_type or '-' }}</td>
+                <td class="text-muted small">{{ appt.staff.name if appt.staff else '-' }}</td>
+                <td>
+                  <span class="badge rounded-pill
+                    {% if appt.status == '予約済' %}bg-primary
+                    {% elif appt.status == '来院済' %}bg-success
+                    {% else %}bg-secondary{% endif %}">
+                    {{ appt.status }}
+                  </span>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <div class="text-center py-4 text-muted">
+          <i class="fas fa-calendar-times mb-2 d-block" style="font-size:2rem;"></i>
+          本日の予約はありません
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white border-0">
+        <h6 class="fw-bold mb-0"><i class="fas fa-bolt text-warning me-2"></i>クイックアクション</h6>
+      </div>
+      <div class="card-body d-grid gap-2">
+        <a href="{{ url_for('patient_new') }}" class="btn btn-outline-primary text-start">
+          <i class="fas fa-user-plus me-2"></i>新患登録
+        </a>
+        <a href="{{ url_for('appointments') }}" class="btn btn-outline-success text-start">
+          <i class="fas fa-calendar-plus me-2"></i>予約追加
+        </a>
+        <a href="{{ url_for('invoice_new') }}" class="btn btn-outline-info text-start">
+          <i class="fas fa-file-invoice me-2"></i>請求書作成
+        </a>
+        <a href="{{ url_for('patients_list') }}" class="btn btn-outline-secondary text-start">
+          <i class="fas fa-search me-2"></i>患者検索
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

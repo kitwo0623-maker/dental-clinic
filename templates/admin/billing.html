@@ -1,0 +1,98 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}会計・請求管理{% endblock %}
+{% block page_title %}会計・請求管理{% endblock %}
+{% block content %}
+
+<!-- Summary -->
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body d-flex align-items-center">
+        <div class="rounded-circle bg-success bg-opacity-10 p-3 me-3">
+          <i class="fas fa-check-circle text-success fs-4"></i>
+        </div>
+        <div>
+          <div class="text-muted small">支払済合計</div>
+          <div class="fw-bold fs-5">¥{{ '{:,}'.format(total_paid) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body d-flex align-items-center">
+        <div class="rounded-circle bg-warning bg-opacity-10 p-3 me-3">
+          <i class="fas fa-clock text-warning fs-4"></i>
+        </div>
+        <div>
+          <div class="text-muted small">未払い合計</div>
+          <div class="fw-bold fs-5">¥{{ '{:,}'.format(total_unpaid) }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 d-flex align-items-center justify-content-end">
+    <a href="{{ url_for('invoice_new') }}" class="btn btn-primary btn-lg">
+      <i class="fas fa-file-invoice me-2"></i>請求書作成
+    </a>
+  </div>
+</div>
+
+<!-- Filter & List -->
+<div class="card border-0 shadow-sm">
+  <div class="card-header bg-white d-flex gap-2">
+    <a href="{{ url_for('billing') }}" class="btn btn-sm {{ 'btn-primary' if not status_filter else 'btn-outline-secondary' }}">すべて</a>
+    <a href="{{ url_for('billing', status='未払い') }}" class="btn btn-sm {{ 'btn-warning' if status_filter == '未払い' else 'btn-outline-secondary' }}">未払い</a>
+    <a href="{{ url_for('billing', status='支払済') }}" class="btn btn-sm {{ 'btn-success' if status_filter == '支払済' else 'btn-outline-secondary' }}">支払済</a>
+  </div>
+  <div class="card-body p-0">
+    {% if invoices %}
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th class="ps-3">請求番号</th>
+            <th>患者名</th>
+            <th>発行日</th>
+            <th>小計</th>
+            <th>保険負担</th>
+            <th>患者負担（税込）</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for inv in invoices %}
+          <tr>
+            <td class="ps-3"><code>{{ inv.invoice_number }}</code></td>
+            <td>
+              <a href="{{ url_for('patient_detail', patient_id=inv.patient.id) }}" class="text-decoration-none">
+                {{ inv.patient.name }}
+              </a>
+            </td>
+            <td class="text-muted">{{ inv.issue_date.strftime('%Y/%m/%d') }}</td>
+            <td>¥{{ '{:,}'.format(inv.subtotal) }}</td>
+            <td class="text-success">-¥{{ '{:,}'.format(inv.insurance_covered) }}</td>
+            <td class="fw-bold">¥{{ '{:,}'.format(inv.total_amount) }}</td>
+            <td>
+              <span class="badge {% if inv.status == '支払済' %}bg-success{% elif inv.status == '未払い' %}bg-warning text-dark{% else %}bg-secondary{% endif %}">
+                {{ inv.status }}
+              </span>
+            </td>
+            <td>
+              <a href="{{ url_for('invoice_detail', invoice_id=inv.id) }}" class="btn btn-sm btn-outline-primary">詳細</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="text-center py-5 text-muted">
+      <i class="fas fa-file-invoice mb-2 d-block" style="font-size:2.5rem;"></i>
+      請求書がありません
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

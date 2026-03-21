@@ -1,0 +1,158 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}予約管理{% endblock %}
+{% block page_title %}予約管理{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <form class="d-flex align-items-center gap-2" method="get">
+    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="changeDate(-1)">◀</button>
+    <input type="date" name="date" id="dateInput" class="form-control" value="{{ target_date.isoformat() }}" style="width:160px;">
+    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="changeDate(1)">▶</button>
+    <button type="submit" class="btn btn-primary btn-sm">表示</button>
+  </form>
+  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#appointmentModal">
+    <i class="fas fa-plus me-2"></i>予約追加
+  </button>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-header bg-white">
+    <h6 class="fw-bold mb-0">{{ target_date.strftime('%Y年%m月%d日（') }}{% set weekdays = ['月','火','水','木','金','土','日'] %}{{ weekdays[target_date.weekday()] }}）の予約</h6>
+  </div>
+  <div class="card-body p-0">
+    {% if appointments %}
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th class="ps-3" style="width:80px;">時間</th>
+            <th>患者名</th>
+            <th>治療内容</th>
+            <th>時間</th>
+            <th>担当</th>
+            <th>ステータス</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for appt in appointments %}
+          <tr>
+            <td class="ps-3 fw-bold">{{ appt.appointment_date.strftime('%H:%M') }}</td>
+            <td>
+              <a href="{{ url_for('patient_detail', patient_id=appt.patient.id) }}" class="text-decoration-none">
+                {{ appt.patient.name }}
+              </a>
+              <div class="text-muted small">{{ appt.patient.patient_number }}</div>
+            </td>
+            <td>{{ appt.treatment_type or '-' }}</td>
+            <td class="text-muted small">{{ appt.duration_minutes }}分</td>
+            <td class="text-muted">{{ appt.staff.name if appt.staff else '-' }}</td>
+            <td>
+              <span class="badge
+                {% if appt.status == '予約済' %}bg-primary
+                {% elif appt.status == '来院済' %}bg-success
+                {% else %}bg-secondary{% endif %}">
+                {{ appt.status }}
+              </span>
+            </td>
+            <td>
+              <div class="d-flex gap-1">
+                {% if appt.status == '予約済' %}
+                <form method="post" action="{{ url_for('appointment_status', appt_id=appt.id) }}" class="d-inline">
+                  <input type="hidden" name="status" value="来院済">
+                  <button type="submit" class="btn btn-sm btn-success">来院</button>
+                </form>
+                <form method="post" action="{{ url_for('appointment_status', appt_id=appt.id) }}" class="d-inline">
+                  <input type="hidden" name="status" value="キャンセル">
+                  <button type="submit" class="btn btn-sm btn-outline-danger">キャンセル</button>
+                </form>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="text-center py-5 text-muted">
+      <i class="fas fa-calendar-times mb-2 d-block" style="font-size:2.5rem;"></i>
+      この日の予約はありません
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- New Appointment Modal -->
+<div class="modal fade" id="appointmentModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calendar-plus me-2"></i>予約追加</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form method="post" action="{{ url_for('appointment_new') }}">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">患者 <span class="text-danger">*</span></label>
+            <select name="patient_id" class="form-select" required>
+              <option value="">患者を選択...</option>
+              {% for p in patients %}
+              <option value="{{ p.id }}">{{ p.name }}（{{ p.patient_number }}）</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">日時 <span class="text-danger">*</span></label>
+            <input type="datetime-local" name="appointment_date" class="form-control"
+              value="{{ target_date.isoformat() }}T09:00" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">担当スタッフ</label>
+            <select name="staff_id" class="form-select">
+              <option value="">未定</option>
+              {% for s in staff_list %}
+              <option value="{{ s.id }}">{{ s.name }}（{{ s.role }}）</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">治療内容</label>
+            <input type="text" name="treatment_type" class="form-control" list="treatmentList" placeholder="例：定期検診、虫歯治療">
+            <datalist id="treatmentList">
+              {% for t in ['定期検診', '虫歯治療', '歯石除去', '抜歯', 'インプラント', '矯正相談', 'ホワイトニング', '初診'] %}
+              <option value="{{ t }}">
+              {% endfor %}
+            </datalist>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">診療時間</label>
+            <select name="duration_minutes" class="form-select">
+              <option value="15">15分</option>
+              <option value="30" selected>30分</option>
+              <option value="45">45分</option>
+              <option value="60">60分</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i>予約する</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block extra_js %}
+<script>
+function changeDate(delta) {
+  const input = document.getElementById('dateInput');
+  const d = new Date(input.value);
+  d.setDate(d.getDate() + delta);
+  input.value = d.toISOString().split('T')[0];
+  input.form.submit();
+}
+</script>
+{% endblock %}

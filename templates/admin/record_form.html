@@ -1,0 +1,82 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}{{ 'カルテ編集' if record else 'カルテ記録' }}{% endblock %}
+{% block page_title %}{{ 'カルテ編集 - ' + patient.name if record else 'カルテ記録 - ' + patient.name }}{% endblock %}
+{% block content %}
+<div class="card border-0 shadow-sm">
+  <div class="card-body p-4">
+    <form method="post">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">診察日時 <span class="text-danger">*</span></label>
+          <input type="datetime-local" name="visit_date" class="form-control"
+            value="{{ record.visit_date.strftime('%Y-%m-%dT%H:%M') if record else '' }}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">担当スタッフ</label>
+          <select name="staff_id" class="form-select">
+            <option value="">未設定</option>
+            {% for s in staff_list %}
+            <option value="{{ s.id }}" {{ 'selected' if record and record.staff_id == s.id }}>{{ s.name }}（{{ s.role }}）</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-semibold">主訴</label>
+          <input type="text" name="chief_complaint" class="form-control" placeholder="患者が訴える症状"
+            value="{{ record.chief_complaint if record else '' }}">
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-semibold">診断</label>
+          <textarea name="diagnosis" class="form-control" rows="2" placeholder="診断内容">{{ record.diagnosis if record else '' }}</textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-semibold">処置内容</label>
+          <textarea name="treatment" class="form-control" rows="4" placeholder="行った処置の詳細">{{ record.treatment if record else '' }}</textarea>
+        </div>
+
+        <!-- Tooth Chart (simplified) -->
+        <div class="col-12">
+          <label class="form-label fw-semibold">歯式メモ</label>
+          <div class="tooth-chart border rounded p-3 bg-light mb-2">
+            <div class="row text-center g-1 mb-1">
+              <div class="col-12 text-muted small mb-1">上顎（右→左）</div>
+              {% for n in [8,7,6,5,4,3,2,1,1,2,3,4,5,6,7,8] %}
+              <div class="col" style="min-width:32px;">
+                <div class="tooth-num text-muted small">{{ n }}</div>
+                <button type="button" class="btn btn-sm btn-outline-secondary tooth-btn p-0" style="width:28px;height:28px;" data-tooth="{{ loop.index }}U">🦷</button>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="text-center my-1 border-top border-bottom py-1 text-muted small">下顎（右→左）</div>
+            <div class="row text-center g-1 mt-1">
+              {% for n in [8,7,6,5,4,3,2,1,1,2,3,4,5,6,7,8] %}
+              <div class="col" style="min-width:32px;">
+                <button type="button" class="btn btn-sm btn-outline-secondary tooth-btn p-0" style="width:28px;height:28px;" data-tooth="{{ loop.index }}L">🦷</button>
+                <div class="tooth-num text-muted small">{{ n }}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <textarea name="tooth_chart" class="form-control" rows="2" placeholder="歯式メモ（例：上右6番 CO、下左7番 抜歯）">{{ record.tooth_chart if record else '' }}</textarea>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">処方・投薬</label>
+          <textarea name="prescription" class="form-control" rows="2" placeholder="処方した薬、投与内容">{{ record.prescription if record else '' }}</textarea>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">次回への申し送り</label>
+          <textarea name="next_visit_notes" class="form-control" rows="2" placeholder="次回担当者への注意事項">{{ record.next_visit_notes if record else '' }}</textarea>
+        </div>
+
+        <div class="col-12 d-flex gap-2">
+          <button type="submit" class="btn btn-primary px-4">
+            <i class="fas fa-save me-2"></i>{{ '更新する' if record else '保存する' }}
+          </button>
+          <a href="{{ url_for('patient_detail', patient_id=patient.id) }}" class="btn btn-outline-secondary">キャンセル</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

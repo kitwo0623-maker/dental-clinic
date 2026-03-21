@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}管理画面 - スマイル歯科クリニック{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet">
+  {% block extra_css %}{% endblock %}
+</head>
+<body class="admin-body">
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <nav class="sidebar bg-dark text-white d-flex flex-column" style="width:240px;min-height:100vh;">
+      <div class="p-3 border-bottom border-secondary">
+        <a href="{{ url_for('admin') }}" class="text-white text-decoration-none fw-bold fs-5">
+          <i class="fas fa-tooth me-2 text-primary"></i>スマイル歯科
+        </a>
+      </div>
+      <ul class="nav flex-column p-2 flex-grow-1">
+        <li class="nav-item">
+          <a class="nav-link text-white {{ 'active' if request.endpoint == 'admin' }}" href="{{ url_for('admin') }}">
+            <i class="fas fa-tachometer-alt me-2"></i>ダッシュボード
+          </a>
+        </li>
+        <li class="nav-item mt-2">
+          <small class="text-muted px-3">診療管理</small>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white {{ 'active' if 'patient' in request.endpoint }}" href="{{ url_for('patients_list') }}">
+            <i class="fas fa-users me-2"></i>患者管理
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white {{ 'active' if 'appointment' in request.endpoint }}" href="{{ url_for('appointments') }}">
+            <i class="fas fa-calendar-check me-2"></i>予約管理
+          </a>
+        </li>
+        <li class="nav-item mt-2">
+          <small class="text-muted px-3">経営管理</small>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white {{ 'active' if 'billing' in request.endpoint or 'invoice' in request.endpoint }}" href="{{ url_for('billing') }}">
+            <i class="fas fa-file-invoice-dollar me-2"></i>会計・請求
+          </a>
+        </li>
+        <li class="nav-item mt-2">
+          <small class="text-muted px-3">スタッフ</small>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white {{ 'active' if 'staff' in request.endpoint }}" href="{{ url_for('staff_list') }}">
+            <i class="fas fa-user-md me-2"></i>スタッフ管理
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white {{ 'active' if 'shift' in request.endpoint }}" href="{{ url_for('shifts') }}">
+            <i class="fas fa-calendar-alt me-2"></i>シフト管理
+          </a>
+        </li>
+        <li class="nav-item mt-2">
+          <small class="text-muted px-3">EC・その他</small>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white {{ 'active' if 'product' in request.endpoint }}" href="{{ url_for('products_admin') }}">
+            <i class="fas fa-shopping-cart me-2"></i>商品管理
+          </a>
+        </li>
+      </ul>
+      <div class="p-3 border-top border-secondary">
+        <a href="{{ url_for('index') }}" class="text-muted small text-decoration-none">
+          <i class="fas fa-external-link-alt me-1"></i>公開サイトへ
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex-grow-1 bg-light" style="min-height:100vh;">
+      <header class="bg-white shadow-sm px-4 py-3 d-flex align-items-center justify-content-between">
+        <h5 class="mb-0 fw-semibold">{% block page_title %}{% endblock %}</h5>
+        <span class="text-muted small"><i class="fas fa-clock me-1"></i>{{ now().strftime('%Y年%m月%d日') if now else '' }}</span>
+      </header>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="px-4 pt-3">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endwith %}
+
+      <main class="p-4">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

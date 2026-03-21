@@ -1,0 +1,103 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}請求書 {{ invoice.invoice_number }}{% endblock %}
+{% block page_title %}請求書詳細{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="d-flex gap-2 mb-3">
+      <a href="{{ url_for('billing') }}" class="btn btn-outline-secondary btn-sm">
+        <i class="fas fa-arrow-left me-1"></i>一覧へ戻る
+      </a>
+      {% if invoice.status == '未払い' %}
+      <form method="post" action="{{ url_for('invoice_pay', invoice_id=invoice.id) }}" class="d-inline">
+        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('支払い処理を完了しますか？')">
+          <i class="fas fa-check me-1"></i>支払い完了
+        </button>
+      </form>
+      {% endif %}
+      <button class="btn btn-outline-secondary btn-sm" onclick="window.print()">
+        <i class="fas fa-print me-1"></i>印刷
+      </button>
+    </div>
+
+    <div class="card border-0 shadow-sm" id="invoicePrint">
+      <div class="card-body p-5">
+        <div class="d-flex justify-content-between align-items-start mb-5">
+          <div>
+            <h3 class="fw-bold text-primary mb-1"><i class="fas fa-tooth me-2"></i>スマイル歯科クリニック</h3>
+            <p class="text-muted small mb-0">〒000-0000 東京都○○区○○ 1-2-3<br>TEL: 03-0000-0000</p>
+          </div>
+          <div class="text-end">
+            <h2 class="fw-bold mb-2">請求書</h2>
+            <div class="text-muted small">
+              <div>請求番号: <strong>{{ invoice.invoice_number }}</strong></div>
+              <div>発行日: {{ invoice.issue_date.strftime('%Y年%m月%d日') }}</div>
+              {% if invoice.due_date %}<div>支払期限: {{ invoice.due_date.strftime('%Y年%m月%d日') }}</div>{% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <p class="fw-bold fs-5 mb-1">{{ invoice.patient.name }} 様</p>
+          <span class="badge {% if invoice.status == '支払済' %}bg-success{% elif invoice.status == '未払い' %}bg-warning text-dark{% else %}bg-secondary{% endif %} fs-6">
+            {{ invoice.status }}
+          </span>
+        </div>
+
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>項目</th>
+              <th class="text-center" style="width:80px;">数量</th>
+              <th class="text-end" style="width:120px;">単価</th>
+              <th class="text-end" style="width:120px;">金額</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in invoice.items %}
+            <tr>
+              <td>{{ item.description }}</td>
+              <td class="text-center">{{ item.quantity }}</td>
+              <td class="text-end">¥{{ '{:,}'.format(item.unit_price) }}</td>
+              <td class="text-end">¥{{ '{:,}'.format(item.amount) }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr class="table-light">
+              <td colspan="3" class="text-end text-muted">小計</td>
+              <td class="text-end">¥{{ '{:,}'.format(invoice.subtotal) }}</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-end text-muted">保険負担額</td>
+              <td class="text-end text-success">-¥{{ '{:,}'.format(invoice.insurance_covered) }}</td>
+            </tr>
+            <tr>
+              <td colspan="3" class="text-end text-muted">消費税（10%）</td>
+              <td class="text-end">¥{{ '{:,}'.format(invoice.tax_amount) }}</td>
+            </tr>
+            <tr class="fw-bold">
+              <td colspan="3" class="text-end fs-5">お支払い合計</td>
+              <td class="text-end fs-5 text-primary">¥{{ '{:,}'.format(invoice.total_amount) }}</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        {% if invoice.notes %}
+        <div class="mt-4 p-3 bg-light rounded">
+          <strong>備考：</strong>{{ invoice.notes }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_css %}
+<style>
+@media print {
+  .sidebar, header, .btn, .d-flex.gap-2.mb-3 { display: none !important; }
+  .col-lg-8 { width: 100% !important; }
+}
+</style>
+{% endblock %}

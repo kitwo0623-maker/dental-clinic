@@ -1,0 +1,48 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}{{ 'スタッフ編集' if member else 'スタッフ追加' }}{% endblock %}
+{% block page_title %}{{ 'スタッフ情報編集' if member else '新規スタッフ登録' }}{% endblock %}
+{% block content %}
+<div class="card border-0 shadow-sm">
+  <div class="card-body p-4">
+    <form method="post">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">氏名 <span class="text-danger">*</span></label>
+          <input type="text" name="name" class="form-control" value="{{ member.name if member else '' }}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">フリガナ</label>
+          <input type="text" name="name_kana" class="form-control" value="{{ member.name_kana if member else '' }}">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">役職・職種</label>
+          <select name="role" class="form-select">
+            {% for r in ['歯科医師', '歯科衛生士', '歯科助手', '受付', 'その他'] %}
+            <option value="{{ r }}" {{ 'selected' if member and member.role == r }}>{{ r }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">入職日</label>
+          <input type="date" name="hire_date" class="form-control"
+            value="{{ member.hire_date.isoformat() if member and member.hire_date else '' }}">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">メールアドレス</label>
+          <input type="email" name="email" class="form-control" value="{{ member.email if member else '' }}">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">電話番号</label>
+          <input type="tel" name="phone" class="form-control" value="{{ member.phone if member else '' }}">
+        </div>
+        <div class="col-12 d-flex gap-2">
+          <button type="submit" class="btn btn-primary px-4">
+            <i class="fas fa-save me-2"></i>{{ '更新する' if member else '登録する' }}
+          </button>
+          <a href="{{ url_for('staff_list') }}" class="btn btn-outline-secondary">キャンセル</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

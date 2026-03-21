@@ -1,0 +1,71 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}商品管理{% endblock %}
+{% block page_title %}商品管理（ECショップ）{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+  <p class="text-muted mb-0">公開サイトのオンラインショップに表示される商品を管理します。</p>
+  <a href="{{ url_for('product_new') }}" class="btn btn-success">
+    <i class="fas fa-plus me-2"></i>商品追加
+  </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body p-0">
+    {% if products %}
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th class="ps-3">商品名</th>
+            <th>カテゴリ</th>
+            <th>価格</th>
+            <th>在庫</th>
+            <th>公開</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in products %}
+          <tr>
+            <td class="ps-3">
+              <div class="d-flex align-items-center gap-2">
+                {% if p.image_url %}
+                <img src="{{ p.image_url }}" style="width:40px;height:40px;object-fit:cover;border-radius:4px;" alt="">
+                {% else %}
+                <div class="bg-light d-flex align-items-center justify-content-center rounded" style="width:40px;height:40px;">
+                  <i class="fas fa-box text-muted"></i>
+                </div>
+                {% endif %}
+                <div>
+                  <div class="fw-semibold">{{ p.name }}</div>
+                  <div class="text-muted small">{{ p.description[:40] if p.description else '' }}{% if p.description and p.description|length > 40 %}...{% endif %}</div>
+                </div>
+              </div>
+            </td>
+            <td><span class="badge bg-light text-dark">{{ p.category or '-' }}</span></td>
+            <td class="fw-bold">¥{{ '{:,}'.format(p.price) }}</td>
+            <td>{{ p.stock }}個</td>
+            <td>
+              {% if p.is_active %}
+              <span class="badge bg-success">公開中</span>
+              {% else %}
+              <span class="badge bg-secondary">非公開</span>
+              {% endif %}
+            </td>
+            <td>
+              <a href="{{ url_for('product_edit', product_id=p.id) }}" class="btn btn-sm btn-outline-secondary">編集</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="text-center py-5 text-muted">
+      <i class="fas fa-box-open mb-2 d-block" style="font-size:2.5rem;"></i>
+      商品が登録されていません
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
