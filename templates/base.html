@@ -3,7 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}スマイル歯科クリニック{% endblock %}</title>
+  <title>{% block title %}キトウ歯科医院 | 愛知県犬山市の歯科{% endblock %}</title>
+  <meta name="description" content="{% block description %}愛知県犬山市富岡新町のキトウ歯科医院。一般歯科・小児歯科・審美歯科・矯正歯科・予防歯科に対応。犬山駅から徒歩11分。TEL: 0568-62-2580{% endblock %}">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="キトウ歯科医院">
+  <link rel="canonical" href="{% block canonical %}https://kitou-dental.jp/{% endblock %}">
+
+  <!-- Open Graph (SNSシェア用) -->
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}キトウ歯科医院 | 愛知県犬山市の歯科{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}愛知県犬山市のキトウ歯科医院。一般歯科・小児歯科・審美歯科・矯正歯科・予防歯科に対応。犬山駅から徒歩11分。{% endblock %}">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="キトウ歯科医院">
+
+  <!-- Google 地域ビジネス構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "キトウ歯科医院",
+    "url": "https://kitou-dental.jp/",
+    "telephone": "0568-62-2580",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "富岡新町1-74",
+      "addressLocality": "犬山市",
+      "addressRegion": "愛知県",
+      "postalCode": "484-0099",
+      "addressCountry": "JP"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Thursday", "Saturday"],
+        "opens": "09:00",
+        "closes": "13:00"
+      }
+    ],
+    "medicalSpecialty": "Dentistry"
+  }
+  </script>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
@@ -13,7 +59,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold text-primary" href="{{ url_for('index') }}">
-        <i class="fas fa-tooth me-2"></i>スマイル歯科クリニック
+        <i class="fas fa-tooth me-2"></i>キトウ歯科医院
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -46,8 +92,8 @@
 
   <footer class="bg-dark text-white mt-5 py-4">
     <div class="container text-center">
-      <p class="mb-1"><i class="fas fa-tooth me-2"></i>スマイル歯科クリニック</p>
-      <p class="mb-0 text-muted small">〒000-0000 東京都○○区○○ 1-2-3 ｜ TEL: 03-0000-0000</p>
+      <p class="mb-1"><i class="fas fa-tooth me-2"></i>キトウ歯科医院</p>
+      <p class="mb-0 text-muted small">〒484-0099 愛知県犬山市富岡新町1-74 ｜ TEL: 0568-62-2580</p>
     </div>
   </footer>
 
