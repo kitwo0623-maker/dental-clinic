@@ -56,20 +56,27 @@
   {% block extra_css %}{% endblock %}
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold text-primary" href="{{ url_for('index') }}">
-        <i class="fas fa-tooth me-2"></i>キトウ歯科医院
+      <a class="navbar-brand" href="{{ url_for('index') }}">
+        <span class="brand-icon"><i class="fas fa-tooth"></i></span>キトウ歯科医院
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
           <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">ホーム</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#vision">ビジョン</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('shop') }}">オンラインショップ</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">お問い合わせ</a></li>
-          <li class="nav-item"><a class="nav-link btn btn-primary text-white px-3 ms-2" href="{{ url_for('admin') }}">スタッフ管理</a></li>
+          <li class="nav-item ms-2">
+            <a class="nav-link nav-link-cta" href="{{ url_for('contact') }}">
+              <i class="fas fa-calendar-plus me-1"></i>ご予約
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -90,10 +97,36 @@
 
   {% block content %}{% endblock %}
 
-  <footer class="bg-dark text-white mt-5 py-4">
-    <div class="container text-center">
-      <p class="mb-1"><i class="fas fa-tooth me-2"></i>キトウ歯科医院</p>
-      <p class="mb-0 text-muted small">〒484-0099 愛知県犬山市富岡新町1-74 ｜ TEL: 0568-62-2580</p>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 mb-4 mb-md-0">
+          <div class="footer-brand"><i class="fas fa-tooth me-2"></i>キトウ歯科医院</div>
+          <div class="footer-purpose">健口から健康、そして健幸へ</div>
+          <div class="footer-info">
+            〒484-0099 愛知県犬山市富岡新町1-74<br>
+            TEL: <a href="tel:0568622580" style="color: rgba(255,255,255,0.7);">0568-62-2580</a>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <p class="text-uppercase" style="font-size:0.72rem; letter-spacing:0.15em; color:rgba(255,255,255,0.4); margin-bottom:0.75rem;">診療時間</p>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.6); margin-bottom:0.35rem;">月・火・水・金 ／ 9:00〜18:00</p>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.6); margin-bottom:0.35rem;">木・土 ／ 9:00〜13:00</p>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.4);">日・祝 ／ 休診</p>
+        </div>
+        <div class="col-md-4">
+          <p class="text-uppercase" style="font-size:0.72rem; letter-spacing:0.15em; color:rgba(255,255,255,0.4); margin-bottom:0.75rem;">リンク</p>
+          <ul class="list-unstyled" style="font-size:0.88rem;">
+            <li class="mb-1"><a href="{{ url_for('index') }}" style="color:rgba(255,255,255,0.6); text-decoration:none;">ホーム</a></li>
+            <li class="mb-1"><a href="{{ url_for('index') }}#vision" style="color:rgba(255,255,255,0.6); text-decoration:none;">私たちのビジョン</a></li>
+            <li class="mb-1"><a href="{{ url_for('shop') }}" style="color:rgba(255,255,255,0.6); text-decoration:none;">オンラインショップ</a></li>
+            <li class="mb-1"><a href="{{ url_for('contact') }}" style="color:rgba(255,255,255,0.6); text-decoration:none;">お問い合わせ・ご予約</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <p class="footer-copy">© 2024 キトウ歯科医院. All rights reserved.</p>
     </div>
   </footer>
 

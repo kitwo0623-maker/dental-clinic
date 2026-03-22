@@ -3,33 +3,134 @@
 {% block description %}愛知県犬山市富岡新町のキトウ歯科医院。一般歯科・小児歯科・審美歯科・矯正歯科・インプラント・予防歯科に対応。犬山駅から徒歩11分。TEL: 0568-62-2580{% endblock %}
 {% block content %}
 
-<!-- Hero Section -->
-<section class="hero-section py-5" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+<!-- ============================================================
+     Hero Section
+     ============================================================ -->
+<section class="hero-section">
   <div class="container py-4">
     <div class="row align-items-center">
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold text-primary mb-3">あなたの笑顔を守る<br>キトウ歯科医院</h1>
-        <p class="lead text-muted mb-4">愛知県犬山市の歯科医院。最新の設備と経験豊富なスタッフが、お口の健康をトータルサポート。<br>お気軽にご相談ください。</p>
+      <div class="col-lg-7">
+        <span class="hero-badge"><i class="fas fa-map-marker-alt me-1"></i> 愛知県犬山市の歯科医院</span>
+        <h1 class="hero-title">
+          あなたの笑顔を守り、<br>
+          健康と美しさを、ともに。
+        </h1>
+        <p class="hero-purpose">― 健口から健康、そして健幸へ ―</p>
+        <p class="hero-desc">
+          本質的な予防医療で、お口の健康を守ります。<br>
+          最新の設備と経験豊富なスタッフが、<br>
+          あなたの「健やかな笑顔」をトータルサポート。
+        </p>
         <div class="d-flex gap-3 flex-wrap">
-          <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg px-4">
-            <i class="fas fa-calendar-plus me-2"></i>予約する
+          <a href="{{ url_for('contact') }}" class="btn-hero-primary">
+            <i class="fas fa-calendar-plus"></i>ご予約はこちら
           </a>
-          <a href="{{ url_for('shop') }}" class="btn btn-outline-primary btn-lg px-4">
-            <i class="fas fa-shopping-bag me-2"></i>ショップ
+          <a href="#vision" class="btn-hero-outline">
+            <i class="fas fa-leaf"></i>私たちのビジョン
           </a>
         </div>
       </div>
-      <div class="col-lg-6 text-center mt-4 mt-lg-0">
-        <div style="font-size:10rem; line-height:1;">🦷</div>
+      <div class="col-lg-5 text-center mt-5 mt-lg-0">
+        <div class="hero-visual">
+          <div class="hero-circle">🦷</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Services Section -->
-<section class="py-5">
+<!-- ============================================================
+     Vision Section
+     ============================================================ -->
+<section id="vision" class="vision-section">
+
+  <!-- Purpose Banner -->
+  <div class="purpose-banner">
+    <div class="container">
+      <p class="purpose-label">Purpose ／ パーパス</p>
+      <h2 class="purpose-main">健口から健康、そして健幸へ。</h2>
+      <p class="purpose-sub">本質的な予防医療・豊かさの提供</p>
+    </div>
+  </div>
+
+  <!-- Core Values -->
+  <div class="values-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-label">Core Values ／ コアバリューと理念</span>
+        <h2 class="section-title">私たちが大切にしていること</h2>
+        <div class="section-divider"></div>
+        <p style="color: var(--muted); font-size: 0.92rem; max-width: 480px; margin: 0 auto;">
+          患者様への誠実なケアと、プロとしての誇りを胸に。<br>これらの価値観が、私たちの診療のすべての基本です。
+        </p>
+      </div>
+      <div class="row g-3">
+        {% set values = [
+          ('fas fa-hands-holding-heart', '常に真摯に', '患者様一人ひとりに真剣に向き合い、誠実な診療を行います。'),
+          ('fas fa-award', '常にプロフェッショナルに', '最新の知識と技術を追求し、質の高い医療を提供します。'),
+          ('fas fa-heart', '常に他者への貢献を', '地域の皆様の健康と笑顔のために、私たちにできることを尽くします。'),
+          ('fas fa-user-heart', '常に人を大切に', 'スタッフも患者様も、関わるすべての人を大切にします。'),
+          ('fas fa-sun', '常にポジティブに', '明るく前向きな雰囲気で、患者様が安心して通える医院を目指します。'),
+        ] %}
+        {% for icon, title, desc in values %}
+        <div class="col-6 col-md-4 col-lg">
+          <div class="value-card">
+            <div class="value-icon"><i class="{{ icon }}"></i></div>
+            <div class="value-title">{{ title }}</div>
+            <div class="value-desc">{{ desc }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission -->
+  <div class="mission-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-label">Mission ／ ミッション</span>
+        <h2 class="section-title">私たちの大胆な目標</h2>
+        <div class="section-divider"></div>
+        <p style="color: var(--muted); font-size: 0.92rem; max-width: 480px; margin: 0 auto;">
+          10〜20年先の未来を見据え、地域の皆様の「健康寿命」を延ばすために。
+        </p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+          <div class="mission-card">
+            <div class="mission-number">01</div>
+            <h3 class="mission-title">健康寿命延長の提供</h3>
+            <p class="mission-desc">
+              お口の健康は、全身の健康につながります。定期的な予防ケアと本質的な治療で、患者様が健やかに長生きできる未来を支えます。
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="mission-card">
+            <div class="mission-number">02</div>
+            <h3 class="mission-title">犬山で一番の歯科医院になる</h3>
+            <p class="mission-desc">
+              技術・サービス・患者満足度のすべてで、犬山市で最も信頼される歯科医院を目指します。地域に根ざした医院として、皆様とともに成長します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     Services Section
+     ============================================================ -->
+<section class="services-section">
   <div class="container">
-    <h2 class="text-center fw-bold mb-5">診療内容</h2>
+    <div class="text-center mb-5">
+      <span class="section-label">Services ／ 診療内容</span>
+      <h2 class="section-title">あなたのお口の健康を、<br>トータルサポート</h2>
+      <div class="section-divider"></div>
+    </div>
     <div class="row g-4">
       {% set services = [
         ('fas fa-tooth', '一般歯科', '虫歯の治療から予防歯科まで、お口の健康を守ります。'),
@@ -37,47 +138,82 @@
         ('fas fa-child', '小児歯科', 'お子様の歯の健康を大切に育てます。定期検診もおすすめ。'),
         ('fas fa-align-center', '矯正歯科', 'ワイヤー矯正からマウスピース矯正まで対応。'),
         ('fas fa-user-md', 'インプラント', '失った歯を自然な形で補う最先端治療。'),
-        ('fas fa-shield-alt', '予防歯科', '定期的なクリーニングで歯周病・虫歯を予防。'),
+        ('fas fa-shield-alt', '予防歯科', '定期的なクリーニングで歯周病・虫歯を予防します。'),
       ] %}
       {% for icon, title, desc in services %}
       <div class="col-md-6 col-lg-4">
-        <div class="card h-100 border-0 shadow-sm text-center p-4">
-          <div class="text-primary mb-3" style="font-size:2.5rem;"><i class="{{ icon }}"></i></div>
-          <h5 class="fw-bold">{{ title }}</h5>
-          <p class="text-muted small mb-0">{{ desc }}</p>
+        <div class="service-card">
+          <div class="service-icon"><i class="{{ icon }}"></i></div>
+          <h5 class="service-title">{{ title }}</h5>
+          <p class="service-desc">{{ desc }}</p>
         </div>
       </div>
       {% endfor %}
     </div>
+    <div class="text-center mt-5">
+      <a href="{{ url_for('contact') }}" class="btn btn-primary px-5 py-3">
+        <i class="fas fa-calendar-plus me-2"></i>ご予約・ご相談はこちら
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- Info Section -->
-<section class="py-5 bg-light">
+<!-- ============================================================
+     Info Section
+     ============================================================ -->
+<section class="info-section">
   <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Access ／ アクセス</span>
+      <h2 class="section-title">診療時間・アクセス</h2>
+      <div class="section-divider"></div>
+    </div>
     <div class="row g-4">
       <div class="col-md-6">
-        <div class="card border-0 shadow-sm h-100">
-          <div class="card-body p-4">
-            <h4 class="fw-bold mb-4"><i class="fas fa-clock text-primary me-2"></i>診療時間</h4>
-            <table class="table table-borderless mb-0">
-              <tbody>
-                <tr><td>月・火・水・金</td><td class="fw-bold">9:00 〜 18:00</td></tr>
-                <tr><td>木・土</td><td class="fw-bold">9:00 〜 13:00</td></tr>
-                <tr class="text-danger"><td>日・祝</td><td>休診</td></tr>
-              </tbody>
-            </table>
+        <div class="info-card">
+          <h4><i class="fas fa-clock info-icon me-2"></i>診療時間</h4>
+          <table class="table table-borderless hours-table mb-3">
+            <tbody>
+              <tr>
+                <td style="color: var(--muted);">月・火・水・金</td>
+                <td class="fw-bold">9:00 〜 18:00</td>
+              </tr>
+              <tr>
+                <td style="color: var(--muted);">木・土</td>
+                <td class="fw-bold">9:00 〜 13:00</td>
+              </tr>
+              <tr>
+                <td class="closed-day">日・祝</td>
+                <td class="closed-day">休診</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="background: var(--primary-light); border-radius: 8px; padding: 1rem; font-size: 0.85rem; color: var(--primary);">
+            <i class="fas fa-info-circle me-1"></i>
+            ご予約はお電話またはお問い合わせフォームよりどうぞ。
           </div>
         </div>
       </div>
       <div class="col-md-6">
-        <div class="card border-0 shadow-sm h-100">
-          <div class="card-body p-4">
-            <h4 class="fw-bold mb-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>アクセス</h4>
-            <p class="mb-2"><strong>住所：</strong>〒484-0099 愛知県犬山市富岡新町1-74</p>
-            <p class="mb-2"><strong>TEL：</strong><a href="tel:0568622580">0568-62-2580</a></p>
-            <p class="mb-2"><strong>最寄駅：</strong>犬山駅 徒歩11分</p>
-            <p class="mb-0"><strong>駐車場：</strong>あり</p>
+        <div class="info-card">
+          <h4><i class="fas fa-map-marker-alt info-icon me-2"></i>アクセス</h4>
+          <div class="access-item">
+            <span class="access-item-icon"><i class="fas fa-phone"></i></span>
+            <div>
+              <a href="tel:0568622580" class="tel-link">0568-62-2580</a>
+            </div>
+          </div>
+          <div class="access-item">
+            <span class="access-item-icon"><i class="fas fa-map-pin"></i></span>
+            <div>〒484-0099<br>愛知県犬山市富岡新町1-74</div>
+          </div>
+          <div class="access-item">
+            <span class="access-item-icon"><i class="fas fa-train"></i></span>
+            <div>名鉄犬山線「犬山駅」徒歩11分</div>
+          </div>
+          <div class="access-item">
+            <span class="access-item-icon"><i class="fas fa-car"></i></span>
+            <div>駐車場完備</div>
           </div>
         </div>
       </div>
@@ -85,30 +221,35 @@
   </div>
 </section>
 
-<!-- Online Shop Preview -->
+<!-- ============================================================
+     Online Shop Preview
+     ============================================================ -->
 {% if products %}
-<section class="py-5">
+<section class="shop-section">
   <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-5">
-      <h2 class="fw-bold mb-0">オンラインショップ</h2>
-      <a href="{{ url_for('shop') }}" class="btn btn-outline-primary">すべて見る</a>
+    <div class="d-flex justify-content-between align-items-end mb-5">
+      <div>
+        <span class="section-label">Online Shop ／ オンラインショップ</span>
+        <h2 class="section-title mb-0">おすすめ商品</h2>
+      </div>
+      <a href="{{ url_for('shop') }}" class="btn btn-outline-primary">すべて見る <i class="fas fa-arrow-right ms-1"></i></a>
     </div>
     <div class="row g-4">
       {% for product in products %}
       <div class="col-md-6 col-lg-4">
-        <div class="card border-0 shadow-sm h-100">
+        <div class="card border-0 h-100" style="border-radius:12px; overflow:hidden;">
           {% if product.image_url %}
           <img src="{{ product.image_url }}" class="card-img-top" style="height:200px;object-fit:cover;" alt="{{ product.name }}">
           {% else %}
-          <div class="bg-light d-flex align-items-center justify-content-center" style="height:200px;">
-            <i class="fas fa-box text-muted" style="font-size:3rem;"></i>
+          <div class="d-flex align-items-center justify-content-center" style="height:200px; background:var(--cream);">
+            <i class="fas fa-box text-muted" style="font-size:3rem; opacity:0.3;"></i>
           </div>
           {% endif %}
-          <div class="card-body">
-            <span class="badge bg-light text-secondary mb-2">{{ product.category }}</span>
-            <h6 class="fw-bold">{{ product.name }}</h6>
-            <p class="text-muted small">{{ product.description[:60] }}{% if product.description|length > 60 %}...{% endif %}</p>
-            <p class="fw-bold text-primary fs-5 mb-0">¥{{ '{:,}'.format(product.price) }}</p>
+          <div class="card-body p-4">
+            <span class="badge mb-2" style="background:var(--primary-light); color:var(--primary); font-weight:500;">{{ product.category }}</span>
+            <h6 class="fw-bold mb-1">{{ product.name }}</h6>
+            <p class="small mb-3" style="color:var(--muted);">{{ product.description[:60] }}{% if product.description|length > 60 %}...{% endif %}</p>
+            <p class="fw-bold fs-5 mb-0" style="color:var(--primary);">¥{{ '{:,}'.format(product.price) }}</p>
           </div>
         </div>
       </div>
@@ -117,5 +258,28 @@
   </div>
 </section>
 {% endif %}
+
+<!-- ============================================================
+     CTA Banner
+     ============================================================ -->
+<section style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 5rem 0; text-align: center; color: white;">
+  <div class="container">
+    <p style="font-size: 0.8rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 1rem;">お気軽にどうぞ</p>
+    <h2 style="font-family: 'Noto Serif JP', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem;">
+      まずは、お口の状態を<br>一緒に確認しませんか。
+    </h2>
+    <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 2rem;">
+      検診・クリーニング・ホワイトニングのご相談も承っております。
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="{{ url_for('contact') }}" class="btn-hero-primary">
+        <i class="fas fa-calendar-plus"></i>ご予約・お問い合わせ
+      </a>
+      <a href="tel:0568622580" class="btn-hero-outline">
+        <i class="fas fa-phone"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

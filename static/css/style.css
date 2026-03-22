@@ -1,24 +1,612 @@
+/* ============================================
+   キトウ歯科医院 - メインスタイル
+   ターゲット：30〜70代女性
+   コンセプト：本質・健康・美しさ・信頼
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;700&display=swap');
+
 :root {
-  --primary: #1976d2;
-  --primary-light: #e3f2fd;
+  --primary: #1a7a7a;
+  --primary-dark: #135f5f;
+  --primary-light: #e8f5f3;
+  --gold: #b8874a;
+  --gold-light: #fdf6e8;
+  --cream: #faf8f5;
+  --dark: #2d3436;
+  --muted: #636e72;
+  --border: #e8e3dc;
 }
 
+/* Base */
 body {
-  font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+  color: var(--dark);
+  background-color: #fff;
 }
 
-.hero-section {
-  border-bottom: 1px solid #e0e0e0;
+/* ============================================
+   Navbar
+   ============================================ */
+.navbar {
+  background: #fff !important;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
 }
 
 .navbar-brand {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary) !important;
+  letter-spacing: 0.03em;
+}
+
+.navbar-brand .brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  color: white;
+  font-size: 0.85rem;
+}
+
+.nav-link {
+  color: var(--dark) !important;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--primary) !important;
+}
+
+.nav-link-cta {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  padding: 0.4rem 1.2rem !important;
+}
+
+.nav-link-cta:hover {
+  background: var(--primary-dark) !important;
+  color: #fff !important;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero-section {
+  background: linear-gradient(135deg, #1a7a7a 0%, #135f5f 60%, #0d4545 100%);
+  color: white;
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero-purpose {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 0.5rem;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.hero-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.5rem;
+}
+
+.btn-hero-primary {
+  background: var(--gold);
+  border: none;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-hero-primary:hover {
+  background: #a07240;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-hero-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.5);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-hero-outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-circle {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7rem;
+  position: relative;
+}
+
+.hero-circle::after {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ============================================
+   Section Label (common)
+   ============================================ */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.section-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 2.5rem;
+}
+
+/* ============================================
+   Vision Section
+   ============================================ */
+.vision-section {
+  background: var(--cream);
+}
+
+/* Purpose Banner */
+.purpose-banner {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 5rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.purpose-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.purpose-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.5rem;
+}
+
+.purpose-main {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.purpose-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* Core Values */
+.values-section {
+  padding: 5rem 0;
+  background: var(--cream);
+}
+
+.value-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  height: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(26, 122, 122, 0.1);
+}
+
+.value-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.3rem;
+}
+
+.value-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.25rem;
+}
+
+.value-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Mission */
+.mission-section {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.mission-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+}
+
+.mission-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(26, 122, 122, 0.12);
+}
+
+.mission-number {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.mission-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.75rem;
+}
+
+.mission-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ============================================
+   Services Section
+   ============================================ */
+.services-section {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.service-card {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  height: 100%;
+  border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(26, 122, 122, 0.1);
+  background: #fff;
+}
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.service-card:hover .service-icon {
+  background: var(--primary);
+  color: #fff;
+}
+
+.service-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.service-desc {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================
+   Info Section
+   ============================================ */
+.info-section {
+  padding: 5rem 0;
+  background: var(--cream);
+}
+
+.info-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  height: 100%;
+}
+
+.info-card h4 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
 
-.card {
-  transition: transform 0.15s, box-shadow 0.15s;
+.info-card .info-icon {
+  color: var(--primary);
 }
 
-.card:hover {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+.hours-table td {
+  padding: 0.6rem 0;
+  border: none;
+  font-size: 0.92rem;
+}
+
+.hours-table tr:not(:last-child) td {
+  border-bottom: 1px solid var(--border);
+}
+
+.closed-day {
+  color: #c0392b;
+}
+
+.access-item {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+.access-item-icon {
+  color: var(--primary);
+  width: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tel-link {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.tel-link:hover {
+  color: var(--primary-dark);
+}
+
+/* ============================================
+   Shop Preview Section
+   ============================================ */
+.shop-section {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.shop-section .card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.shop-section .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-outline-primary:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.site-footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.85);
+  padding: 3rem 0 2rem;
+}
+
+.footer-brand {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.footer-purpose {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Noto Serif JP', serif;
+  margin-bottom: 1.5rem;
+}
+
+.footer-info {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-divider {
+  border-color: rgba(255,255,255,0.1);
+  margin: 2rem 0 1rem;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+}
+
+/* ============================================
+   Utility
+   ============================================ */
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-gold {
+  color: var(--gold) !important;
+}
+
+.bg-cream {
+  background: var(--cream) !important;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
