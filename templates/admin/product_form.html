@@ -2,56 +2,204 @@
 {% block title %}{{ '商品編集' if product else '商品追加' }}{% endblock %}
 {% block page_title %}{{ '商品情報編集' if product else '新規商品登録' }}{% endblock %}
 {% block content %}
-<div class="card border-0 shadow-sm">
-  <div class="card-body p-4">
-    <form method="post">
-      <div class="row g-3">
-        <div class="col-12">
-          <label class="form-label fw-semibold">商品名 <span class="text-danger">*</span></label>
-          <input type="text" name="name" class="form-control" value="{{ product.name if product else '' }}" required>
-        </div>
-        <div class="col-md-6">
-          <label class="form-label fw-semibold">カテゴリ</label>
-          <input type="text" name="category" class="form-control" list="categoryList"
-            value="{{ product.category if product else '' }}" placeholder="例：オーラルケア、サプリ">
-          <datalist id="categoryList">
-            {% for c in ['オーラルケア', 'ホワイトニング', 'サプリメント', '矯正用品', 'その他'] %}
-            <option value="{{ c }}">
-            {% endfor %}
-          </datalist>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label fw-semibold">価格（円） <span class="text-danger">*</span></label>
-          <input type="number" name="price" class="form-control" value="{{ product.price if product else 0 }}" min="0" required>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label fw-semibold">在庫数</label>
-          <input type="number" name="stock" class="form-control" value="{{ product.stock if product else 0 }}" min="0">
-        </div>
-        <div class="col-12">
-          <label class="form-label fw-semibold">商品説明</label>
-          <textarea name="description" class="form-control" rows="3">{{ product.description if product else '' }}</textarea>
-        </div>
-        <div class="col-12">
-          <label class="form-label fw-semibold">画像URL</label>
-          <input type="url" name="image_url" class="form-control" value="{{ product.image_url if product else '' }}"
-            placeholder="https://example.com/image.jpg">
-        </div>
-        <div class="col-12">
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" name="is_active" id="isActive"
-              {{ 'checked' if not product or product.is_active }}>
-            <label class="form-check-label fw-semibold" for="isActive">公開する</label>
-          </div>
-        </div>
-        <div class="col-12 d-flex gap-2">
-          <button type="submit" class="btn btn-primary px-4">
-            <i class="fas fa-save me-2"></i>{{ '更新する' if product else '登録する' }}
-          </button>
-          <a href="{{ url_for('products_admin') }}" class="btn btn-outline-secondary">キャンセル</a>
-        </div>
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white border-bottom py-3">
+        <h5 class="mb-0">
+          <i class="fas fa-{{ 'edit' if product else 'plus-circle' }} text-primary me-2"></i>
+          {{ '商品情報の編集' if product else '新しい商品を登録' }}
+        </h5>
       </div>
-    </form>
+      <div class="card-body p-4">
+        <form method="post" id="productForm" novalidate>
+          <div class="row g-3">
+
+            <!-- Product Name -->
+            <div class="col-12">
+              <label class="form-label fw-semibold">
+                商品名 <span class="text-danger">*</span>
+              </label>
+              <input type="text" name="name" id="name"
+                     class="form-control form-control-lg"
+                     value="{{ product.name if product else '' }}"
+                     placeholder="例：薬用ホワイトニング歯磨き粉"
+                     required maxlength="200">
+              <div class="invalid-feedback">商品名は必須です。</div>
+            </div>
+
+            <!-- Category -->
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">カテゴリ</label>
+              <input type="text" name="category" class="form-control" list="categoryList"
+                     value="{{ product.category if product else '' }}"
+                     placeholder="カテゴリを選択または入力">
+              <datalist id="categoryList">
+                {% for c in ['オーラルケア', 'ホワイトニング', 'サプリメント', '矯正用品', 'その他'] %}
+                <option value="{{ c }}">
+                {% endfor %}
+              </datalist>
+              <div class="form-text">選択肢から選ぶか自由に入力できます。</div>
+            </div>
+
+            <!-- Price -->
+            <div class="col-md-3">
+              <label class="form-label fw-semibold">
+                価格（円） <span class="text-danger">*</span>
+              </label>
+              <div class="input-group">
+                <span class="input-group-text">¥</span>
+                <input type="number" name="price" id="price"
+                       class="form-control"
+                       value="{{ product.price if product else '' }}"
+                       min="0" max="9999999" step="1"
+                       placeholder="0"
+                       required>
+              </div>
+              <div class="invalid-feedback">有効な価格を入力してください。</div>
+            </div>
+
+            <!-- Stock -->
+            <div class="col-md-3">
+              <label class="form-label fw-semibold">在庫数</label>
+              <div class="input-group">
+                <input type="number" name="stock" id="stock"
+                       class="form-control"
+                       value="{{ product.stock if product else 0 }}"
+                       min="0" max="99999" step="1"
+                       placeholder="0">
+                <span class="input-group-text">個</span>
+              </div>
+              {% if product and product.stock <= 5 and product.stock > 0 %}
+              <div class="form-text text-warning">
+                <i class="fas fa-exclamation-triangle me-1"></i>在庫が少なくなっています。
+              </div>
+              {% elif product and product.stock == 0 %}
+              <div class="form-text text-danger">
+                <i class="fas fa-times-circle me-1"></i>現在在庫切れです。
+              </div>
+              {% else %}
+              <div class="form-text">0の場合は「在庫なし」と表示されます。</div>
+              {% endif %}
+            </div>
+
+            <!-- Description -->
+            <div class="col-12">
+              <label class="form-label fw-semibold">商品説明</label>
+              <textarea name="description" class="form-control" rows="4"
+                        placeholder="商品の特徴、使い方、成分などを入力してください。">{{ product.description if product else '' }}</textarea>
+              <div class="form-text">ショップページに表示される説明文です。</div>
+            </div>
+
+            <!-- Image URL -->
+            <div class="col-12">
+              <label class="form-label fw-semibold">画像URL</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-image"></i></span>
+                <input type="url" name="image_url" id="imageUrl"
+                       class="form-control"
+                       value="{{ product.image_url if product else '' }}"
+                       placeholder="https://example.com/image.jpg"
+                       oninput="previewImage(this.value)">
+              </div>
+              <div class="form-text">商品画像のURLを入力してください（JPG, PNG, WebP対応）。</div>
+
+              <!-- Image Preview -->
+              <div id="imagePreview" class="mt-2" style="display:{% if product and product.image_url %}block{% else %}none{% endif %};">
+                <img id="previewImg"
+                     src="{{ product.image_url if product and product.image_url else '' }}"
+                     alt="プレビュー"
+                     class="rounded border"
+                     style="max-height:150px;max-width:250px;object-fit:cover;">
+                <div class="mt-1">
+                  <small class="text-muted">画像プレビュー</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Is Active -->
+            <div class="col-12">
+              <div class="card bg-light border-0 p-3">
+                <div class="form-check form-switch mb-0">
+                  <input class="form-check-input" type="checkbox" name="is_active" id="isActive"
+                         {{ 'checked' if not product or product.is_active }}
+                         style="width:2.5em;height:1.25em;">
+                  <label class="form-check-label fw-semibold ms-2" for="isActive">
+                    ショップに公開する
+                  </label>
+                </div>
+                <small class="text-muted mt-1 ms-5">オフにすると公開サイトに表示されません。</small>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="col-12 d-flex gap-2 pt-2">
+              <button type="submit" class="btn btn-primary px-5">
+                <i class="fas fa-save me-2"></i>{{ '更新する' if product else '登録する' }}
+              </button>
+              <a href="{{ url_for('products_admin') }}" class="btn btn-outline-secondary px-4">
+                <i class="fas fa-arrow-left me-2"></i>キャンセル
+              </a>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
+
+<script>
+// Bootstrap validation
+(function() {
+  'use strict';
+  const form = document.getElementById('productForm');
+  form.addEventListener('submit', function(event) {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    form.classList.add('was-validated');
+  }, false);
+})();
+
+// Image preview
+function previewImage(url) {
+  const preview = document.getElementById('imagePreview');
+  const img = document.getElementById('previewImg');
+  if (url && url.trim()) {
+    img.src = url;
+    img.onerror = function() { preview.style.display = 'none'; };
+    img.onload = function() { preview.style.display = 'block'; };
+  } else {
+    preview.style.display = 'none';
+  }
+}
+
+// Price input formatting hint
+document.getElementById('price').addEventListener('input', function() {
+  const val = parseInt(this.value);
+  if (!isNaN(val) && val >= 0) {
+    this.title = '¥' + val.toLocaleString();
+  }
+});
+
+// Stock warning on input
+document.getElementById('stock').addEventListener('input', function() {
+  const val = parseInt(this.value);
+  const helpText = this.closest('.col-md-3').querySelector('.form-text');
+  if (!isNaN(val)) {
+    if (val === 0) {
+      helpText.className = 'form-text text-danger';
+      helpText.innerHTML = '<i class="fas fa-times-circle me-1"></i>在庫切れとして表示されます。';
+    } else if (val <= 5) {
+      helpText.className = 'form-text text-warning';
+      helpText.innerHTML = '<i class="fas fa-exclamation-triangle me-1"></i>在庫が少ない状態です。';
+    } else {
+      helpText.className = 'form-text text-success';
+      helpText.innerHTML = '<i class="fas fa-check-circle me-1"></i>在庫あり。';
+    }
+  }
+});
+</script>
 {% endblock %}

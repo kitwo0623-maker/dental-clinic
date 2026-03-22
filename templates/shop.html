@@ -2,39 +2,108 @@
 {% block title %}オンラインショップ - スマイル歯科クリニック{% endblock %}
 {% block content %}
 <div class="container py-5">
-  <h2 class="fw-bold mb-4"><i class="fas fa-shopping-cart text-primary me-2"></i>オンラインショップ</h2>
+  <h2 class="fw-bold mb-2"><i class="fas fa-shopping-cart text-primary me-2"></i>オンラインショップ</h2>
+  <p class="text-muted mb-4">歯科医院おすすめのオーラルケア商品をご紹介します。</p>
 
-  <!-- Category Filter -->
-  <div class="mb-4">
-    <a href="{{ url_for('shop') }}" class="btn btn-sm {{ 'btn-primary' if not selected_category else 'btn-outline-secondary' }} me-2">すべて</a>
-    {% for cat in categories %}
-    <a href="{{ url_for('shop', category=cat) }}" class="btn btn-sm {{ 'btn-primary' if selected_category == cat else 'btn-outline-secondary' }} me-2">{{ cat }}</a>
-    {% endfor %}
+  <!-- Filter & Sort Bar -->
+  <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+    <!-- Category Filter -->
+    <div class="d-flex flex-wrap gap-2">
+      <a href="{{ url_for('shop', sort=current_sort) }}"
+         class="btn btn-sm {{ 'btn-primary' if not selected_category else 'btn-outline-secondary' }}">
+        すべて
+      </a>
+      {% for cat in categories %}
+      <a href="{{ url_for('shop', category=cat, sort=current_sort) }}"
+         class="btn btn-sm {{ 'btn-primary' if selected_category == cat else 'btn-outline-secondary' }}">
+        {{ cat }}
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Sort & Stock Filter -->
+    <div class="d-flex gap-2 align-items-center">
+      <div class="form-check form-switch mb-0 me-1">
+        <input class="form-check-input" type="checkbox" id="hideOutOfStock"
+               onchange="toggleOutOfStock(this)"
+               {% if hide_out_of_stock %}checked{% endif %}>
+        <label class="form-check-label small" for="hideOutOfStock">在庫ありのみ</label>
+      </div>
+      <select class="form-select form-select-sm" style="width:auto;" onchange="changeSort(this)">
+        <option value="newest" {% if current_sort == 'newest' %}selected{% endif %}>新着順</option>
+        <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>価格が低い順</option>
+        <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>価格が高い順</option>
+      </select>
+    </div>
   </div>
 
   {% if products %}
   <div class="row g-4">
     {% for product in products %}
     <div class="col-md-6 col-lg-3">
-      <div class="card border-0 shadow-sm h-100">
-        {% if product.image_url %}
-        <img src="{{ product.image_url }}" class="card-img-top" style="height:180px;object-fit:cover;" alt="{{ product.name }}">
-        {% else %}
-        <div class="bg-light d-flex align-items-center justify-content-center" style="height:180px;">
-          <i class="fas fa-box text-muted" style="font-size:2.5rem;"></i>
-        </div>
-        {% endif %}
-        <div class="card-body d-flex flex-column">
-          <span class="badge bg-light text-secondary mb-1">{{ product.category }}</span>
-          <h6 class="fw-bold">{{ product.name }}</h6>
-          <p class="text-muted small flex-grow-1">{{ product.description }}</p>
-          <div class="d-flex justify-content-between align-items-center mt-2">
-            <span class="fw-bold text-primary">¥{{ '{:,}'.format(product.price) }}</span>
-            <small class="text-muted">在庫: {{ product.stock }}個</small>
+      <div class="card border-0 shadow-sm h-100 product-card {% if product.stock == 0 %}out-of-stock-card{% endif %}"
+           style="cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;"
+           onclick="openProductModal({{ product.id }})">
+
+        <!-- Image Area -->
+        <div class="position-relative">
+          {% if product.image_url %}
+          <img src="{{ product.image_url }}" class="card-img-top" style="height:200px;object-fit:cover;" alt="{{ product.name }}">
+          {% else %}
+          <div class="bg-light d-flex align-items-center justify-content-center" style="height:200px;">
+            <i class="fas fa-tooth text-muted" style="font-size:3rem;"></i>
           </div>
-          <button class="btn btn-primary btn-sm mt-2" onclick="alert('ご購入はお電話にてご連絡ください: 03-0000-0000')">
-            <i class="fas fa-cart-plus me-1"></i>カートに追加
+          {% endif %}
+
+          <!-- Category Badge -->
+          {% if product.category %}
+          <span class="badge bg-primary position-absolute" style="top:10px;left:10px;">{{ product.category }}</span>
+          {% endif %}
+
+          <!-- Out of Stock Overlay -->
+          {% if product.stock == 0 %}
+          <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+               style="background:rgba(0,0,0,0.45);border-radius:0.375rem 0.375rem 0 0;">
+            <span class="badge bg-danger fs-6 px-3 py-2">在庫なし</span>
+          </div>
+          {% endif %}
+
+          <!-- Low Stock Warning -->
+          {% if product.stock > 0 and product.stock <= 5 %}
+          <span class="badge bg-warning text-dark position-absolute" style="top:10px;right:10px;">
+            <i class="fas fa-exclamation-triangle me-1"></i>残り{{ product.stock }}個
+          </span>
+          {% endif %}
+        </div>
+
+        <div class="card-body d-flex flex-column">
+          <h6 class="fw-bold mb-1">{{ product.name }}</h6>
+          <p class="text-muted small flex-grow-1 mb-2" style="line-height:1.5;">
+            {{ product.description[:60] if product.description else '' }}{% if product.description and product.description|length > 60 %}...{% endif %}
+          </p>
+
+          <!-- Price -->
+          <div class="d-flex justify-content-between align-items-center mt-auto">
+            <span class="fw-bold text-primary fs-5">¥{{ '{:,}'.format(product.price) }}</span>
+            {% if product.stock > 5 %}
+            <small class="text-success"><i class="fas fa-check-circle me-1"></i>在庫あり</small>
+            {% elif product.stock > 0 %}
+            <small class="text-warning"><i class="fas fa-exclamation-circle me-1"></i>残りわずか</small>
+            {% else %}
+            <small class="text-danger"><i class="fas fa-times-circle me-1"></i>在庫なし</small>
+            {% endif %}
+          </div>
+
+          <!-- Action Button -->
+          {% if product.stock > 0 %}
+          <button class="btn btn-primary btn-sm mt-3" onclick="event.stopPropagation();showPurchaseInfo()">
+            <i class="fas fa-cart-plus me-1"></i>購入する
           </button>
+          {% else %}
+          <button class="btn btn-outline-secondary btn-sm mt-3" disabled>
+            <i class="fas fa-ban me-1"></i>在庫切れ
+          </button>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -44,7 +113,139 @@
   <div class="text-center py-5 text-muted">
     <i class="fas fa-box-open" style="font-size:3rem;"></i>
     <p class="mt-3">現在商品はありません</p>
+    {% if selected_category %}
+    <a href="{{ url_for('shop') }}" class="btn btn-outline-primary btn-sm mt-2">すべての商品を見る</a>
+    {% endif %}
   </div>
   {% endif %}
 </div>
+
+<!-- Product Detail Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header border-0 pb-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-0" id="productModalBody">
+        <div class="d-flex justify-content-center py-5">
+          <div class="spinner-border text-primary"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Purchase Info Modal -->
+<div class="modal fade" id="purchaseModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title"><i class="fas fa-phone me-2"></i>ご購入について</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center py-4">
+        <i class="fas fa-shopping-bag text-primary mb-3" style="font-size:3rem;"></i>
+        <p class="fw-bold fs-5 mb-2">お電話にてご注文ください</p>
+        <p class="text-muted mb-3">診療時間内にお気軽にお問い合わせください。</p>
+        <a href="tel:03-0000-0000" class="btn btn-primary btn-lg px-5">
+          <i class="fas fa-phone me-2"></i>03-0000-0000
+        </a>
+        <p class="text-muted small mt-3">受付時間: 平日 9:00〜18:00 / 土曜 9:00〜13:00</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Product data for modal -->
+<script>
+const productData = {
+  {% for product in all_products %}
+  {{ product.id }}: {
+    id: {{ product.id }},
+    name: {{ product.name | tojson }},
+    description: {{ (product.description or '') | tojson }},
+    price: {{ product.price }},
+    stock: {{ product.stock }},
+    category: {{ (product.category or '') | tojson }},
+    image_url: {{ (product.image_url or '') | tojson }},
+  },
+  {% endfor %}
+};
+
+function openProductModal(productId) {
+  const p = productData[productId];
+  if (!p) return;
+
+  let stockHtml = '';
+  if (p.stock === 0) {
+    stockHtml = '<span class="badge bg-danger px-3 py-2">在庫なし</span>';
+  } else if (p.stock <= 5) {
+    stockHtml = '<span class="badge bg-warning text-dark px-3 py-2"><i class="fas fa-exclamation-triangle me-1"></i>残り' + p.stock + '個</span>';
+  } else {
+    stockHtml = '<span class="badge bg-success px-3 py-2"><i class="fas fa-check me-1"></i>在庫あり</span>';
+  }
+
+  let imageHtml = p.image_url
+    ? '<img src="' + p.image_url + '" class="w-100 rounded-start" style="max-height:350px;object-fit:cover;" alt="' + p.name + '">'
+    : '<div class="bg-light d-flex align-items-center justify-content-center rounded-start" style="height:350px;"><i class="fas fa-tooth text-muted" style="font-size:4rem;"></i></div>';
+
+  let btnHtml = p.stock > 0
+    ? '<button class="btn btn-primary btn-lg px-5" onclick="showPurchaseInfo()"><i class="fas fa-cart-plus me-2"></i>購入する</button>'
+    : '<button class="btn btn-outline-secondary btn-lg px-5" disabled><i class="fas fa-ban me-2"></i>在庫切れ</button>';
+
+  document.getElementById('productModalBody').innerHTML = `
+    <div class="row g-0">
+      <div class="col-md-5">${imageHtml}</div>
+      <div class="col-md-7 p-4">
+        ${p.category ? '<span class="badge bg-primary mb-2">' + p.category + '</span>' : ''}
+        <h4 class="fw-bold mb-3">${p.name}</h4>
+        <p class="text-muted mb-3">${p.description || '商品説明はありません。'}</p>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <span class="fw-bold text-primary fs-3">¥${p.price.toLocaleString()}</span>
+          ${stockHtml}
+        </div>
+        <hr>
+        <div class="mt-3">${btnHtml}</div>
+      </div>
+    </div>
+  `;
+
+  new bootstrap.Modal(document.getElementById('productModal')).show();
+}
+
+function showPurchaseInfo() {
+  const productModal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+  if (productModal) productModal.hide();
+  setTimeout(() => {
+    new bootstrap.Modal(document.getElementById('purchaseModal')).show();
+  }, 300);
+}
+
+function changeSort(select) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('sort', select.value);
+  window.location.href = url.toString();
+}
+
+function toggleOutOfStock(checkbox) {
+  const url = new URL(window.location.href);
+  if (checkbox.checked) {
+    url.searchParams.set('in_stock', '1');
+  } else {
+    url.searchParams.delete('in_stock');
+  }
+  window.location.href = url.toString();
+}
+</script>
+
+<style>
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+}
+.out-of-stock-card {
+  opacity: 0.8;
+}
+</style>
 {% endblock %}

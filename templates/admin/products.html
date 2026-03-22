@@ -9,51 +9,105 @@
   </a>
 </div>
 
+<!-- Summary Cards -->
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm text-center py-3">
+      <div class="fw-bold fs-4 text-primary">{{ products | length }}</div>
+      <div class="text-muted small">総商品数</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm text-center py-3">
+      <div class="fw-bold fs-4 text-success">{{ products | selectattr('is_active') | list | length }}</div>
+      <div class="text-muted small">公開中</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm text-center py-3">
+      <div class="fw-bold fs-4 text-danger">{{ products | selectattr('stock', 'equalto', 0) | list | length }}</div>
+      <div class="text-muted small">在庫切れ</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-0 shadow-sm text-center py-3">
+      <div class="fw-bold fs-4 text-warning">{{ products | selectattr('stock', 'le', 5) | selectattr('stock', 'gt', 0) | list | length }}</div>
+      <div class="text-muted small">在庫少（5個以下）</div>
+    </div>
+  </div>
+</div>
+
 <div class="card border-0 shadow-sm">
   <div class="card-body p-0">
     {% if products %}
     <div class="table-responsive">
-      <table class="table table-hover mb-0">
+      <table class="table table-hover mb-0 align-middle">
         <thead class="table-light">
           <tr>
             <th class="ps-3">商品名</th>
             <th>カテゴリ</th>
             <th>価格</th>
-            <th>在庫</th>
-            <th>公開</th>
-            <th></th>
+            <th>在庫数</th>
+            <th>公開状態</th>
+            <th>登録日</th>
+            <th class="text-end pe-3">操作</th>
           </tr>
         </thead>
         <tbody>
           {% for p in products %}
-          <tr>
+          <tr class="{% if p.stock == 0 %}table-danger{% elif p.stock <= 5 %}table-warning{% endif %}">
             <td class="ps-3">
               <div class="d-flex align-items-center gap-2">
                 {% if p.image_url %}
-                <img src="{{ p.image_url }}" style="width:40px;height:40px;object-fit:cover;border-radius:4px;" alt="">
+                <img src="{{ p.image_url }}" style="width:44px;height:44px;object-fit:cover;border-radius:6px;" alt="">
                 {% else %}
-                <div class="bg-light d-flex align-items-center justify-content-center rounded" style="width:40px;height:40px;">
+                <div class="bg-light d-flex align-items-center justify-content-center rounded" style="width:44px;height:44px;flex-shrink:0;">
                   <i class="fas fa-box text-muted"></i>
                 </div>
                 {% endif %}
                 <div>
                   <div class="fw-semibold">{{ p.name }}</div>
-                  <div class="text-muted small">{{ p.description[:40] if p.description else '' }}{% if p.description and p.description|length > 40 %}...{% endif %}</div>
+                  <div class="text-muted small">{{ p.description[:50] if p.description else '' }}{% if p.description and p.description|length > 50 %}...{% endif %}</div>
                 </div>
               </div>
             </td>
-            <td><span class="badge bg-light text-dark">{{ p.category or '-' }}</span></td>
-            <td class="fw-bold">¥{{ '{:,}'.format(p.price) }}</td>
-            <td>{{ p.stock }}個</td>
             <td>
-              {% if p.is_active %}
-              <span class="badge bg-success">公開中</span>
+              {% if p.category %}
+              <span class="badge bg-light text-dark border">{{ p.category }}</span>
               {% else %}
-              <span class="badge bg-secondary">非公開</span>
+              <span class="text-muted">-</span>
+              {% endif %}
+            </td>
+            <td class="fw-bold">¥{{ '{:,}'.format(p.price) }}</td>
+            <td>
+              {% if p.stock == 0 %}
+              <span class="badge bg-danger">
+                <i class="fas fa-times-circle me-1"></i>在庫切れ
+              </span>
+              {% elif p.stock <= 5 %}
+              <span class="badge bg-warning text-dark">
+                <i class="fas fa-exclamation-triangle me-1"></i>{{ p.stock }}個（残りわずか）
+              </span>
+              {% else %}
+              <span class="text-success fw-semibold">
+                <i class="fas fa-check-circle me-1"></i>{{ p.stock }}個
+              </span>
               {% endif %}
             </td>
             <td>
-              <a href="{{ url_for('product_edit', product_id=p.id) }}" class="btn btn-sm btn-outline-secondary">編集</a>
+              {% if p.is_active %}
+              <span class="badge bg-success px-3"><i class="fas fa-eye me-1"></i>公開中</span>
+              {% else %}
+              <span class="badge bg-secondary px-3"><i class="fas fa-eye-slash me-1"></i>非公開</span>
+              {% endif %}
+            </td>
+            <td class="text-muted small">
+              {{ p.created_at.strftime('%Y/%m/%d') if p.created_at else '-' }}
+            </td>
+            <td class="text-end pe-3">
+              <a href="{{ url_for('product_edit', product_id=p.id) }}" class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-edit me-1"></i>編集
+              </a>
             </td>
           </tr>
           {% endfor %}
@@ -68,4 +122,13 @@
     {% endif %}
   </div>
 </div>
+
+{% if products %}
+<div class="mt-3">
+  <small class="text-muted">
+    <span class="badge bg-warning text-dark me-1">&nbsp;&nbsp;&nbsp;</span>在庫5個以下の商品
+    <span class="badge bg-danger ms-3 me-1">&nbsp;&nbsp;&nbsp;</span>在庫切れの商品
+  </small>
+</div>
+{% endif %}
 {% endblock %}
