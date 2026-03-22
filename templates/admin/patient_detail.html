@@ -97,6 +97,100 @@
           </div>
           {% endif %}
         </div>
+
+        <!-- サブカルテセクション -->
+        <div class="mt-3 pt-3 border-top">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <button class="btn btn-sm btn-outline-secondary" type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#sub-records-{{ record.id }}"
+              aria-expanded="{{ 'true' if record.sub_records else 'false' }}">
+              <i class="fas fa-list-ul me-1"></i>サブカルテ
+              {% if record.sub_records %}
+              <span class="badge bg-info ms-1">{{ record.sub_records|length }}</span>
+              {% endif %}
+            </button>
+            <a href="{{ url_for('sub_record_new', record_id=record.id) }}" class="btn btn-sm btn-success">
+              <i class="fas fa-plus me-1"></i>サブカルテ追加
+            </a>
+          </div>
+
+          <div class="collapse {{ 'show' if record.sub_records }}" id="sub-records-{{ record.id }}">
+            {% if record.sub_records %}
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered mb-0 bg-white">
+                <thead class="table-light">
+                  <tr>
+                    <th class="small">歯番号</th>
+                    <th class="small">部位</th>
+                    <th class="small">処置内容</th>
+                    <th class="small">使用材料</th>
+                    <th class="small">次回予定</th>
+                    <th class="small">X線</th>
+                    <th class="small"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for sub in record.sub_records %}
+                  <tr>
+                    <td class="small fw-semibold">{{ sub.tooth_number or '-' }}</td>
+                    <td class="small">{{ sub.tooth_surface or '-' }}</td>
+                    <td class="small">
+                      {% if sub.treatment_code %}
+                        {% set code_labels = {
+                          'extraction': '抜歯',
+                          'filling': '充填(CR)',
+                          'amalgam': '充填(Amal)',
+                          'inlay': 'インレー',
+                          'crown': 'クラウン',
+                          'root_canal': '根管(抜髄)',
+                          'root_canal_retreat': '根管(感染)',
+                          'cleaning': 'SC',
+                          'impression': '型取り',
+                          'xray': 'X線撮影',
+                          'injection': '麻酔',
+                          'temp_filling': '仮封',
+                          'bridge': 'ブリッジ',
+                          'denture': '義歯',
+                          'whitening': 'WH',
+                          'other': 'その他'
+                        } %}
+                        {% for code in sub.treatment_code.split(',') %}
+                          <span class="badge bg-primary bg-opacity-75 me-1" style="font-size:10px;">{{ code_labels.get(code.strip(), code.strip()) }}</span>
+                        {% endfor %}
+                      {% else %}
+                        -
+                      {% endif %}
+                      {% if sub.treatment_detail %}
+                      <div class="text-muted" style="font-size:11px;">{{ sub.treatment_detail[:50] }}{% if sub.treatment_detail|length > 50 %}...{% endif %}</div>
+                      {% endif %}
+                    </td>
+                    <td class="small">{{ sub.material or '-' }}</td>
+                    <td class="small">{{ sub.next_treatment or '-' }}</td>
+                    <td class="small text-center">
+                      {% if sub.xray_taken %}
+                        <i class="fas fa-check-circle text-info" title="{{ sub.xray_note }}"></i>
+                        {% if sub.xray_note %}<div style="font-size:10px;" class="text-muted">{{ sub.xray_note }}</div>{% endif %}
+                      {% else %}
+                        <span class="text-muted">-</span>
+                      {% endif %}
+                    </td>
+                    <td class="small text-nowrap">
+                      <a href="{{ url_for('sub_record_edit', record_id=record.id, sub_id=sub.id) }}" class="btn btn-xs btn-outline-secondary py-0 px-1" style="font-size:11px;">編集</a>
+                      <form method="post" action="{{ url_for('sub_record_delete', record_id=record.id, sub_id=sub.id) }}" class="d-inline" onsubmit="return confirm('このサブカルテを削除しますか？')">
+                        <button type="submit" class="btn btn-xs btn-outline-danger py-0 px-1" style="font-size:11px;">削除</button>
+                      </form>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% else %}
+            <div class="text-muted small py-2 text-center">サブカルテはまだありません</div>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </div>
     {% endfor %}

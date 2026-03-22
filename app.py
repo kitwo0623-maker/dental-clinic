@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, Response
-from database import db, Patient, Appointment, MedicalRecord, Invoice, InvoiceItem, Staff, Shift, Product
+from database import db, Patient, Appointment, MedicalRecord, Invoice, InvoiceItem, Staff, Shift, Product, SubRecord
 from datetime import datetime, date
 import json
 import os
@@ -88,12 +88,47 @@ def index():
 @app.route('/shop')
 def shop():
     category = request.args.get('category', '')
+    sort = request.args.get('sort', 'newest')
+    in_stock = request.args.get('in_stock', '')
+
     query = Product.query.filter_by(is_active=True)
     if category:
         query = query.filter_by(category=category)
+    if in_stock:
+        query = query.filter(Product.stock > 0)
+
+    if sort == 'price_asc':
+        query = query.order_by(Product.price.asc())
+    elif sort == 'price_desc':
+        query = query.order_by(Product.price.desc())
+    else:
+        query = query.order_by(Product.created_at.desc())
+
     products = query.all()
-    categories = db.session.query(Product.category).distinct().all()
-    return render_template('shop.html', products=products, categories=[c[0] for c in categories], selected_category=category)
+    all_products = Product.query.filter_by(is_active=True).all()
+    categories = db.session.query(Product.category).filter(
+        Product.is_active == True, Product.category != None, Product.category != ''
+    ).distinct().all()
+    return render_template(
+        'shop.html',
+        products=products,
+        all_products=all_products,
+        categories=[c[0] for c in categories],
+        selected_category=category,
+        current_sort=sort,
+        hide_out_of_stock=bool(in_stock)
+    )
+
+
+@app.route('/shop/<int:product_id>')
+def shop_product(product_id):
+    product = Product.query.filter_by(id=product_id, is_active=True).first_or_404()
+    related = Product.query.filter(
+        Product.is_active == True,
+        Product.category == product.category,
+        Product.id != product_id
+    ).limit(4).all()
+    return render_template('shop_product.html', product=product, related=related)
 
 
 @app.route('/contact')
@@ -244,6 +279,63 @@ def record_edit(record_id):
         flash('カルテを更新しました', 'success')
         return redirect(url_for('patient_detail', patient_id=patient.id))
     return render_template('admin/record_form.html', patient=patient, record=record, staff_list=staff_list)
+
+
+# ==================== Sub Records ====================
+
+@app.route('/admin/records/<int:record_id>/sub/new', methods=['GET', 'POST'])
+def sub_record_new(record_id):
+    record = MedicalRecord.query.get_or_404(record_id)
+    if request.method == 'GET':
+        return render_template('admin/sub_record_form.html', record=record, sub=None)
+    data = request.form
+    treatment_codes = request.form.getlist('treatment_code')
+    sub = SubRecord(
+        medical_record_id=record_id,
+        tooth_number=data.get('tooth_number', ''),
+        tooth_surface=data.get('tooth_surface', ''),
+        treatment_code=','.join(treatment_codes),
+        treatment_detail=data.get('treatment_detail', ''),
+        material=data.get('material', ''),
+        next_treatment=data.get('next_treatment', ''),
+        xray_taken=bool(data.get('xray_taken')),
+        xray_note=data.get('xray_note', '')
+    )
+    db.session.add(sub)
+    db.session.commit()
+    flash('サブカルテを追加しました', 'success')
+    return redirect(url_for('patient_detail', patient_id=record.patient_id))
+
+
+@app.route('/admin/records/<int:record_id>/sub/<int:sub_id>/edit', methods=['GET', 'POST'])
+def sub_record_edit(record_id, sub_id):
+    record = MedicalRecord.query.get_or_404(record_id)
+    sub = SubRecord.query.get_or_404(sub_id)
+    if request.method == 'POST':
+        data = request.form
+        treatment_codes = request.form.getlist('treatment_code')
+        sub.tooth_number = data.get('tooth_number', '')
+        sub.tooth_surface = data.get('tooth_surface', '')
+        sub.treatment_code = ','.join(treatment_codes)
+        sub.treatment_detail = data.get('treatment_detail', '')
+        sub.material = data.get('material', '')
+        sub.next_treatment = data.get('next_treatment', '')
+        sub.xray_taken = bool(data.get('xray_taken'))
+        sub.xray_note = data.get('xray_note', '')
+        db.session.commit()
+        flash('サブカルテを更新しました', 'success')
+        return redirect(url_for('patient_detail', patient_id=record.patient_id))
+    return render_template('admin/sub_record_form.html', record=record, sub=sub)
+
+
+@app.route('/admin/records/<int:record_id>/sub/<int:sub_id>/delete', methods=['POST'])
+def sub_record_delete(record_id, sub_id):
+    record = MedicalRecord.query.get_or_404(record_id)
+    sub = SubRecord.query.get_or_404(sub_id)
+    db.session.delete(sub)
+    db.session.commit()
+    flash('サブカルテを削除しました', 'success')
+    return redirect(url_for('patient_detail', patient_id=record.patient_id))
 
 
 # ==================== Appointments ====================

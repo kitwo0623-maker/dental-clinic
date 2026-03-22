@@ -111,6 +111,22 @@ class Shift(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
+class SubRecord(db.Model):
+    __tablename__ = 'sub_records'
+    id = db.Column(db.Integer, primary_key=True)
+    medical_record_id = db.Column(db.Integer, db.ForeignKey('medical_records.id'), nullable=False)
+    tooth_number = db.Column(db.String(10))       # 歯番号（例: "16", "27"）
+    tooth_surface = db.Column(db.String(20))      # 部位（近心・遠心・頬側・舌側・咬合面）
+    treatment_code = db.Column(db.String(50))     # 処置コード
+    treatment_detail = db.Column(db.Text)         # 処置詳細
+    material = db.Column(db.String(100))          # 使用材料
+    next_treatment = db.Column(db.Text)           # 次回処置予定
+    xray_taken = db.Column(db.Boolean, default=False)
+    xray_note = db.Column(db.String(200))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    medical_record = db.relationship('MedicalRecord', backref='sub_records')
+
+
 class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)

@@ -1,0 +1,224 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}{{ 'サブカルテ編集' if sub else 'サブカルテ追加' }}{% endblock %}
+{% block page_title %}{{ 'サブカルテ編集' if sub else 'サブカルテ追加' }} - {{ record.patient.name }}{% endblock %}
+{% block content %}
+<div class="card border-0 shadow-sm mb-3">
+  <div class="card-body p-3 bg-light">
+    <small class="text-muted">
+      <i class="fas fa-notes-medical me-1 text-primary"></i>
+      主カルテ: {{ record.visit_date.strftime('%Y年%m月%d日 %H:%M') }}
+      {% if record.chief_complaint %} / {{ record.chief_complaint }}{% endif %}
+    </small>
+  </div>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="card-body p-4">
+    <form method="post">
+      <div class="row g-3">
+
+        <!-- 歯番号選択 -->
+        <div class="col-12">
+          <label class="form-label fw-semibold">歯番号</label>
+          <!-- 視覚的な歯列図 -->
+          <div class="border rounded p-3 bg-light mb-2">
+            <div class="text-center text-muted small mb-2 fw-semibold">上顎</div>
+            <div class="d-flex justify-content-center gap-1 mb-1">
+              <span class="text-muted small me-1" style="line-height:28px;">右</span>
+              {% for n in [18,17,16,15,14,13,12,11] %}
+              <div class="text-center">
+                <div class="text-muted" style="font-size:10px;">{{ n }}</div>
+                <button type="button"
+                  class="btn btn-sm btn-outline-secondary tooth-select-btn p-0"
+                  style="width:28px;height:28px;font-size:11px;"
+                  data-tooth="{{ n }}">{{ n }}</button>
+              </div>
+              {% endfor %}
+              <div style="width:4px;"></div>
+              {% for n in [21,22,23,24,25,26,27,28] %}
+              <div class="text-center">
+                <div class="text-muted" style="font-size:10px;">{{ n }}</div>
+                <button type="button"
+                  class="btn btn-sm btn-outline-secondary tooth-select-btn p-0"
+                  style="width:28px;height:28px;font-size:11px;"
+                  data-tooth="{{ n }}">{{ n }}</button>
+              </div>
+              {% endfor %}
+              <span class="text-muted small ms-1" style="line-height:28px;">左</span>
+            </div>
+            <div class="text-center border-top border-bottom py-1 my-1 text-muted small fw-semibold">下顎</div>
+            <div class="d-flex justify-content-center gap-1 mt-1">
+              <span class="text-muted small me-1" style="line-height:28px;">右</span>
+              {% for n in [48,47,46,45,44,43,42,41] %}
+              <div class="text-center">
+                <button type="button"
+                  class="btn btn-sm btn-outline-secondary tooth-select-btn p-0"
+                  style="width:28px;height:28px;font-size:11px;"
+                  data-tooth="{{ n }}">{{ n }}</button>
+                <div class="text-muted" style="font-size:10px;">{{ n }}</div>
+              </div>
+              {% endfor %}
+              <div style="width:4px;"></div>
+              {% for n in [31,32,33,34,35,36,37,38] %}
+              <div class="text-center">
+                <button type="button"
+                  class="btn btn-sm btn-outline-secondary tooth-select-btn p-0"
+                  style="width:28px;height:28px;font-size:11px;"
+                  data-tooth="{{ n }}">{{ n }}</button>
+                <div class="text-muted" style="font-size:10px;">{{ n }}</div>
+              </div>
+              {% endfor %}
+              <span class="text-muted small ms-1" style="line-height:28px;">左</span>
+            </div>
+          </div>
+          <input type="text" name="tooth_number" id="tooth_number_input" class="form-control"
+            placeholder="歯番号（例: 16, 27）または上の歯列図をクリック"
+            value="{{ sub.tooth_number if sub else '' }}">
+          <div class="form-text">FDI方式: 上顎右1〜8=18〜11, 上顎左1〜8=21〜28, 下顎左1〜8=31〜38, 下顎右1〜8=48〜41</div>
+        </div>
+
+        <!-- 部位（歯面） -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">部位（歯面）</label>
+          <select name="tooth_surface" class="form-select">
+            <option value="">選択してください</option>
+            {% set surfaces = ['近心面（M）', '遠心面（D）', '頬側面（B）', '舌側面（L）', '咬合面（O）', '切縁（I）', '複数面', 'その他'] %}
+            {% for s in surfaces %}
+            <option value="{{ s }}" {{ 'selected' if sub and sub.tooth_surface == s }}>{{ s }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- 処置コード（チェックボックス選択） -->
+        <div class="col-12">
+          <label class="form-label fw-semibold">処置内容</label>
+          <div class="row g-2">
+            {% set treatments = [
+              ('extraction', '抜歯'),
+              ('filling', '充填（コンポジットレジン）'),
+              ('amalgam', '充填（アマルガム）'),
+              ('inlay', 'インレー修復'),
+              ('crown', 'クラウン（被せ物）'),
+              ('root_canal', '根管治療（抜髄）'),
+              ('root_canal_retreat', '根管治療（感染根管）'),
+              ('cleaning', 'スケーリング・クリーニング'),
+              ('impression', '型取り'),
+              ('xray', 'X線撮影'),
+              ('injection', '麻酔注射'),
+              ('temp_filling', '仮封'),
+              ('bridge', 'ブリッジ'),
+              ('denture', '義歯'),
+              ('whitening', 'ホワイトニング'),
+              ('other', 'その他')
+            ] %}
+            {% set selected_codes = (sub.treatment_code.split(',') if sub and sub.treatment_code else []) %}
+            {% for code, label in treatments %}
+            <div class="col-md-3 col-sm-4 col-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="treatment_code"
+                  value="{{ code }}" id="tc_{{ code }}"
+                  {{ 'checked' if code in selected_codes }}>
+                <label class="form-check-label small" for="tc_{{ code }}">{{ label }}</label>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 処置詳細 -->
+        <div class="col-12">
+          <label class="form-label fw-semibold">処置詳細メモ</label>
+          <textarea name="treatment_detail" class="form-control" rows="3"
+            placeholder="処置の詳細内容を記入">{{ sub.treatment_detail if sub else '' }}</textarea>
+        </div>
+
+        <!-- 使用材料 -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">使用材料・薬剤</label>
+          <input type="text" name="material" class="form-control"
+            placeholder="例: コンポジットレジン A2, 水酸化カルシウム"
+            value="{{ sub.material if sub else '' }}">
+        </div>
+
+        <!-- 次回処置予定 -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">次回処置予定</label>
+          <textarea name="next_treatment" class="form-control" rows="2"
+            placeholder="例: 根管形成続き、印象採得">{{ sub.next_treatment if sub else '' }}</textarea>
+        </div>
+
+        <!-- X線・写真撮影 -->
+        <div class="col-12">
+          <div class="card border-info">
+            <div class="card-header bg-info bg-opacity-10 py-2">
+              <label class="form-check-label fw-semibold mb-0" for="xray_taken">
+                <i class="fas fa-x-ray me-2 text-info"></i>X線・写真撮影
+              </label>
+            </div>
+            <div class="card-body p-3">
+              <div class="form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" name="xray_taken" id="xray_taken"
+                  value="1" {{ 'checked' if sub and sub.xray_taken }}
+                  onchange="document.getElementById('xray_note_wrap').style.display = this.checked ? 'block' : 'none'">
+                <label class="form-check-label" for="xray_taken">撮影あり</label>
+              </div>
+              <div id="xray_note_wrap" style="display: {{ 'block' if sub and sub.xray_taken else 'none' }};">
+                <input type="text" name="xray_note" class="form-control"
+                  placeholder="例: デンタル #16、パノラマ、CT"
+                  value="{{ sub.xray_note if sub else '' }}">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="col-12 d-flex gap-2">
+          <button type="submit" class="btn btn-primary px-4">
+            <i class="fas fa-save me-2"></i>{{ '更新する' if sub else '保存する' }}
+          </button>
+          <a href="{{ url_for('patient_detail', patient_id=record.patient_id) }}" class="btn btn-outline-secondary">キャンセル</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// 歯列図のボタンクリックで歯番号入力欄に反映
+document.querySelectorAll('.tooth-select-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tooth = this.getAttribute('data-tooth');
+    var input = document.getElementById('tooth_number_input');
+    var current = input.value.trim();
+    // カンマ区切りで追加 or 削除（トグル）
+    var parts = current ? current.split(',').map(function(s){ return s.trim(); }) : [];
+    var idx = parts.indexOf(tooth);
+    if (idx >= 0) {
+      parts.splice(idx, 1);
+      this.classList.remove('btn-primary');
+      this.classList.add('btn-outline-secondary');
+    } else {
+      parts.push(tooth);
+      this.classList.remove('btn-outline-secondary');
+      this.classList.add('btn-primary');
+    }
+    input.value = parts.join(', ');
+  });
+});
+
+// 初期表示時に既選択の歯をハイライト
+(function() {
+  var input = document.getElementById('tooth_number_input');
+  if (!input.value) return;
+  var parts = input.value.split(',').map(function(s){ return s.trim(); });
+  document.querySelectorAll('.tooth-select-btn').forEach(function(btn) {
+    if (parts.indexOf(btn.getAttribute('data-tooth')) >= 0) {
+      btn.classList.remove('btn-outline-secondary');
+      btn.classList.add('btn-primary');
+    }
+  });
+})();
+</script>
+{% endblock %}
