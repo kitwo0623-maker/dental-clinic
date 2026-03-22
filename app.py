@@ -40,33 +40,36 @@ def generate_invoice_number():
 
 # ==================== SEO ====================
 
+SITE_URL = os.environ.get('SITE_URL', 'https://dental-clinic-wpg6.onrender.com')
+
+
 @app.route('/robots.txt')
 def robots_txt():
-    content = """User-agent: *
+    content = f"""User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://kitou-dental.jp/sitemap.xml
+Sitemap: {SITE_URL}/sitemap.xml
 """
     return Response(content, mimetype='text/plain')
 
 
 @app.route('/sitemap.xml')
 def sitemap_xml():
-    content = """<?xml version="1.0" encoding="UTF-8"?>
+    content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kitou-dental.jp/</loc>
+    <loc>{SITE_URL}/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kitou-dental.jp/shop</loc>
+    <loc>{SITE_URL}/shop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kitou-dental.jp/contact</loc>
+    <loc>{SITE_URL}/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
