@@ -45,7 +45,6 @@
 
 <!-- Tabs -->
 <ul class="nav nav-tabs mb-4" id="patientTabs">
-  {% set total_subs = records | sum(attribute='sub_records') | list | length %}
   <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#records">サブカルテ</a></li>
   <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#appointments">予約履歴 ({{ appointments|length }})</a></li>
   <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#invoices">請求 ({{ invoices|length }})</a></li>
