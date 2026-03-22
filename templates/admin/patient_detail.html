@@ -36,8 +36,13 @@
       </div>
     </div>
     {% if patient.allergies %}
-    <div class="alert alert-warning mt-3 mb-0 py-2">
-      <i class="fas fa-exclamation-triangle me-2"></i><strong>アレルギー・禁忌：</strong>{{ patient.allergies }}
+    <div class="alert alert-warning mt-3 mb-2 py-2">
+      <i class="fas fa-exclamation-triangle me-2"></i><strong>アレルギー：</strong>{{ patient.allergies }}
+    </div>
+    {% endif %}
+    {% if patient.notes %}
+    <div class="alert alert-info mt-0 mb-0 py-2">
+      <i class="fas fa-info-circle me-2"></i><strong>対応上の注意：</strong>{{ patient.notes }}
     </div>
     {% endif %}
   </div>
@@ -197,7 +202,7 @@
           <div class="col-md-6"><strong>住所：</strong>{{ patient.address or '-' }}</div>
           <div class="col-md-6"><strong>メール：</strong>{{ patient.email or '-' }}</div>
           <div class="col-md-6"><strong>保険証番号：</strong>{{ patient.insurance_number or '-' }}</div>
-          <div class="col-12"><strong>備考：</strong>{{ patient.notes or '-' }}</div>
+          <div class="col-12"><strong>対応上の注意：</strong>{{ patient.notes or '-' }}</div>
           <div class="col-md-6"><strong>登録日：</strong>{{ patient.created_at.strftime('%Y/%m/%d') }}</div>
         </div>
       </div>
