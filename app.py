@@ -295,6 +295,19 @@ def record_edit(record_id):
 
 # ==================== Sub Records ====================
 
+@app.route('/admin/patients/<int:patient_id>/sub/new')
+def patient_sub_record_new(patient_id):
+    """カルテ記録フォームをスキップしてサブカルテを直接作成"""
+    patient = Patient.query.get_or_404(patient_id)
+    record = MedicalRecord(
+        patient_id=patient_id,
+        visit_date=datetime.utcnow()
+    )
+    db.session.add(record)
+    db.session.commit()
+    return redirect(url_for('sub_record_new', record_id=record.id))
+
+
 @app.route('/admin/records/<int:record_id>/sub/new', methods=['GET', 'POST'])
 def sub_record_new(record_id):
     record = MedicalRecord.query.get_or_404(record_id)
