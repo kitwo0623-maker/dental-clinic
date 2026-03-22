@@ -15,15 +15,18 @@ with app.app_context():
     db.create_all()
     # SOAP列のマイグレーション（既存DBに列がない場合のみ追加）
     with db.engine.connect() as conn:
-        existing = [row[1] for row in conn.execute(db.text("PRAGMA table_info(sub_records)"))]
+        existing_sub = [row[1] for row in conn.execute(db.text("PRAGMA table_info(sub_records)"))]
         for col, coldef in [
             ('soap_s', 'TEXT'),
             ('soap_o', 'TEXT'),
             ('soap_a', 'TEXT'),
             ('soap_p', 'TEXT'),
         ]:
-            if col not in existing:
+            if col not in existing_sub:
                 conn.execute(db.text(f"ALTER TABLE sub_records ADD COLUMN {col} {coldef}"))
+        existing_pat = [row[1] for row in conn.execute(db.text("PRAGMA table_info(patients)"))]
+        if 'systemic_diseases' not in existing_pat:
+            conn.execute(db.text("ALTER TABLE patients ADD COLUMN systemic_diseases TEXT"))
         conn.commit()
 
 
@@ -195,12 +198,7 @@ def patient_new():
             name=data['name'],
             name_kana=data.get('name_kana', ''),
             birth_date=datetime.strptime(data['birth_date'], '%Y-%m-%d').date() if data.get('birth_date') else None,
-            gender=data.get('gender', ''),
-            phone=data.get('phone', ''),
-            email=data.get('email', ''),
-            address=data.get('address', ''),
-            insurance_type=data.get('insurance_type', ''),
-            insurance_number=data.get('insurance_number', ''),
+            systemic_diseases=data.get('systemic_diseases', ''),
             allergies=data.get('allergies', ''),
             notes=data.get('notes', '')
         )
@@ -232,12 +230,7 @@ def patient_edit(patient_id):
         patient.name = data['name']
         patient.name_kana = data.get('name_kana', '')
         patient.birth_date = datetime.strptime(data['birth_date'], '%Y-%m-%d').date() if data.get('birth_date') else None
-        patient.gender = data.get('gender', '')
-        patient.phone = data.get('phone', '')
-        patient.email = data.get('email', '')
-        patient.address = data.get('address', '')
-        patient.insurance_type = data.get('insurance_type', '')
-        patient.insurance_number = data.get('insurance_number', '')
+        patient.systemic_diseases = data.get('systemic_diseases', '')
         patient.allergies = data.get('allergies', '')
         patient.notes = data.get('notes', '')
         db.session.commit()

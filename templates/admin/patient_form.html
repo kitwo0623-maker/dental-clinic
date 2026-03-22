@@ -6,58 +6,44 @@
   <div class="card-body p-4">
     <form method="post">
       <div class="row g-3">
+        {% if patient %}
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">カルテ番号</label>
+          <input type="text" class="form-control bg-light" value="{{ patient.patient_number }}" readonly>
+        </div>
+        {% endif %}
         <div class="col-md-6">
-          <label class="form-label fw-semibold">氏名 <span class="text-danger">*</span></label>
+          <label class="form-label fw-semibold">名前 <span class="text-danger">*</span></label>
           <input type="text" name="name" class="form-control" value="{{ patient.name if patient else '' }}" required>
         </div>
         <div class="col-md-6">
-          <label class="form-label fw-semibold">フリガナ</label>
-          <input type="text" name="name_kana" class="form-control" value="{{ patient.name_kana if patient else '' }}" placeholder="ヤマダ タロウ">
+          <label class="form-label fw-semibold">ふりがな</label>
+          <input type="text" name="name_kana" class="form-control" value="{{ patient.name_kana if patient else '' }}" placeholder="やまだ たろう">
         </div>
         <div class="col-md-4">
           <label class="form-label fw-semibold">生年月日</label>
           <input type="date" name="birth_date" class="form-control" value="{{ patient.birth_date.isoformat() if patient and patient.birth_date else '' }}">
         </div>
-        <div class="col-md-4">
-          <label class="form-label fw-semibold">性別</label>
-          <select name="gender" class="form-select">
-            <option value="">選択</option>
-            <option value="男性" {{ 'selected' if patient and patient.gender == '男性' }}>男性</option>
-            <option value="女性" {{ 'selected' if patient and patient.gender == '女性' }}>女性</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label fw-semibold">電話番号</label>
-          <input type="tel" name="phone" class="form-control" value="{{ patient.phone if patient else '' }}">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label fw-semibold">メールアドレス</label>
-          <input type="email" name="email" class="form-control" value="{{ patient.email if patient else '' }}">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label fw-semibold">住所</label>
-          <input type="text" name="address" class="form-control" value="{{ patient.address if patient else '' }}">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label fw-semibold">保険種別</label>
-          <select name="insurance_type" class="form-select">
-            <option value="">選択</option>
-            {% for t in ['社会保険', '国民健康保険', '後期高齢者医療', '自費', 'その他'] %}
-            <option value="{{ t }}" {{ 'selected' if patient and patient.insurance_type == t }}>{{ t }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="col-md-6">
-          <label class="form-label fw-semibold">保険証番号</label>
-          <input type="text" name="insurance_number" class="form-control" value="{{ patient.insurance_number if patient else '' }}">
+        <div class="col-md-2 d-flex align-items-end">
+          {% if patient and patient.birth_date %}
+          {% set today = now() %}
+          {% set age = today.year - patient.birth_date.year - ((today.month, today.day) < (patient.birth_date.month, patient.birth_date.day)) %}
+          <div class="form-control bg-light text-center fw-semibold">{{ age }}歳</div>
+          {% else %}
+          <div class="form-control bg-light text-center text-muted">-歳</div>
+          {% endif %}
         </div>
         <div class="col-12">
-          <label class="form-label fw-semibold">アレルギー・禁忌</label>
-          <input type="text" name="allergies" class="form-control" value="{{ patient.allergies if patient else '' }}" placeholder="例：ペニシリン、金属アレルギー">
+          <label class="form-label fw-semibold">全身疾患</label>
+          <textarea name="systemic_diseases" class="form-control" rows="2" placeholder="例：高血圧、糖尿病、心疾患など">{{ patient.systemic_diseases if patient else '' }}</textarea>
         </div>
         <div class="col-12">
-          <label class="form-label fw-semibold">備考</label>
-          <textarea name="notes" class="form-control" rows="3">{{ patient.notes if patient else '' }}</textarea>
+          <label class="form-label fw-semibold">アレルギー</label>
+          <textarea name="allergies" class="form-control" rows="2" placeholder="例：ペニシリン、金属アレルギーなど">{{ patient.allergies if patient else '' }}</textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-semibold">対応上の注意</label>
+          <textarea name="notes" class="form-control" rows="3" placeholder="診療時に注意すべき事項を記入">{{ patient.notes if patient else '' }}</textarea>
         </div>
         <div class="col-12 d-flex gap-2">
           <button type="submit" class="btn btn-primary px-4">
