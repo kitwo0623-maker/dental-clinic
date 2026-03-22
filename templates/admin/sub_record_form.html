@@ -20,7 +20,6 @@
         <!-- 歯番号選択 -->
         <div class="col-12">
           <label class="form-label fw-semibold">歯番号</label>
-          <!-- 視覚的な歯列図 -->
           <div class="border rounded p-3 bg-light mb-2">
             <div class="text-center text-muted small mb-2 fw-semibold">上顎</div>
             <div class="d-flex justify-content-center gap-1 mb-1">
@@ -74,77 +73,62 @@
           <input type="text" name="tooth_number" id="tooth_number_input" class="form-control"
             placeholder="歯番号（例: 16, 27）または上の歯列図をクリック"
             value="{{ sub.tooth_number if sub else '' }}">
-          <div class="form-text">FDI方式: 上顎右1〜8=18〜11, 上顎左1〜8=21〜28, 下顎左1〜8=31〜38, 下顎右1〜8=48〜41</div>
         </div>
 
-        <!-- 部位（歯面） -->
-        <div class="col-md-6">
-          <label class="form-label fw-semibold">部位（歯面）</label>
-          <select name="tooth_surface" class="form-select">
-            <option value="">選択してください</option>
-            {% set surfaces = ['近心面（M）', '遠心面（D）', '頬側面（B）', '舌側面（L）', '咬合面（O）', '切縁（I）', '複数面', 'その他'] %}
-            {% for s in surfaces %}
-            <option value="{{ s }}" {{ 'selected' if sub and sub.tooth_surface == s }}>{{ s }}</option>
-            {% endfor %}
-          </select>
-        </div>
-
-        <!-- 処置コード（チェックボックス選択） -->
+        <!-- S: Subjective -->
         <div class="col-12">
-          <label class="form-label fw-semibold">処置内容</label>
-          <div class="row g-2">
-            {% set treatments = [
-              ('extraction', '抜歯'),
-              ('filling', '充填（コンポジットレジン）'),
-              ('amalgam', '充填（アマルガム）'),
-              ('inlay', 'インレー修復'),
-              ('crown', 'クラウン（被せ物）'),
-              ('root_canal', '根管治療（抜髄）'),
-              ('root_canal_retreat', '根管治療（感染根管）'),
-              ('cleaning', 'スケーリング・クリーニング'),
-              ('impression', '型取り'),
-              ('xray', 'X線撮影'),
-              ('injection', '麻酔注射'),
-              ('temp_filling', '仮封'),
-              ('bridge', 'ブリッジ'),
-              ('denture', '義歯'),
-              ('whitening', 'ホワイトニング'),
-              ('other', 'その他')
-            ] %}
-            {% set selected_codes = (sub.treatment_code.split(',') if sub and sub.treatment_code else []) %}
-            {% for code, label in treatments %}
-            <div class="col-md-3 col-sm-4 col-6">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="treatment_code"
-                  value="{{ code }}" id="tc_{{ code }}"
-                  {{ 'checked' if code in selected_codes }}>
-                <label class="form-check-label small" for="tc_{{ code }}">{{ label }}</label>
-              </div>
+          <div class="card border-0 bg-light">
+            <div class="card-body p-3">
+              <label class="form-label fw-bold mb-1">
+                <span class="badge bg-primary me-2" style="font-size:14px;">S</span>
+                Subjective｜主観的情報（患者の訴え・症状）
+              </label>
+              <textarea name="soap_s" class="form-control" rows="3"
+                placeholder="例: 右上の奥歯が昨日から冷たいものにしみる。噛むと痛い。">{{ sub.soap_s if sub else '' }}</textarea>
             </div>
-            {% endfor %}
           </div>
         </div>
 
-        <!-- 処置詳細 -->
+        <!-- O: Objective -->
         <div class="col-12">
-          <label class="form-label fw-semibold">処置詳細メモ</label>
-          <textarea name="treatment_detail" class="form-control" rows="3"
-            placeholder="処置の詳細内容を記入">{{ sub.treatment_detail if sub else '' }}</textarea>
+          <div class="card border-0 bg-light">
+            <div class="card-body p-3">
+              <label class="form-label fw-bold mb-1">
+                <span class="badge bg-success me-2" style="font-size:14px;">O</span>
+                Objective｜客観的情報（検査・診察所見）
+              </label>
+              <textarea name="soap_o" class="form-control" rows="3"
+                placeholder="例: 16番 咬合面に深いう蝕、冷水痛(+)、打診痛(-)、歯周ポケット3mm">{{ sub.soap_o if sub else '' }}</textarea>
+            </div>
+          </div>
         </div>
 
-        <!-- 使用材料 -->
-        <div class="col-md-6">
-          <label class="form-label fw-semibold">使用材料・薬剤</label>
-          <input type="text" name="material" class="form-control"
-            placeholder="例: コンポジットレジン A2, 水酸化カルシウム"
-            value="{{ sub.material if sub else '' }}">
+        <!-- A: Assessment -->
+        <div class="col-12">
+          <div class="card border-0 bg-light">
+            <div class="card-body p-3">
+              <label class="form-label fw-bold mb-1">
+                <span class="badge bg-warning text-dark me-2" style="font-size:14px;">A</span>
+                Assessment｜評価・診断
+              </label>
+              <textarea name="soap_a" class="form-control" rows="2"
+                placeholder="例: 急性単純性歯髄炎（16番）">{{ sub.soap_a if sub else '' }}</textarea>
+            </div>
+          </div>
         </div>
 
-        <!-- 次回処置予定 -->
-        <div class="col-md-6">
-          <label class="form-label fw-semibold">次回処置予定</label>
-          <textarea name="next_treatment" class="form-control" rows="2"
-            placeholder="例: 根管形成続き、印象採得">{{ sub.next_treatment if sub else '' }}</textarea>
+        <!-- P: Plan -->
+        <div class="col-12">
+          <div class="card border-0 bg-light">
+            <div class="card-body p-3">
+              <label class="form-label fw-bold mb-1">
+                <span class="badge bg-danger me-2" style="font-size:14px;">P</span>
+                Plan｜処置計画・実施内容
+              </label>
+              <textarea name="soap_p" class="form-control" rows="3"
+                placeholder="例: 本日 麻酔・抜髄・根管形成（#16）。次回 根管拡大・貼薬。">{{ sub.soap_p if sub else '' }}</textarea>
+            </div>
+          </div>
         </div>
 
         <!-- X線・写真撮影 -->
@@ -186,13 +170,11 @@
 
 {% block extra_js %}
 <script>
-// 歯列図のボタンクリックで歯番号入力欄に反映
 document.querySelectorAll('.tooth-select-btn').forEach(function(btn) {
   btn.addEventListener('click', function() {
     var tooth = this.getAttribute('data-tooth');
     var input = document.getElementById('tooth_number_input');
     var current = input.value.trim();
-    // カンマ区切りで追加 or 削除（トグル）
     var parts = current ? current.split(',').map(function(s){ return s.trim(); }) : [];
     var idx = parts.indexOf(tooth);
     if (idx >= 0) {
@@ -208,7 +190,6 @@ document.querySelectorAll('.tooth-select-btn').forEach(function(btn) {
   });
 });
 
-// 初期表示時に既選択の歯をハイライト
 (function() {
   var input = document.getElementById('tooth_number_input');
   if (!input.value) return;

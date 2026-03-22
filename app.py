@@ -13,6 +13,18 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
+    # SOAP列のマイグレーション（既存DBに列がない場合のみ追加）
+    with db.engine.connect() as conn:
+        existing = [row[1] for row in conn.execute(db.text("PRAGMA table_info(sub_records)"))]
+        for col, coldef in [
+            ('soap_s', 'TEXT'),
+            ('soap_o', 'TEXT'),
+            ('soap_a', 'TEXT'),
+            ('soap_p', 'TEXT'),
+        ]:
+            if col not in existing:
+                conn.execute(db.text(f"ALTER TABLE sub_records ADD COLUMN {col} {coldef}"))
+        conn.commit()
 
 
 @app.context_processor
@@ -289,15 +301,13 @@ def sub_record_new(record_id):
     if request.method == 'GET':
         return render_template('admin/sub_record_form.html', record=record, sub=None)
     data = request.form
-    treatment_codes = request.form.getlist('treatment_code')
     sub = SubRecord(
         medical_record_id=record_id,
         tooth_number=data.get('tooth_number', ''),
-        tooth_surface=data.get('tooth_surface', ''),
-        treatment_code=','.join(treatment_codes),
-        treatment_detail=data.get('treatment_detail', ''),
-        material=data.get('material', ''),
-        next_treatment=data.get('next_treatment', ''),
+        soap_s=data.get('soap_s', ''),
+        soap_o=data.get('soap_o', ''),
+        soap_a=data.get('soap_a', ''),
+        soap_p=data.get('soap_p', ''),
         xray_taken=bool(data.get('xray_taken')),
         xray_note=data.get('xray_note', '')
     )
@@ -313,13 +323,11 @@ def sub_record_edit(record_id, sub_id):
     sub = SubRecord.query.get_or_404(sub_id)
     if request.method == 'POST':
         data = request.form
-        treatment_codes = request.form.getlist('treatment_code')
         sub.tooth_number = data.get('tooth_number', '')
-        sub.tooth_surface = data.get('tooth_surface', '')
-        sub.treatment_code = ','.join(treatment_codes)
-        sub.treatment_detail = data.get('treatment_detail', '')
-        sub.material = data.get('material', '')
-        sub.next_treatment = data.get('next_treatment', '')
+        sub.soap_s = data.get('soap_s', '')
+        sub.soap_o = data.get('soap_o', '')
+        sub.soap_a = data.get('soap_a', '')
+        sub.soap_p = data.get('soap_p', '')
         sub.xray_taken = bool(data.get('xray_taken'))
         sub.xray_note = data.get('xray_note', '')
         db.session.commit()
