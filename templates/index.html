@@ -21,18 +21,131 @@
           最新の設備と経験豊富なスタッフが、<br>
           あなたの「健やかな笑顔」をトータルサポート。
         </p>
-        <div class="d-flex gap-3 flex-wrap">
+
+        <!-- 診療時間・電話番号バナー -->
+        <div class="hero-info-bar">
+          <div class="hero-info-item">
+            <span class="hero-info-icon"><i class="fas fa-phone-alt"></i></span>
+            <div>
+              <div class="hero-info-label">お電話でのご予約</div>
+              <a href="tel:0568622580" class="hero-tel">0568-62-2580</a>
+            </div>
+          </div>
+          <div class="hero-info-divider"></div>
+          <div class="hero-info-item">
+            <span class="hero-info-icon"><i class="fas fa-clock"></i></span>
+            <div>
+              <div class="hero-info-label">診療時間</div>
+              <div class="hero-hours">月・火・水・金 9:00〜18:00<br><span style="font-size:0.8em;">木・土 9:00〜13:00 ／ 日・祝 休診</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-3 flex-wrap mt-4">
           <a href="{{ url_for('contact') }}" class="btn-hero-primary">
             <i class="fas fa-calendar-plus"></i>ご予約はこちら
           </a>
-          <a href="#vision" class="btn-hero-outline">
-            <i class="fas fa-leaf"></i>私たちのビジョン
+          <a href="tel:0568622580" class="btn-hero-outline">
+            <i class="fas fa-phone"></i>電話で予約
           </a>
         </div>
       </div>
       <div class="col-lg-5 text-center mt-5 mt-lg-0">
         <div class="hero-visual">
           <div class="hero-circle">🦷</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Features Section（医院の特徴）
+     ============================================================ -->
+<section class="features-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Features ／ 医院の特徴</span>
+      <h2 class="section-title">キトウ歯科医院が<br>選ばれる理由</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card">
+          <div class="feature-icon-wrap feature-icon-green">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h5 class="feature-title">痛くない治療</h5>
+          <p class="feature-desc">
+            表面麻酔の使用や細い針、低速注入など、
+            痛みを最小限に抑える麻酔技術を採用。
+            治療が怖い方も安心してご来院ください。
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card">
+          <div class="feature-icon-wrap feature-icon-blue">
+            <i class="fas fa-microscope"></i>
+          </div>
+          <h5 class="feature-title">最新設備・技術</h5>
+          <p class="feature-desc">
+            デジタルレントゲン、口腔内カメラ、
+            最新の治療機器を導入。精密で質の高い
+            診断・治療を提供します。
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card">
+          <div class="feature-icon-wrap feature-icon-teal">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h5 class="feature-title">丁寧な説明</h5>
+          <p class="feature-desc">
+            治療の前に分かりやすく説明し、
+            患者様が納得した上で進めます。
+            不安や疑問はお気軽にご相談ください。
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card">
+          <div class="feature-icon-wrap feature-icon-green">
+            <i class="fas fa-child"></i>
+          </div>
+          <h5 class="feature-title">子どもにも優しい</h5>
+          <p class="feature-desc">
+            子どもが歯科を怖がらないよう、
+            ゆっくり慣らしながら治療します。
+            家族みんなで通える歯科医院です。
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card">
+          <div class="feature-icon-wrap feature-icon-blue">
+            <i class="fas fa-parking"></i>
+          </div>
+          <h5 class="feature-title">駐車場完備</h5>
+          <p class="feature-desc">
+            お車でも安心。駐車場を完備しています。
+            犬山駅からも徒歩11分と
+            アクセスしやすい立地です。
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card">
+          <div class="feature-icon-wrap feature-icon-teal">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h5 class="feature-title">予防を大切に</h5>
+          <p class="feature-desc">
+            治療だけでなく予防を重視。
+            定期的なクリーニングと指導で
+            虫歯・歯周病を未然に防ぎます。
+          </p>
         </div>
       </div>
     </div>
@@ -161,7 +274,7 @@
 <!-- ============================================================
      Info Section
      ============================================================ -->
-<section class="info-section">
+<section class="info-section" id="access">
   <div class="container">
     <div class="text-center mb-5">
       <span class="section-label">Access ／ アクセス</span>
@@ -169,31 +282,50 @@
       <div class="section-divider"></div>
     </div>
     <div class="row g-4">
+      <!-- 診療時間 -->
       <div class="col-md-6">
         <div class="info-card">
           <h4><i class="fas fa-clock info-icon me-2"></i>診療時間</h4>
-          <table class="table table-borderless hours-table mb-3">
-            <tbody>
-              <tr>
-                <td style="color: var(--muted);">月・火・水・金</td>
-                <td class="fw-bold">9:00 〜 18:00</td>
-              </tr>
-              <tr>
-                <td style="color: var(--muted);">木・土</td>
-                <td class="fw-bold">9:00 〜 13:00</td>
-              </tr>
-              <tr>
-                <td class="closed-day">日・祝</td>
-                <td class="closed-day">休診</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="background: var(--primary-light); border-radius: 8px; padding: 1rem; font-size: 0.85rem; color: var(--primary);">
+          <div class="hours-table-wrap mb-3">
+            <table class="table table-bordered hours-table-styled">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="text-center">月</th>
+                  <th class="text-center">火</th>
+                  <th class="text-center">水</th>
+                  <th class="text-center">木</th>
+                  <th class="text-center">金</th>
+                  <th class="text-center">土</th>
+                  <th class="text-center text-danger">日</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="hours-slot">9:00〜18:00</td>
+                  <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-half"><i class="fas fa-adjust"></i></td>
+                  <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-half"><i class="fas fa-adjust"></i></td>
+                  <td class="text-center hours-closed">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="hours-note-list">
+            <li><span class="hours-legend hours-open-dot"></span>月・火・水・金：9:00〜18:00</li>
+            <li><span class="hours-legend hours-half-dot"></span>木・土：9:00〜13:00（午前のみ）</li>
+            <li><span class="hours-legend hours-closed-dot"></span>日・祝：休診</li>
+          </ul>
+          <div class="info-note">
             <i class="fas fa-info-circle me-1"></i>
             ご予約はお電話またはお問い合わせフォームよりどうぞ。
           </div>
         </div>
       </div>
+      <!-- アクセス -->
       <div class="col-md-6">
         <div class="info-card">
           <h4><i class="fas fa-map-marker-alt info-icon me-2"></i>アクセス</h4>
@@ -217,6 +349,20 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Google Maps 埋め込み -->
+    <div class="map-wrap mt-4">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.6!2d136.9448!3d35.3794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003b12890e53ebb%3A0x2b6c04ef60d62a3d!2z44Kt44OI44Km5q2m56eR5Yyi6Zmi!5e0!3m2!1sja!2sjp!4v1700000000000"
+        width="100%"
+        height="350"
+        style="border:0; border-radius:12px;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="キトウ歯科医院 地図">
+      </iframe>
     </div>
   </div>
 </section>
@@ -262,13 +408,13 @@
 <!-- ============================================================
      CTA Banner
      ============================================================ -->
-<section style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 5rem 0; text-align: center; color: white;">
+<section class="cta-banner">
   <div class="container">
-    <p style="font-size: 0.8rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 1rem;">お気軽にどうぞ</p>
-    <h2 style="font-family: 'Noto Serif JP', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem;">
+    <p class="cta-eyebrow">お気軽にどうぞ</p>
+    <h2 class="cta-title">
       まずは、お口の状態を<br>一緒に確認しませんか。
     </h2>
-    <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 2rem;">
+    <p class="cta-desc">
       検診・クリーニング・ホワイトニングのご相談も承っております。
     </p>
     <div class="d-flex gap-3 justify-content-center flex-wrap">

@@ -610,3 +610,399 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* ============================================
+   Hero Info Bar（診療時間・電話番号）
+   ============================================ */
+.hero-info-bar {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.hero-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-info-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.hero-info-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.hero-tel {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.hero-tel:hover {
+  color: rgba(255,255,255,0.85);
+}
+
+.hero-hours {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.hero-info-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+
+@media (max-width: 576px) {
+  .hero-info-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-info-divider {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+/* ============================================
+   Features Section（医院の特徴）
+   ============================================ */
+.features-section {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.feature-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  height: 100%;
+  border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(26,122,122,0.12);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.feature-icon-green {
+  background: #e6f7f0;
+  color: #1a7a50;
+}
+
+.feature-icon-blue {
+  background: #e8f2fd;
+  color: #1a6aaa;
+}
+
+.feature-icon-teal {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.feature-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--dark);
+  margin-bottom: 0.6rem;
+}
+
+.feature-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ============================================
+   Hours Table（診療時間表）
+   ============================================ */
+.hours-table-wrap {
+  overflow-x: auto;
+}
+
+.hours-table-styled {
+  font-size: 0.82rem;
+  margin-bottom: 0;
+}
+
+.hours-table-styled th {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+  text-align: center;
+  padding: 0.5rem 0.4rem;
+  white-space: nowrap;
+  border-color: var(--border);
+}
+
+.hours-table-styled td {
+  text-align: center;
+  padding: 0.55rem 0.4rem;
+  vertical-align: middle;
+  border-color: var(--border);
+}
+
+.hours-slot {
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+  font-weight: 500;
+  text-align: left !important;
+}
+
+.hours-open {
+  color: var(--primary);
+  font-size: 0.6rem;
+}
+
+.hours-half {
+  color: var(--gold);
+  font-size: 0.65rem;
+}
+
+.hours-closed {
+  color: #bbb;
+  font-weight: 600;
+}
+
+.hours-note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.hours-note-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.hours-legend {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hours-open-dot  { background: var(--primary); }
+.hours-half-dot  { background: var(--gold); }
+.hours-closed-dot { background: #ddd; border: 1px solid #ccc; }
+
+.info-note {
+  background: var(--primary-light);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+/* ============================================
+   Map
+   ============================================ */
+.map-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.map-wrap iframe {
+  display: block;
+}
+
+/* ============================================
+   CTA Banner
+   ============================================ */
+.cta-banner {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: 5rem 0;
+  text-align: center;
+  color: white;
+}
+
+.cta-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.cta-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-desc {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   Contact Page
+   ============================================ */
+.contact-hero {
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-hero-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0.5rem 0;
+}
+
+.contact-hero-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.contact-info-section {
+  padding: 3.5rem 0;
+  background: #fff;
+}
+
+.contact-form-section {
+  padding: 4rem 0 5rem;
+  background: var(--cream);
+}
+
+.contact-form-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.contact-form-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.contact-form-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+}
+
+/* Tel Banner */
+.tel-banner {
+  background: linear-gradient(135deg, var(--primary-light) 0%, #d4edf0 100%);
+  border: 1px solid rgba(26,122,122,0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.tel-banner-label {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.tel-banner-number {
+  display: block;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+
+.tel-banner-number:hover {
+  color: var(--primary-dark);
+}
+
+.tel-banner-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.info-card-title {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.access-item-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.1rem;
+  text-transform: uppercase;
+}
