@@ -14,6 +14,4 @@ services:
 
 databases:
   - name: dental-clinic-db
-    databaseName: dental_clinic_db_g6rf
-    user: dental_clinic_db_g6rf_user
     plan: free

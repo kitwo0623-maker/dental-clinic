@@ -14,6 +14,12 @@ if _db_url.startswith('postgres://'):
 app.config['SQLALCHEMY_DATABASE_URI'] = _db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# 起動時にどのDBを使っているか明示的にログ出力
+if _db_url.startswith('sqlite'):
+    print("⚠️  WARNING: Using SQLite. Data will be lost on each deploy. Set DATABASE_URL to use PostgreSQL.", flush=True)
+else:
+    print(f"✅ Using PostgreSQL database.", flush=True)
+
 db.init_app(app)
 
 with app.app_context():
