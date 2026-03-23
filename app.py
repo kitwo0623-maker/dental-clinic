@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, Response
-from database import db, Patient, Appointment, MedicalRecord, Invoice, InvoiceItem, Staff, Shift, Product, SubRecord
+from database import db, Patient, Appointment, MedicalRecord, Invoice, InvoiceItem, Staff, Shift, Product, SubRecord, MaintenanceItem
 from datetime import datetime, date
 import json
 import os
@@ -22,7 +22,9 @@ with app.app_context():
     if _db_url.startswith('sqlite'):
         with db.engine.connect() as conn:
             existing_sub = [row[1] for row in conn.execute(db.text("PRAGMA table_info(sub_records)"))]
-            for col in ['soap_s', 'soap_o', 'soap_a', 'soap_p']:
+            for col in ['soap_s', 'soap_o', 'soap_a', 'soap_p',
+                        'record_type', 'soap_s_image', 'soap_o_image', 'soap_a_image', 'soap_p_image',
+                        'maintenance_checks', 'maintenance_image']:
                 if col not in existing_sub:
                     conn.execute(db.text(f"ALTER TABLE sub_records ADD COLUMN {col} TEXT"))
             existing_pat = [row[1] for row in conn.execute(db.text("PRAGMA table_info(patients)"))]
@@ -30,6 +32,14 @@ with app.app_context():
                 if col not in existing_pat:
                     conn.execute(db.text(f"ALTER TABLE patients ADD COLUMN {col} TEXT"))
             conn.commit()
+
+
+@app.template_filter('from_json')
+def from_json_filter(value):
+    try:
+        return json.loads(value) if value else []
+    except Exception:
+        return []
 
 
 @app.context_processor
@@ -361,22 +371,33 @@ def patient_sub_record_new(patient_id):
 def sub_record_detail(record_id, sub_id):
     record = MedicalRecord.query.get_or_404(record_id)
     sub = SubRecord.query.get_or_404(sub_id)
-    return render_template('admin/sub_record_detail.html', record=record, sub=sub)
+    items = MaintenanceItem.query.filter_by(is_active=True).order_by(
+        MaintenanceItem.category, MaintenanceItem.sort_order).all()
+    return render_template('admin/sub_record_detail.html', record=record, sub=sub, maintenance_items=items)
 
 
 @app.route('/admin/records/<int:record_id>/sub/new', methods=['GET', 'POST'])
 def sub_record_new(record_id):
     record = MedicalRecord.query.get_or_404(record_id)
     if request.method == 'GET':
-        return render_template('admin/sub_record_form.html', record=record, sub=None)
+        items = MaintenanceItem.query.filter_by(is_active=True).order_by(
+            MaintenanceItem.category, MaintenanceItem.sort_order).all()
+        return render_template('admin/sub_record_form.html', record=record, sub=None, maintenance_items=items)
     data = request.form
     sub = SubRecord(
         medical_record_id=record_id,
+        record_type=data.get('record_type', '治療'),
         tooth_number=data.get('tooth_number', ''),
         soap_s=data.get('soap_s', ''),
         soap_o=data.get('soap_o', ''),
         soap_a=data.get('soap_a', ''),
         soap_p=data.get('soap_p', ''),
+        soap_s_image=data.get('soap_s_image') or None,
+        soap_o_image=data.get('soap_o_image') or None,
+        soap_a_image=data.get('soap_a_image') or None,
+        soap_p_image=data.get('soap_p_image') or None,
+        maintenance_checks=json.dumps(data.getlist('maintenance_checks')),
+        maintenance_image=data.get('maintenance_image') or None,
         xray_taken=bool(data.get('xray_taken')),
         xray_note=data.get('xray_note', '')
     )
@@ -392,17 +413,26 @@ def sub_record_edit(record_id, sub_id):
     sub = SubRecord.query.get_or_404(sub_id)
     if request.method == 'POST':
         data = request.form
+        sub.record_type = data.get('record_type', '治療')
         sub.tooth_number = data.get('tooth_number', '')
         sub.soap_s = data.get('soap_s', '')
         sub.soap_o = data.get('soap_o', '')
         sub.soap_a = data.get('soap_a', '')
         sub.soap_p = data.get('soap_p', '')
+        sub.soap_s_image = data.get('soap_s_image') or None
+        sub.soap_o_image = data.get('soap_o_image') or None
+        sub.soap_a_image = data.get('soap_a_image') or None
+        sub.soap_p_image = data.get('soap_p_image') or None
+        sub.maintenance_checks = json.dumps(data.getlist('maintenance_checks'))
+        sub.maintenance_image = data.get('maintenance_image') or None
         sub.xray_taken = bool(data.get('xray_taken'))
         sub.xray_note = data.get('xray_note', '')
         db.session.commit()
         flash('サブカルテを更新しました', 'success')
         return redirect(url_for('patient_detail', patient_id=record.patient_id))
-    return render_template('admin/sub_record_form.html', record=record, sub=sub)
+    items = MaintenanceItem.query.filter_by(is_active=True).order_by(
+        MaintenanceItem.category, MaintenanceItem.sort_order).all()
+    return render_template('admin/sub_record_form.html', record=record, sub=sub, maintenance_items=items)
 
 
 @app.route('/admin/records/<int:record_id>/sub/<int:sub_id>/delete', methods=['POST'])
@@ -413,6 +443,47 @@ def sub_record_delete(record_id, sub_id):
     db.session.commit()
     flash('サブカルテを削除しました', 'success')
     return redirect(url_for('patient_detail', patient_id=record.patient_id))
+
+
+# ==================== Maintenance Items ====================
+
+@app.route('/admin/maintenance-items')
+def maintenance_items():
+    items = MaintenanceItem.query.order_by(MaintenanceItem.category, MaintenanceItem.sort_order).all()
+    return render_template('admin/maintenance_items.html', items=items)
+
+
+@app.route('/admin/maintenance-items/new', methods=['POST'])
+def maintenance_item_new():
+    item = MaintenanceItem(
+        category=request.form.get('category', ''),
+        name=request.form['name'],
+        sort_order=int(request.form.get('sort_order', 0))
+    )
+    db.session.add(item)
+    db.session.commit()
+    flash('項目を追加しました', 'success')
+    return redirect(url_for('maintenance_items'))
+
+
+@app.route('/admin/maintenance-items/<int:item_id>/edit', methods=['POST'])
+def maintenance_item_edit(item_id):
+    item = MaintenanceItem.query.get_or_404(item_id)
+    item.category = request.form.get('category', '')
+    item.name = request.form['name']
+    item.sort_order = int(request.form.get('sort_order', 0))
+    item.is_active = bool(request.form.get('is_active'))
+    db.session.commit()
+    return jsonify({'success': True})
+
+
+@app.route('/admin/maintenance-items/<int:item_id>/delete', methods=['POST'])
+def maintenance_item_delete(item_id):
+    item = MaintenanceItem.query.get_or_404(item_id)
+    db.session.delete(item)
+    db.session.commit()
+    flash('項目を削除しました', 'success')
+    return redirect(url_for('maintenance_items'))
 
 
 # ==================== Appointments ====================

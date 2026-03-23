@@ -58,6 +58,11 @@
             <i class="fas fa-calendar-alt me-2"></i>シフト管理
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white {{ 'active' if 'maintenance' in request.endpoint }}" href="{{ url_for('maintenance_items') }}">
+            <i class="fas fa-clipboard-check me-2"></i>メンテ項目設定
+          </a>
+        </li>
         <li class="nav-item mt-2">
           <small class="text-muted px-3">EC・その他</small>
         </li>

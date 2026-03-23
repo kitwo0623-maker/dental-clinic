@@ -117,15 +117,31 @@ class SubRecord(db.Model):
     __tablename__ = 'sub_records'
     id = db.Column(db.Integer, primary_key=True)
     medical_record_id = db.Column(db.Integer, db.ForeignKey('medical_records.id'), nullable=False)
-    tooth_number = db.Column(db.String(50))       # 歯番号（例: "16, 27"）
-    soap_s = db.Column(db.Text)                   # Subjective: 患者の主訴・症状
-    soap_o = db.Column(db.Text)                   # Objective: 客観的所見・検査結果
-    soap_a = db.Column(db.Text)                   # Assessment: 評価・診断
-    soap_p = db.Column(db.Text)                   # Plan: 処置計画・実施内容
+    record_type = db.Column(db.String(10), default='治療')  # 治療/メンテ
+    tooth_number = db.Column(db.String(50))
+    soap_s = db.Column(db.Text)
+    soap_o = db.Column(db.Text)
+    soap_a = db.Column(db.Text)
+    soap_p = db.Column(db.Text)
+    soap_s_image = db.Column(db.Text)   # base64 PNG
+    soap_o_image = db.Column(db.Text)
+    soap_a_image = db.Column(db.Text)
+    soap_p_image = db.Column(db.Text)
+    maintenance_checks = db.Column(db.Text)  # JSON list of checked item IDs
+    maintenance_image = db.Column(db.Text)   # base64 PNG (メンテ手書きメモ)
     xray_taken = db.Column(db.Boolean, default=False)
     xray_note = db.Column(db.String(200))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     medical_record = db.relationship('MedicalRecord', backref='sub_records')
+
+
+class MaintenanceItem(db.Model):
+    __tablename__ = 'maintenance_items'
+    id = db.Column(db.Integer, primary_key=True)
+    category = db.Column(db.String(50), default='')
+    name = db.Column(db.String(100), nullable=False)
+    sort_order = db.Column(db.Integer, default=0)
+    is_active = db.Column(db.Boolean, default=True)
 
 
 class Product(db.Model):

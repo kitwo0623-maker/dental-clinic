@@ -19,6 +19,9 @@
             {% if sub.tooth_number %}
             　<i class="fas fa-tooth me-1 ms-2"></i>{{ sub.tooth_number }}番
             {% endif %}
+            <span class="badge {% if sub.record_type == 'メンテ' %}bg-success{% else %}bg-primary{% endif %} ms-2">
+              {{ sub.record_type or '治療' }}
+            </span>
           </div>
         </div>
       </div>
@@ -34,80 +37,76 @@
   </div>
 </div>
 
-<!-- SOAP -->
-<div class="row g-3 mb-4">
-  <div class="col-12 col-md-6">
-    <div class="card border-0 shadow-sm h-100">
-      <div class="card-header py-2" style="background:#e8f0fe;border:none;">
-        <span class="fw-bold" style="color:#1a73e8;font-size:15px;">
-          <span class="badge bg-primary me-2">S</span>Subjective｜主訴・患者の訴え
-        </span>
-      </div>
-      <div class="card-body p-3">
-        {% if sub.soap_s %}
-        <p class="mb-0" style="white-space:pre-wrap;">{{ sub.soap_s }}</p>
-        {% else %}
-        <span class="text-muted">記録なし</span>
-        {% endif %}
-      </div>
-    </div>
+{% if sub.record_type == 'メンテ' %}
+<!-- メンテナンスモード -->
+{% if sub.maintenance_checks %}
+{% set checked_ids = sub.maintenance_checks | from_json %}
+<div class="card border-0 shadow-sm mb-4">
+  <div class="card-header py-2 border-0 bg-light">
+    <span class="fw-semibold"><i class="fas fa-check-square me-2 text-success"></i>実施項目</span>
   </div>
-
-  <div class="col-12 col-md-6">
-    <div class="card border-0 shadow-sm h-100">
-      <div class="card-header py-2" style="background:#e6f4ea;border:none;">
-        <span class="fw-bold" style="color:#188038;font-size:15px;">
-          <span class="badge bg-success me-2">O</span>Objective｜所見・検査結果
-        </span>
-      </div>
-      <div class="card-body p-3">
-        {% if sub.soap_o %}
-        <p class="mb-0" style="white-space:pre-wrap;">{{ sub.soap_o }}</p>
-        {% else %}
-        <span class="text-muted">記録なし</span>
-        {% endif %}
-      </div>
+  <div class="card-body p-3">
+    {% set items = maintenance_items %}
+    {% for item in items if item.id|string in checked_ids %}
+    <div class="d-flex align-items-center gap-2 mb-1">
+      <i class="fas fa-check-circle text-success"></i>
+      <span>{% if item.category %}<span class="text-muted small me-1">{{ item.category }}</span>{% endif %}{{ item.name }}</span>
     </div>
-  </div>
-
-  <div class="col-12 col-md-6">
-    <div class="card border-0 shadow-sm h-100">
-      <div class="card-header py-2" style="background:#fef7e0;border:none;">
-        <span class="fw-bold" style="color:#b06000;font-size:15px;">
-          <span class="badge bg-warning text-dark me-2">A</span>Assessment｜診断・評価
-        </span>
-      </div>
-      <div class="card-body p-3">
-        {% if sub.soap_a %}
-        <p class="mb-0" style="white-space:pre-wrap;">{{ sub.soap_a }}</p>
-        {% else %}
-        <span class="text-muted">記録なし</span>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-
-  <div class="col-12 col-md-6">
-    <div class="card border-0 shadow-sm h-100">
-      <div class="card-header py-2" style="background:#fce8e6;border:none;">
-        <span class="fw-bold" style="color:#c5221f;font-size:15px;">
-          <span class="badge bg-danger me-2">P</span>Plan｜処置計画・実施内容
-        </span>
-      </div>
-      <div class="card-body p-3">
-        {% if sub.soap_p %}
-        <p class="mb-0" style="white-space:pre-wrap;">{{ sub.soap_p }}</p>
-        {% else %}
-        <span class="text-muted">記録なし</span>
-        {% endif %}
-      </div>
-    </div>
+    {% else %}
+    <span class="text-muted">チェック項目なし</span>
+    {% endfor %}
   </div>
 </div>
+{% endif %}
+
+{% if sub.maintenance_image %}
+<div class="card border-0 shadow-sm mb-4">
+  <div class="card-header py-2 border-0 bg-light">
+    <span class="fw-semibold"><i class="fas fa-pen me-2 text-primary"></i>手書きメモ</span>
+  </div>
+  <div class="card-body p-3">
+    <img src="{{ sub.maintenance_image }}" class="img-fluid rounded" style="max-width:100%;border:1px solid #dee2e6;">
+  </div>
+</div>
+{% endif %}
+
+{% else %}
+<!-- 治療モード: SOAP -->
+<div class="row g-3 mb-4">
+  {% set soap_fields = [
+    ('s', 'S', 'Subjective｜主訴・患者の訴え', 'bg-primary', '#e8f0fe'),
+    ('o', 'O', 'Objective｜所見・検査結果', 'bg-success', '#e6f4ea'),
+    ('a', 'A', 'Assessment｜評価・診断', 'bg-warning text-dark', '#fef7e0'),
+    ('p', 'P', 'Plan｜処置計画・実施内容', 'bg-danger', '#fce8e6'),
+  ] %}
+  {% for key, label, title, badge_cls, bg in soap_fields %}
+  {% set text_val = sub['soap_' ~ key] %}
+  {% set img_val  = sub['soap_' ~ key ~ '_image'] %}
+  <div class="col-12 col-md-6">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-header py-2" style="background:{{ bg }};border:none;">
+        <span class="fw-bold">
+          <span class="badge {{ badge_cls }} me-2">{{ label }}</span>{{ title }}
+        </span>
+      </div>
+      <div class="card-body p-3">
+        {% if img_val %}
+        <img src="{{ img_val }}" class="img-fluid rounded" style="max-width:100%;border:1px solid #dee2e6;">
+        {% elif text_val %}
+        <p class="mb-0" style="white-space:pre-wrap;">{{ text_val }}</p>
+        {% else %}
+        <span class="text-muted">記録なし</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
 
 <!-- X線 -->
 {% if sub.xray_taken %}
-<div class="card border-info border-0 shadow-sm mb-4">
+<div class="card border-0 shadow-sm mb-4">
   <div class="card-body p-3">
     <i class="fas fa-x-ray me-2 text-info"></i>
     <strong>X線・写真撮影あり</strong>
