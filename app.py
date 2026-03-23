@@ -6,30 +6,30 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dental-clinic-secret-key-2024')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dental_clinic.db'
+
+# Render.com の DATABASE_URL (PostgreSQL) があれば使用、なければローカルSQLite
+_db_url = os.environ.get('DATABASE_URL', 'sqlite:///dental_clinic.db')
+if _db_url.startswith('postgres://'):
+    _db_url = _db_url.replace('postgres://', 'postgresql://', 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = _db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
 with app.app_context():
     db.create_all()
-    # SOAP列のマイグレーション（既存DBに列がない場合のみ追加）
-    with db.engine.connect() as conn:
-        existing_sub = [row[1] for row in conn.execute(db.text("PRAGMA table_info(sub_records)"))]
-        for col, coldef in [
-            ('soap_s', 'TEXT'),
-            ('soap_o', 'TEXT'),
-            ('soap_a', 'TEXT'),
-            ('soap_p', 'TEXT'),
-        ]:
-            if col not in existing_sub:
-                conn.execute(db.text(f"ALTER TABLE sub_records ADD COLUMN {col} {coldef}"))
-        existing_pat = [row[1] for row in conn.execute(db.text("PRAGMA table_info(patients)"))]
-        if 'systemic_diseases' not in existing_pat:
-            conn.execute(db.text("ALTER TABLE patients ADD COLUMN systemic_diseases TEXT"))
-        if 'medications' not in existing_pat:
-            conn.execute(db.text("ALTER TABLE patients ADD COLUMN medications TEXT"))
-        conn.commit()
+    # SQLiteのみ: 既存DBへの列追加マイグレーション
+    if _db_url.startswith('sqlite'):
+        with db.engine.connect() as conn:
+            existing_sub = [row[1] for row in conn.execute(db.text("PRAGMA table_info(sub_records)"))]
+            for col in ['soap_s', 'soap_o', 'soap_a', 'soap_p']:
+                if col not in existing_sub:
+                    conn.execute(db.text(f"ALTER TABLE sub_records ADD COLUMN {col} TEXT"))
+            existing_pat = [row[1] for row in conn.execute(db.text("PRAGMA table_info(patients)"))]
+            for col in ['systemic_diseases', 'medications']:
+                if col not in existing_pat:
+                    conn.execute(db.text(f"ALTER TABLE patients ADD COLUMN {col} TEXT"))
+            conn.commit()
 
 
 @app.context_processor
