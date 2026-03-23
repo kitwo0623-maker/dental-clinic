@@ -357,6 +357,13 @@ def patient_sub_record_new(patient_id):
     return redirect(url_for('sub_record_new', record_id=record.id))
 
 
+@app.route('/admin/records/<int:record_id>/sub/<int:sub_id>/view')
+def sub_record_detail(record_id, sub_id):
+    record = MedicalRecord.query.get_or_404(record_id)
+    sub = SubRecord.query.get_or_404(sub_id)
+    return render_template('admin/sub_record_detail.html', record=record, sub=sub)
+
+
 @app.route('/admin/records/<int:record_id>/sub/new', methods=['GET', 'POST'])
 def sub_record_new(record_id):
     record = MedicalRecord.query.get_or_404(record_id)
