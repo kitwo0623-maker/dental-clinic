@@ -38,7 +38,7 @@
           <div class="border rounded p-3 bg-light">
             <!-- 単独チェック項目 -->
             <div class="row g-2 mb-3">
-              {% for d in ['糖尿病', '高血圧', '甲状腺機能低下', '甲状腺機能亢進', '骨粗鬆症', '慢性気管支炎', '喘息', 'てんかん', 'HIV'] %}
+              {% for d in ['糖尿病', '高血圧', '高脂血症', '甲状腺機能低下', '甲状腺機能亢進', '骨粗鬆症', '慢性気管支炎', '喘息', 'てんかん', 'うつ病', 'HIV'] %}
               <div class="col-md-4 col-6">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="sys_s" value="{{ d }}" id="ss_{{ loop.index }}"
@@ -51,10 +51,10 @@
             <hr class="my-2">
             <!-- サブ項目あり -->
             {% set sub_groups = [
-              ('心臓病', 'sc', ['感染性心内膜炎', '心臓弁膜症', '心不全', 'その他']),
+              ('心臓病', 'sc', ['感染性心内膜炎', '心臓弁膜症', '心不全']),
               ('副腎皮質機能不全', 'sa', ['透析', '腎移植']),
               ('脳血管障害', 'sn', ['脳卒中', '狭心症', '心筋梗塞']),
-              ('肝臓病', 'sk', ['B肝', 'C肝', 'その他']),
+              ('肝臓病', 'sk', ['B肝', 'C肝']),
             ] %}
             {% for parent, prefix, subs in sub_groups %}
             <div class="mb-2">
@@ -82,6 +82,10 @@
                 value="{{ sys_data.other }}" placeholder="詳細を記入">
             </div>
           </div>
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-semibold">服薬</label>
+          <textarea name="medications" class="form-control" rows="2" placeholder="例：アムロジピン5mg、メトホルミン500mgなど">{{ patient.medications if patient else '' }}</textarea>
         </div>
         <div class="col-12">
           <label class="form-label fw-semibold">アレルギー</label>

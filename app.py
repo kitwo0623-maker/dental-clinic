@@ -27,6 +27,8 @@ with app.app_context():
         existing_pat = [row[1] for row in conn.execute(db.text("PRAGMA table_info(patients)"))]
         if 'systemic_diseases' not in existing_pat:
             conn.execute(db.text("ALTER TABLE patients ADD COLUMN systemic_diseases TEXT"))
+        if 'medications' not in existing_pat:
+            conn.execute(db.text("ALTER TABLE patients ADD COLUMN medications TEXT"))
         conn.commit()
 
 
@@ -46,12 +48,12 @@ def generate_patient_number():
 
 def parse_systemic_diseases(form):
     result = []
-    simple_list = ['糖尿病', '高血圧', '甲状腺機能低下', '甲状腺機能亢進', '骨粗鬆症', '慢性気管支炎', '喘息', 'てんかん', 'HIV']
+    simple_list = ['糖尿病', '高血圧', '高脂血症', '甲状腺機能低下', '甲状腺機能亢進', '骨粗鬆症', '慢性気管支炎', '喘息', 'てんかん', 'うつ病', 'HIV']
     sub_map = [
-        ('心臓病',         ['感染性心内膜炎', '心臓弁膜症', '心不全', 'その他']),
+        ('心臓病',         ['感染性心内膜炎', '心臓弁膜症', '心不全']),
         ('副腎皮質機能不全', ['透析', '腎移植']),
         ('脳血管障害',      ['脳卒中', '狭心症', '心筋梗塞']),
-        ('肝臓病',         ['B肝', 'C肝', 'その他']),
+        ('肝臓病',         ['B肝', 'C肝']),
     ]
     for d in simple_list:
         if d in form.getlist('sys_s'):
@@ -251,6 +253,7 @@ def patient_new():
             name_kana=data.get('name_kana', ''),
             birth_date=datetime.strptime(data['birth_date'], '%Y-%m-%d').date() if data.get('birth_date') else None,
             systemic_diseases=parse_systemic_diseases(request.form),
+            medications=data.get('medications', ''),
             allergies=data.get('allergies', ''),
             notes=data.get('notes', '')
         )
@@ -283,6 +286,7 @@ def patient_edit(patient_id):
         patient.name_kana = data.get('name_kana', '')
         patient.birth_date = datetime.strptime(data['birth_date'], '%Y-%m-%d').date() if data.get('birth_date') else None
         patient.systemic_diseases = parse_systemic_diseases(request.form)
+        patient.medications = data.get('medications', '')
         patient.allergies = data.get('allergies', '')
         patient.notes = data.get('notes', '')
         db.session.commit()

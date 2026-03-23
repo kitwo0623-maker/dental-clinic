@@ -18,6 +18,7 @@ class Patient(db.Model):
     insurance_type = db.Column(db.String(50))
     insurance_number = db.Column(db.String(50))
     systemic_diseases = db.Column(db.Text)
+    medications = db.Column(db.Text)
     allergies = db.Column(db.Text)
     notes = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)

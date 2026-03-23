@@ -40,6 +40,11 @@
       <i class="fas fa-heartbeat me-2"></i><strong>全身疾患：</strong>{{ patient.systemic_diseases }}
     </div>
     {% endif %}
+    {% if patient.medications %}
+    <div class="alert alert-primary mt-0 mb-2 py-2">
+      <i class="fas fa-pills me-2"></i><strong>服薬：</strong>{{ patient.medications }}
+    </div>
+    {% endif %}
     {% if patient.allergies %}
     <div class="alert alert-warning mt-0 mb-2 py-2">
       <i class="fas fa-exclamation-triangle me-2"></i><strong>アレルギー：</strong>{{ patient.allergies }}
