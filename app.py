@@ -45,14 +45,55 @@ def generate_patient_number():
 
 
 def parse_systemic_diseases(form):
-    checked = form.getlist('systemic_diseases')
+    result = []
+    simple_list = ['糖尿病', '高血圧', '甲状腺機能低下', '甲状腺機能亢進', '骨粗鬆症', '慢性気管支炎', '喘息', 'てんかん', 'HIV']
+    sub_map = [
+        ('心臓病',         ['感染性心内膜炎', '心臓弁膜症', '心不全', 'その他']),
+        ('副腎皮質機能不全', ['透析', '腎移植']),
+        ('脳血管障害',      ['脳卒中', '狭心症', '心筋梗塞']),
+        ('肝臓病',         ['B肝', 'C肝', 'その他']),
+    ]
+    for d in simple_list:
+        if d in form.getlist('sys_s'):
+            result.append(d)
+    for parent, _ in sub_map:
+        subs = form.getlist(f'sub_{parent}')
+        if subs:
+            result.append(f'{parent}（{"・".join(subs)}）')
     other_text = form.get('systemic_other', '').strip()
-    if 'その他' in checked and other_text:
-        idx = checked.index('その他')
-        checked[idx] = f'その他：{other_text}'
-    elif 'その他' not in checked and other_text:
-        checked.append(f'その他：{other_text}')
-    return '、'.join(checked)
+    if form.get('sys_other_check'):
+        result.append(f'その他：{other_text}' if other_text else 'その他')
+    return '、'.join(result)
+
+
+def parse_systemic_for_form(sys_str):
+    empty = {'simple': [], 'subs': {}, 'other': '', 'has_other': False}
+    if not sys_str:
+        return empty
+    simple, subs, other, has_other = [], {}, '', False
+    sub_parents = ['心臓病', '副腎皮質機能不全', '脳血管障害', '肝臓病']
+    for part in sys_str.split('、'):
+        part = part.strip()
+        if not part:
+            continue
+        if part.startswith('その他：'):
+            has_other, other = True, part[4:]
+        elif part == 'その他':
+            has_other = True
+        else:
+            matched = False
+            for parent in sub_parents:
+                if part.startswith(parent + '（') and part.endswith('）'):
+                    subs[parent] = part[len(parent)+1:-1].split('・')
+                    matched = True
+                    break
+                elif part == parent:
+                    subs[parent] = []
+                    matched = True
+                    break
+            if not matched:
+                simple.append(part)
+    return {'simple': simple, 'subs': subs, 'other': other, 'has_other': has_other}
 
 
 def generate_invoice_number():
@@ -217,7 +258,7 @@ def patient_new():
         db.session.commit()
         flash('患者を登録しました', 'success')
         return redirect(url_for('patient_detail', patient_id=patient.id))
-    return render_template('admin/patient_form.html', patient=None)
+    return render_template('admin/patient_form.html', patient=None, sys_data=parse_systemic_for_form(None))
 
 
 @app.route('/admin/patients/<int:patient_id>')
@@ -247,7 +288,7 @@ def patient_edit(patient_id):
         db.session.commit()
         flash('患者情報を更新しました', 'success')
         return redirect(url_for('patient_detail', patient_id=patient.id))
-    return render_template('admin/patient_form.html', patient=patient)
+    return render_template('admin/patient_form.html', patient=patient, sys_data=parse_systemic_for_form(patient.systemic_diseases))
 
 
 # ==================== Medical Records ====================

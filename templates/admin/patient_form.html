@@ -35,30 +35,51 @@
         </div>
         <div class="col-12">
           <label class="form-label fw-semibold">全身疾患</label>
-          {% set sys_str = patient.systemic_diseases if patient and patient.systemic_diseases else '' %}
-          {% set sys_list = sys_str.split('、') | map('trim') | list %}
-          {% set ns = namespace(other_val='') %}
-          {% for part in sys_list %}{% if part.startswith('その他：') %}{% set ns.other_val = part[4:] %}{% endif %}{% endfor %}
-          {% set disease_list = ['糖尿病', '心臓病（感染性心内膜炎・心臓弁膜症・心不全・その他）', '高血圧', '甲状腺機能低下', '甲状腺機能亢進', '骨粗鬆症', '慢性気管支炎', '喘息', '副腎皮質機能不全（透析・腎移植）', 'てんかん', '脳血管障害（脳卒中・狭心症・心筋梗塞）', '肝臓病（B肝・C肝・その他）', 'HIV'] %}
           <div class="border rounded p-3 bg-light">
-            <div class="row g-2">
-              {% for disease in disease_list %}
-              <div class="col-md-6">
+            <!-- 単独チェック項目 -->
+            <div class="row g-2 mb-3">
+              {% for d in ['糖尿病', '高血圧', '甲状腺機能低下', '甲状腺機能亢進', '骨粗鬆症', '慢性気管支炎', '喘息', 'てんかん', 'HIV'] %}
+              <div class="col-md-4 col-6">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="systemic_diseases" value="{{ disease }}" id="dis_{{ loop.index }}"
-                    {% if disease in sys_list %}checked{% endif %}>
-                  <label class="form-check-label small" for="dis_{{ loop.index }}">{{ disease }}</label>
+                  <input class="form-check-input" type="checkbox" name="sys_s" value="{{ d }}" id="ss_{{ loop.index }}"
+                    {% if d in sys_data.simple %}checked{% endif %}>
+                  <label class="form-check-label small" for="ss_{{ loop.index }}">{{ d }}</label>
                 </div>
               </div>
               {% endfor %}
-              <div class="col-12 d-flex align-items-center gap-2 mt-1">
-                <div class="form-check mb-0">
-                  <input class="form-check-input" type="checkbox" name="systemic_diseases" value="その他" id="dis_other"
-                    {% if ns.other_val %}checked{% endif %}>
-                  <label class="form-check-label small" for="dis_other">その他：</label>
+            </div>
+            <hr class="my-2">
+            <!-- サブ項目あり -->
+            {% set sub_groups = [
+              ('心臓病', 'sc', ['感染性心内膜炎', '心臓弁膜症', '心不全', 'その他']),
+              ('副腎皮質機能不全', 'sa', ['透析', '腎移植']),
+              ('脳血管障害', 'sn', ['脳卒中', '狭心症', '心筋梗塞']),
+              ('肝臓病', 'sk', ['B肝', 'C肝', 'その他']),
+            ] %}
+            {% for parent, prefix, subs in sub_groups %}
+            <div class="mb-2">
+              <div class="small fw-semibold text-secondary mb-1">{{ parent }}</div>
+              <div class="ms-3 d-flex flex-wrap gap-3">
+                {% for sub in subs %}
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="sub_{{ parent }}" value="{{ sub }}" id="{{ prefix }}_{{ loop.index }}"
+                    {% if sub in sys_data.subs.get(parent, []) %}checked{% endif %}>
+                  <label class="form-check-label small" for="{{ prefix }}_{{ loop.index }}">{{ sub }}</label>
                 </div>
-                <input type="text" name="systemic_other" class="form-control form-control-sm" style="max-width:300px" value="{{ ns.other_val }}" placeholder="詳細を記入">
+                {% endfor %}
               </div>
+            </div>
+            {% endfor %}
+            <hr class="my-2">
+            <!-- その他 -->
+            <div class="d-flex align-items-center gap-2">
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" name="sys_other_check" value="1" id="s_other"
+                  {% if sys_data.has_other %}checked{% endif %}>
+                <label class="form-check-label small fw-semibold" for="s_other">その他：</label>
+              </div>
+              <input type="text" name="systemic_other" class="form-control form-control-sm" style="max-width:300px"
+                value="{{ sys_data.other }}" placeholder="詳細を記入">
             </div>
           </div>
         </div>
