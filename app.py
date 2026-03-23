@@ -44,6 +44,17 @@ def generate_patient_number():
     return f'P{num:05d}'
 
 
+def parse_systemic_diseases(form):
+    checked = form.getlist('systemic_diseases')
+    other_text = form.get('systemic_other', '').strip()
+    if 'その他' in checked and other_text:
+        idx = checked.index('その他')
+        checked[idx] = f'その他：{other_text}'
+    elif 'その他' not in checked and other_text:
+        checked.append(f'その他：{other_text}')
+    return '、'.join(checked)
+
+
 def generate_invoice_number():
     last = Invoice.query.order_by(Invoice.id.desc()).first()
     if last:
@@ -198,7 +209,7 @@ def patient_new():
             name=data['name'],
             name_kana=data.get('name_kana', ''),
             birth_date=datetime.strptime(data['birth_date'], '%Y-%m-%d').date() if data.get('birth_date') else None,
-            systemic_diseases=data.get('systemic_diseases', ''),
+            systemic_diseases=parse_systemic_diseases(request.form),
             allergies=data.get('allergies', ''),
             notes=data.get('notes', '')
         )
@@ -230,7 +241,7 @@ def patient_edit(patient_id):
         patient.name = data['name']
         patient.name_kana = data.get('name_kana', '')
         patient.birth_date = datetime.strptime(data['birth_date'], '%Y-%m-%d').date() if data.get('birth_date') else None
-        patient.systemic_diseases = data.get('systemic_diseases', '')
+        patient.systemic_diseases = parse_systemic_diseases(request.form)
         patient.allergies = data.get('allergies', '')
         patient.notes = data.get('notes', '')
         db.session.commit()
