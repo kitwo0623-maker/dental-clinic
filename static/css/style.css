@@ -191,26 +191,130 @@ body {
   justify-content: center;
 }
 
-.hero-circle {
-  width: 280px;
-  height: 280px;
+/* ============================================
+   Hero Visual Box（新ヒーロービジュアル）
+   ============================================ */
+.hero-visual-box {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.hero-card-main {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+  backdrop-filter: blur(8px);
+  text-align: center;
+  animation: hero-float 4s ease-in-out infinite;
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.hero-card-icon {
+  width: 72px;
+  height: 72px;
+  background: rgba(255,255,255,0.12);
   border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 7rem;
-  position: relative;
+  margin: 0 auto 1rem;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-.hero-circle::after {
-  content: '';
+.hero-card-clinic {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.hero-card-tagline {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 1.5rem;
+}
+
+.hero-card-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.hero-stat-num span {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.hero-stat-label {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.6);
+  margin-top: 0.25rem;
+  white-space: nowrap;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+
+.hero-badge-float {
   position: absolute;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.95);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45rem 0.9rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  white-space: nowrap;
+}
+
+.hero-badge-float i {
+  margin-right: 0.3rem;
+}
+
+.hero-badge-top {
+  top: -14px;
+  right: -20px;
+  animation: badge-float-top 3.5s ease-in-out infinite;
+}
+
+.hero-badge-bottom {
+  bottom: -14px;
+  left: -20px;
+  animation: badge-float-bot 3.8s ease-in-out infinite;
+}
+
+@keyframes badge-float-top {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes badge-float-bot {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
 }
 
 /* ============================================
