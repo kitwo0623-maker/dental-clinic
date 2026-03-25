@@ -114,13 +114,10 @@
     </div>
     <div class="card-body p-3">
       <div class="d-flex gap-2 mb-2">
-        <button type="button" class="mode-tab {% if not existing_img %}active{% endif %}" onclick="switchSoapTab('a','text')">テキスト</button>
-        <button type="button" class="mode-tab {% if existing_img %}active{% endif %}" onclick="switchSoapTab('a','draw')">手書き</button>
+        <button type="button" class="mode-tab {% if existing_img or not existing_text %}active{% endif %}" onclick="switchSoapTab('a','draw')">手書き</button>
+        <button type="button" class="mode-tab {% if existing_text and not existing_img %}active{% endif %}" onclick="switchSoapTab('a','text')">テキスト</button>
       </div>
-      <div id="soap_a_text" class="soap-panel {% if not existing_img %}active{% endif %}">
-        <textarea name="soap_a" class="form-control" rows="3" placeholder="{{ ph }}">{{ existing_text }}</textarea>
-      </div>
-      <div id="soap_a_draw" class="soap-panel {% if existing_img %}active{% endif %}">
+      <div id="soap_a_draw" class="soap-panel {% if existing_img or not existing_text %}active{% endif %}">
         <div class="canvas-toolbar">
           <button type="button" class="pen-btn active" style="background:#222;" onclick="setColor('a','#222')" data-key="a" title="黒"></button>
           <button type="button" class="pen-btn" style="background:#d00;" onclick="setColor('a','#d00')" data-key="a" title="赤"></button>
@@ -135,6 +132,9 @@
           <canvas id="canvas_a" width="800" height="180" style="width:100%;height:180px;cursor:crosshair;"></canvas>
         </div>
         <input type="hidden" name="soap_a_image" id="soap_a_image" value="{{ existing_img }}">
+      </div>
+      <div id="soap_a_text" class="soap-panel {% if existing_text and not existing_img %}active{% endif %}">
+        <textarea name="soap_a" class="form-control" rows="3" placeholder="{{ ph }}">{{ existing_text }}</textarea>
       </div>
     </div>
   </div>
@@ -176,13 +176,10 @@
     </div>
     <div class="card-body p-3">
       <div class="d-flex gap-2 mb-2">
-        <button type="button" class="mode-tab {% if not existing_img %}active{% endif %}" onclick="switchSoapTab('{{ key }}','text')">テキスト</button>
-        <button type="button" class="mode-tab {% if existing_img %}active{% endif %}" onclick="switchSoapTab('{{ key }}','draw')">手書き</button>
+        <button type="button" class="mode-tab {% if existing_img or not existing_text %}active{% endif %}" onclick="switchSoapTab('{{ key }}','draw')">手書き</button>
+        <button type="button" class="mode-tab {% if existing_text and not existing_img %}active{% endif %}" onclick="switchSoapTab('{{ key }}','text')">テキスト</button>
       </div>
-      <div id="soap_{{ key }}_text" class="soap-panel {% if not existing_img %}active{% endif %}">
-        <textarea name="soap_{{ key }}" class="form-control" rows="3" placeholder="{{ ph }}">{{ existing_text }}</textarea>
-      </div>
-      <div id="soap_{{ key }}_draw" class="soap-panel {% if existing_img %}active{% endif %}">
+      <div id="soap_{{ key }}_draw" class="soap-panel {% if existing_img or not existing_text %}active{% endif %}">
         <div class="canvas-toolbar">
           <button type="button" class="pen-btn active" style="background:#222;" onclick="setColor('{{ key }}','#222')" data-key="{{ key }}" title="黒"></button>
           <button type="button" class="pen-btn" style="background:#d00;" onclick="setColor('{{ key }}','#d00')" data-key="{{ key }}" title="赤"></button>
@@ -197,6 +194,9 @@
           <canvas id="canvas_{{ key }}" width="800" height="180" style="width:100%;height:180px;cursor:crosshair;"></canvas>
         </div>
         <input type="hidden" name="soap_{{ key }}_image" id="soap_{{ key }}_image" value="{{ existing_img }}">
+      </div>
+      <div id="soap_{{ key }}_text" class="soap-panel {% if existing_text and not existing_img %}active{% endif %}">
+        <textarea name="soap_{{ key }}" class="form-control" rows="3" placeholder="{{ ph }}">{{ existing_text }}</textarea>
       </div>
     </div>
   </div>
@@ -253,9 +253,9 @@ function switchSoapTab(key, tab) {
   var drawEl = document.getElementById('soap_' + key + '_draw');
   textEl.classList.toggle('active', tab === 'text');
   drawEl.classList.toggle('active', tab === 'draw');
-  var btns = textEl.closest('.card-body').querySelectorAll('.mode-tab');
-  btns[0].classList.toggle('active', tab === 'text');
-  btns[1].classList.toggle('active', tab === 'draw');
+  var btns = drawEl.closest('.card-body').querySelectorAll('.mode-tab');
+  btns[0].classList.toggle('active', tab === 'draw');
+  btns[1].classList.toggle('active', tab === 'text');
 }
 
 // ==================== Canvas ====================
