@@ -3,10 +3,9 @@
 {% block page_title %}ダッシュボード{% endblock %}
 {% block content %}
 
-<!-- Stats Cards -->
-<div class="row g-4 mb-4">
+<div class="row g-4 align-items-stretch">
   <div class="col-md-3">
-    <div class="card border-0 shadow-sm">
+    <div class="card border-0 shadow-sm h-100">
       <div class="card-body d-flex align-items-center">
         <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
           <i class="fas fa-users text-primary fs-4"></i>
@@ -18,12 +17,8 @@
       </div>
     </div>
   </div>
-</div>
-
-<!-- クイックアクション -->
-<div class="row g-4">
-  <div class="col-lg-4">
-    <div class="card border-0 shadow-sm">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm h-100">
       <div class="card-header bg-white border-0">
         <h6 class="fw-bold mb-0"><i class="fas fa-bolt text-warning me-2"></i>クイックアクション</h6>
       </div>
@@ -31,7 +26,7 @@
         <a href="{{ url_for('patient_new') }}" class="btn btn-outline-primary text-start">
           <i class="fas fa-user-plus me-2"></i>新患登録
         </a>
-<a href="{{ url_for('patients_list') }}" class="btn btn-outline-secondary text-start">
+        <a href="{{ url_for('patients_list') }}" class="btn btn-outline-secondary text-start">
           <i class="fas fa-search me-2"></i>患者検索
         </a>
       </div>
