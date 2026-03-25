@@ -404,8 +404,8 @@ def sub_record_new(record_id):
         soap_p_image=data.get('soap_p_image') or None,
         maintenance_checks=json.dumps(data.getlist('maintenance_checks')),
         maintenance_image=data.get('maintenance_image') or None,
-        xray_taken=bool(data.get('xray_taken')),
-        xray_note=data.get('xray_note', '')
+        xray_taken=bool(data.getlist('xray_checks')),
+        xray_note=json.dumps(data.getlist('xray_checks'))
     )
     db.session.add(sub)
     db.session.commit()
@@ -431,8 +431,8 @@ def sub_record_edit(record_id, sub_id):
         sub.soap_p_image = data.get('soap_p_image') or None
         sub.maintenance_checks = json.dumps(data.getlist('maintenance_checks'))
         sub.maintenance_image = data.get('maintenance_image') or None
-        sub.xray_taken = bool(data.get('xray_taken'))
-        sub.xray_note = data.get('xray_note', '')
+        sub.xray_taken = bool(data.getlist('xray_checks'))
+        sub.xray_note = json.dumps(data.getlist('xray_checks'))
         db.session.commit()
         flash('サブカルテを更新しました', 'success')
         return redirect(url_for('patient_detail', patient_id=record.patient_id))

@@ -83,7 +83,8 @@
                 <span class="badge bg-secondary"><i class="fas fa-tooth me-1"></i>{{ sub.tooth_number }}</span>
                 {% endif %}
                 {% if sub.xray_taken %}
-                <span class="badge bg-danger"><i class="fas fa-x-ray me-1"></i>X線{{ '：' + sub.xray_note if sub.xray_note else '' }}</span>
+                {% set xray_list = (sub.xray_note | from_json) if sub.xray_note else [] %}
+                <span class="badge bg-danger"><i class="fas fa-x-ray me-1"></i>X線{{ '：' + xray_list | join('・') if xray_list else '' }}</span>
                 {% endif %}
               </div>
               <div class="d-flex gap-1">
