@@ -17,10 +17,18 @@
         </h1>
         <p class="hero-purpose">― 健口から健康、そして健幸へ ―</p>
         <p class="hero-desc">
-          本質的な予防医療で、お口の健康を守ります。<br>
-          最新の設備と経験豊富なスタッフが、<br>
-          あなたの「健やかな笑顔」をトータルサポート。
+          インプラント・審美・矯正など、本質的な自由診療を提供。<br>
+          1本の歯も、お口全体のバランスを見据えて設計する——<br>
+          それが、当院の治療哲学です。
         </p>
+
+        <!-- 主力治療チップ -->
+        <div class="hero-treatment-chips">
+          <a href="#jiyushinryo" class="hero-chip"><i class="fas fa-tooth"></i> インプラント</a>
+          <a href="#jiyushinryo" class="hero-chip"><i class="fas fa-smile"></i> 審美歯科</a>
+          <a href="#jiyushinryo" class="hero-chip"><i class="fas fa-align-center"></i> 矯正・小児矯正</a>
+          <a href="#jiyushinryo" class="hero-chip"><i class="fas fa-infinity"></i> 噛み合わせ</a>
+        </div>
 
         <!-- 診療時間・電話番号バナー -->
         <div class="hero-info-bar">
@@ -165,6 +173,93 @@
 </section>
 
 <!-- ============================================================
+     Featured Treatments Section（注目の自由診療）
+     ============================================================ -->
+<section class="featured-treatments-section" id="jiyushinryo">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Premium Treatment ／ 自由診療</span>
+      <h2 class="section-title">お悩みに合わせた、<br>質の高い自由診療</h2>
+      <div class="section-divider"></div>
+      <p class="section-sub">「サクッと1本きれいにしたい」から「お口全体を整えたい」まで。<br>どんなご要望も、まずはお気軽にご相談ください。</p>
+    </div>
+    <div class="row g-4">
+
+      <!-- インプラント -->
+      <div class="col-lg-4">
+        <div class="ft-card">
+          <div class="ft-card-top ft-implant">
+            <div class="ft-icon"><i class="fas fa-tooth"></i></div>
+            <h3 class="ft-title">インプラント</h3>
+            <p class="ft-subtitle">失った歯を、自分の歯のように。</p>
+          </div>
+          <div class="ft-card-body">
+            <ul class="ft-list">
+              <li><i class="fas fa-check-circle"></i>骨を傷つけにくい低侵襲術式</li>
+              <li><i class="fas fa-check-circle"></i>痛み・腫れを最小限に抑える</li>
+              <li><i class="fas fa-check-circle"></i>噛み合わせを考慮した長持ち設計</li>
+              <li><i class="fas fa-check-circle"></i>1本からのご相談も歓迎</li>
+            </ul>
+            <a href="{{ url_for('contact') }}" class="ft-cta-btn">
+              <i class="fas fa-comment-medical me-1"></i>無料相談はこちら
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 審美歯科 -->
+      <div class="col-lg-4">
+        <div class="ft-card ft-card-featured">
+          <div class="ft-featured-badge">人気</div>
+          <div class="ft-card-top ft-aesthetic">
+            <div class="ft-icon"><i class="fas fa-smile-beam"></i></div>
+            <h3 class="ft-title">審美歯科・セラミック</h3>
+            <p class="ft-subtitle">自然な美しさと、正しく噛める機能美。</p>
+          </div>
+          <div class="ft-card-body">
+            <ul class="ft-list">
+              <li><i class="fas fa-check-circle"></i>自然な色調・透明感のセラミック</li>
+              <li><i class="fas fa-check-circle"></i>ホワイトニング（オフィス・ホーム）</li>
+              <li><i class="fas fa-check-circle"></i>見た目だけでなく「機能美」を追求</li>
+              <li><i class="fas fa-check-circle"></i>銀歯の白い歯への交換も対応</li>
+            </ul>
+            <a href="{{ url_for('contact') }}" class="ft-cta-btn">
+              <i class="fas fa-comment-medical me-1"></i>無料相談はこちら
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 矯正・噛み合わせ -->
+      <div class="col-lg-4">
+        <div class="ft-card">
+          <div class="ft-card-top ft-ortho">
+            <div class="ft-icon"><i class="fas fa-align-center"></i></div>
+            <h3 class="ft-title">矯正・小児矯正</h3>
+            <p class="ft-subtitle">歯並びと噛み合わせを、根本から整える。</p>
+          </div>
+          <div class="ft-card-body">
+            <ul class="ft-list">
+              <li><i class="fas fa-check-circle"></i>ワイヤー・マウスピース矯正に対応</li>
+              <li><i class="fas fa-check-circle"></i>小児矯正で将来の歯並びを育成</li>
+              <li><i class="fas fa-check-circle"></i>骨格・噛み合わせ全体を考慮</li>
+              <li><i class="fas fa-check-circle"></i>成人・子ども、どちらもご相談を</li>
+            </ul>
+            <a href="{{ url_for('contact') }}" class="ft-cta-btn">
+              <i class="fas fa-comment-medical me-1"></i>無料相談はこちら
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="text-center mt-4" style="font-size:0.82rem; color:var(--muted);">
+      <i class="fas fa-info-circle me-1"></i>セカンドオピニオンのご相談も歓迎しております。まずはお気軽にどうぞ。
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
      Features Section（医院の特徴）
      ============================================================ -->
 <section class="features-section">
@@ -251,6 +346,71 @@
             定期的なクリーニングと指導で
             虫歯・歯周病を未然に防ぎます。
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Philosophy Section（院長のこだわり）
+     ============================================================ -->
+<section class="philosophy-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="section-label">Philosophy ／ 院長のこだわり</span>
+        <h2 class="section-title mt-2">「1本」にも、<br>全体の設計図がある。</h2>
+        <div class="section-divider" style="margin-left:0;"></div>
+        <p class="philosophy-text">
+          インプラントを1本入れるにしても、前歯をセラミックで美しくするにしても、
+          その治療が10年・20年後も機能し続けるかどうかは、
+          <strong>噛み合わせのバランス</strong>にかかっています。
+        </p>
+        <p class="philosophy-text">
+          当院では、どんな治療であっても必ずお口全体のバランスを確認し、
+          周囲の歯・骨格・顎関節との調和を考慮した上で設計します。
+          「サクッと1本」という患者様のご希望も、本質的な精度で応えるために。
+        </p>
+        <div class="philosophy-highlights">
+          <div class="ph-item">
+            <div class="ph-icon"><i class="fas fa-drafting-compass"></i></div>
+            <div>
+              <div class="ph-item-title">噛み合わせを軸に設計</div>
+              <div class="ph-item-desc">全体のバランスを確認した上で1本1本を設計</div>
+            </div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-icon"><i class="fas fa-microscope"></i></div>
+            <div>
+              <div class="ph-item-title">精密診断・デジタル分析</div>
+              <div class="ph-item-desc">CT・口腔内スキャンによる精密な状態把握</div>
+            </div>
+          </div>
+          <div class="ph-item">
+            <div class="ph-icon"><i class="fas fa-history"></i></div>
+            <div>
+              <div class="ph-item-title">10年・20年後を見据えた治療</div>
+              <div class="ph-item-desc">治すだけでなく、長く健康が続く設計を追求</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="philosophy-quote-box">
+          <div class="pq-icon"><i class="fas fa-quote-left"></i></div>
+          <blockquote class="pq-text">
+            木を見て森を見ずの治療はしない。<br>
+            1本のインプラントでも、<br>
+            その歯が全体の中でどう調和するかを<br>
+            必ず考えてから手を動かす。
+          </blockquote>
+          <div class="pq-author">キトウ歯科医院 院長</div>
+          <div class="pq-decorations">
+            <span class="pq-chip"><i class="fas fa-tooth me-1"></i>インプラント</span>
+            <span class="pq-chip"><i class="fas fa-smile me-1"></i>審美歯科</span>
+            <span class="pq-chip"><i class="fas fa-align-center me-1"></i>矯正</span>
+          </div>
         </div>
       </div>
     </div>
@@ -351,12 +511,12 @@
     </div>
     <div class="row g-4">
       {% set services = [
-        ('fas fa-tooth', '一般歯科', '虫歯の治療から予防歯科まで、お口の健康を守ります。'),
-        ('fas fa-smile', '審美歯科', 'ホワイトニング、セラミック治療で美しい笑顔を実現。'),
-        ('fas fa-child', '小児歯科', 'お子様の歯の健康を大切に育てます。定期検診もおすすめ。'),
-        ('fas fa-align-center', '矯正歯科', 'ワイヤー矯正からマウスピース矯正まで対応。'),
-        ('fas fa-user-md', 'インプラント', '失った歯を自然な形で補う最先端治療。'),
-        ('fas fa-shield-alt', '予防歯科', '定期的なクリーニングで歯周病・虫歯を予防します。'),
+        ('fas fa-user-md', 'インプラント', '低侵襲術式で、痛み・腫れを最小限に。1本から噛み合わせを考慮して設計します。'),
+        ('fas fa-smile', '審美歯科', 'セラミック・ホワイトニングで美しく機能的な笑顔を。銀歯の白い歯への交換も対応。'),
+        ('fas fa-align-center', '矯正・小児矯正', 'ワイヤー・マウスピース矯正に対応。子どもの育成矯正から成人矯正まで。'),
+        ('fas fa-infinity', '噛み合わせ治療', '顎のバランスを整え、全身の健康につながる噛み合わせを再構築します。'),
+        ('fas fa-tooth', '一般歯科', '虫歯治療から根管治療まで、丁寧な診療で大切な歯を守ります。'),
+        ('fas fa-shield-alt', '予防歯科', '定期クリーニングと指導で、虫歯・歯周病を未然に防ぎます。'),
       ] %}
       {% for icon, title, desc in services %}
       <div class="col-md-6 col-lg-4">
