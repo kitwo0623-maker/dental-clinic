@@ -794,6 +794,100 @@ html {
 }
 
 /* ============================================
+   First Visit Section（初めての方へ）
+   ============================================ */
+.first-visit-section {
+  padding: 5rem 0;
+  background: var(--cream);
+}
+
+.section-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.85;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.flow-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  height: 100%;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.flow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(26,122,122,0.1);
+}
+
+.flow-number {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  background: var(--primary-light);
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+}
+
+.flow-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin: 0 auto 1rem;
+}
+
+.flow-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.flow-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.first-visit-note {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+}
+
+.fv-note-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--dark);
+  font-weight: 500;
+}
+
+.fv-note-item i {
+  color: var(--primary);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
    Features Section（医院の特徴）
    ============================================ */
 .features-section {
