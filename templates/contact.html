@@ -46,7 +46,7 @@
                   <th class="text-center">月</th>
                   <th class="text-center">火</th>
                   <th class="text-center">水</th>
-                  <th class="text-center">木</th>
+                  <th class="text-center hours-closed">木</th>
                   <th class="text-center">金</th>
                   <th class="text-center">土</th>
                   <th class="text-center text-danger">日</th>
@@ -54,11 +54,21 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="hours-slot">9:00〜18:00</td>
+                  <td class="hours-slot">午前 9:30〜12:00</td>
                   <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-closed">—</td>
+                  <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
+                  <td class="text-center hours-closed">—</td>
+                </tr>
+                <tr>
+                  <td class="hours-slot">午後 14:00〜</td>
                   <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
                   <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
                   <td class="text-center hours-half"><i class="fas fa-adjust"></i></td>
+                  <td class="text-center hours-closed">—</td>
                   <td class="text-center hours-open"><i class="fas fa-circle"></i></td>
                   <td class="text-center hours-half"><i class="fas fa-adjust"></i></td>
                   <td class="text-center hours-closed">—</td>
@@ -67,9 +77,10 @@
             </table>
           </div>
           <ul class="hours-note-list">
-            <li><span class="hours-legend hours-open-dot"></span>月・火・水・金：9:00〜18:00</li>
-            <li><span class="hours-legend hours-half-dot"></span>木・土：9:00〜13:00（午前のみ）</li>
-            <li><span class="hours-legend hours-closed-dot"></span>日・祝：休診</li>
+            <li><span class="hours-legend hours-open-dot"></span>月・火・金：9:30〜12:00 ／ 14:00〜19:00</li>
+            <li><span class="hours-legend hours-half-dot"></span>水：9:30〜12:00 ／ 14:00〜18:00</li>
+            <li><span class="hours-legend hours-half-dot"></span>土：9:30〜12:00 ／ 14:00〜17:00</li>
+            <li><span class="hours-legend hours-closed-dot"></span>木・日・祝：休診</li>
           </ul>
         </div>
       </div>
