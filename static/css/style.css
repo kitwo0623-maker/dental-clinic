@@ -210,6 +210,13 @@ body {
   transition: background 0.2s, border-color 0.2s;
 }
 
+.hero-chip-insurance {
+  background: rgba(184,135,74,0.25);
+  border-color: rgba(184,135,74,0.55);
+  color: #fde8c0;
+  cursor: default;
+}
+
 .hero-chip:hover {
   background: rgba(255,255,255,0.22);
   border-color: rgba(255,255,255,0.5);
@@ -1486,4 +1493,75 @@ html {
   .philosophy-quote-box {
     margin-top: 1rem;
   }
+}
+
+/* ============================================
+   Insurance Banner（保険診療バナー）
+   ============================================ */
+.insurance-banner {
+  background: var(--gold-light);
+  border: 1px solid rgba(184,135,74,0.3);
+  border-radius: 12px;
+  padding: 1.25rem 1.75rem;
+}
+
+.insurance-banner-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(184,135,74,0.15);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.insurance-banner-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--dark);
+  margin-bottom: 0.2rem;
+}
+
+.insurance-banner-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.insurance-banner-btn {
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.insurance-banner-btn:hover {
+  background: #a07240;
+  color: #fff;
+}
+
+/* ============================================
+   Service Insurance Badge
+   ============================================ */
+.service-card {
+  position: relative;
+}
+
+.service-insurance-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.18rem 0.6rem;
+  border-radius: 20px;
 }

@@ -17,17 +17,17 @@
         </h1>
         <p class="hero-purpose">― 健口から健康、そして健幸へ ―</p>
         <p class="hero-desc">
-          インプラント・審美・矯正など、本質的な自由診療を提供。<br>
-          1本の歯も、お口全体のバランスを見据えて設計する——<br>
+          虫歯・予防などの保険診療から、インプラント・審美・矯正まで。<br>
+          どんな治療も、お口全体のバランスを見据えて設計する——<br>
           それが、当院の治療哲学です。
         </p>
 
         <!-- 主力治療チップ -->
         <div class="hero-treatment-chips">
+          <span class="hero-chip hero-chip-insurance"><i class="fas fa-check-circle"></i> 保険診療対応</span>
           <a href="#jiyushinryo" class="hero-chip"><i class="fas fa-tooth"></i> インプラント</a>
           <a href="#jiyushinryo" class="hero-chip"><i class="fas fa-smile"></i> 審美歯科</a>
           <a href="#jiyushinryo" class="hero-chip"><i class="fas fa-align-center"></i> 矯正・小児矯正</a>
-          <a href="#jiyushinryo" class="hero-chip"><i class="fas fa-infinity"></i> 噛み合わせ</a>
         </div>
 
         <!-- 診療時間・電話番号バナー -->
@@ -256,6 +256,22 @@
     <p class="text-center mt-4" style="font-size:0.82rem; color:var(--muted);">
       <i class="fas fa-info-circle me-1"></i>セカンドオピニオンのご相談も歓迎しております。まずはお気軽にどうぞ。
     </p>
+
+    <!-- 保険診療バナー -->
+    <div class="insurance-banner mt-4">
+      <div class="row align-items-center g-3">
+        <div class="col-auto">
+          <div class="insurance-banner-icon"><i class="fas fa-shield-alt"></i></div>
+        </div>
+        <div class="col">
+          <div class="insurance-banner-title">保険診療も対応しています</div>
+          <div class="insurance-banner-desc">虫歯治療・根管治療・歯周病治療・小児歯科・定期検診など、一般的な歯科治療は保険診療でご受診いただけます。</div>
+        </div>
+        <div class="col-auto">
+          <a href="{{ url_for('contact') }}" class="insurance-banner-btn">ご予約はこちら</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -511,16 +527,17 @@
     </div>
     <div class="row g-4">
       {% set services = [
-        ('fas fa-user-md', 'インプラント', '低侵襲術式で、痛み・腫れを最小限に。1本から噛み合わせを考慮して設計します。'),
-        ('fas fa-smile', '審美歯科', 'セラミック・ホワイトニングで美しく機能的な笑顔を。銀歯の白い歯への交換も対応。'),
-        ('fas fa-align-center', '矯正・小児矯正', 'ワイヤー・マウスピース矯正に対応。子どもの育成矯正から成人矯正まで。'),
-        ('fas fa-infinity', '噛み合わせ治療', '顎のバランスを整え、全身の健康につながる噛み合わせを再構築します。'),
-        ('fas fa-tooth', '一般歯科', '虫歯治療から根管治療まで、丁寧な診療で大切な歯を守ります。'),
-        ('fas fa-shield-alt', '予防歯科', '定期クリーニングと指導で、虫歯・歯周病を未然に防ぎます。'),
+        ('fas fa-user-md', 'インプラント', '低侵襲術式で、痛み・腫れを最小限に。1本から噛み合わせを考慮して設計します。', false),
+        ('fas fa-smile', '審美歯科', 'セラミック・ホワイトニングで美しく機能的な笑顔を。銀歯の白い歯への交換も対応。', false),
+        ('fas fa-align-center', '矯正・小児矯正', 'ワイヤー・マウスピース矯正に対応。子どもの育成矯正から成人矯正まで。', false),
+        ('fas fa-infinity', '噛み合わせ治療', '顎のバランスを整え、全身の健康につながる噛み合わせを再構築します。', false),
+        ('fas fa-tooth', '一般歯科', '虫歯治療から根管治療まで、丁寧な診療で大切な歯を守ります。', true),
+        ('fas fa-shield-alt', '予防歯科', '定期クリーニングと指導で、虫歯・歯周病を未然に防ぎます。', true),
       ] %}
-      {% for icon, title, desc in services %}
+      {% for icon, title, desc, insurance in services %}
       <div class="col-md-6 col-lg-4">
         <div class="service-card">
+          {% if insurance %}<span class="service-insurance-badge"><i class="fas fa-check-circle me-1"></i>保険診療</span>{% endif %}
           <div class="service-icon"><i class="{{ icon }}"></i></div>
           <h5 class="service-title">{{ title }}</h5>
           <p class="service-desc">{{ desc }}</p>
