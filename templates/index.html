@@ -369,8 +369,88 @@
 </section>
 
 <!-- ============================================================
-     Philosophy Section（院長のこだわり）
+     Doctors Section（ドクター紹介）
      ============================================================ -->
+<section class="doctors-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Doctors ／ 医師紹介</span>
+      <h2 class="section-title">38年の実績と、<br>最新技術が揃う医院</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+
+      <!-- 院長 -->
+      <div class="col-md-6 col-lg-5">
+        <div class="dr-card">
+          <div class="dr-card-header dr-card-director">
+            <div class="dr-card-avatar"><i class="fas fa-user-md"></i></div>
+            <div>
+              <div class="dr-card-role">院長</div>
+              <div class="dr-card-name">紀藤 政司</div>
+              <div class="dr-card-kana">きとう まさし</div>
+            </div>
+          </div>
+          <div class="dr-card-body">
+            <p class="dr-card-desc">
+              昭和61年の開業以来、38年以上にわたり地域医療を守り続けています。
+              長年通い続けてくださる患者様が多いのは、信頼の証です。
+            </p>
+            <div class="dr-card-tags">
+              <span>入れ歯・義歯</span>
+              <span>保険診療</span>
+              <span>訪問診療</span>
+            </div>
+            <div class="dr-card-creds">
+              <div><i class="fas fa-award me-1"></i>歯学博士</div>
+              <div><i class="fas fa-building me-1"></i>愛知県歯科医師会 理事</div>
+              <div><i class="fas fa-university me-1"></i>愛知学院大学歯学部 講師</div>
+            </div>
+          </div>
+          <div class="dr-card-footer">
+            <a href="{{ url_for('doctor') }}" class="dr-card-link">プロフィール詳細 <i class="fas fa-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 副院長 -->
+      <div class="col-md-6 col-lg-5">
+        <div class="dr-card dr-card-vice-main">
+          <div class="dr-card-header dr-card-vice">
+            <div class="dr-card-avatar"><i class="fas fa-user-md"></i></div>
+            <div>
+              <div class="dr-card-role">副院長</div>
+              <div class="dr-card-name">紀藤 一将</div>
+              <div class="dr-card-kana">きとう かずまさ</div>
+            </div>
+          </div>
+          <div class="dr-card-body">
+            <p class="dr-card-desc">
+              10年以上の研鑽を経て故郷犬山へ。インプラント・審美・矯正など
+              自由診療の最新技術で、患者様の笑顔を守ります。
+            </p>
+            <div class="dr-card-tags dr-card-tags-primary">
+              <span>インプラント</span>
+              <span>審美歯科</span>
+              <span>矯正・小児矯正</span>
+            </div>
+            <div class="dr-card-creds">
+              <div><i class="fas fa-award me-1"></i>日本口腔インプラント学会 JSOI専修医</div>
+              <div><i class="fas fa-award me-1"></i>日本顎咬合学会 認定医</div>
+              <div><i class="fas fa-users me-1"></i>NOAH（名古屋咬合臨床研究会）理事</div>
+            </div>
+          </div>
+          <div class="dr-card-footer">
+            <a href="{{ url_for('doctor') }}#vice" class="dr-card-link dr-card-link-primary">自由診療のご相談 <i class="fas fa-arrow-right ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <section class="philosophy-section">
   <div class="container">
     <div class="row align-items-center g-5">
