@@ -221,6 +221,11 @@ def contact():
     return render_template('contact.html')
 
 
+@app.route('/doctor')
+def doctor():
+    return render_template('doctor.html')
+
+
 # ==================== Admin Dashboard ====================
 
 @app.route('/admin')
