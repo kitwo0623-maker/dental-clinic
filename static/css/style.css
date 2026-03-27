@@ -1734,6 +1734,23 @@ html {
 .dr-avatar-director { background: linear-gradient(135deg, #2d3436, #636e72); }
 .dr-avatar-vice     { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
 
+.dr-avatar-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+  background: #fff;
+  border: 2px solid #e9ecef;
+}
+.dr-avatar-photo .dr-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
 .dr-role {
   font-size: 0.72rem;
   font-weight: 700;
