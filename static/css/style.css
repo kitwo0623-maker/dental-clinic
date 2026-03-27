@@ -2012,3 +2012,14 @@ html {
   background: var(--gold-light);
   color: var(--gold);
 }
+
+/* 趣味タグ */
+.dr-hobbies { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+.dr-hobby-item {
+  background: #fff;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: 20px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.82rem;
+}
