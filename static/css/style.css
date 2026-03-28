@@ -2444,3 +2444,16 @@ a.news-item:hover { background: var(--cream); }
   .web-booking-banner { flex-direction: column; text-align: center; padding: 1.25rem; }
   .web-booking-btn { width: 100%; text-align: center; }
 }
+
+/* ft-card リンク対応 */
+a.ft-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+a.ft-card-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+  color: inherit;
+}
