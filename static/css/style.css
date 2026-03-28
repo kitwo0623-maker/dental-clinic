@@ -2077,3 +2077,161 @@ html {
   .google-review-box { flex-direction: column; text-align: center; padding: 1.5rem; }
   .gr-stars { justify-content: center; }
 }
+
+/* ============================================================
+   インプラント治療ページ
+   ============================================================ */
+
+/* Hero */
+.implant-hero {
+  background: linear-gradient(135deg, #1a5c38 0%, var(--primary) 60%, #a0b86e 100%);
+  padding: 4rem 0 3rem;
+  color: #fff;
+}
+.implant-breadcrumb { font-size: 0.78rem; margin-bottom: 1.5rem; opacity: 0.85; }
+.implant-breadcrumb a { color: #fff; text-decoration: none; }
+.implant-breadcrumb a:hover { text-decoration: underline; }
+.implant-hero-content { text-align: center; }
+.implant-hero-icon { font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.9; }
+.implant-hero-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; font-family: var(--font-serif); margin-bottom: 0.5rem; }
+.implant-hero-sub { font-size: 1.05rem; opacity: 0.92; margin-bottom: 1.5rem; }
+.implant-hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+.ih-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); border-radius: 20px; padding: 0.35rem 1rem; font-size: 0.82rem; font-weight: 600; }
+
+/* Philosophy box */
+.implant-philosophy-box { background: #1e3a2a; padding: 2.5rem 0; color: #fff; }
+.iph-inner { display: flex; gap: 1.5rem; align-items: flex-start; max-width: 800px; margin: 0 auto; }
+.iph-icon-wrap { width: 56px; height: 56px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.iph-title { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem; font-weight: 700; text-transform: uppercase; }
+.iph-text p { color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.iph-sig { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+
+/* Intro */
+.implant-intro-section { padding: 4rem 0; background: #fff; }
+.implant-section-h2 { font-size: 1.5rem; font-weight: 800; font-family: var(--font-serif); color: var(--dark); margin-bottom: 0.75rem; }
+.implant-intro-text { font-size: 0.97rem; color: #555; line-height: 1.85; max-width: 800px; }
+.implant-merit-card { background: var(--cream); border-radius: 12px; padding: 1.5rem; height: 100%; }
+.implant-merit-icon { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.75rem; display: block; }
+.implant-merit-title { font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+.implant-merit-desc { font-size: 0.85rem; color: #666; line-height: 1.7; margin: 0; }
+
+/* Numbered sections */
+.implant-numbered-section { padding: 4.5rem 0; }
+.implant-numbered-section:nth-child(even) { background: var(--cream); }
+.implant-num-badge { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; background: var(--accent); color: #fff; border-radius: 50%; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; }
+.implant-num-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; font-family: var(--font-serif); color: var(--dark); margin-bottom: 0.4rem; }
+.implant-num-sub { color: #666; font-size: 0.9rem; }
+
+/* Credential cards */
+.implant-cred-card { background: #fff; border-radius: 14px; padding: 1.75rem 1.5rem; height: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.07); position: relative; }
+.implant-cred-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; margin-bottom: 0.75rem; }
+.implant-cred-blue { background: #4285F4; }
+.implant-cred-red  { background: #EA4335; }
+.implant-cred-green{ background: #34A853; }
+.implant-cred-num { position: absolute; top: 1rem; right: 1.25rem; font-size: 1rem; font-weight: 800; color: var(--accent); opacity: 0.6; }
+.implant-cred-org { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
+.implant-cred-rank { font-size: 1rem; font-weight: 800; color: var(--accent); margin-bottom: 0.75rem; }
+.implant-cred-desc { font-size: 0.82rem; color: #666; line-height: 1.7; margin: 0; }
+
+/* Fee section */
+.implant-fee-section { background: #1e3a2a !important; color: #fff; }
+.implant-fee-section .implant-num-title { color: #fff; }
+.implant-fee-section .implant-num-sub { color: rgba(255,255,255,0.75); }
+.implant-fee-alert { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem; line-height: 1.7; margin-top: 1.5rem; }
+.implant-fee-alert i { color: #FBBC05; flex-shrink: 0; margin-top: 0.1rem; }
+.implant-price-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 2rem 1.5rem; text-align: center; height: 100%; }
+.implant-price-icon { width: 56px; height: 56px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff; margin: 0 auto 1rem; }
+.implant-price-icon-gray { background: #6c757d; }
+.implant-price-label { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-bottom: 0.25rem; }
+.implant-price-num { font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1; }
+.implant-price-tax { font-size: 0.75rem; color: rgba(255,255,255,0.65); margin-bottom: 0.5rem; }
+.implant-price-tag { display: inline-block; background: var(--primary); color: #fff; border-radius: 20px; padding: 0.25rem 0.9rem; font-size: 0.78rem; font-weight: 600; margin-bottom: 1rem; }
+.implant-price-tag-blue { background: #4285F4; }
+.implant-price-note-box { background: rgba(255,255,255,0.12); border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.9); }
+.implant-pct { font-size: 1.4rem; font-weight: 900; color: var(--accent); }
+.implant-bone-avoid { background: rgba(52,168,83,0.3); border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #90ee90; margin: 0.5rem 0; }
+.implant-bone-note { font-size: 0.8rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0; }
+.implant-included-box { background: rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem 2rem; }
+.implant-included-title { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.9); text-align: center; margin-bottom: 1rem; }
+.implant-included-item { display: flex; align-items: center; font-size: 0.85rem; color: rgba(255,255,255,0.88); padding: 0.35rem 0; }
+.implant-included-item i { color: #34A853; }
+.implant-tax-note { background: rgba(251,188,5,0.15); border: 1px solid rgba(251,188,5,0.3); border-radius: 8px; padding: 0.75rem 1.25rem; font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 0.5rem; }
+.implant-tax-note i { color: #FBBC05; flex-shrink: 0; }
+
+/* Safety section */
+.implant-safety-card { background: #fff; border-radius: 14px; padding: 2rem 1.5rem; text-align: center; height: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+.implant-safety-icon { width: 64px; height: 64px; background: #7b68ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; margin: 0 auto 1rem; }
+.implant-safety-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; }
+.implant-safety-desc { font-size: 0.85rem; color: #666; line-height: 1.75; margin: 0; }
+
+/* Scanner box */
+.implant-scanner-box { background: var(--cream); border-radius: 16px; padding: 2rem; }
+.implant-scanner-title { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+.implant-scanner-desc { font-size: 0.9rem; color: #666; margin-bottom: 0; }
+.implant-vs-card { border-radius: 12px; padding: 1.5rem; text-align: center; height: 100%; }
+.implant-vs-old { background: #fff0f0; border: 2px solid #f5c6c6; }
+.implant-vs-new { background: #f0fff4; border: 2px solid #c6f5d0; }
+.implant-vs-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #fff; margin: 0 auto 0.75rem; }
+.implant-vs-icon-bad { background: #EA4335; }
+.implant-vs-icon-good { background: #34A853; }
+.implant-vs-label { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.75rem; }
+.implant-vs-old .implant-vs-label { color: #c0392b; }
+.implant-vs-new .implant-vs-label { color: #27ae60; }
+.implant-vs-list { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; }
+.implant-vs-old .implant-vs-list { color: #e74c3c; }
+.implant-vs-new .implant-vs-list { color: #27ae60; }
+.implant-vs-list li { padding: 0.25rem 0; }
+.implant-vs-badge { width: 44px; height: 44px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 0.85rem; }
+
+/* Guarantee */
+.implant-guarantee-box { background: #fff7e0; border: 2px solid var(--accent); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+.implant-guarantee-icon { width: 48px; height: 48px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; flex-shrink: 0; }
+.implant-guarantee-title { font-weight: 700; font-size: 1rem; color: #7a5800; margin-bottom: 0.25rem; }
+.implant-guarantee-desc { font-size: 0.85rem; color: #7a5800; margin: 0; line-height: 1.65; }
+
+/* Flow section */
+.implant-flow-section { padding: 4.5rem 0; background: #fff; }
+.implant-flow-list { display: flex; flex-direction: column; gap: 0; }
+.implant-flow-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem 0; border-bottom: 1px solid #f0f0f0; }
+.implant-flow-item:last-child { border-bottom: none; }
+.implant-flow-num { width: 36px; height: 36px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+.implant-flow-title { font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; font-size: 0.97rem; }
+.implant-flow-content p { font-size: 0.85rem; color: #666; margin: 0; line-height: 1.7; }
+
+/* Cases & aftercare */
+.implant-case-list, .implant-aftercare-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.implant-case-item, .implant-aftercare-item { display: flex; align-items: center; padding: 0.7rem 1rem; background: var(--cream); border-radius: 8px; font-size: 0.88rem; color: var(--dark); }
+.implant-case-item i { color: var(--primary); }
+.implant-aftercare-item i { color: var(--primary); }
+
+/* Caution section */
+.implant-caution-section { padding: 4rem 0; background: #f8f4f0; }
+.implant-caution-title { font-size: 1.35rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
+.implant-caution-lead { font-size: 0.9rem; color: #666; margin-bottom: 0; }
+.implant-caution-card { background: #fff; border-radius: 14px; padding: 1.75rem 1.5rem; height: 100%; border-top: 4px solid #ccc; }
+.implant-caution-insurance { border-top-color: #EA4335; }
+.implant-caution-period     { border-top-color: #FBBC05; }
+.implant-caution-surgery    { border-top-color: #9b59b6; }
+.implant-caution-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+.implant-caution-insurance .implant-caution-icon { color: #EA4335; }
+.implant-caution-period .implant-caution-icon     { color: #f39c12; }
+.implant-caution-surgery .implant-caution-icon    { color: #9b59b6; }
+.implant-caution-card-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; }
+.implant-caution-card p { font-size: 0.85rem; color: #666; line-height: 1.75; margin: 0; }
+.implant-caution-support { background: #e8f4fd; border: 1px solid #b8daf5; border-radius: 10px; padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem; color: #1a5276; line-height: 1.7; }
+.implant-caution-support i { color: #2980b9; flex-shrink: 0; margin-top: 0.1rem; }
+
+/* FAQ */
+.implant-faq-section { padding: 4rem 0; background: #fff; }
+.implant-faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+.implant-faq-item { border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; }
+.implant-faq-q { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: var(--dark); list-style: none; background: #fafafa; transition: background 0.2s; }
+.implant-faq-q::-webkit-details-marker { display: none; }
+.implant-faq-q::before { content: "Q"; width: 28px; height: 28px; background: var(--primary); color: #fff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; flex-shrink: 0; }
+.implant-faq-item[open] .implant-faq-q { background: #e8f5ee; }
+.implant-faq-a { padding: 1rem 1.25rem 1rem 3.5rem; font-size: 0.88rem; color: #555; line-height: 1.8; border-top: 1px solid #e8e8e8; }
+
+@media (max-width: 767px) {
+  .iph-inner { flex-direction: column; }
+  .implant-vs-badge { margin: 0.5rem auto; }
+}
