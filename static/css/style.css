@@ -2405,3 +2405,42 @@ a.news-item:hover { background: var(--cream); }
   .implant-hero-title { font-size: 1.6rem !important; }
   .implant-price-main { font-size: 1.8rem !important; }
 }
+
+/* ============================================================
+   WEB予約バナー（contact.html）
+   ============================================================ */
+.web-booking-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 14px;
+  padding: 1.25rem 1.75rem;
+}
+.web-booking-icon {
+  font-size: 2rem;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+.web-booking-body { flex: 1; }
+.web-booking-label { font-size: 1rem; font-weight: 700; margin-bottom: 0.15rem; }
+.web-booking-note  { font-size: 0.82rem; opacity: 0.8; }
+.web-booking-btn {
+  flex-shrink: 0;
+  background: #fff;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.web-booking-btn:hover { opacity: 0.9; color: var(--primary); }
+
+@media (max-width: 575px) {
+  .web-booking-banner { flex-direction: column; text-align: center; padding: 1.25rem; }
+  .web-booking-btn { width: 100%; text-align: center; }
+}
