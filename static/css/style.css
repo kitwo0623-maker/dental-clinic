@@ -2249,3 +2249,159 @@ html {
   .iph-inner { flex-direction: column; }
   .implant-vs-badge { margin: 0.5rem auto; }
 }
+
+/* ============================================================
+   スクロールアニメーション
+   ============================================================ */
+[data-fade] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-fade].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   お知らせセクション
+   ============================================================ */
+.news-section {
+  padding: 3rem 0 2.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.news-list {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.news-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--dark);
+  transition: background 0.15s;
+}
+.news-item:last-child { border-bottom: none; }
+a.news-item:hover { background: var(--cream); }
+.news-item-nolink { cursor: default; }
+.news-date {
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+  font-feature-settings: "tnum";
+  min-width: 4.5rem;
+}
+.news-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.18rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.news-badge-new  { background: var(--primary); color: #fff; }
+.news-badge-info { background: var(--primary-light); color: var(--primary); }
+.news-title {
+  font-size: 0.9rem;
+  flex: 1;
+  line-height: 1.5;
+}
+.news-arrow { color: var(--muted); font-size: 0.75rem; margin-left: auto; flex-shrink: 0; }
+
+/* ============================================================
+   モバイル対応強化
+   ============================================================ */
+@media (max-width: 991px) {
+  /* ナビ */
+  .navbar-collapse {
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+    margin-top: 0.5rem;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.65rem 0.5rem !important;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .navbar-nav .nav-item:last-child .nav-link { border-bottom: none; }
+  .nav-link-cta {
+    margin: 0.5rem 0 0 !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  /* セクション余白 */
+  section { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+  /* セクションタイトル */
+  .section-title { font-size: 1.45rem !important; }
+  .section-sub   { font-size: 0.85rem !important; }
+
+  /* ヒーロー */
+  .hero-section { min-height: auto; padding: 2.5rem 0 2rem; }
+  .hero-headline { font-size: 1.7rem !important; }
+  .hero-sub      { font-size: 0.88rem !important; }
+  .hero-visual-box { margin-top: 2rem; }
+  .btn-hero-primary,
+  .btn-hero-outline {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+  .hero-cta-group { flex-direction: column !important; gap: 0.75rem !important; }
+  .hero-info-bar  { gap: 0.75rem; }
+  .hero-info-item { font-size: 0.78rem; }
+
+  /* お知らせ */
+  .news-item { flex-wrap: wrap; gap: 0.4rem; }
+  .news-title { font-size: 0.85rem; width: 100%; }
+  .news-arrow { display: none; }
+
+  /* 初めての方へ */
+  .flow-card { padding: 1.25rem 1rem; }
+
+  /* 自由診療カード */
+  .ft-card { margin-bottom: 0; }
+
+  /* ドクターカード */
+  .dr-card { padding: 1.5rem 1.25rem; }
+  .dr-card-header { padding: 1.25rem; }
+
+  /* 診療時間テーブル */
+  .hours-table { font-size: 0.78rem; }
+  .hours-table th, .hours-table td { padding: 0.5rem 0.4rem; }
+
+  /* Google口コミ */
+  .google-review-box { padding: 1.25rem; gap: 1rem; }
+  .gr-score { font-size: 1.2rem; }
+
+  /* CTA */
+  .cta-banner { padding: 3rem 1.25rem; }
+  .cta-title  { font-size: 1.6rem !important; }
+  .cta-desc   { font-size: 0.88rem; }
+
+  /* フッター */
+  .site-footer { padding: 2.5rem 0 1.5rem; }
+  .footer-brand { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  /* さらに小さい端末 */
+  .section-title   { font-size: 1.25rem !important; }
+  .hero-headline   { font-size: 1.45rem !important; }
+  .hero-treatment-chips { gap: 0.4rem; }
+  .hero-chip { font-size: 0.72rem; padding: 0.3rem 0.7rem; }
+
+  /* カードグリッド */
+  .col-6 { width: 100% !important; }
+
+  /* インプラントページ */
+  .implant-hero-title { font-size: 1.6rem !important; }
+  .implant-price-main { font-size: 1.8rem !important; }
+}
