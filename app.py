@@ -158,6 +158,16 @@ def sitemap_xml():
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>{SITE_URL}/implant</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>{SITE_URL}/doctor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
     return Response(content, mimetype='application/xml')
 
@@ -224,6 +234,11 @@ def contact():
 @app.route('/doctor')
 def doctor():
     return render_template('doctor.html')
+
+
+@app.route('/implant')
+def implant():
+    return render_template('implant.html')
 
 
 # ==================== Admin Dashboard ====================
