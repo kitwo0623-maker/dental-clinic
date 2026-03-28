@@ -101,11 +101,44 @@
 </section>
 
 <!-- ============================================================
+     お知らせ
+     ============================================================ -->
+<section class="news-section">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-4" data-fade="up">
+      <div>
+        <span class="section-label">News ／ お知らせ</span>
+        <h2 class="section-title mb-0">最新情報</h2>
+      </div>
+    </div>
+    <div class="news-list" data-fade="up" data-fade-delay="100">
+      <a class="news-item" href="{{ url_for('implant') }}">
+        <span class="news-date">2026.03</span>
+        <span class="news-badge news-badge-new">新着</span>
+        <span class="news-title">インプラント治療の専門ページを開設しました</span>
+        <i class="fas fa-chevron-right news-arrow"></i>
+      </a>
+      <a class="news-item" href="{{ url_for('doctor') }}">
+        <span class="news-date">2026.01</span>
+        <span class="news-badge news-badge-info">お知らせ</span>
+        <span class="news-title">副院長・紀藤一将のプロフィールページを公開しました</span>
+        <i class="fas fa-chevron-right news-arrow"></i>
+      </a>
+      <div class="news-item news-item-nolink">
+        <span class="news-date">2025.12</span>
+        <span class="news-badge news-badge-info">お知らせ</span>
+        <span class="news-title">年末年始（12/29〜1/3）は休診いたします。ご迷惑をおかけします。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      First Visit Section（初めての方へ）
      ============================================================ -->
 <section class="first-visit-section">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">First Visit ／ 初めての方へ</span>
       <h2 class="section-title">はじめての方も、<br>安心してご来院ください</h2>
       <div class="section-divider"></div>
@@ -114,7 +147,7 @@
     </div>
     <div class="row g-4 align-items-stretch">
       <div class="col-md-3 col-6">
-        <div class="flow-card">
+        <div class="flow-card" data-fade="up">
           <div class="flow-number">01</div>
           <div class="flow-icon"><i class="fas fa-phone-alt"></i></div>
           <div class="flow-title">ご予約</div>
@@ -122,7 +155,7 @@
         </div>
       </div>
       <div class="col-md-3 col-6">
-        <div class="flow-card">
+        <div class="flow-card" data-fade="up">
           <div class="flow-number">02</div>
           <div class="flow-icon"><i class="fas fa-clipboard-list"></i></div>
           <div class="flow-title">問診票の記入</div>
@@ -130,7 +163,7 @@
         </div>
       </div>
       <div class="col-md-3 col-6">
-        <div class="flow-card">
+        <div class="flow-card" data-fade="up">
           <div class="flow-number">03</div>
           <div class="flow-icon"><i class="fas fa-search"></i></div>
           <div class="flow-title">検査・カウンセリング</div>
@@ -138,7 +171,7 @@
         </div>
       </div>
       <div class="col-md-3 col-6">
-        <div class="flow-card">
+        <div class="flow-card" data-fade="up">
           <div class="flow-number">04</div>
           <div class="flow-icon"><i class="fas fa-tooth"></i></div>
           <div class="flow-title">治療開始</div>
@@ -177,7 +210,7 @@
      ============================================================ -->
 <section class="featured-treatments-section" id="jiyushinryo">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Premium Treatment ／ 自由診療</span>
       <h2 class="section-title">お悩みに合わせた、<br>質の高い自由診療</h2>
       <div class="section-divider"></div>
@@ -280,14 +313,14 @@
      ============================================================ -->
 <section class="features-section">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Features ／ 医院の特徴</span>
       <h2 class="section-title">キトウ歯科医院が<br>選ばれる理由</h2>
       <div class="section-divider"></div>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-green">
             <i class="fas fa-hand-holding-heart"></i>
           </div>
@@ -300,7 +333,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-blue">
             <i class="fas fa-microscope"></i>
           </div>
@@ -313,7 +346,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-teal">
             <i class="fas fa-comments"></i>
           </div>
@@ -326,7 +359,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-green">
             <i class="fas fa-child"></i>
           </div>
@@ -339,7 +372,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-blue">
             <i class="fas fa-parking"></i>
           </div>
@@ -352,7 +385,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-teal">
             <i class="fas fa-shield-alt"></i>
           </div>
@@ -373,7 +406,7 @@
      ============================================================ -->
 <section class="doctors-section">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Doctors ／ 医師紹介</span>
       <h2 class="section-title">38年の実績と、<br>最新技術が揃う医院</h2>
       <div class="section-divider"></div>
@@ -382,7 +415,7 @@
 
       <!-- 院長 -->
       <div class="col-md-6 col-lg-5">
-        <div class="dr-card">
+        <div class="dr-card" data-fade="up">
           <div class="dr-card-header dr-card-director">
             <div class="dr-card-avatar"><i class="fas fa-user-md"></i></div>
             <div>
@@ -530,7 +563,7 @@
   <!-- Core Values -->
   <div class="values-section">
     <div class="container">
-      <div class="text-center mb-5">
+      <div class="text-center mb-5" data-fade="up">
         <span class="section-label">Core Values ／ コアバリューと理念</span>
         <h2 class="section-title">私たちが大切にしていること</h2>
         <div class="section-divider"></div>
@@ -562,7 +595,7 @@
   <!-- Mission -->
   <div class="mission-section">
     <div class="container">
-      <div class="text-center mb-5">
+      <div class="text-center mb-5" data-fade="up">
         <span class="section-label">Mission ／ ミッション</span>
         <h2 class="section-title">私たちの大胆な目標</h2>
         <div class="section-divider"></div>
@@ -600,7 +633,7 @@
      ============================================================ -->
 <section class="services-section">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Services ／ 診療内容</span>
       <h2 class="section-title">あなたのお口の健康を、<br>トータルサポート</h2>
       <div class="section-divider"></div>
@@ -638,7 +671,7 @@
      ============================================================ -->
 <section class="info-section" id="access">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Access ／ アクセス</span>
       <h2 class="section-title">診療時間・アクセス</h2>
       <div class="section-divider"></div>
