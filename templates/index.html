@@ -242,7 +242,7 @@
 
       <!-- 審美歯科 -->
       <div class="col-lg-4">
-        <div class="ft-card ft-card-featured">
+        <a href="{{ url_for('aesthetic') }}" class="ft-card ft-card-featured ft-card-link">
           <div class="ft-featured-badge">人気</div>
           <div class="ft-card-top ft-aesthetic">
             <div class="ft-icon"><i class="fas fa-smile-beam"></i></div>
@@ -256,11 +256,11 @@
               <li><i class="fas fa-check-circle"></i>見た目だけでなく「機能美」を追求</li>
               <li><i class="fas fa-check-circle"></i>銀歯の白い歯への交換も対応</li>
             </ul>
-            <a href="{{ url_for('contact') }}" class="ft-cta-btn">
-              <i class="fas fa-comment-medical me-1"></i>無料相談はこちら
-            </a>
+            <span class="ft-cta-btn">
+              <i class="fas fa-arrow-right me-1"></i>詳しく見る
+            </span>
           </div>
-        </div>
+        </a>
       </div>
 
       <!-- 矯正・噛み合わせ -->
