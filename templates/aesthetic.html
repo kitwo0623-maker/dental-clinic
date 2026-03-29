@@ -1,0 +1,500 @@
+{% extends "base.html" %}
+{% block title %}審美歯科・セラミック治療 | 犬山市キトウ歯科医院{% endblock %}
+{% block description %}犬山市キトウ歯科医院の審美歯科・セラミック治療。自然な白さと透明感のセラミッククラウン・ジルコニア・ラミネートベニア・ホワイトニングに対応。銀歯の白い歯への交換も。TEL: 0568-62-2580{% endblock %}
+{% block canonical %}https://dental-clinic-wpg6.onrender.com/aesthetic{% endblock %}
+
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "セラミック治療は保険が使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "セラミック・ジルコニア・ラミネートベニアは自費診療（保険適用外）となります。ただし、保険適用の白い歯（CAD/CAMクラウン）が適用できる場合もありますので、診査の上ご案内いたします。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ホワイトニングで歯が白くなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ホワイトニングは天然歯に含まれる色素を分解し、歯を白くする効果があります。ただし被せ物・詰め物・差し歯には効果がありません。効果の程度には個人差があり、生活習慣によっては後戻りすることもあります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "銀歯を白くするにはどうすればいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "既存の銀歯をセラミック・ジルコニア・レジン系素材に交換することで、自然な白い歯にすることができます。素材の特性や費用について診査・ご説明の上、最適な治療法をご提案いたします。"
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="ae-hero">
+  <div class="container">
+    <nav class="ae-breadcrumb" aria-label="breadcrumb">
+      <a href="{{ url_for('index') }}">ホーム</a>
+      <i class="fas fa-chevron-right mx-2" style="font-size:0.7rem;"></i>
+      <span>審美歯科・セラミック</span>
+    </nav>
+    <div class="ae-hero-content">
+      <div class="ae-hero-icon"><i class="fas fa-smile-beam"></i></div>
+      <h1 class="ae-hero-title">審美歯科・セラミック治療</h1>
+      <p class="ae-hero-sub">自然な美しさと、正しく噛める機能美を。</p>
+      <div class="ae-hero-badges">
+        <span class="ae-badge"><i class="fas fa-check-circle me-1"></i>自然な色調・透明感</span>
+        <span class="ae-badge"><i class="fas fa-check-circle me-1"></i>銀歯の白い歯への交換</span>
+        <span class="ae-badge"><i class="fas fa-check-circle me-1"></i>ホワイトニング対応</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 副院長コメント -->
+<section class="ae-philosophy-box">
+  <div class="container">
+    <div class="ae-iph-inner">
+      <div class="ae-iph-icon-wrap"><i class="fas fa-user-md"></i></div>
+      <div class="ae-iph-text">
+        <div class="ae-iph-title">審美歯科への考え</div>
+        <p>「美しさ」と「機能」は切り離せません。見た目が整うことで自信が生まれ、正しく噛めることで健康が守られます。セラミックは金属を使わないため身体にやさしく、天然歯に近い透明感・色調を再現できます。患者さまのご要望を丁寧に聞き、長く使える審美治療をご提案します。</p>
+        <div class="ae-iph-sig">副院長 紀藤 一将（顎咬合学会認定医）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 治療メニュー一覧 -->
+<section class="ae-menu-section" id="menu">
+  <div class="container">
+    <h2 class="ae-section-h2">治療メニュー</h2>
+    <p class="ae-section-sub">お口の状態・ご希望・ご予算に合わせて最適な素材をご提案します</p>
+
+    <!-- セラミッククラウン -->
+    <div class="ae-menu-card" id="ceramic">
+      <div class="ae-menu-header ae-color-pearl">
+        <div class="ae-menu-num">01</div>
+        <div class="ae-menu-icon-wrap"><i class="fas fa-circle"></i></div>
+        <div>
+          <div class="ae-menu-name">セラミッククラウン（e.max）</div>
+          <div class="ae-menu-tag">自然な透明感・色調</div>
+        </div>
+        <div class="ae-menu-price-badge">15万円〜<small>（税抜）</small></div>
+      </div>
+      <div class="ae-menu-body">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <p>オールセラミック（e.max）は金属をまったく使用しない被せ物で、天然歯のような透明感と自然な白さを実現します。前歯など審美性が求められる部位に適しており、金属アレルギーの心配もありません。</p>
+            <ul class="ae-merit-list">
+              <li><i class="fas fa-check-circle"></i>天然歯に近い透明感・色調</li>
+              <li><i class="fas fa-check-circle"></i>金属不使用・アレルギー対応</li>
+              <li><i class="fas fa-check-circle"></i>歯肉が黒くならない</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div class="ae-spec-box">
+              <div class="ae-spec-row"><span class="ae-spec-label">素材</span><span>セラミック（e.max / ガラス系）</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">適応部位</span><span>前歯・小臼歯（審美性重視）</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">特長</span><span>透明感・色調の再現性が高い</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">費用</span><span>15万円〜（税抜）</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ジルコニアクラウン -->
+    <div class="ae-menu-card" id="zirconia">
+      <div class="ae-menu-header ae-color-zirconia">
+        <div class="ae-menu-num">02</div>
+        <div class="ae-menu-icon-wrap"><i class="fas fa-gem"></i></div>
+        <div>
+          <div class="ae-menu-name">ジルコニアクラウン</div>
+          <div class="ae-menu-tag">強度と審美性を両立</div>
+        </div>
+        <div class="ae-menu-price-badge">12万円〜<small>（税抜）</small></div>
+      </div>
+      <div class="ae-menu-body">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <p>ジルコニアは非常に高い強度を持つセラミックの一種で、奥歯など噛む力が強くかかる部位にも適しています。白色系素材のため審美性も高く、金属の代替として幅広く使用されています。</p>
+            <ul class="ae-merit-list">
+              <li><i class="fas fa-check-circle"></i>高強度で奥歯にも使用可能</li>
+              <li><i class="fas fa-check-circle"></i>金属不使用・アレルギー対応</li>
+              <li><i class="fas fa-check-circle"></i>変色・腐食しない</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div class="ae-spec-box">
+              <div class="ae-spec-row"><span class="ae-spec-label">素材</span><span>ジルコニア（酸化ジルコニウム）</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">適応部位</span><span>前歯・奥歯（強度が必要な部位）</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">特長</span><span>強度が高く長期安定性に優れる</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">費用</span><span>12万円〜（税抜）</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ラミネートベニア -->
+    <div class="ae-menu-card" id="veneer">
+      <div class="ae-menu-header ae-color-veneer">
+        <div class="ae-menu-num">03</div>
+        <div class="ae-menu-icon-wrap"><i class="fas fa-leaf"></i></div>
+        <div>
+          <div class="ae-menu-name">ラミネートベニア</div>
+          <div class="ae-menu-tag">歯を削る量を最小限に</div>
+        </div>
+        <div class="ae-menu-price-badge">10万円〜<small>（税抜）</small></div>
+      </div>
+      <div class="ae-menu-body">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <p>ラミネートベニアは歯の表面だけを薄く削り、薄いセラミックのシェル（貝殻状）を貼り付けることで歯の色・形・大きさを改善する治療です。歯を大きく削らずに審美改善ができます。</p>
+            <ul class="ae-merit-list">
+              <li><i class="fas fa-check-circle"></i>歯を削る量が少ない</li>
+              <li><i class="fas fa-check-circle"></i>色・形・すき間を改善</li>
+              <li><i class="fas fa-check-circle"></i>前歯の審美改善に効果的</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div class="ae-spec-box">
+              <div class="ae-spec-row"><span class="ae-spec-label">素材</span><span>セラミックシェル</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">適応部位</span><span>前歯（色・形の改善）</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">特長</span><span>歯の切削量が少なく歯に優しい</span></div>
+              <div class="ae-spec-row"><span class="ae-spec-label">費用</span><span>10万円〜（税抜）</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ホワイトニング -->
+    <div class="ae-menu-card" id="whitening">
+      <div class="ae-menu-header ae-color-whitening">
+        <div class="ae-menu-num">04</div>
+        <div class="ae-menu-icon-wrap"><i class="fas fa-sun"></i></div>
+        <div>
+          <div class="ae-menu-name">ホワイトニング</div>
+          <div class="ae-menu-tag">歯を削らずに白くする</div>
+        </div>
+        <div class="ae-menu-price-badge">2万円〜<small>（税抜）</small></div>
+      </div>
+      <div class="ae-menu-body">
+        <p>ホワイトニング剤（過酸化水素・過酸化尿素）を使い、歯を削らずに白くする方法です。歯科医院で行う「オフィスホワイトニング」と、自宅で行う「ホームホワイトニング」があります。</p>
+        <div class="row g-3 mt-1">
+          <div class="col-md-4">
+            <div class="ae-wh-card ae-wh-office">
+              <div class="ae-wh-icon"><i class="fas fa-clinic-medical"></i></div>
+              <div class="ae-wh-name">オフィスホワイトニング</div>
+              <p class="ae-wh-desc">歯科医院でホワイトニング剤を使用。1回の施術で効果を実感できます。</p>
+              <div class="ae-wh-price">2万円〜<small>（税抜）</small></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ae-wh-card ae-wh-home">
+              <div class="ae-wh-icon"><i class="fas fa-home"></i></div>
+              <div class="ae-wh-name">ホームホワイトニング</div>
+              <p class="ae-wh-desc">専用のマウスピースと薬剤を使い自宅でゆっくりと白くします。</p>
+              <div class="ae-wh-price">3万円〜<small>（税抜）</small></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ae-wh-card ae-wh-dual">
+              <div class="ae-wh-icon"><i class="fas fa-star"></i></div>
+              <div class="ae-wh-name">デュアルホワイトニング</div>
+              <p class="ae-wh-desc">オフィス＋ホームを組み合わせ、より高い白さと持続性を実現します。</p>
+              <div class="ae-wh-price">4.5万円〜<small>（税抜）</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="ae-wh-note mt-3">
+          <i class="fas fa-info-circle me-2"></i>
+          ホワイトニングは天然歯のみに効果があります。被せ物・詰め物・差し歯には効きません。効果や後戻りには個人差があります。
+        </div>
+      </div>
+    </div>
+
+    <!-- 銀歯交換 -->
+    <div class="ae-menu-card" id="silver">
+      <div class="ae-menu-header ae-color-silver">
+        <div class="ae-menu-num">05</div>
+        <div class="ae-menu-icon-wrap"><i class="fas fa-exchange-alt"></i></div>
+        <div>
+          <div class="ae-menu-name">銀歯の白い歯への交換</div>
+          <div class="ae-menu-tag">気になる銀歯をセラミックに</div>
+        </div>
+        <div class="ae-menu-price-badge">3万円〜<small>（税抜）</small></div>
+      </div>
+      <div class="ae-menu-body">
+        <div class="row g-4">
+          <div class="col-md-7">
+            <p>保険診療の銀歯（金属製の被せ物・詰め物）を、白いセラミック素材に交換できます。歯の状態・大きさ・部位によって最適な素材が変わりますので、診査の上ご提案します。</p>
+            <div class="ae-silver-options mt-3">
+              <div class="ae-silver-option">
+                <span class="ae-silver-label">小さな詰め物</span>
+                <span class="ae-silver-material">コンポジットレジン（保険適用の場合あり）</span>
+              </div>
+              <div class="ae-silver-option">
+                <span class="ae-silver-label">中程度の被せ物</span>
+                <span class="ae-silver-material">CAD/CAMクラウン（保険適用の場合あり）</span>
+              </div>
+              <div class="ae-silver-option">
+                <span class="ae-silver-label">審美性重視</span>
+                <span class="ae-silver-material">ジルコニア・セラミック（自費）</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="ae-silver-alert">
+              <i class="fas fa-lightbulb me-2"></i>
+              <div>
+                <strong>保険適用の白い歯もあります</strong><br>
+                条件を満たす場合はCAD/CAMクラウンが保険適用となります。まずはご相談ください。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金まとめ -->
+<section class="ae-fee-section">
+  <div class="container">
+    <h2 class="ae-section-h2">料金一覧</h2>
+    <p class="ae-section-sub">自費診療費用の目安です。詳細は診査後にご案内いたします</p>
+    <div class="ae-fee-table-wrap">
+      <table class="ae-fee-table">
+        <thead>
+          <tr>
+            <th>治療</th>
+            <th>素材・種類</th>
+            <th>費用（税抜）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>セラミッククラウン</td>
+            <td>e.max / オールセラミック</td>
+            <td class="ae-fee-num">15万円〜</td>
+          </tr>
+          <tr>
+            <td>ジルコニアクラウン</td>
+            <td>ジルコニア</td>
+            <td class="ae-fee-num">12万円〜</td>
+          </tr>
+          <tr>
+            <td>ラミネートベニア</td>
+            <td>セラミックシェル</td>
+            <td class="ae-fee-num">10万円〜</td>
+          </tr>
+          <tr>
+            <td>ホワイトニング（オフィス）</td>
+            <td>歯科医院での施術</td>
+            <td class="ae-fee-num">2万円〜</td>
+          </tr>
+          <tr>
+            <td>ホワイトニング（ホーム）</td>
+            <td>マウスピース＋薬剤</td>
+            <td class="ae-fee-num">3万円〜</td>
+          </tr>
+          <tr>
+            <td>デュアルホワイトニング</td>
+            <td>オフィス＋ホーム</td>
+            <td class="ae-fee-num">4.5万円〜</td>
+          </tr>
+          <tr>
+            <td>銀歯交換（ジルコニア）</td>
+            <td>ジルコニア</td>
+            <td class="ae-fee-num">3万円〜</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ae-fee-note mt-3">
+      <i class="fas fa-info-circle me-2"></i>
+      費用はあくまで目安です。歯の状態・部位・本数により異なります。診査後に正確な費用をご案内いたします。自費診療は<strong>医療費控除の対象</strong>となります。
+    </div>
+  </div>
+</section>
+
+<!-- なぜセラミックか -->
+<section class="ae-why-section">
+  <div class="container">
+    <h2 class="ae-section-h2">銀歯からセラミックへ変える理由</h2>
+    <div class="row g-4 mt-2">
+      <div class="col-md-4" data-fade="up" data-fade-delay="0">
+        <div class="ae-why-card">
+          <div class="ae-why-icon"><i class="fas fa-smile"></i></div>
+          <h3 class="ae-why-title">審美性の向上</h3>
+          <p class="ae-why-desc">白く自然な見た目で笑顔に自信が生まれます。金属の黒ずみや、歯茎の変色がなくなります。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade="up" data-fade-delay="100">
+        <div class="ae-why-card">
+          <div class="ae-why-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3 class="ae-why-title">身体への安全性</h3>
+          <p class="ae-why-desc">金属アレルギーの心配がなく、体に優しい素材です。MRI検査時に金属アーチファクトが生じません。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade="up" data-fade-delay="200">
+        <div class="ae-why-card">
+          <div class="ae-why-icon"><i class="fas fa-microscope"></i></div>
+          <h3 class="ae-why-title">精度と密着性</h3>
+          <p class="ae-why-desc">口腔内スキャナーによるデジタル印象と組み合わせることで、精度の高い補綴物を製作できます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 治療の流れ -->
+<section class="ae-flow-section">
+  <div class="container">
+    <h2 class="ae-section-h2">セラミック治療の流れ</h2>
+    <div class="ae-flow-list mt-4">
+      <div class="ae-flow-item">
+        <div class="ae-flow-num">1</div>
+        <div class="ae-flow-content">
+          <div class="ae-flow-title">カウンセリング・診査</div>
+          <p>現在の歯の状態を確認し、ご要望・ご予算をお聞きします。口腔内スキャナーやレントゲンで精密に診断し、最適な治療法・素材をご提案します。</p>
+        </div>
+      </div>
+      <div class="ae-flow-item">
+        <div class="ae-flow-num">2</div>
+        <div class="ae-flow-content">
+          <div class="ae-flow-title">歯の形成・仮歯の装着</div>
+          <p>既存の詰め物・被せ物を除去し、セラミックが入る形に歯を整えます。治療期間中は仮歯をつけた状態で過ごしていただけます。</p>
+        </div>
+      </div>
+      <div class="ae-flow-item">
+        <div class="ae-flow-num">3</div>
+        <div class="ae-flow-content">
+          <div class="ae-flow-title">デジタル印象採得</div>
+          <p>口腔内スキャナーで歯型をデジタルデータとして取得します。従来の型取り材は一切不要で、快適に精密な印象採得が可能です。</p>
+        </div>
+      </div>
+      <div class="ae-flow-item">
+        <div class="ae-flow-num">4</div>
+        <div class="ae-flow-content">
+          <div class="ae-flow-title">技工所での製作</div>
+          <p>精密なデジタルデータをもとに、国内の歯科技工所で高品質なセラミック補綴物を製作します（通常1〜2週間）。</p>
+        </div>
+      </div>
+      <div class="ae-flow-item">
+        <div class="ae-flow-num">5</div>
+        <div class="ae-flow-content">
+          <div class="ae-flow-title">装着・最終調整</div>
+          <p>出来上がったセラミックを装着し、噛み合わせ・色調・形態を確認・調整します。問題なければ本接着して完成です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 注意事項 -->
+<section class="ae-caution-section">
+  <div class="container">
+    <h2 class="ae-caution-title">
+      <i class="fas fa-info-circle me-2"></i>治療前にご理解いただきたいこと
+    </h2>
+    <div class="row g-4 mt-1">
+      <div class="col-md-4">
+        <div class="ae-caution-card">
+          <div class="ae-caution-icon"><i class="fas fa-yen-sign"></i></div>
+          <h3 class="ae-caution-card-title">保険適用外</h3>
+          <p>セラミック・ジルコニア・ラミネートベニア・ホワイトニングは原則として自費診療（保険適用外）です。ただし一部の素材は条件によって保険適用となる場合があります。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ae-caution-card">
+          <div class="ae-caution-icon"><i class="fas fa-tooth"></i></div>
+          <h3 class="ae-caution-card-title">歯の切削が必要</h3>
+          <p>クラウン・ラミネートベニアは、装着のために歯を一定量削る必要があります。歯質の状態によっては神経の処置が必要になる場合があります。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="ae-caution-card">
+          <div class="ae-caution-icon"><i class="fas fa-sync-alt"></i></div>
+          <h3 class="ae-caution-card-title">ホワイトニングの後戻り</h3>
+          <p>ホワイトニングの効果は永続ではなく、食生活・生活習慣によって徐々に後戻りすることがあります。定期的なメンテナンスをお勧めします。</p>
+        </div>
+      </div>
+    </div>
+    <div class="ae-caution-support mt-4">
+      <i class="fas fa-comments me-2"></i>
+      <div>ご不明な点や不安なことは、カウンセリングで遠慮なくお聞きください。患者さまに納得いただいた上で治療を進めますので、まずはお気軽にご相談ください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="ae-faq-section">
+  <div class="container">
+    <h2 class="ae-section-h2 text-center">よくある質問</h2>
+    <div class="ae-faq-list mt-4">
+      <details class="ae-faq-item">
+        <summary class="ae-faq-q">セラミック治療は保険が使えますか？</summary>
+        <div class="ae-faq-a">
+          セラミック・ジルコニア・ラミネートベニアは自費診療（保険適用外）となります。ただし<strong>CAD/CAMクラウン</strong>が適用できる条件の場合は保険適用となります。診査の上ご案内いたします。
+        </div>
+      </details>
+      <details class="ae-faq-item">
+        <summary class="ae-faq-q">どの素材が一番おすすめですか？</summary>
+        <div class="ae-faq-a">
+          部位・歯の状態・ご予算・求める審美性によって最適な素材が異なります。前歯の審美性重視ならオールセラミック（e.max）、奥歯の強度重視ならジルコニアを選ぶことが多いです。詳細はカウンセリングでご説明します。
+        </div>
+      </details>
+      <details class="ae-faq-item">
+        <summary class="ae-faq-q">ホワイトニングで歯は白くなりますか？</summary>
+        <div class="ae-faq-a">
+          ホワイトニングは天然歯の色素を分解し白くする効果があります。被せ物・詰め物・差し歯には効果がありません。効果の程度には個人差があり、後戻りすることもあります。より白さを持続させたい場合はデュアルホワイトニングをお勧めします。
+        </div>
+      </details>
+      <details class="ae-faq-item">
+        <summary class="ae-faq-q">銀歯を全部セラミックに交換できますか？</summary>
+        <div class="ae-faq-a">
+          歯の状態・神経の有無・咬合力の状態などを確認した上で、交換可能かどうかをご案内します。保険適用の白い歯（CAD/CAMクラウン）が使える場合もありますので、まずはご相談ください。
+        </div>
+      </details>
+      <details class="ae-faq-item">
+        <summary class="ae-faq-q">どのくらいの期間で完成しますか？</summary>
+        <div class="ae-faq-a">
+          セラミッククラウン・ジルコニアは通常1〜2週間で完成します（技工所での製作期間が含まれます）。ホワイトニングはオフィスホワイトニングであれば1回で効果を実感できます。
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="cta-eyebrow">まずは無料相談から</p>
+    <h2 class="cta-title">審美治療について<br>お気軽にご相談ください</h2>
+    <p class="cta-sub">セラミック・ホワイトニング・銀歯交換など、ご希望に合わせてご提案します。</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="cta-btn-primary">
+        <i class="fas fa-calendar-alt me-2"></i>WEB予約（24時間受付）
+      </a>
+      <a href="tel:0568622580" class="cta-btn-secondary">
+        <i class="fas fa-phone me-2"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
