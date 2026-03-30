@@ -332,6 +332,64 @@
 </section>
 
 <!-- なぜセラミックか -->
+<!-- 症例写真 -->
+<section class="ae-cases-section" id="cases">
+  <div class="container">
+    <h2 class="ae-section-h2">症例写真</h2>
+    <p class="ae-section-sub">実際の治療例です。個人の状態により結果は異なります</p>
+
+    <!-- ガイドライン準拠の注意書き -->
+    <div class="ae-case-disclaimer">
+      <i class="fas fa-info-circle me-2"></i>
+      掲載写真はすべて当院で治療を行った実際の患者さまのものです（掲載同意取得済）。治療効果には個人差があります。
+    </div>
+
+    <!-- 症例1 -->
+    <div class="ae-case-card mt-4">
+      <div class="ae-case-header">
+        <span class="ae-case-num">症例 01</span>
+        <span class="ae-case-treatment">セラミッククラウン（前歯）</span>
+        <span class="ae-case-fee">治療費：130,000円（税抜）</span>
+      </div>
+      <div class="ae-case-body">
+        <div class="row g-3">
+          <!-- Before -->
+          <div class="col-md-4">
+            <div class="ae-photo-wrap">
+              <img src="{{ url_for('static', filename='images/cases/ceramic_before_1.jpg') }}"
+                   alt="セラミッククラウン治療前 前歯" class="ae-case-photo" loading="lazy">
+              <div class="ae-photo-label ae-label-before">Before</div>
+            </div>
+          </div>
+          <!-- After 1 -->
+          <div class="col-md-4">
+            <div class="ae-photo-wrap">
+              <img src="{{ url_for('static', filename='images/cases/ceramic_after_1.jpg') }}"
+                   alt="セラミッククラウン治療後 前歯クローズアップ" class="ae-case-photo" loading="lazy">
+              <div class="ae-photo-label ae-label-after">After</div>
+            </div>
+          </div>
+          <!-- After 2 -->
+          <div class="col-md-4">
+            <div class="ae-photo-wrap">
+              <img src="{{ url_for('static', filename='images/cases/ceramic_after_2.jpg') }}"
+                   alt="セラミッククラウン治療後 スマイル" class="ae-case-photo" loading="lazy">
+              <div class="ae-photo-label ae-label-after">After（スマイル）</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- リスク・注意事項 -->
+        <div class="ae-case-risks mt-3">
+          <span class="ae-case-risks-label"><i class="fas fa-exclamation-triangle me-1"></i>主なリスク・副作用</span>
+          <span>歯肉退縮の可能性、チッピング（セラミックの破損）の可能性</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section class="ae-why-section">
   <div class="container">
     <h2 class="ae-section-h2">銀歯からセラミックへ変える理由</h2>
