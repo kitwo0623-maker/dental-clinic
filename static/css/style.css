@@ -2967,3 +2967,20 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
   transition: color 0.2s, border-color 0.2s;
 }
 .ae-gummy-link:hover { color: #6b2a8a; border-color: #6b2a8a; }
+
+/* 外科矯正注意書き */
+.gs-ortho-caution {
+  background: #fff8f0; border: 1px solid #f0c080;
+  border-left: 4px solid #d4720a;
+  border-radius: 8px; padding: 1.1rem 1.4rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.gs-ortho-caution-icon {
+  flex-shrink: 0; color: #d4720a; font-size: 1.2rem; margin-top: 0.1rem;
+}
+.gs-ortho-caution-title {
+  font-weight: 700; font-size: 0.92rem; color: #7a3800; margin-bottom: 0.4rem;
+}
+.gs-ortho-caution-desc {
+  font-size: 0.85rem; color: #5a3000; line-height: 1.7; margin: 0;
+}
