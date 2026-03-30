@@ -173,6 +173,11 @@ def sitemap_xml():
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>{SITE_URL}/gummy-smile</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
     return Response(content, mimetype='application/xml')
 
@@ -249,6 +254,11 @@ def implant():
 @app.route('/aesthetic')
 def aesthetic():
     return render_template('aesthetic.html')
+
+
+@app.route('/gummy-smile')
+def gummy_smile():
+    return render_template('gummy_smile.html')
 
 
 # ==================== Admin Dashboard ====================
