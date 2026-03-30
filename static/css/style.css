@@ -2984,3 +2984,67 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
 .gs-ortho-caution-desc {
   font-size: 0.85rem; color: #5a3000; line-height: 1.7; margin: 0;
 }
+
+/* ============================================================
+   症例写真セクション (aesthetic.html)
+   ============================================================ */
+.ae-cases-section { padding: 4rem 0; background: #fff; }
+
+.ae-case-disclaimer {
+  background: #f0f7f5; border: 1px solid #a8d8d0; border-radius: 8px;
+  padding: 0.85rem 1.1rem; font-size: 0.85rem; color: #1a4a40;
+  display: flex; align-items: flex-start; gap: 0.5rem;
+}
+
+.ae-case-card {
+  border: 1px solid #e8e0d5; border-radius: 12px;
+  overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.ae-case-header {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  background: linear-gradient(135deg, #2e7d6e 0%, #3a9b8a 100%);
+  color: #fff;
+}
+.ae-case-num {
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.05em;
+  background: rgba(255,255,255,0.2); padding: 0.2rem 0.65rem; border-radius: 20px;
+}
+.ae-case-treatment { font-weight: 700; font-size: 0.95rem; }
+.ae-case-fee {
+  margin-left: auto; font-size: 0.85rem;
+  background: rgba(255,255,255,0.15); padding: 0.2rem 0.75rem; border-radius: 20px;
+}
+.ae-case-body { padding: 1.25rem; }
+
+/* 写真ラッパー：アスペクト比固定なし・全体表示 */
+.ae-photo-wrap {
+  position: relative; border-radius: 8px; overflow: hidden;
+  background: #000;
+}
+.ae-case-photo {
+  width: 100%; height: auto; display: block;
+  transition: transform 0.3s;
+}
+.ae-photo-wrap:hover .ae-case-photo { transform: scale(1.02); }
+
+.ae-photo-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0.35rem 0.75rem; font-size: 0.78rem; font-weight: 700;
+  text-align: center; letter-spacing: 0.08em;
+}
+.ae-label-before { background: rgba(60,60,60,0.75); color: #fff; }
+.ae-label-after  { background: rgba(46,125,110,0.82); color: #fff; }
+
+.ae-case-risks {
+  background: #fff8e8; border: 1px solid #f0d080; border-radius: 6px;
+  padding: 0.65rem 1rem; font-size: 0.82rem; color: #6b5000;
+  display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+}
+.ae-case-risks-label { font-weight: 700; white-space: nowrap; }
+
+@media (max-width: 767px) {
+  .ae-case-header { flex-direction: column; align-items: flex-start; }
+  .ae-case-fee { margin-left: 0; }
+}
