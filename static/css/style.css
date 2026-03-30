@@ -3116,9 +3116,3 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
 }
 .ae-lab-cred-title { font-weight: 700; font-size: 0.88rem; color: #f0c56a; }
 .ae-lab-cred-desc  { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 0.1rem; }
-
-.ae-flow-note {
-  margin-top: 0.5rem; font-size: 0.8rem; color: #7a5500;
-  background: #fff8e8; border: 1px solid #f0d080;
-  border-radius: 5px; padding: 0.35rem 0.7rem; display: inline-flex; align-items: center;
-}
