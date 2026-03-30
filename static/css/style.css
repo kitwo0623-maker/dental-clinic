@@ -3048,3 +3048,55 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
   .ae-case-header { flex-direction: column; align-items: flex-start; }
   .ae-case-fee { margin-left: 0; }
 }
+
+/* 技工士連携セクション */
+.ae-lab-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+}
+.ae-lab-inner { display: flex; gap: 2rem; align-items: flex-start; }
+.ae-lab-icon-col { flex-shrink: 0; }
+.ae-lab-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, #b8874a, #d4a053);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; color: #fff;
+  box-shadow: 0 4px 20px rgba(184,135,74,0.4);
+}
+.ae-lab-eyebrow {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+  color: #b8874a; margin-bottom: 0.4rem; text-transform: uppercase;
+}
+.ae-lab-title {
+  font-size: 1.5rem; font-weight: 700; font-family: 'Noto Serif JP', serif;
+  margin-bottom: 0.75rem; color: #fff;
+}
+.ae-lab-lead { font-size: 0.95rem; color: rgba(255,255,255,0.82); line-height: 1.8; }
+.ae-lab-point {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 1rem;
+}
+.ae-lab-point-icon {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(184,135,74,0.3); border: 1px solid rgba(184,135,74,0.5);
+  display: flex; align-items: center; justify-content: center;
+  color: #d4a053; font-size: 0.9rem;
+}
+.ae-lab-point-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.25rem; color: #fff; }
+.ae-lab-point-desc { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0; line-height: 1.6; }
+
+/* 症例カード・技工士クレジット */
+.ae-case-lab-credit {
+  font-size: 0.75rem; font-weight: 600;
+  background: rgba(184,135,74,0.35); border: 1px solid rgba(184,135,74,0.6);
+  padding: 0.2rem 0.65rem; border-radius: 20px; color: #f5e0a8;
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .ae-lab-inner { flex-direction: column; }
+  .ae-lab-title { font-size: 1.2rem; }
+  .ae-case-lab-credit { margin-left: 0; }
+}
