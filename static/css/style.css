@@ -2685,3 +2685,30 @@ details[open] .ae-faq-q::after { transform: rotate(45deg); }
   .ae-silver-label { min-width: unset; }
   .ae-iph-inner { flex-direction: column; }
 }
+
+/* 追加メニューカラー */
+.ae-color-bonding  { background: linear-gradient(135deg, #5b7fa6 0%, #7a9dc2 100%); }
+.ae-color-inlay    { background: linear-gradient(135deg, #4a7c6e 0%, #5e9e8c 100%); }
+.ae-color-gummy    { background: linear-gradient(135deg, #9b4a7a 0%, #c26890 100%); }
+
+/* ガミースマイル治療オプション */
+.ae-gummy-options { display: flex; flex-direction: column; gap: 0.75rem; }
+.ae-gummy-option {
+  background: #f8f5f0; border: 1px solid #e0d8ce;
+  border-radius: 8px; padding: 0.85rem 1rem;
+}
+.ae-gummy-option-alt { background: #f5f0f8; border-color: #d8d0e0; }
+.ae-gummy-opt-header {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+  font-weight: 700; font-size: 0.92rem; margin-bottom: 0.4rem;
+}
+.ae-gummy-price {
+  margin-left: auto; font-size: 0.85rem; font-weight: 700;
+  color: var(--gold, #b8874a);
+}
+.ae-gummy-opt-desc { font-size: 0.84rem; color: #555; margin: 0; }
+.ae-gummy-alert {
+  background: #fdf5ff; border: 1px solid #d8b0e8; border-radius: 8px;
+  padding: 1rem 1.1rem; font-size: 0.87rem; color: #4a1a6a;
+  display: flex; gap: 0.5rem; align-items: flex-start;
+}
