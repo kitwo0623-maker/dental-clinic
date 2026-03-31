@@ -3122,10 +3122,3 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
   background: #fff8e8; border: 1px solid #f0d080;
   border-radius: 5px; padding: 0.35rem 0.7rem; display: inline-flex; align-items: center;
 }
-
-.ae-flow-visit-badge {
-  display: inline-block; font-size: 0.72rem; font-weight: 700;
-  background: var(--primary, #2e7d6e); color: #fff;
-  padding: 0.15rem 0.65rem; border-radius: 20px;
-  margin-bottom: 0.35rem; letter-spacing: 0.04em;
-}
