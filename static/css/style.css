@@ -3176,3 +3176,34 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
 @media (max-width: 576px) {
   .instagram-box { flex-direction: column; text-align: center; padding: 1.5rem; gap: 1rem; }
 }
+
+/* Related pages section */
+.related-pages-section {
+  background: #f8f9fa; padding: 3rem 0;
+  border-top: 1px solid #eee;
+}
+.related-pages-label {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: #999; margin-bottom: 1rem;
+}
+.related-pages-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;
+}
+.related-page-card {
+  display: flex; align-items: center; gap: 1rem;
+  background: #fff; border: 1.5px solid #e8eaf6; border-radius: 12px;
+  padding: 1.2rem 1.4rem; text-decoration: none;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.related-page-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: var(--primary);
+}
+.related-page-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.related-page-title { font-weight: 700; font-size: 0.95rem; color: #222; margin-bottom: 0.2rem; }
+.related-page-desc { font-size: 0.78rem; color: #666; line-height: 1.5; }
+.related-page-arrow { color: #ccc; margin-left: auto; flex-shrink: 0; }
