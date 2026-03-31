@@ -3141,33 +3141,38 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
 .footer-sns-link:hover { color: #e1306c; }
 
 /* Instagram section (homepage) */
-.instagram-section { padding: 1.5rem 0; background: #fff; }
+.instagram-section {
+  background: #fff;
+  padding: 0 0 3rem;
+  border-top: 1px solid #f0f0f0;
+}
 .instagram-box {
-  display: flex; align-items: center; gap: 1.5rem;
-  background: linear-gradient(135deg, #fdf0f8 0%, #fff5fb 100%);
-  border: 1px solid #f3c6e0;
-  border-radius: 14px; padding: 1.5rem 2rem;
-  flex-wrap: wrap;
+  display: flex; align-items: center; gap: 2rem;
+  background: #fff;
+  border: 1.5px solid #e8eaf6;
+  border-radius: 16px; padding: 2rem 2.5rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  max-width: 760px; margin: 0 auto;
 }
 .instagram-icon-wrap {
-  font-size: 3rem;
+  font-size: 2.2rem;
   background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text; flex-shrink: 0; line-height: 1;
 }
-.instagram-content { flex: 1; min-width: 180px; }
-.instagram-title { font-weight: 700; font-size: 1.05rem; color: #2d2d2d; }
-.instagram-handle { font-size: 0.85rem; color: #c13584; font-weight: 600; margin-bottom: 0.3rem; }
-.instagram-note { font-size: 0.82rem; color: #666; margin: 0; }
+.instagram-content { flex: 1; }
+.instagram-title { font-weight: 700; font-size: 1rem; color: #333; margin-bottom: 0.15rem; }
+.instagram-handle { font-size: 0.82rem; color: #c13584; font-weight: 600; margin-bottom: 0.4rem; }
+.instagram-note { font-size: 0.82rem; color: #666; margin: 0; line-height: 1.6; }
 .instagram-action { flex-shrink: 0; }
 .instagram-btn {
   display: inline-flex; align-items: center;
   background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
-  color: #fff; font-weight: 700; font-size: 0.9rem;
-  padding: 0.55rem 1.4rem; border-radius: 30px;
-  text-decoration: none; transition: opacity 0.2s;
+  color: #fff; font-weight: 700; font-size: 0.88rem;
+  padding: 0.55rem 1.4rem; border-radius: 8px;
+  text-decoration: none; transition: opacity 0.2s; white-space: nowrap;
 }
 .instagram-btn:hover { opacity: 0.85; color: #fff; }
 @media (max-width: 576px) {
-  .instagram-box { flex-direction: column; text-align: center; }
+  .instagram-box { flex-direction: column; text-align: center; padding: 1.5rem; gap: 1rem; }
 }
