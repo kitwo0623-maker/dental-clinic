@@ -3125,13 +3125,13 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
 
 /* Instagram link */
 .nav-link-instagram {
-  font-size: 1.25rem;
-  color: rgba(255,255,255,0.75) !important;
-  padding: 0.25rem 0.5rem !important;
-  transition: color 0.2s;
+  font-size: 1.5rem;
+  color: #c13584 !important;
+  padding: 0.2rem 0.5rem !important;
+  transition: opacity 0.2s;
 }
 .nav-link-instagram:hover {
-  color: #e1306c !important;
+  opacity: 0.7;
 }
 .footer-sns-link {
   display: inline-flex; align-items: center;
@@ -3139,3 +3139,35 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
   text-decoration: none; transition: color 0.2s;
 }
 .footer-sns-link:hover { color: #e1306c; }
+
+/* Instagram section (homepage) */
+.instagram-section { padding: 1.5rem 0; background: #fff; }
+.instagram-box {
+  display: flex; align-items: center; gap: 1.5rem;
+  background: linear-gradient(135deg, #fdf0f8 0%, #fff5fb 100%);
+  border: 1px solid #f3c6e0;
+  border-radius: 14px; padding: 1.5rem 2rem;
+  flex-wrap: wrap;
+}
+.instagram-icon-wrap {
+  font-size: 3rem;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; flex-shrink: 0; line-height: 1;
+}
+.instagram-content { flex: 1; min-width: 180px; }
+.instagram-title { font-weight: 700; font-size: 1.05rem; color: #2d2d2d; }
+.instagram-handle { font-size: 0.85rem; color: #c13584; font-weight: 600; margin-bottom: 0.3rem; }
+.instagram-note { font-size: 0.82rem; color: #666; margin: 0; }
+.instagram-action { flex-shrink: 0; }
+.instagram-btn {
+  display: inline-flex; align-items: center;
+  background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+  color: #fff; font-weight: 700; font-size: 0.9rem;
+  padding: 0.55rem 1.4rem; border-radius: 30px;
+  text-decoration: none; transition: opacity 0.2s;
+}
+.instagram-btn:hover { opacity: 0.85; color: #fff; }
+@media (max-width: 576px) {
+  .instagram-box { flex-direction: column; text-align: center; }
+}
