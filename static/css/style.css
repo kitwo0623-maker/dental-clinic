@@ -3122,3 +3122,20 @@ details[open] .gs-faq-q::after { transform: rotate(45deg); }
   background: #fff8e8; border: 1px solid #f0d080;
   border-radius: 5px; padding: 0.35rem 0.7rem; display: inline-flex; align-items: center;
 }
+
+/* Instagram link */
+.nav-link-instagram {
+  font-size: 1.25rem;
+  color: rgba(255,255,255,0.75) !important;
+  padding: 0.25rem 0.5rem !important;
+  transition: color 0.2s;
+}
+.nav-link-instagram:hover {
+  color: #e1306c !important;
+}
+.footer-sns-link {
+  display: inline-flex; align-items: center;
+  font-size: 0.88rem; color: rgba(255,255,255,0.6);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-sns-link:hover { color: #e1306c; }
