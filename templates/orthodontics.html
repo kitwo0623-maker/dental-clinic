@@ -1,0 +1,423 @@
+{% extends "base.html" %}
+{% block title %}矯正歯科 | 犬山市キトウ歯科医院{% endblock %}
+{% block description %}犬山市キトウ歯科医院の矯正歯科。インビザライン・ワイヤー矯正・小児矯正（プレオルソ＋MFT）に対応。小児矯正からのステップアップ割引あり。TEL: 0568-62-2580{% endblock %}
+{% block canonical %}https://dental-clinic-wpg6.onrender.com/orthodontics{% endblock %}
+
+{% block extra_css %}
+<style>
+.ort-hero {
+  background: linear-gradient(135deg, #1a2e4a 0%, #2d5282 100%);
+  padding: 5rem 0 4rem; color: #fff;
+}
+.ort-hero-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 30px; padding: 0.3rem 1rem;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9); margin-bottom: 1.2rem;
+}
+.ort-hero-h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800; line-height: 1.3; margin-bottom: 1rem;
+}
+.ort-hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 480px; line-height: 1.8;
+}
+.ort-hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+.ort-hero-tag {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px; padding: 0.3rem 0.8rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.85);
+}
+
+.ort-section { padding: 4rem 0; }
+.ort-section-alt { background: #f8f9fa; }
+.ort-section-h2 {
+  font-size: 1.6rem; font-weight: 800; color: #1a2e4a;
+  margin-bottom: 0.5rem; text-align: center;
+}
+.ort-section-sub {
+  text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 2.5rem;
+}
+
+/* Treatment cards */
+.ort-treatment-card {
+  background: #fff; border: 1.5px solid #e8eaf6;
+  border-radius: 16px; padding: 2rem; height: 100%;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.ort-treatment-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); border-color: #2d5282; }
+.ort-treatment-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: linear-gradient(135deg, #1a2e4a, #2d5282);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 1rem;
+}
+.ort-treatment-name { font-size: 1.15rem; font-weight: 800; color: #1a2e4a; margin-bottom: 0.3rem; }
+.ort-treatment-tag {
+  display: inline-block; font-size: 0.72rem; font-weight: 700;
+  background: #e8f0fe; color: #2d5282;
+  padding: 0.15rem 0.6rem; border-radius: 4px; margin-bottom: 0.8rem;
+}
+.ort-treatment-desc { font-size: 0.88rem; color: #555; line-height: 1.7; margin-bottom: 1.2rem; }
+.ort-treatment-features { list-style: none; padding: 0; margin: 0; }
+.ort-treatment-features li {
+  font-size: 0.85rem; color: #444; padding: 0.3rem 0;
+  border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 0.5rem;
+}
+.ort-treatment-features li:last-child { border-bottom: none; }
+.ort-treatment-features li::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: #2d5282; flex-shrink: 0;
+}
+
+/* Pricing table */
+.ort-price-table {
+  background: #fff; border: 1.5px solid #e8eaf6;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+.ort-price-head {
+  background: linear-gradient(135deg, #1a2e4a, #2d5282);
+  color: #fff; padding: 1rem 1.5rem;
+  font-weight: 700; font-size: 0.95rem; letter-spacing: 0.03em;
+}
+.ort-price-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 1.5rem; border-bottom: 1px solid #f0f0f0;
+  flex-wrap: wrap; gap: 0.5rem;
+}
+.ort-price-row:last-child { border-bottom: none; }
+.ort-price-row-alt { background: #f8f9fa; }
+.ort-price-label { font-size: 0.9rem; color: #333; }
+.ort-price-amount { font-size: 1.05rem; font-weight: 800; color: #1a2e4a; white-space: nowrap; }
+.ort-price-note { font-size: 0.75rem; color: #888; }
+.ort-price-tax { font-size: 0.72rem; color: #999; margin-left: 0.3rem; }
+
+/* Discount banner */
+.ort-discount-banner {
+  background: linear-gradient(135deg, #1a4a2e 0%, #2d7a52 100%);
+  border-radius: 14px; padding: 1.8rem 2rem;
+  color: #fff; display: flex; align-items: flex-start; gap: 1.2rem;
+  margin-top: 2rem;
+}
+.ort-discount-icon {
+  font-size: 2rem; flex-shrink: 0; margin-top: 0.1rem;
+}
+.ort-discount-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.4rem; }
+.ort-discount-desc { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin: 0; }
+
+/* Flow */
+.ort-flow-list { display: flex; flex-direction: column; gap: 0; max-width: 680px; margin: 0 auto; }
+.ort-flow-item {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1.2rem 0; position: relative;
+}
+.ort-flow-item:not(:last-child)::after {
+  content: ''; position: absolute; left: 18px; top: 52px;
+  width: 2px; height: calc(100% - 20px);
+  background: #dde2f0;
+}
+.ort-flow-num {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, #1a2e4a, #2d5282);
+  color: #fff; font-weight: 800; font-size: 0.95rem;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.ort-flow-title { font-weight: 700; font-size: 0.95rem; color: #1a2e4a; margin-bottom: 0.25rem; }
+.ort-flow-desc { font-size: 0.84rem; color: #666; line-height: 1.6; margin: 0; }
+
+/* Caution */
+.ort-caution-card {
+  background: #fff; border: 1.5px solid #e8eaf6;
+  border-radius: 12px; padding: 1.3rem 1.5rem; height: 100%;
+}
+.ort-caution-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: #e8f0fe; color: #2d5282;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; margin-bottom: 0.8rem;
+}
+.ort-caution-title { font-weight: 700; font-size: 0.88rem; color: #1a2e4a; margin-bottom: 0.4rem; }
+.ort-caution-text { font-size: 0.82rem; color: #666; line-height: 1.6; margin: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="ort-hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7" data-fade>
+        <div class="ort-hero-badge"><i class="fas fa-teeth"></i> 矯正歯科</div>
+        <h1 class="ort-hero-h1">きれいな歯並びで、<br>笑顔に自信を。</h1>
+        <p class="ort-hero-sub">インビザライン・ワイヤー矯正・小児矯正に対応。お子さまのうちからお口の育成を始めることで、将来の矯正費用を抑えることも可能です。</p>
+        <div class="ort-hero-badges">
+          <span class="ort-hero-tag"><i class="fas fa-check me-1"></i>インビザライン対応</span>
+          <span class="ort-hero-tag"><i class="fas fa-check me-1"></i>ワイヤー矯正</span>
+          <span class="ort-hero-tag"><i class="fas fa-check me-1"></i>小児矯正（プレオルソ＋MFT）</span>
+          <span class="ort-hero-tag"><i class="fas fa-check me-1"></i>小児→成人割引あり</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 治療メニュー -->
+<section class="ort-section">
+  <div class="container">
+    <h2 class="ort-section-h2">矯正治療メニュー</h2>
+    <p class="ort-section-sub">お口の状態・ライフスタイルに合わせた矯正方法をご提案します</p>
+    <div class="row g-4">
+
+      <!-- インビザライン -->
+      <div class="col-md-4" data-fade>
+        <div class="ort-treatment-card">
+          <div class="ort-treatment-icon"><i class="fas fa-smile-beam"></i></div>
+          <div class="ort-treatment-tag">マウスピース矯正</div>
+          <div class="ort-treatment-name">インビザライン</div>
+          <p class="ort-treatment-desc">透明なマウスピースを段階的に交換しながら歯を動かす矯正法。目立たず、取り外しができるため、食事・歯みがきが普段通り行えます。</p>
+          <ul class="ort-treatment-features">
+            <li>透明で目立ちにくい</li>
+            <li>食事・歯みがき時は取り外し可</li>
+            <li>金属アレルギーの方にも対応</li>
+            <li>来院頻度が少なめ</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ワイヤー矯正 -->
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="ort-treatment-card">
+          <div class="ort-treatment-icon"><i class="fas fa-teeth-open"></i></div>
+          <div class="ort-treatment-tag">ブラケット矯正</div>
+          <div class="ort-treatment-name">ワイヤー矯正</div>
+          <p class="ort-treatment-desc">歯の表面にブラケットを装着し、ワイヤーの力で歯を動かす矯正法。幅広い症例に対応でき、複雑な歯並びにも高い効果が期待できます。</p>
+          <ul class="ort-treatment-features">
+            <li>幅広い症例に対応</li>
+            <li>力のコントロールがしやすい</li>
+            <li>重度のでこぼこ・出っ歯にも対応</li>
+            <li>実績豊富な矯正法</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 小児矯正 -->
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="ort-treatment-card">
+          <div class="ort-treatment-icon"><i class="fas fa-child"></i></div>
+          <div class="ort-treatment-tag">小児矯正</div>
+          <div class="ort-treatment-name">プレオルソ＋MFT</div>
+          <p class="ort-treatment-desc">お口周りの筋肉トレーニング（MFT）とプレオルソ装置を組み合わせた小児矯正。歯並びの根本原因である「口腔習癖・筋機能」から改善します。</p>
+          <ul class="ort-treatment-features">
+            <li>歯並びの根本原因にアプローチ</li>
+            <li>装置への違和感が少ない</li>
+            <li>飲み込み・発音の改善も期待</li>
+            <li>成人矯正への移行割引あり</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section class="ort-section ort-section-alt">
+  <div class="container">
+    <h2 class="ort-section-h2">料金案内</h2>
+    <p class="ort-section-sub">すべて税抜き価格です</p>
+    <div class="row g-4">
+
+      <!-- 成人矯正 -->
+      <div class="col-md-6" data-fade>
+        <div class="ort-price-table">
+          <div class="ort-price-head"><i class="fas fa-user me-2"></i>インビザライン・ワイヤー矯正（共通）</div>
+          <div class="ort-price-row">
+            <span class="ort-price-label">精密検査</span>
+            <span class="ort-price-amount">30,000円<span class="ort-price-tax">＋税</span></span>
+          </div>
+          <div class="ort-price-row ort-price-row-alt">
+            <span class="ort-price-label">矯正治療費</span>
+            <span class="ort-price-amount">750,000円<span class="ort-price-tax">＋税</span></span>
+          </div>
+          <div class="ort-price-row">
+            <span class="ort-price-label">保定装置</span>
+            <span class="ort-price-amount">30,000円<span class="ort-price-tax">＋税</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 小児矯正 -->
+      <div class="col-md-6" data-fade data-fade-delay="100">
+        <div class="ort-price-table">
+          <div class="ort-price-head"><i class="fas fa-child me-2"></i>小児矯正（プレオルソ＋MFT）</div>
+          <div class="ort-price-row">
+            <span class="ort-price-label">精密検査</span>
+            <span class="ort-price-amount">30,000円<span class="ort-price-tax">＋税</span></span>
+          </div>
+          <div class="ort-price-row ort-price-row-alt">
+            <div>
+              <div class="ort-price-label">トレーニング費用</div>
+              <div class="ort-price-note">1年間</div>
+            </div>
+            <span class="ort-price-amount">200,000円<span class="ort-price-tax">＋税</span></span>
+          </div>
+        </div>
+
+        <!-- 割引バナー -->
+        <div class="ort-discount-banner" data-fade data-fade-delay="200">
+          <div class="ort-discount-icon">🎁</div>
+          <div>
+            <div class="ort-discount-title">小児矯正からのステップアップ割引</div>
+            <p class="ort-discount-desc">当院で小児矯正（プレオルソ＋MFT）をご受講いただいた方が、成人矯正（インビザライン・ワイヤー矯正）に移行される場合、矯正治療費を割引価格でご提供しています。詳細はカウンセリング時にご案内します。</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="text-center mt-3" style="font-size:0.8rem; color:#999;">※料金はすべて税抜き表示です。矯正治療は自由診療（保険適用外）です。個人差により治療期間・費用が変動する場合があります。</p>
+  </div>
+</section>
+
+<!-- 治療の流れ -->
+<section class="ort-section">
+  <div class="container">
+    <h2 class="ort-section-h2">治療の流れ</h2>
+    <p class="ort-section-sub">インビザライン・ワイヤー矯正共通の流れです</p>
+    <div class="ort-flow-list mt-4">
+      <div class="ort-flow-item" data-fade>
+        <div class="ort-flow-num">1</div>
+        <div>
+          <div class="ort-flow-title">カウンセリング・精密検査</div>
+          <p class="ort-flow-desc">お口の状態・ご希望・ライフスタイルを伺います。レントゲン・口腔内スキャナーによる精密検査（30,000円＋税）で歯並びの状態を詳しく確認します。</p>
+        </div>
+      </div>
+      <div class="ort-flow-item" data-fade>
+        <div class="ort-flow-num">2</div>
+        <div>
+          <div class="ort-flow-title">治療計画のご説明・同意</div>
+          <p class="ort-flow-desc">検査結果をもとに、治療方針・期間・費用をご説明します。インビザラインの場合はシミュレーション映像でゴールのイメージを確認いただけます。</p>
+        </div>
+      </div>
+      <div class="ort-flow-item" data-fade>
+        <div class="ort-flow-num">3</div>
+        <div>
+          <div class="ort-flow-title">矯正開始</div>
+          <p class="ort-flow-desc">装置を装着し、矯正治療を開始します。インビザラインは一定期間ごとにマウスピースを交換、ワイヤー矯正は定期的に来院して調整を行います。</p>
+        </div>
+      </div>
+      <div class="ort-flow-item" data-fade>
+        <div class="ort-flow-num">4</div>
+        <div>
+          <div class="ort-flow-title">定期チェック・調整</div>
+          <p class="ort-flow-desc">歯の動きを確認しながら、適切なペースで矯正を進めます。気になることがあればいつでもご相談ください。</p>
+        </div>
+      </div>
+      <div class="ort-flow-item" data-fade>
+        <div class="ort-flow-num">5</div>
+        <div>
+          <div class="ort-flow-title">矯正終了・保定</div>
+          <p class="ort-flow-desc">目標の歯並びに到達したら装置を外します。後戻りを防ぐための保定装置（リテーナー）を装着し、定期的に経過観察を行います。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 注意事項 -->
+<section class="ort-section ort-section-alt">
+  <div class="container">
+    <h2 class="ort-section-h2">治療前にご理解いただきたいこと</h2>
+    <div class="row g-3 mt-1">
+      <div class="col-md-4" data-fade>
+        <div class="ort-caution-card">
+          <div class="ort-caution-icon"><i class="fas fa-yen-sign"></i></div>
+          <div class="ort-caution-title">自由診療（保険適用外）</div>
+          <p class="ort-caution-text">矯正治療は原則として保険適用外の自由診療です。料金は税抜き表示で、別途消費税がかかります。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="ort-caution-card">
+          <div class="ort-caution-icon"><i class="fas fa-clock"></i></div>
+          <div class="ort-caution-title">治療期間について</div>
+          <p class="ort-caution-text">治療期間は症例により異なります。一般的に成人矯正は1〜3年程度です。個人差があるため、検査後に詳しくご説明します。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="ort-caution-card">
+          <div class="ort-caution-icon"><i class="fas fa-undo"></i></div>
+          <div class="ort-caution-title">後戻りのリスク</div>
+          <p class="ort-caution-text">矯正治療後は保定装置の装着が必要です。指示通りに使用しない場合、歯が元の位置に戻る（後戻り）可能性があります。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade>
+        <div class="ort-caution-card">
+          <div class="ort-caution-icon"><i class="fas fa-tooth"></i></div>
+          <div class="ort-caution-title">歯根吸収・歯肉退縮</div>
+          <p class="ort-caution-text">矯正治療により、まれに歯根吸収や歯肉退縮が生じる場合があります。定期検査で早期発見に努めます。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="ort-caution-card">
+          <div class="ort-caution-icon"><i class="fas fa-allergies"></i></div>
+          <div class="ort-caution-title">金属アレルギー</div>
+          <p class="ort-caution-text">金属アレルギーがある方はワイヤー矯正が適さない場合があります。事前にお申し出ください。インビザラインは金属不使用です。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="ort-caution-card">
+          <div class="ort-caution-icon"><i class="fas fa-info-circle"></i></div>
+          <div class="ort-caution-title">すべての症例に対応できるわけではありません</div>
+          <p class="ort-caution-text">骨格的な問題が大きい場合など、当院での矯正治療が適さないケースもあります。検査結果をもとに丁寧にご説明します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 関連ページ -->
+<section class="related-pages-section">
+  <div class="container">
+    <p class="related-pages-label">関連する治療</p>
+    <div class="related-pages-grid">
+      <a href="{{ url_for('aesthetic') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-star"></i></div>
+        <div>
+          <div class="related-page-title">審美歯科・セラミック</div>
+          <div class="related-page-desc">歯並びが整ったあと、歯の色や形が気になる方へ。セラミック治療で仕上げの美しさを追求します。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('gummy_smile') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-smile"></i></div>
+        <div>
+          <div class="related-page-title">ガミースマイル治療</div>
+          <div class="related-page-desc">笑ったときに歯茎が気になる方へ。矯正と組み合わせることでより自然な笑顔へ。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="cta-eyebrow">まずはご相談から</p>
+    <h2 class="cta-title">矯正治療について<br>お気軽にご相談ください</h2>
+    <p class="cta-sub">カウンセリングでご不安を解消し、最適な矯正プランをご提案します。</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="cta-btn-primary">
+        <i class="fas fa-calendar-alt me-2"></i>WEB予約（24時間受付）
+      </a>
+      <a href="tel:0568622580" class="cta-btn-secondary">
+        <i class="fas fa-phone me-2"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
