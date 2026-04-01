@@ -1,0 +1,456 @@
+{% extends "base.html" %}
+{% block title %}お口のトレーニング（MFT・プレオルソ） | 犬山市キトウ歯科医院{% endblock %}
+{% block description %}犬山市キトウ歯科医院のお口のトレーニング。歯並びの根本原因（口呼吸・舌の位置・嚥下）にアプローチするMFT＋プレオルソ。6〜10歳のお子さまにとくにおすすめです。TEL: 0568-62-2580{% endblock %}
+{% block canonical %}https://dental-clinic-wpg6.onrender.com/oral-training{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ===== Hero ===== */
+.ot-hero {
+  background: linear-gradient(135deg, #1a3a2a 0%, #2d6e4a 100%);
+  padding: 5rem 0 4rem; color: #fff;
+}
+.ot-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 30px; padding: 0.3rem 1rem;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9); margin-bottom: 1.2rem;
+}
+.ot-hero-h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800; line-height: 1.35; margin-bottom: 1rem;
+}
+.ot-hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, #a8edca, #6fcf97);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ot-hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.78); max-width: 500px; line-height: 1.8; margin-bottom: 1.5rem;
+}
+.ot-hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.ot-hero-tag {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px; padding: 0.3rem 0.8rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.85);
+}
+
+/* ===== Sections ===== */
+.ot-section { padding: 4.5rem 0; }
+.ot-section-alt { background: #f8faf9; }
+.ot-section-h2 {
+  font-size: 1.6rem; font-weight: 800; color: #1a3a2a;
+  margin-bottom: 0.5rem; text-align: center;
+}
+.ot-section-sub { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 2.5rem; }
+
+/* ===== 原因フロー図 ===== */
+.ot-cause-flow {
+  display: flex; align-items: flex-start; gap: 0;
+  overflow-x: auto; padding-bottom: 0.5rem;
+}
+.ot-cause-col { flex: 1; min-width: 180px; }
+.ot-cause-col-head {
+  text-align: center; font-size: 0.8rem; font-weight: 800;
+  letter-spacing: 0.08em; padding: 0.5rem 0.8rem; border-radius: 8px 8px 0 0;
+  margin-bottom: 0;
+}
+.ot-cause-col-head.root   { background: #e8f5e9; color: #2d7a4a; }
+.ot-cause-col-head.comp   { background: #e3f2fd; color: #1565c0; }
+.ot-cause-col-head.result { background: #fff3e0; color: #e65100; }
+.ot-cause-items {
+  background: #fff; border: 1.5px solid #e0e0e0;
+  border-radius: 0 0 10px 10px; padding: 1rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  height: 100%;
+}
+.ot-cause-item {
+  font-size: 0.84rem; color: #333; background: #f8f8f8;
+  border-radius: 6px; padding: 0.45rem 0.75rem;
+  border-left: 3px solid #ccc; line-height: 1.4;
+}
+.ot-cause-item.root-item   { border-left-color: #4caf50; }
+.ot-cause-item.comp-item   { border-left-color: #2196f3; }
+.ot-cause-item.result-item { border-left-color: #ff9800; }
+.ot-cause-arrow {
+  display: flex; align-items: center; padding: 0 0.5rem; margin-top: 2.5rem;
+  color: #999; font-size: 1.5rem; flex-shrink: 0;
+}
+.ot-cause-note {
+  margin-top: 1.2rem; background: #e8f5e9; border-left: 4px solid #4caf50;
+  border-radius: 0 8px 8px 0; padding: 0.9rem 1.2rem;
+  font-size: 0.85rem; color: #2d5a3a; line-height: 1.7;
+}
+
+/* ===== アプローチカード ===== */
+.ot-approach-card {
+  background: #fff; border: 1.5px solid #e0ece5;
+  border-radius: 14px; padding: 1.8rem; height: 100%;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.ot-approach-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); border-color: #2d6e4a; }
+.ot-approach-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: linear-gradient(135deg, #1a3a2a, #2d6e4a);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 1rem;
+}
+.ot-approach-title { font-size: 1rem; font-weight: 800; color: #1a3a2a; margin-bottom: 0.5rem; }
+.ot-approach-desc { font-size: 0.85rem; color: #555; line-height: 1.75; margin: 0; }
+
+/* ===== 年齢バナー ===== */
+.ot-age-banner {
+  background: linear-gradient(135deg, #1a3a2a 0%, #2d6e4a 100%);
+  border-radius: 16px; padding: 2.5rem 2rem; color: #fff;
+  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.ot-age-num {
+  font-size: 4.5rem; font-weight: 900; line-height: 1;
+  background: linear-gradient(90deg, #a8edca, #6fcf97);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; flex-shrink: 0;
+}
+.ot-age-label { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.ot-age-desc { font-size: 0.88rem; color: rgba(255,255,255,0.78); line-height: 1.7; margin: 0; }
+
+/* ===== 料金 ===== */
+.ot-price-box {
+  background: #fff; border: 1.5px solid #e0ece5;
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+.ot-price-head {
+  background: linear-gradient(135deg, #1a3a2a, #2d6e4a);
+  color: #fff; padding: 1rem 1.5rem;
+  font-weight: 700; font-size: 0.95rem;
+}
+.ot-price-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 1.5rem; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; gap: 0.4rem;
+}
+.ot-price-row:last-child { border-bottom: none; }
+.ot-price-row-alt { background: #f8faf9; }
+.ot-price-label { font-size: 0.9rem; color: #333; }
+.ot-price-note { font-size: 0.75rem; color: #888; }
+.ot-price-amount { font-size: 1.05rem; font-weight: 800; color: #1a3a2a; white-space: nowrap; }
+.ot-price-tax { font-size: 0.72rem; color: #999; margin-left: 0.3rem; }
+
+/* ===== 流れ ===== */
+.ot-flow-list { display: flex; flex-direction: column; gap: 0; max-width: 680px; margin: 0 auto; }
+.ot-flow-item { display: flex; gap: 1.2rem; align-items: flex-start; padding: 1.2rem 0; position: relative; }
+.ot-flow-item:not(:last-child)::after {
+  content: ''; position: absolute; left: 18px; top: 52px;
+  width: 2px; height: calc(100% - 20px); background: #c8e6c9;
+}
+.ot-flow-num {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, #1a3a2a, #2d6e4a);
+  color: #fff; font-weight: 800; font-size: 0.95rem;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.ot-flow-title { font-weight: 700; font-size: 0.95rem; color: #1a3a2a; margin-bottom: 0.25rem; }
+.ot-flow-desc { font-size: 0.84rem; color: #666; line-height: 1.6; margin: 0; }
+
+/* ===== 注意事項 ===== */
+.ot-caution-card {
+  background: #fff; border: 1.5px solid #e0ece5;
+  border-radius: 12px; padding: 1.3rem 1.5rem; height: 100%;
+}
+.ot-caution-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: #e8f5e9; color: #2d6e4a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem; margin-bottom: 0.8rem;
+}
+.ot-caution-title { font-weight: 700; font-size: 0.88rem; color: #1a3a2a; margin-bottom: 0.4rem; }
+.ot-caution-text { font-size: 0.82rem; color: #666; line-height: 1.6; margin: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="ot-hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-fade>
+        <div class="ot-hero-eyebrow"><i class="fas fa-dumbbell"></i> お口のトレーニング</div>
+        <h1 class="ot-hero-h1">歯並びは、<em>筋肉と習慣</em>で<br>変わっていく。</h1>
+        <p class="ot-hero-sub">悪い歯並びの原因は遺伝だけではありません。口呼吸・舌の位置・飲み込み方など、日常の「機能」にアプローチすることで、歯並びが整う方向へ導くことが期待できます。</p>
+        <div class="ot-hero-tags">
+          <span class="ot-hero-tag"><i class="fas fa-check me-1"></i>6〜10歳がベストな時期</span>
+          <span class="ot-hero-tag"><i class="fas fa-check me-1"></i>プレオルソ＋MFT</span>
+          <span class="ot-hero-tag"><i class="fas fa-check me-1"></i>根本原因へのアプローチ</span>
+          <span class="ot-hero-tag"><i class="fas fa-check me-1"></i>矯正移行時は割引あり</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 歯並びが悪くなる本当の原因 -->
+<section class="ot-section">
+  <div class="container">
+    <h2 class="ot-section-h2">歯並びが悪くなる、本当の原因</h2>
+    <p class="ot-section-sub">「遺伝だから仕方ない」——その考えは、もう古いかもしれません</p>
+
+    <div class="ot-cause-flow" data-fade>
+      <!-- 根本原因 -->
+      <div class="ot-cause-col">
+        <div class="ot-cause-col-head root">根本原因</div>
+        <div class="ot-cause-items">
+          <div class="ot-cause-item root-item">鼻閉・鼻詰まり</div>
+          <div class="ot-cause-item root-item">指しゃぶり・舌癖などの習慣</div>
+          <div class="ot-cause-item root-item">遺伝的要因</div>
+          <div class="ot-cause-item root-item">口唇閉鎖不全（お口ぽかん）</div>
+        </div>
+      </div>
+
+      <div class="ot-cause-arrow"><i class="fas fa-chevron-right"></i></div>
+
+      <!-- 代償性原因 -->
+      <div class="ot-cause-col">
+        <div class="ot-cause-col-head comp">機能的な問題</div>
+        <div class="ot-cause-items">
+          <div class="ot-cause-item comp-item">口呼吸</div>
+          <div class="ot-cause-item comp-item">低位舌（舌が正しい位置にない）</div>
+          <div class="ot-cause-item comp-item">異常嚥下（飲み込み方の癖）</div>
+          <div class="ot-cause-item comp-item">口周りの筋力不足</div>
+        </div>
+      </div>
+
+      <div class="ot-cause-arrow"><i class="fas fa-chevron-right"></i></div>
+
+      <!-- 結果的原因 -->
+      <div class="ot-cause-col">
+        <div class="ot-cause-col-head result">起こりやすいこと</div>
+        <div class="ot-cause-items">
+          <div class="ot-cause-item result-item">顎の発育不足</div>
+          <div class="ot-cause-item result-item">歯列不正（でこぼこ・出っ歯など）</div>
+          <div class="ot-cause-item result-item">睡眠・発音・姿勢への影響</div>
+          <div class="ot-cause-item result-item">口腔機能の低下</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ot-cause-note mt-3" data-fade>
+      <strong>キトウ歯科のアプローチ：</strong>歯を並べるだけでなく、「なぜ歯並びが悪くなったのか」という根本原因を探り、そこにアプローチします。結果として、歯並びが整う方向へ導くことが期待できます。
+    </div>
+  </div>
+</section>
+
+<!-- トレーニングの内容 -->
+<section class="ot-section ot-section-alt">
+  <div class="container">
+    <h2 class="ot-section-h2">お口のトレーニングとは</h2>
+    <p class="ot-section-sub">プレオルソ装置とMFT（口腔筋機能療法）を組み合わせた機能改善プログラムです</p>
+    <div class="row g-4">
+      <div class="col-md-4" data-fade>
+        <div class="ot-approach-card">
+          <div class="ot-approach-icon"><i class="fas fa-teeth"></i></div>
+          <div class="ot-approach-title">プレオルソ</div>
+          <p class="ot-approach-desc">柔らかい素材でできたマウスピース型の装置です。就寝中や一定時間装着することで、唇・頬・舌の筋肉バランスを整え、歯が正しい位置に並びやすい環境づくりをサポートします。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="ot-approach-card">
+          <div class="ot-approach-icon"><i class="fas fa-dumbbell"></i></div>
+          <div class="ot-approach-title">MFT（口腔筋機能療法）</div>
+          <p class="ot-approach-desc">舌・唇・頬などの口周りの筋肉を正しく使えるようにするトレーニングです。「舌を正しい位置に置く」「鼻で呼吸する」「正しく飲み込む」といった習慣を身につけていきます。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="ot-approach-card">
+          <div class="ot-approach-icon"><i class="fas fa-child"></i></div>
+          <div class="ot-approach-title">継続することで変わる</div>
+          <p class="ot-approach-desc">装置を使うだけでなく、日常の「使い方」を変えることが大切です。正しい筋力と正しいポジション（唇・舌）が習慣化されると、自然に歯が並びやすい環境が整っていきます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 始める時期 -->
+<section class="ot-section">
+  <div class="container">
+    <h2 class="ot-section-h2">始める時期が大切です</h2>
+    <p class="ot-section-sub">顎が成長している時期だからこそ、根本からアプローチできます</p>
+    <div class="ot-age-banner" data-fade>
+      <div class="ot-age-num">6〜10歳</div>
+      <div>
+        <div class="ot-age-label">この時期がもっとも効果が期待できます</div>
+        <p class="ot-age-desc">6〜10歳は顎の骨がまだ成長途中にあり、筋肉や習慣を変えることで顎の発育に良い影響を与えやすい時期とされています。この時期に根本原因にアプローチすることで、将来の本格矯正が不要になる場合や、矯正期間・費用を抑えられる可能性があります。<br><br>10歳を超えると顎の成長が落ち着いてくるため、機能改善よりも装置で歯を並べる矯正治療が中心になります。「様子を見る」より、早めのご相談をおすすめします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section class="ot-section ot-section-alt">
+  <div class="container">
+    <h2 class="ot-section-h2">料金案内</h2>
+    <p class="ot-section-sub">すべて税抜き価格です</p>
+    <div class="row justify-content-center">
+      <div class="col-md-6" data-fade>
+        <div class="ot-price-box">
+          <div class="ot-price-head"><i class="fas fa-child me-2"></i>お口のトレーニング（プレオルソ＋MFT）</div>
+          <div class="ot-price-row">
+            <span class="ot-price-label">精密検査</span>
+            <span class="ot-price-amount">30,000円<span class="ot-price-tax">＋税</span></span>
+          </div>
+          <div class="ot-price-row ot-price-row-alt">
+            <div>
+              <div class="ot-price-label">トレーニング費用</div>
+              <div class="ot-price-note">1年間のプログラム</div>
+            </div>
+            <span class="ot-price-amount">200,000円<span class="ot-price-tax">＋税</span></span>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #1a3a2a, #2d6e4a); border-radius: 12px; padding: 1.5rem 1.8rem; color: #fff; margin-top: 1.2rem; display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="font-size: 1.6rem; flex-shrink: 0;">🎁</div>
+          <div>
+            <div style="font-weight: 800; font-size: 0.95rem; margin-bottom: 0.4rem;">矯正治療へのステップアップ割引</div>
+            <p style="font-size: 0.83rem; color: rgba(255,255,255,0.8); margin: 0; line-height: 1.7;">当院でお口のトレーニングを受けたお子さまが、その後インビザラインまたはワイヤー矯正に移行される場合、矯正治療費を割引価格でご提供しています。詳細はカウンセリング時にご案内します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mt-3" style="font-size:0.8rem; color:#999;">※料金はすべて税抜き表示です。本治療は自由診療（保険適用外）です。</p>
+  </div>
+</section>
+
+<!-- 治療の流れ -->
+<section class="ot-section">
+  <div class="container">
+    <h2 class="ot-section-h2">治療の流れ</h2>
+    <div class="ot-flow-list mt-4">
+      <div class="ot-flow-item" data-fade>
+        <div class="ot-flow-num">1</div>
+        <div>
+          <div class="ot-flow-title">カウンセリング・精密検査</div>
+          <p class="ot-flow-desc">お子さまのお口の状態・呼吸・舌の位置・飲み込み方などを確認します。レントゲンや口腔内検査（精密検査 30,000円＋税）で現在の顎の発育状況を評価します。</p>
+        </div>
+      </div>
+      <div class="ot-flow-item" data-fade>
+        <div class="ot-flow-num">2</div>
+        <div>
+          <div class="ot-flow-title">治療計画のご説明</div>
+          <p class="ot-flow-desc">検査結果をもとに、根本原因・トレーニングの内容・期間・費用を丁寧にご説明します。保護者の方にも内容をしっかりご理解いただいてから開始します。</p>
+        </div>
+      </div>
+      <div class="ot-flow-item" data-fade>
+        <div class="ot-flow-num">3</div>
+        <div>
+          <div class="ot-flow-title">プレオルソ装着開始・MFT指導</div>
+          <p class="ot-flow-desc">プレオルソを装着し、MFTの基本的なトレーニングをお伝えします。ご自宅でも継続していただけるよう、わかりやすく指導します。</p>
+        </div>
+      </div>
+      <div class="ot-flow-item" data-fade>
+        <div class="ot-flow-num">4</div>
+        <div>
+          <div class="ot-flow-title">定期チェック・トレーニング継続</div>
+          <p class="ot-flow-desc">定期的にご来院いただき、お口の変化を確認しながらトレーニングを進めます。習慣の定着具合に合わせて内容を調整していきます。</p>
+        </div>
+      </div>
+      <div class="ot-flow-item" data-fade>
+        <div class="ot-flow-num">5</div>
+        <div>
+          <div class="ot-flow-title">経過評価・今後の相談</div>
+          <p class="ot-flow-desc">1年間のプログラム終了後、お口の機能と歯並びの変化を評価します。状態に応じて継続・終了・矯正治療への移行などをご相談します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 注意事項 -->
+<section class="ot-section ot-section-alt">
+  <div class="container">
+    <h2 class="ot-section-h2">治療前にご理解いただきたいこと</h2>
+    <div class="row g-3 mt-1">
+      <div class="col-md-4" data-fade>
+        <div class="ot-caution-card">
+          <div class="ot-caution-icon"><i class="fas fa-yen-sign"></i></div>
+          <div class="ot-caution-title">自由診療（保険適用外）</div>
+          <p class="ot-caution-text">お口のトレーニングは自由診療（保険適用外）です。料金はすべて税抜き表示で、別途消費税がかかります。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="ot-caution-card">
+          <div class="ot-caution-icon"><i class="fas fa-user-clock"></i></div>
+          <div class="ot-caution-title">個人差があります</div>
+          <p class="ot-caution-text">トレーニングの効果・期間には個人差があります。すべての方に同じ結果が出るとは限りません。定期的な評価をしながら進めていきます。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="ot-caution-card">
+          <div class="ot-caution-icon"><i class="fas fa-home"></i></div>
+          <div class="ot-caution-title">ご家庭での継続が大切です</div>
+          <p class="ot-caution-text">トレーニングはご自宅での継続が効果に大きく影響します。お子さまへの声かけなど、保護者の方のサポートが重要です。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade>
+        <div class="ot-caution-card">
+          <div class="ot-caution-icon"><i class="fas fa-exchange-alt"></i></div>
+          <div class="ot-caution-title">矯正治療が必要な場合もあります</div>
+          <p class="ot-caution-text">お口のトレーニングだけでは対応が難しい症例もあります。必要に応じて矯正治療への移行をご提案する場合があります。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="ot-caution-card">
+          <div class="ot-caution-icon"><i class="fas fa-clock"></i></div>
+          <div class="ot-caution-title">年齢によっては適応外のことも</div>
+          <p class="ot-caution-text">顎の成長が落ち着いた年齢では、本プログラムの適応が難しい場合があります。まずはご相談ください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 関連ページ -->
+<section class="related-pages-section">
+  <div class="container">
+    <p class="related-pages-label">関連する治療</p>
+    <div class="related-pages-grid">
+      <a href="{{ url_for('orthodontics') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-teeth"></i></div>
+        <div>
+          <div class="related-page-title">矯正歯科</div>
+          <div class="related-page-desc">お口のトレーニング後、さらに歯並びを整えたい方へ。インビザライン・ワイヤー矯正に対応。移行割引あり。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('aesthetic') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-star"></i></div>
+        <div>
+          <div class="related-page-title">審美歯科・セラミック</div>
+          <div class="related-page-desc">機能だけでなく、歯の色・形・美しさにもこだわりたい方へ。セラミック治療との組み合わせも可能です。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="cta-eyebrow">まずはご相談から</p>
+    <h2 class="cta-title">お子さまのお口のことを<br>一緒に考えさせてください</h2>
+    <p class="cta-sub">「うちの子、口が開いていることが多い」「歯並びが気になる」など、小さなことでもお気軽にご相談ください。</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="cta-btn-primary">
+        <i class="fas fa-calendar-alt me-2"></i>WEB予約（24時間受付）
+      </a>
+      <a href="tel:0568622580" class="cta-btn-secondary">
+        <i class="fas fa-phone me-2"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
