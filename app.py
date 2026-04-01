@@ -183,6 +183,11 @@ def sitemap_xml():
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>{SITE_URL}/oral-training</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
     return Response(content, mimetype='application/xml')
 
@@ -269,6 +274,11 @@ def gummy_smile():
 @app.route('/orthodontics')
 def orthodontics():
     return render_template('orthodontics.html')
+
+
+@app.route('/oral-training')
+def oral_training():
+    return render_template('oral_training.html')
 
 
 # ==================== Admin Dashboard ====================
