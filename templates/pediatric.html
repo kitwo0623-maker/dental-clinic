@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+{% block title %}小児歯科 | 犬山市キトウ歯科医院{% endblock %}
+{% block description %}犬山市キトウ歯科医院の小児歯科。歯が生えたらすぐ来院を。年齢別アプローチ（虫歯予防→歯並び予防→矯正）でお子さまの歯の一生をサポートします。TEL: 0568-62-2580{% endblock %}
+{% block canonical %}https://dental-clinic-wpg6.onrender.com/pediatric{% endblock %}
+{% block extra_css %}
+<style>
+/* ===== Hero ===== */
+.pd-hero {
+  background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+  padding: 5rem 0 4rem; color: #fff;
+}
+.pd-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 30px; padding: 0.3rem 1rem;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9); margin-bottom: 1.2rem;
+}
+.pd-hero-h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800; line-height: 1.35; margin-bottom: 1rem;
+}
+.pd-hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, #fde68a, #fbbf24);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pd-hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.82); max-width: 520px; line-height: 1.8; margin-bottom: 1.5rem;
+}
+.pd-hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pd-hero-tag {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 6px; padding: 0.3rem 0.8rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.88);
+}
+
+/* ===== Sections ===== */
+.pd-section { padding: 4.5rem 0; }
+.pd-section-alt { background: #fff7ed; }
+.pd-section-h2 {
+  font-size: 1.6rem; font-weight: 800; color: #7c2d12;
+  margin-bottom: 0.5rem; text-align: center;
+}
+.pd-section-sub { text-align: center; color: #78350f; font-size: 0.9rem; margin-bottom: 2.5rem; }
+
+/* ===== Message banner ===== */
+.pd-msg-banner {
+  background: #fff7ed; border: 1.5px solid #fed7aa;
+  border-radius: 14px; padding: 1.8rem 2rem;
+  display: flex; align-items: flex-start; gap: 1.2rem;
+}
+.pd-msg-icon {
+  width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, #7c2d12, #c2410c);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.pd-msg-title { font-size: 1rem; font-weight: 800; color: #7c2d12; margin-bottom: 0.4rem; }
+.pd-msg-text { font-size: 0.88rem; color: #78350f; line-height: 1.75; margin: 0; }
+
+/* ===== Timeline (age roadmap) ===== */
+.pd-timeline {
+  display: flex; align-items: flex-start; gap: 0;
+  overflow-x: auto; padding-bottom: 0.5rem;
+}
+.pd-timeline-step { flex: 1; min-width: 200px; position: relative; }
+.pd-timeline-step:not(:last-child)::after {
+  content: '';
+  position: absolute; right: -1px; top: 28px;
+  width: 0; height: 0;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 18px solid #c2410c;
+  z-index: 2;
+}
+.pd-timeline-head {
+  background: linear-gradient(135deg, #7c2d12, #c2410c);
+  color: #fff; text-align: center;
+  padding: 0.7rem 1rem 0.7rem 0.8rem;
+  font-size: 0.82rem; font-weight: 800; letter-spacing: 0.04em;
+  border-radius: 10px 0 0 0;
+  min-height: 56px; display: flex; align-items: center; justify-content: center;
+}
+.pd-timeline-step:last-child .pd-timeline-head { border-radius: 10px 10px 0 0; }
+.pd-timeline-body {
+  background: #fff; border: 1.5px solid #fed7aa;
+  border-top: none; border-radius: 0 0 10px 10px;
+  padding: 1rem 1.1rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.pd-timeline-item {
+  font-size: 0.83rem; color: #44403c; background: #fff7ed;
+  border-radius: 6px; padding: 0.4rem 0.75rem;
+  border-left: 3px solid #c2410c; line-height: 1.45;
+}
+
+/* ===== 8020 stat cards ===== */
+.pd-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+.pd-stat-card {
+  background: #fff; border: 1.5px solid #fed7aa;
+  border-radius: 14px; padding: 1.2rem 1rem;
+  text-align: center;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.pd-stat-card:hover { box-shadow: 0 4px 18px rgba(194,65,12,0.1); border-color: #c2410c; }
+.pd-stat-card-label { font-size: 0.83rem; font-weight: 700; color: #44403c; margin-bottom: 0.5rem; line-height: 1.4; }
+.pd-stat-card-rate {
+  font-size: 1.5rem; font-weight: 900; line-height: 1;
+}
+.pd-stat-card-rate.good  { color: #16a34a; }
+.pd-stat-card-rate.warn  { color: #dc2626; }
+.pd-stat-card-rate.mid   { color: #c2410c; }
+.pd-stat-card-suffix { font-size: 0.78rem; color: #78716c; margin-top: 0.25rem; }
+.pd-stat-note {
+  font-size: 0.76rem; color: #a8a29e; text-align: right;
+  margin-top: 0.75rem;
+}
+.pd-stat-header-note {
+  background: #fff7ed; border: 1px solid #fed7aa;
+  border-radius: 8px; padding: 0.7rem 1rem;
+  font-size: 0.84rem; color: #78350f; line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Service cards ===== */
+.pd-service-card {
+  background: #fff; border: 1.5px solid #fed7aa;
+  border-radius: 16px; padding: 2rem 1.8rem; height: 100%;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.pd-service-card:hover { box-shadow: 0 6px 24px rgba(194,65,12,0.1); border-color: #c2410c; }
+.pd-service-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: linear-gradient(135deg, #7c2d12, #c2410c);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 1rem;
+}
+.pd-service-title { font-size: 1.05rem; font-weight: 800; color: #7c2d12; margin-bottom: 0.5rem; }
+.pd-service-desc { font-size: 0.86rem; color: #57534e; line-height: 1.75; margin: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="pd-hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-fade>
+        <div class="pd-hero-eyebrow"><i class="fas fa-tooth"></i> 小児歯科</div>
+        <h1 class="pd-hero-h1">まず、<em>歯医者を好きに</em>なってもらうこと。<br>それが最初のケアです。</h1>
+        <p class="pd-hero-sub">お子さまの歯の一生は、小さな頃の習慣で大きく変わります。歯が生えたらすぐのご来院をおすすめする理由があります。</p>
+        <div class="pd-hero-tags">
+          <span class="pd-hero-tag"><i class="fas fa-check me-1"></i>歯が生えたらすぐ来院を</span>
+          <span class="pd-hero-tag"><i class="fas fa-check me-1"></i>フッ素塗布・虫歯予防</span>
+          <span class="pd-hero-tag"><i class="fas fa-check me-1"></i>歯並び予防（プレオルソ）</span>
+          <span class="pd-hero-tag"><i class="fas fa-check me-1"></i>矯正治療への連携</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- キトウ歯科の考え方 -->
+<section class="pd-section">
+  <div class="container">
+    <h2 class="pd-section-h2">キトウ歯科の小児歯科の考え方</h2>
+    <p class="pd-section-sub">お子さまの歯の健康は、家族みんなで育てるものです</p>
+
+    <div class="row g-4">
+      <!-- カード1 -->
+      <div class="col-md-4" data-fade>
+        <div class="pd-msg-banner h-100" style="flex-direction: column; gap: 0.8rem;">
+          <div class="d-flex align-items-center gap-3">
+            <div class="pd-msg-icon"><i class="fas fa-smile-beam"></i></div>
+            <div class="pd-msg-title">まず、歯医者に慣れること</div>
+          </div>
+          <p class="pd-msg-text">「歯医者＝怖い場所」という印象を持つと、大人になっても通院を避けがちになります。キトウ歯科では、お子さまのペースに合わせて少しずつ慣れていただくことを最優先にしています。最初は「見るだけ」でも大丈夫です。</p>
+        </div>
+      </div>
+      <!-- カード2 -->
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="pd-msg-banner h-100" style="flex-direction: column; gap: 0.8rem;">
+          <div class="d-flex align-items-center gap-3">
+            <div class="pd-msg-icon"><i class="fas fa-users"></i></div>
+            <div class="pd-msg-title">お口の健康は家族で育てる</div>
+          </div>
+          <p class="pd-msg-text">虫歯になりやすいかどうかは、生活習慣の影響を大きく受けます。ご両親が虫歯になりやすい場合、お子さまも同じ食習慣・生活習慣を持ちやすい傾向があります。だからこそ、保護者の方への知識の提供・指導が大切だと考えています。</p>
+        </div>
+      </div>
+      <!-- カード3 -->
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="pd-msg-banner h-100" style="flex-direction: column; gap: 0.8rem;">
+          <div class="d-flex align-items-center gap-3">
+            <div class="pd-msg-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="pd-msg-title">歯が生えたらすぐ来院を</div>
+          </div>
+          <p class="pd-msg-text">3歳までの糖分摂取量は、将来の虫歯リスクに大きく影響するといわれています。歯が生えた直後から虫歯予防・食生活指導を始めることで、お子さまの歯を守る可能性が高まります。「まだ小さいから」と待たず、まずはご相談ください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 年齢別ロードマップ -->
+<section class="pd-section pd-section-alt">
+  <div class="container">
+    <h2 class="pd-section-h2">年齢別アプローチ</h2>
+    <p class="pd-section-sub">お子さまの成長に合わせた3ステージで、歯の一生をサポートします</p>
+
+    <div class="pd-timeline" data-fade>
+      <!-- Stage 1 -->
+      <div class="pd-timeline-step">
+        <div class="pd-timeline-head">
+          <div>
+            <div style="font-size:1rem; font-weight:900;">0〜5歳</div>
+            <div style="font-size:0.72rem; font-weight:600; opacity:0.85;">慣れる・守る</div>
+          </div>
+        </div>
+        <div class="pd-timeline-body">
+          <div class="pd-timeline-item">歯医者に慣れること</div>
+          <div class="pd-timeline-item">虫歯予防（フッ素塗布）</div>
+          <div class="pd-timeline-item">食生活・生活習慣指導</div>
+          <div class="pd-timeline-item">保護者へのブラッシング指導</div>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="pd-timeline-step">
+        <div class="pd-timeline-head">
+          <div>
+            <div style="font-size:1rem; font-weight:900;">5〜10歳</div>
+            <div style="font-size:0.72rem; font-weight:600; opacity:0.85;">育てる・整える</div>
+          </div>
+        </div>
+        <div class="pd-timeline-body">
+          <div class="pd-timeline-item">お口のトレーニング（プレオルソ）</div>
+          <div class="pd-timeline-item">MFT（口腔筋機能療法）</div>
+          <div class="pd-timeline-item">歯並び予防</div>
+          <div class="pd-timeline-item">虫歯予防の継続</div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="pd-timeline-step">
+        <div class="pd-timeline-head">
+          <div>
+            <div style="font-size:1rem; font-weight:900;">10歳〜</div>
+            <div style="font-size:0.72rem; font-weight:600; opacity:0.85;">整える・仕上げる</div>
+          </div>
+        </div>
+        <div class="pd-timeline-body">
+          <div class="pd-timeline-item">矯正治療（インビザライン）</div>
+          <div class="pd-timeline-item">ワイヤー矯正</div>
+          <div class="pd-timeline-item">小児矯正からの割引あり</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff; border:1.5px solid #fed7aa; border-radius:10px; padding:1rem 1.4rem; margin-top:1.5rem; font-size:0.84rem; color:#78350f; line-height:1.7;" data-fade>
+      <i class="fas fa-info-circle me-1" style="color:#c2410c;"></i>
+      各ステージはお子さまの状態によって前後します。早ければ早いほど選択肢が広がります。まずはお気軽にご相談ください。
+    </div>
+  </div>
+</section>
+
+<!-- 8020データ -->
+<section class="pd-section">
+  <div class="container">
+    <h2 class="pd-section-h2">「歯並び」は将来の歯の寿命に影響します</h2>
+    <p class="pd-section-sub">80歳で20本の歯を保てる人（8020達成者）の歯並びデータ（2017年 厚生労働省）</p>
+
+    <div data-fade>
+      <div class="pd-stat-header-note">
+        <i class="fas fa-chart-bar me-1" style="color:#c2410c;"></i>
+        8020とは「80歳になっても自分の歯を20本以上保とう」という目標です。歯並びの種類によって8020達成率に大きな差があることがわかっています。お子さまの歯並びへの早めのアプローチが、将来の歯の健康につながる可能性があります。
+      </div>
+
+      <div class="pd-stat-grid">
+        <!-- 正常な歯並び -->
+        <div class="pd-stat-card">
+          <div class="pd-stat-card-label">正常な歯並び</div>
+          <div class="pd-stat-card-rate good">高い</div>
+          <div class="pd-stat-suffix" style="font-size:0.75rem; color:#16a34a; margin-top:0.25rem; font-weight:700;">8020達成率</div>
+        </div>
+        <!-- 開咬 -->
+        <div class="pd-stat-card">
+          <div class="pd-stat-card-label">開咬<br><span style="font-size:0.75rem; font-weight:400; color:#78716c;">（前歯が噛み合わない）</span></div>
+          <div class="pd-stat-card-rate warn">0%</div>
+          <div class="pd-stat-suffix" style="font-size:0.75rem; color:#dc2626; margin-top:0.25rem; font-weight:700;">8020達成率</div>
+        </div>
+        <!-- 反対咬合 -->
+        <div class="pd-stat-card">
+          <div class="pd-stat-card-label">反対咬合<br><span style="font-size:0.75rem; font-weight:400; color:#78716c;">（受け口）</span></div>
+          <div class="pd-stat-card-rate warn">0%</div>
+          <div class="pd-stat-suffix" style="font-size:0.75rem; color:#dc2626; margin-top:0.25rem; font-weight:700;">8020達成率</div>
+        </div>
+        <!-- 上顎前突 -->
+        <div class="pd-stat-card">
+          <div class="pd-stat-card-label">上顎前突<br><span style="font-size:0.75rem; font-weight:400; color:#78716c;">（出っ歯）</span></div>
+          <div class="pd-stat-card-rate mid">15.4%</div>
+          <div class="pd-stat-suffix" style="font-size:0.75rem; color:#c2410c; margin-top:0.25rem; font-weight:700;">8020達成率</div>
+        </div>
+        <!-- 過蓋咬合 -->
+        <div class="pd-stat-card">
+          <div class="pd-stat-card-label">過蓋咬合<br><span style="font-size:0.75rem; font-weight:400; color:#78716c;">（深い噛み合わせ）</span></div>
+          <div class="pd-stat-card-rate mid">13.5%</div>
+          <div class="pd-stat-suffix" style="font-size:0.75rem; color:#c2410c; margin-top:0.25rem; font-weight:700;">8020達成率</div>
+        </div>
+        <!-- 空隙歯列 -->
+        <div class="pd-stat-card">
+          <div class="pd-stat-card-label">空隙歯列<br><span style="font-size:0.75rem; font-weight:400; color:#78716c;">（すきっ歯）</span></div>
+          <div class="pd-stat-card-rate mid">5%</div>
+          <div class="pd-stat-suffix" style="font-size:0.75rem; color:#c2410c; margin-top:0.25rem; font-weight:700;">8020達成率</div>
+        </div>
+        <!-- 叢生 -->
+        <div class="pd-stat-card">
+          <div class="pd-stat-card-label">叢生（下顎）<br><span style="font-size:0.75rem; font-weight:400; color:#78716c;">（でこぼこ）</span></div>
+          <div class="pd-stat-card-rate mid">28.8%</div>
+          <div class="pd-stat-suffix" style="font-size:0.75rem; color:#c2410c; margin-top:0.25rem; font-weight:700;">8020達成率</div>
+        </div>
+      </div>
+      <p class="pd-stat-note">出典「8020達成者の歯にみられたcervical lesionについて」</p>
+    </div>
+
+    <div style="background:#fff7ed; border-left:4px solid #c2410c; border-radius:0 10px 10px 0; padding:1rem 1.4rem; margin-top:1.5rem; font-size:0.86rem; color:#78350f; line-height:1.7;" data-fade>
+      <strong>キトウ歯科からのメッセージ：</strong>歯並びを整えることは「見た目」だけの問題ではありません。将来、80歳になっても自分の歯で食べられる可能性を高めるために、お子さまのうちから歯並びへのアプローチを始めることをおすすめします（個人差があります）。
+    </div>
+  </div>
+</section>
+
+<!-- キトウ歯科の小児歯科メニュー -->
+<section class="pd-section pd-section-alt">
+  <div class="container">
+    <h2 class="pd-section-h2">キトウ歯科でできること</h2>
+    <p class="pd-section-sub">お子さまの年齢・状態に合わせた3つのアプローチ</p>
+
+    <div class="row g-4">
+      <!-- カード1 -->
+      <div class="col-md-4" data-fade>
+        <div class="pd-service-card">
+          <div class="pd-service-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="pd-service-title">フッ素塗布・定期検診</div>
+          <p class="pd-service-desc">フッ素塗布は歯のエナメル質を強化し、虫歯になりにくい歯を育てることが期待できます。定期検診で虫歯の早期発見・早期対処も行います。3〜4ヶ月に一度のご来院をおすすめします。</p>
+        </div>
+      </div>
+      <!-- カード2 -->
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="pd-service-card">
+          <div class="pd-service-icon"><i class="fas fa-apple-alt"></i></div>
+          <div class="pd-service-title">食生活・生活習慣指導</div>
+          <p class="pd-service-desc">虫歯の多くは食生活・生活習慣によって予防できます。糖分の摂り方・間食の頻度・仕上げ磨きのポイントなど、保護者の方にも分かりやすくお伝えします。3歳までの食習慣が特に重要です。</p>
+        </div>
+      </div>
+      <!-- カード3 -->
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="pd-service-card">
+          <div class="pd-service-icon"><i class="fas fa-dumbbell"></i></div>
+          <div class="pd-service-title">お口のトレーニング・歯並び予防</div>
+          <p class="pd-service-desc">5〜10歳のお子さまには、プレオルソ＋MFT（口腔筋機能療法）によるお口のトレーニングをご提案できます。筋肉・呼吸・飲み込み方を整えることで、歯並びが改善する方向へ導くことが期待できます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 関連ページ -->
+<section class="related-pages-section">
+  <div class="container">
+    <p class="related-pages-label">関連する治療</p>
+    <div class="related-pages-grid">
+      <a href="{{ url_for('oral_training') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-dumbbell"></i></div>
+        <div>
+          <div class="related-page-title">お口のトレーニング（MFT・プレオルソ）</div>
+          <div class="related-page-desc">5〜10歳のお子さまに。口呼吸・舌の位置・飲み込み方などの根本原因にアプローチし、歯並びが整う方向へ導きます。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('orthodontics') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-teeth"></i></div>
+        <div>
+          <div class="related-page-title">矯正歯科</div>
+          <div class="related-page-desc">10歳以上・成人の方へ。インビザライン・ワイヤー矯正に対応。小児矯正（プレオルソ）からのステップアップ割引あり。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="cta-eyebrow">まずはご相談から</p>
+    <h2 class="cta-title">お子さまの歯のことを<br>一緒に考えさせてください</h2>
+    <p class="cta-sub">「歯が生えてきた」「虫歯が心配」「歯並びが気になる」——小さなことでもお気軽にご相談ください。まずは歯医者に慣れることからで大丈夫です。</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="cta-btn-primary">
+        <i class="fas fa-calendar-alt me-2"></i>WEB予約（24時間受付）
+      </a>
+      <a href="tel:0568622580" class="cta-btn-secondary">
+        <i class="fas fa-phone me-2"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
