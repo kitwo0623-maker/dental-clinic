@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+{% block title %}予防歯科・定期検診 | 犬山市キトウ歯科医院{% endblock %}
+{% block description %}犬山市キトウ歯科医院の予防歯科。虫歯・歯周病は生活習慣が原因のことも。「健康」と思っているうちに一度プロの目でチェックを。3ヶ月に1回の定期検診で早期発見・早期治療を。TEL: 0568-62-2580{% endblock %}
+{% block canonical %}https://dental-clinic-wpg6.onrender.com/prevention{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ===== Hero ===== */
+.pv-hero {
+  background: linear-gradient(135deg, #134e4a 0%, #0f766e 100%);
+  padding: 5rem 0 4rem; color: #fff;
+}
+.pv-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 30px; padding: 0.3rem 1rem;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9); margin-bottom: 1.2rem;
+}
+.pv-hero-h1 {
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-weight: 800; line-height: 1.35; margin-bottom: 1rem;
+}
+.pv-hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, #99f6e4, #5eead4);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pv-hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.78); max-width: 500px; line-height: 1.8;
+}
+.pv-hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+.pv-hero-tag {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px; padding: 0.3rem 0.8rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.85);
+}
+
+/* ===== Sections ===== */
+.pv-section { padding: 4.5rem 0; }
+.pv-section-alt { background: #f0fdfb; }
+.pv-section-h2 {
+  font-size: 1.6rem; font-weight: 800; color: #134e4a;
+  margin-bottom: 0.5rem; text-align: center;
+}
+.pv-section-sub { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 2.5rem; }
+
+/* ===== 歯を失う現実（インパクトボックス） ===== */
+.pv-impact-box {
+  background: #134e4a; color: #fff;
+  border-radius: 18px; padding: 2.5rem 2rem;
+  text-align: center;
+}
+.pv-impact-headline {
+  font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 900;
+  line-height: 1.4; margin-bottom: 1rem;
+}
+.pv-impact-headline span {
+  background: linear-gradient(90deg, #99f6e4, #5eead4);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.pv-impact-desc {
+  font-size: 0.92rem; color: rgba(255,255,255,0.8);
+  line-height: 1.8; max-width: 560px; margin: 0 auto 1.5rem;
+}
+.pv-impact-items {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem;
+}
+.pv-impact-item {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px; padding: 0.5rem 1.1rem;
+  font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.9);
+}
+
+/* ===== 原因カード ===== */
+.pv-cause-card {
+  background: #fff; border: 1.5px solid #ccfbf1;
+  border-radius: 14px; padding: 1.6rem; height: 100%;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.pv-cause-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); border-color: #0f766e; }
+.pv-cause-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: linear-gradient(135deg, #134e4a, #0f766e);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; margin-bottom: 0.9rem;
+}
+.pv-cause-title { font-size: 1rem; font-weight: 800; color: #134e4a; margin-bottom: 0.5rem; }
+.pv-cause-desc { font-size: 0.85rem; color: #555; line-height: 1.75; margin: 0; }
+
+/* ===== "気づかない"バナー ===== */
+.pv-awareness-banner {
+  background: #fff8f0; border: 1.5px solid #fed7aa;
+  border-radius: 14px; padding: 2rem 2.2rem;
+  display: flex; gap: 1.2rem; align-items: flex-start;
+}
+.pv-awareness-icon { font-size: 2.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+.pv-awareness-title { font-weight: 800; font-size: 1.05rem; color: #92400e; margin-bottom: 0.4rem; }
+.pv-awareness-desc { font-size: 0.87rem; color: #78350f; line-height: 1.75; margin: 0; }
+
+/* ===== 定期検診コンテンツ ===== */
+.pv-checkup-card {
+  background: #fff; border: 1.5px solid #ccfbf1;
+  border-radius: 14px; padding: 1.8rem; height: 100%;
+  transition: box-shadow 0.2s;
+}
+.pv-checkup-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+.pv-checkup-num {
+  font-size: 2.8rem; font-weight: 900; line-height: 1;
+  background: linear-gradient(135deg, #134e4a, #0f766e);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 0.3rem;
+}
+.pv-checkup-unit { font-size: 1rem; font-weight: 700; color: #134e4a; margin-bottom: 0.6rem; }
+.pv-checkup-desc { font-size: 0.85rem; color: #555; line-height: 1.75; margin: 0; }
+
+/* ===== 先生の声 ===== */
+.pv-quote {
+  background: linear-gradient(135deg, #134e4a 0%, #0f766e 100%);
+  border-radius: 16px; padding: 2.2rem 2.4rem; color: #fff; position: relative;
+}
+.pv-quote::before {
+  content: '\201C';
+  font-size: 6rem; font-family: Georgia, serif; line-height: 0.7;
+  color: rgba(255,255,255,0.15); position: absolute; top: 1.2rem; left: 1.5rem;
+}
+.pv-quote-text {
+  font-size: 1.05rem; line-height: 1.85; color: rgba(255,255,255,0.93);
+  font-weight: 500; position: relative; z-index: 1; padding-left: 1rem;
+}
+.pv-quote-author {
+  margin-top: 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.6);
+  text-align: right; position: relative; z-index: 1;
+}
+
+/* ===== 内容リスト ===== */
+.pv-content-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.pv-content-list li {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  font-size: 0.88rem; color: #444; line-height: 1.6;
+  padding: 0.65rem 0.9rem;
+  background: #f0fdfb; border-radius: 8px; border-left: 3px solid #0f766e;
+}
+.pv-content-list li i { color: #0f766e; flex-shrink: 0; margin-top: 0.15rem; }
+
+/* ===== 注意事項 ===== */
+.pv-caution-card {
+  background: #fff; border: 1.5px solid #ccfbf1;
+  border-radius: 12px; padding: 1.3rem 1.5rem; height: 100%;
+}
+.pv-caution-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: #ccfbf1; color: #0f766e;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem; margin-bottom: 0.8rem;
+}
+.pv-caution-title { font-weight: 700; font-size: 0.88rem; color: #134e4a; margin-bottom: 0.35rem; }
+.pv-caution-text { font-size: 0.82rem; color: #666; line-height: 1.6; margin: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="pv-hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-fade>
+        <div class="pv-hero-eyebrow"><i class="fas fa-shield-alt"></i> 予防歯科・定期検診</div>
+        <h1 class="pv-hero-h1">失ってから後悔しない。<br><em>歯を守る</em>ための歯科医院へ。</h1>
+        <p class="pv-hero-sub">虫歯も歯周病も、ある日突然起きるわけではありません。気づかないうちに積み重なった生活習慣が、少しずつ歯をむしばんでいきます。だからこそ、「健康」と思っているうちに来ていただくことが大切です。</p>
+        <div class="pv-hero-tags">
+          <span class="pv-hero-tag"><i class="fas fa-check me-1"></i>3ヶ月に1回の定期検診</span>
+          <span class="pv-hero-tag"><i class="fas fa-check me-1"></i>年1回の全体レントゲン</span>
+          <span class="pv-hero-tag"><i class="fas fa-check me-1"></i>生活習慣のアドバイス</span>
+          <span class="pv-hero-tag"><i class="fas fa-check me-1"></i>保険診療対応</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 歯を失う現実 -->
+<section class="pv-section">
+  <div class="container">
+    <div class="pv-impact-box" data-fade>
+      <div class="pv-impact-headline">
+        歯は、一度失ったら<br><span>二度と元には戻りません。</span>
+      </div>
+      <p class="pv-impact-desc">
+        虫歯や歯周病で歯や歯茎の組織が失われると、それは一生回復できません。インプラント・ブリッジ・入れ歯など、人工物で代替することはできますが、天然の歯には勝るものはありません。「これ以上悪くしない」という戦いになる前に、まず病気にならないことが最善です。
+      </p>
+      <div class="pv-impact-items">
+        <div class="pv-impact-item"><i class="fas fa-times me-1"></i>失った歯は再生しない</div>
+        <div class="pv-impact-item"><i class="fas fa-times me-1"></i>歯周病で溶けた骨は戻らない</div>
+        <div class="pv-impact-item"><i class="fas fa-check me-1"></i>病気にならないことが最善</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 原因は生活習慣 -->
+<section class="pv-section pv-section-alt">
+  <div class="container">
+    <h2 class="pv-section-h2">虫歯・歯周病の原因は、<br class="d-sm-none">「生活習慣」にあることが多い</h2>
+    <p class="pv-section-sub">細菌だけが原因ではありません。毎日の習慣が、じわじわと歯を蝕んでいます</p>
+    <div class="row g-4 mb-4">
+      <div class="col-md-4" data-fade>
+        <div class="pv-cause-card">
+          <div class="pv-cause-icon"><i class="fas fa-utensils"></i></div>
+          <div class="pv-cause-title">食生活の乱れ</div>
+          <p class="pv-cause-desc">間食が多い・甘い飲み物をよく飲む・食後すぐ横になるなど、口の中が酸性に傾く時間が長くなりやすい習慣が虫歯・歯周病のリスクを高めます。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="pv-cause-card">
+          <div class="pv-cause-icon"><i class="fas fa-tooth"></i></div>
+          <div class="pv-cause-title">磨き方・磨き残し</div>
+          <p class="pv-cause-desc">長年の磨き癖で、いつも同じ場所に汚れが残っていることがあります。正しいブラッシングができているかどうか、ご自身では気づきにくいものです。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="pv-cause-card">
+          <div class="pv-cause-icon"><i class="fas fa-bed"></i></div>
+          <div class="pv-cause-title">歯ぎしり・食いしばり</div>
+          <p class="pv-cause-desc">睡眠中の歯ぎしりや、日中の食いしばりは自覚しにくい癖です。しかし歯や顎に大きな負担をかけ、歯の破折・すり減り・歯周病の悪化につながります。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pv-awareness-banner" data-fade>
+      <div class="pv-awareness-icon">💡</div>
+      <div>
+        <div class="pv-awareness-title">「自分は大丈夫」と思っている方ほど、要注意です</div>
+        <p class="pv-awareness-desc">多くの方が、自分の生活習慣に問題があるとは思っていません。しかしプロの目で診ると、虫歯・歯周病・歯茎の炎症・咬み合わせのズレなど、何かしらの問題が見つかることがほとんどです。自覚症状がないうちこそ、来院のタイミングです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先生の声 -->
+<section class="pv-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9" data-fade>
+        <div class="pv-quote">
+          <p class="pv-quote-text">「もっと早く来ていただいていれば、レントゲンを1枚撮っていれば、こんなに大変なことにならなかったのに…」と感じる場面を、歯科医師として何度も経験してきました。<br><br>痛みがなくても、問題は静かに進んでいます。手遅れになる前に、一度ご自身のお口の状態を確認しに来てください。</p>
+          <div class="pv-quote-author">— キトウ歯科医院 院長</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 定期検診の内容 -->
+<section class="pv-section pv-section-alt">
+  <div class="container">
+    <h2 class="pv-section-h2">キトウ歯科の定期検診</h2>
+    <p class="pv-section-sub">クリーニングだけが目的ではありません。早期発見・早期治療と、お口へのモチベーション維持が大切です</p>
+
+    <div class="row g-4 mb-4">
+      <div class="col-md-4" data-fade>
+        <div class="pv-checkup-card">
+          <div class="pv-checkup-num">3<span style="font-size:1.4rem;">ヶ月</span></div>
+          <div class="pv-checkup-unit">に1回が目安</div>
+          <p class="pv-checkup-desc">歯石・汚れは3ヶ月ほどで蓄積してきます。定期的に取り除くことで、歯周病・虫歯の進行を抑えやすくなります。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="pv-checkup-card">
+          <div class="pv-checkup-num">1<span style="font-size:1.4rem;">年</span></div>
+          <div class="pv-checkup-unit">に1回の全体レントゲン</div>
+          <p class="pv-checkup-desc">見た目では分からない骨の状態・歯根の変化・初期虫歯を確認します。早期発見が治療の負担を大きく減らします。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="pv-checkup-card">
+          <div class="pv-checkup-num" style="font-size:2rem; padding-top:0.4rem;">毎回</div>
+          <div class="pv-checkup-unit">プロによる口腔チェック</div>
+          <p class="pv-checkup-desc">噛み合わせ・歯茎の状態・磨き残しのクセをチェックし、生活習慣のアドバイスも行います。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6" data-fade>
+        <h3 style="font-size:1rem; font-weight:800; color:#134e4a; margin-bottom:1rem;"><i class="fas fa-list-check me-2"></i>定期検診でやること</h3>
+        <ul class="pv-content-list">
+          <li><i class="fas fa-check-circle"></i>口腔内の視診・歯周ポケット検査</li>
+          <li><i class="fas fa-check-circle"></i>歯石・バイオフィルムの除去（PMTC）</li>
+          <li><i class="fas fa-check-circle"></i>磨き残し・磨き方のチェック・ブラッシング指導</li>
+          <li><i class="fas fa-check-circle"></i>全体レントゲン（年1回）</li>
+          <li><i class="fas fa-check-circle"></i>噛み合わせ・歯ぎしりの確認</li>
+          <li><i class="fas fa-check-circle"></i>初期虫歯・歯茎の炎症の早期発見</li>
+        </ul>
+      </div>
+      <div class="col-md-6" data-fade data-fade-delay="100">
+        <h3 style="font-size:1rem; font-weight:800; color:#134e4a; margin-bottom:1rem;"><i class="fas fa-lightbulb me-2"></i>定期検診に来ていただく本当の理由</h3>
+        <ul class="pv-content-list">
+          <li><i class="fas fa-search"></i><span><strong>早期発見・早期治療：</strong>小さな問題のうちに対処することで、治療の負担が大幅に減ります</span></li>
+          <li><i class="fas fa-heart"></i><span><strong>口腔ケアのモチベーション維持：</strong>定期的にプロに診てもらうことで、日常のセルフケアへの意識が高まります</span></li>
+          <li><i class="fas fa-chart-line"></i><span><strong>変化の記録：</strong>継続的に記録を残すことで、わずかな変化も見逃しません</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 注意事項 -->
+<section class="pv-section">
+  <div class="container">
+    <h2 class="pv-section-h2">ご来院の前にご確認ください</h2>
+    <div class="row g-3 mt-1">
+      <div class="col-md-4" data-fade>
+        <div class="pv-caution-card">
+          <div class="pv-caution-icon"><i class="fas fa-yen-sign"></i></div>
+          <div class="pv-caution-title">保険診療・自由診療について</div>
+          <p class="pv-caution-text">定期検診・クリーニングは基本的に保険診療で対応します。状態により自由診療の処置が必要な場合は、事前にご説明します。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="pv-caution-card">
+          <div class="pv-caution-icon"><i class="fas fa-clock"></i></div>
+          <div class="pv-caution-title">検診の頻度は状態によって異なります</div>
+          <p class="pv-caution-text">目安は3ヶ月に1回ですが、お口の状態によってはより短い間隔をおすすめする場合があります。担当医と相談しながら決めていきます。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="pv-caution-card">
+          <div class="pv-caution-icon"><i class="fas fa-info-circle"></i></div>
+          <div class="pv-caution-title">痛みがなくても受診できます</div>
+          <p class="pv-caution-text">「痛くないのに歯医者へ行くのは気が引ける」という方も多いです。しかし痛みがない状態での来院こそ、最も望ましいタイミングです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 関連ページ -->
+<section class="related-pages-section">
+  <div class="container">
+    <p class="related-pages-label">関連する治療</p>
+    <div class="related-pages-grid">
+      <a href="{{ url_for('oral_training') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-dumbbell"></i></div>
+        <div>
+          <div class="related-page-title">お口のトレーニング（MFT）</div>
+          <div class="related-page-desc">歯並びの根本原因にアプローチ。6〜10歳のお子さまへの予防的アプローチとしても有効です。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('implant') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-tooth"></i></div>
+        <div>
+          <div class="related-page-title">インプラント</div>
+          <div class="related-page-desc">万が一歯を失ってしまった場合の選択肢。定期検診で予防しながら、いざという時の知識として。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="cta-eyebrow">まずは一度、チェックを</p>
+    <h2 class="cta-title">「健康」だと思っているうちに、<br>一度プロに診てもらいませんか。</h2>
+    <p class="cta-sub">自覚症状がなくても、気になることがなくても。だからこそ今がタイミングです。</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="cta-btn-primary">
+        <i class="fas fa-calendar-alt me-2"></i>WEB予約（24時間受付）
+      </a>
+      <a href="tel:0568622580" class="cta-btn-secondary">
+        <i class="fas fa-phone me-2"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
