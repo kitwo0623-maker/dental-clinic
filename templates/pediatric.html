@@ -117,7 +117,7 @@
 .pd-stat-card-rate.warn  { color: #dc2626; }
 .pd-stat-card-rate.mid   { color: #c2410c; }
 .pd-stat-card-suffix { font-size: 0.78rem; color: #78716c; margin-top: 0.25rem; }
-.pd-bite-svg { width: 110px; height: 68px; display: block; margin: 0 auto 0.6rem; }
+.pd-bite-svg { width: 100%; max-width: 148px; height: auto; display: block; margin: 0 auto 0.6rem; }
 .pd-stat-note {
   font-size: 0.76rem; color: #a8a29e; text-align: right;
   margin-top: 0.75rem;
@@ -288,26 +288,24 @@
         <!-- ===== 正常な歯並び ===== -->
         <div class="pd-stat-card">
           <svg class="pd-bite-svg" viewBox="0 0 120 68" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <clipPath id="clip-normal">
-                <rect x="0" y="0" width="120" height="68"/>
-              </clipPath>
-            </defs>
-            <!-- upper gum arch -->
-            <path d="M 6,22 Q 60,6 114,22 L 114,15 Q 60,0 6,15 Z" fill="#fda4af"/>
-            <!-- upper 5 teeth -->
-            <rect x="10" y="16" width="16" height="22" rx="3" fill="white" stroke="#6ee7b7" stroke-width="1.8"/>
-            <rect x="28" y="16" width="16" height="22" rx="3" fill="white" stroke="#6ee7b7" stroke-width="1.8"/>
-            <rect x="46" y="16" width="16" height="22" rx="3" fill="white" stroke="#6ee7b7" stroke-width="1.8"/>
-            <rect x="64" y="16" width="16" height="22" rx="3" fill="white" stroke="#6ee7b7" stroke-width="1.8"/>
-            <rect x="82" y="16" width="16" height="22" rx="3" fill="white" stroke="#6ee7b7" stroke-width="1.8"/>
-            <!-- lower 4 teeth (offset) -->
-            <rect x="19" y="38" width="16" height="22" rx="3" fill="white" stroke="#a7f3d0" stroke-width="1.5"/>
-            <rect x="37" y="38" width="16" height="22" rx="3" fill="white" stroke="#a7f3d0" stroke-width="1.5"/>
-            <rect x="55" y="38" width="16" height="22" rx="3" fill="white" stroke="#a7f3d0" stroke-width="1.5"/>
-            <rect x="73" y="38" width="16" height="22" rx="3" fill="white" stroke="#a7f3d0" stroke-width="1.5"/>
-            <!-- lower gum arch -->
-            <path d="M 6,60 Q 60,76 114,60 L 114,66 Q 60,82 6,66 Z" fill="#fda4af"/>
+            <!-- upper gum -->
+            <path d="M 5,19 Q 60,3 115,19 L 115,13 Q 60,-3 5,13 Z" fill="#fda4af"/>
+            <!-- upper teeth: L-canine, L-lateral, L-central, R-central, R-lateral, R-canine -->
+            <path d="M20,16 Q25,13 30,16 L30,29 Q25,33 20,29 Z" fill="white" stroke="#22c55e" stroke-width="1.6"/>
+            <path d="M32,13 Q37.5,10 43,13 L43,32 L32,32 Z" fill="white" stroke="#22c55e" stroke-width="1.6"/>
+            <path d="M45,11 Q52,8 59,11 L59,32 L45,32 Z" fill="white" stroke="#22c55e" stroke-width="1.6"/>
+            <path d="M60,11 Q67,8 74,11 L74,32 L60,32 Z" fill="white" stroke="#22c55e" stroke-width="1.6"/>
+            <path d="M76,13 Q81.5,10 87,13 L87,32 L76,32 Z" fill="white" stroke="#22c55e" stroke-width="1.6"/>
+            <path d="M89,16 Q94,13 99,16 L99,29 Q94,33 89,29 Z" fill="white" stroke="#22c55e" stroke-width="1.6"/>
+            <!-- lower teeth: slightly offset interdigitation -->
+            <path d="M26,35 L36,35 L36,48 Q31,52 26,48 Z" fill="white" stroke="#86efac" stroke-width="1.4"/>
+            <path d="M39,35 L50,35 L50,49 Q44.5,52 39,49 Z" fill="white" stroke="#86efac" stroke-width="1.4"/>
+            <path d="M52,35 L65,35 L65,51 Q58.5,54 52,51 Z" fill="white" stroke="#86efac" stroke-width="1.4"/>
+            <path d="M66,35 L79,35 L79,51 Q72.5,54 66,51 Z" fill="white" stroke="#86efac" stroke-width="1.4"/>
+            <path d="M80,35 L91,35 L91,49 Q85.5,52 80,49 Z" fill="white" stroke="#86efac" stroke-width="1.4"/>
+            <path d="M93,35 L103,35 L103,48 Q98,52 93,48 Z" fill="white" stroke="#86efac" stroke-width="1.4"/>
+            <!-- lower gum -->
+            <path d="M 5,51 Q 60,66 115,51 L 115,57 Q 60,72 5,57 Z" fill="#fda4af"/>
           </svg>
           <div class="pd-stat-card-label">正常な歯並び</div>
           <div class="pd-stat-card-rate good">高い</div>
@@ -318,23 +316,26 @@
         <div class="pd-stat-card">
           <svg class="pd-bite-svg" viewBox="0 0 120 68" xmlns="http://www.w3.org/2000/svg">
             <!-- upper gum -->
-            <path d="M 6,20 Q 60,5 114,20 L 114,13 Q 60,-1 6,13 Z" fill="#fda4af"/>
-            <!-- upper 5 teeth (shorter) -->
-            <rect x="10" y="14" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
-            <rect x="28" y="14" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
-            <rect x="46" y="14" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
-            <rect x="64" y="14" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
-            <rect x="82" y="14" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
+            <path d="M 5,19 Q 60,3 115,19 L 115,13 Q 60,-3 5,13 Z" fill="#fda4af"/>
+            <!-- upper teeth -->
+            <path d="M20,16 Q25,13 30,16 L30,28 Q25,32 20,28 Z" fill="white" stroke="#ef4444" stroke-width="1.6"/>
+            <path d="M32,13 Q37.5,10 43,13 L43,30 L32,30 Z" fill="white" stroke="#ef4444" stroke-width="1.6"/>
+            <path d="M45,11 Q52,8 59,11 L59,30 L45,30 Z" fill="white" stroke="#ef4444" stroke-width="1.6"/>
+            <path d="M60,11 Q67,8 74,11 L74,30 L60,30 Z" fill="white" stroke="#ef4444" stroke-width="1.6"/>
+            <path d="M76,13 Q81.5,10 87,13 L87,30 L76,30 Z" fill="white" stroke="#ef4444" stroke-width="1.6"/>
+            <path d="M89,16 Q94,13 99,16 L99,28 Q94,32 89,28 Z" fill="white" stroke="#ef4444" stroke-width="1.6"/>
             <!-- gap zone -->
-            <rect x="8" y="31" width="104" height="8" rx="2" fill="#fee2e2" opacity="0.7"/>
-            <text x="60" y="38" font-size="7.5" fill="#ef4444" text-anchor="middle" font-weight="bold">← 隙間 →</text>
-            <!-- lower 4 teeth -->
-            <rect x="19" y="40" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
-            <rect x="37" y="40" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
-            <rect x="55" y="40" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
-            <rect x="73" y="40" width="16" height="16" rx="3" fill="white" stroke="#ef4444" stroke-width="1.8"/>
+            <rect x="28" y="30" width="63" height="10" fill="#fee2e2" opacity="0.65" rx="1"/>
+            <text x="59" y="38" font-size="6" fill="#ef4444" text-anchor="middle" font-weight="700">↕ 前歯が噛み合わない</text>
+            <!-- lower teeth -->
+            <path d="M26,41 L36,41 L36,54 Q31,58 26,54 Z" fill="white" stroke="#ef4444" stroke-width="1.4"/>
+            <path d="M39,41 L50,41 L50,55 Q44.5,58 39,55 Z" fill="white" stroke="#ef4444" stroke-width="1.4"/>
+            <path d="M52,41 L65,41 L65,57 Q58.5,60 52,57 Z" fill="white" stroke="#ef4444" stroke-width="1.4"/>
+            <path d="M66,41 L79,41 L79,57 Q72.5,60 66,57 Z" fill="white" stroke="#ef4444" stroke-width="1.4"/>
+            <path d="M80,41 L91,41 L91,55 Q85.5,58 80,55 Z" fill="white" stroke="#ef4444" stroke-width="1.4"/>
+            <path d="M93,41 L103,41 L103,54 Q98,58 93,54 Z" fill="white" stroke="#ef4444" stroke-width="1.4"/>
             <!-- lower gum -->
-            <path d="M 6,56 Q 60,70 114,56 L 114,62 Q 60,76 6,62 Z" fill="#fda4af"/>
+            <path d="M 5,57 Q 60,70 115,57 L 115,63 Q 60,76 5,63 Z" fill="#fda4af"/>
           </svg>
           <div class="pd-stat-card-label">開咬<br><span style="font-size:0.75rem;font-weight:400;color:#78716c;">（前歯が噛み合わない）</span></div>
           <div class="pd-stat-card-rate warn">0%</div>
@@ -345,23 +346,22 @@
         <div class="pd-stat-card">
           <svg class="pd-bite-svg" viewBox="0 0 120 68" xmlns="http://www.w3.org/2000/svg">
             <!-- upper gum -->
-            <path d="M 6,22 Q 60,8 114,22 L 114,15 Q 60,1 6,15 Z" fill="#fda4af"/>
-            <!-- upper teeth (set back / smaller) -->
-            <rect x="16" y="16" width="14" height="18" rx="3" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
-            <rect x="32" y="16" width="14" height="18" rx="3" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
-            <rect x="48" y="16" width="14" height="18" rx="3" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
-            <rect x="64" y="16" width="14" height="18" rx="3" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
-            <rect x="80" y="16" width="14" height="18" rx="3" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
-            <!-- lower teeth protrude FORWARD (drawn on top, slightly higher) -->
-            <rect x="10" y="24" width="16" height="22" rx="3" fill="white" stroke="#ef4444" stroke-width="2"/>
-            <rect x="28" y="24" width="16" height="22" rx="3" fill="white" stroke="#ef4444" stroke-width="2"/>
-            <rect x="46" y="24" width="16" height="22" rx="3" fill="white" stroke="#ef4444" stroke-width="2"/>
-            <rect x="64" y="24" width="16" height="22" rx="3" fill="white" stroke="#ef4444" stroke-width="2"/>
-            <rect x="82" y="24" width="16" height="22" rx="3" fill="white" stroke="#ef4444" stroke-width="2"/>
+            <path d="M 5,19 Q 60,3 115,19 L 115,13 Q 60,-3 5,13 Z" fill="#fda4af"/>
+            <!-- upper teeth pushed back (pale) -->
+            <path d="M22,16 Q27,13 32,16 L32,28 Q27,32 22,28 Z" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.4"/>
+            <path d="M34,13 Q39.5,10 45,13 L45,30 L34,30 Z" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.4"/>
+            <path d="M47,11 Q54,8 61,11 L61,30 L47,30 Z" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.4"/>
+            <path d="M62,11 Q69,8 76,11 L76,30 L62,30 Z" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.4"/>
+            <path d="M78,13 Q83.5,10 89,13 L89,30 L78,30 Z" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.4"/>
+            <path d="M91,16 Q96,13 101,16 L101,28 Q96,32 91,28 Z" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.4"/>
+            <!-- lower teeth protrude forward (drawn on top, higher up) -->
+            <path d="M28,22 L38,22 L38,40 Q33,44 28,40 Z" fill="white" stroke="#f97316" stroke-width="1.6"/>
+            <path d="M40,20 L53,20 L53,40 Q46.5,44 40,40 Z" fill="white" stroke="#ef4444" stroke-width="1.8"/>
+            <path d="M55,20 L68,20 L68,40 Q61.5,44 55,40 Z" fill="white" stroke="#ef4444" stroke-width="1.8"/>
+            <path d="M70,20 L83,20 L83,40 Q76.5,44 70,40 Z" fill="white" stroke="#ef4444" stroke-width="1.8"/>
+            <path d="M85,22 L95,22 L95,40 Q90,44 85,40 Z" fill="white" stroke="#f97316" stroke-width="1.6"/>
             <!-- lower gum -->
-            <path d="M 6,46 Q 60,60 114,46 L 114,52 Q 60,66 6,52 Z" fill="#fda4af"/>
-            <!-- label: 下 in front -->
-            <text x="60" y="66" font-size="7" fill="#ef4444" text-anchor="middle">下の歯が前に出ている</text>
+            <path d="M 5,42 Q 60,57 115,42 L 115,48 Q 60,63 5,48 Z" fill="#fda4af"/>
           </svg>
           <div class="pd-stat-card-label">反対咬合<br><span style="font-size:0.75rem;font-weight:400;color:#78716c;">（受け口）</span></div>
           <div class="pd-stat-card-rate warn">0%</div>
@@ -372,22 +372,21 @@
         <div class="pd-stat-card">
           <svg class="pd-bite-svg" viewBox="0 0 120 68" xmlns="http://www.w3.org/2000/svg">
             <!-- upper gum -->
-            <path d="M 6,18 Q 60,4 114,18 L 114,11 Q 60,-3 6,11 Z" fill="#fda4af"/>
-            <!-- upper teeth: taller and forward (longer, protruding) -->
-            <rect x="16" y="12" width="16" height="28" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <rect x="34" y="12" width="16" height="28" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <rect x="52" y="12" width="16" height="28" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <rect x="70" y="12" width="16" height="28" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <!-- lower teeth: shorter, set back behind upper -->
-            <rect x="10" y="40" width="14" height="16" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="26" y="40" width="14" height="16" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="42" y="40" width="14" height="16" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="58" y="40" width="14" height="16" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="74" y="40" width="14" height="16" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
+            <path d="M 5,19 Q 60,3 115,19 L 115,13 Q 60,-3 5,13 Z" fill="#fda4af"/>
+            <!-- upper teeth: forward lean (rotated outward) -->
+            <path d="M20,16 Q25,13 30,16 L30,29 Q25,33 20,29 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(16,25,16)"/>
+            <path d="M32,13 Q37.5,10 43,13 L43,32 L32,32 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(10,37.5,13)"/>
+            <path d="M45,11 Q52,8 59,11 L59,32 L45,32 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(7,52,11)"/>
+            <path d="M60,11 Q67,8 74,11 L74,32 L60,32 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(-7,67,11)"/>
+            <path d="M76,13 Q81.5,10 87,13 L87,32 L76,32 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(-10,81.5,13)"/>
+            <path d="M89,16 Q94,13 99,16 L99,29 Q94,33 89,29 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(-16,94,16)"/>
+            <!-- lower teeth set back -->
+            <path d="M34,39 L47,39 L47,51 Q40.5,54 34,51 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M49,38 L62,38 L62,50 Q55.5,53 49,50 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M64,38 L77,38 L77,50 Q70.5,53 64,50 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M79,39 L92,39 L92,51 Q85.5,54 79,51 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
             <!-- lower gum -->
-            <path d="M 6,56 Q 60,68 114,56 L 114,62 Q 60,74 6,62 Z" fill="#fda4af"/>
-            <!-- arrow showing protrusion -->
-            <path d="M 92,26 L 104,26 L 100,22 M 104,26 L 100,30" stroke="#f97316" stroke-width="1.5" fill="none"/>
+            <path d="M 5,52 Q 60,67 115,52 L 115,58 Q 60,73 5,58 Z" fill="#fda4af"/>
           </svg>
           <div class="pd-stat-card-label">上顎前突<br><span style="font-size:0.75rem;font-weight:400;color:#78716c;">（出っ歯）</span></div>
           <div class="pd-stat-card-rate mid">15.4%</div>
@@ -398,20 +397,21 @@
         <div class="pd-stat-card">
           <svg class="pd-bite-svg" viewBox="0 0 120 68" xmlns="http://www.w3.org/2000/svg">
             <!-- upper gum -->
-            <path d="M 6,20 Q 60,6 114,20 L 114,13 Q 60,-1 6,13 Z" fill="#fda4af"/>
-            <!-- upper teeth very long -->
-            <rect x="10" y="14" width="16" height="32" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <rect x="28" y="14" width="16" height="32" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <rect x="46" y="14" width="16" height="32" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <rect x="64" y="14" width="16" height="32" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <rect x="82" y="14" width="16" height="32" rx="3" fill="white" stroke="#f97316" stroke-width="2"/>
-            <!-- lower teeth mostly covered (peek out at bottom) -->
-            <rect x="19" y="43" width="14" height="10" rx="2" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
-            <rect x="35" y="43" width="14" height="10" rx="2" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
-            <rect x="51" y="43" width="14" height="10" rx="2" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
-            <rect x="67" y="43" width="14" height="10" rx="2" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M 5,17 Q 60,2 115,17 L 115,11 Q 60,-4 5,11 Z" fill="#fda4af"/>
+            <!-- upper teeth very long, covering most of lower -->
+            <path d="M20,14 Q25,11 30,14 L30,46 Q25,50 20,46 Z" fill="white" stroke="#f97316" stroke-width="1.7"/>
+            <path d="M32,11 Q37.5,8 43,11 L43,50 L32,50 Z" fill="white" stroke="#f97316" stroke-width="1.7"/>
+            <path d="M45,9 Q52,6 59,9 L59,52 L45,52 Z" fill="white" stroke="#f97316" stroke-width="1.7"/>
+            <path d="M60,9 Q67,6 74,9 L74,52 L60,52 Z" fill="white" stroke="#f97316" stroke-width="1.7"/>
+            <path d="M76,11 Q81.5,8 87,11 L87,50 L76,50 Z" fill="white" stroke="#f97316" stroke-width="1.7"/>
+            <path d="M89,14 Q94,11 99,14 L99,46 Q94,50 89,46 Z" fill="white" stroke="#f97316" stroke-width="1.7"/>
+            <!-- lower teeth barely visible (peeking below upper) -->
+            <path d="M39,43 L50,43 L50,53 Q44.5,56 39,53 Z" fill="white" stroke="#d1d5db" stroke-width="1.2"/>
+            <path d="M52,41 L65,41 L65,54 Q58.5,57 52,54 Z" fill="white" stroke="#d1d5db" stroke-width="1.2"/>
+            <path d="M66,41 L79,41 L79,54 Q72.5,57 66,54 Z" fill="white" stroke="#d1d5db" stroke-width="1.2"/>
+            <path d="M80,43 L91,43 L91,53 Q85.5,56 80,53 Z" fill="white" stroke="#d1d5db" stroke-width="1.2"/>
             <!-- lower gum -->
-            <path d="M 6,53 Q 60,65 114,53 L 114,58 Q 60,70 6,58 Z" fill="#fda4af"/>
+            <path d="M 5,55 Q 60,69 115,55 L 115,61 Q 60,75 5,61 Z" fill="#fda4af"/>
           </svg>
           <div class="pd-stat-card-label">過蓋咬合<br><span style="font-size:0.75rem;font-weight:400;color:#78716c;">（深い噛み合わせ）</span></div>
           <div class="pd-stat-card-rate mid">13.5%</div>
@@ -422,23 +422,23 @@
         <div class="pd-stat-card">
           <svg class="pd-bite-svg" viewBox="0 0 120 68" xmlns="http://www.w3.org/2000/svg">
             <!-- upper gum -->
-            <path d="M 6,22 Q 60,8 114,22 L 114,15 Q 60,1 6,15 Z" fill="#fda4af"/>
+            <path d="M 5,19 Q 60,3 115,19 L 115,13 Q 60,-3 5,13 Z" fill="#fda4af"/>
             <!-- upper 4 teeth with wide gaps -->
-            <rect x="9" y="16" width="16" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.8"/>
-            <rect x="34" y="16" width="16" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.8"/>
-            <rect x="59" y="16" width="16" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.8"/>
-            <rect x="84" y="16" width="16" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.8"/>
-            <!-- gap indicators -->
-            <line x1="26" y1="22" x2="33" y2="22" stroke="#f97316" stroke-width="1.5" stroke-dasharray="2,1"/>
-            <line x1="51" y1="22" x2="58" y2="22" stroke="#f97316" stroke-width="1.5" stroke-dasharray="2,1"/>
-            <line x1="76" y1="22" x2="83" y2="22" stroke="#f97316" stroke-width="1.5" stroke-dasharray="2,1"/>
-            <!-- lower teeth normal -->
-            <rect x="19" y="40" width="16" height="20" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="37" y="40" width="16" height="20" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="55" y="40" width="16" height="20" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="73" y="40" width="16" height="20" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
+            <path d="M9,14 Q16,11 23,14 L23,33 L9,33 Z" fill="white" stroke="#f97316" stroke-width="1.6"/>
+            <line x1="24" y1="24" x2="35" y2="24" stroke="#f97316" stroke-width="1.3" stroke-dasharray="2,2"/>
+            <path d="M36,11 Q43,8 50,11 L50,33 L36,33 Z" fill="white" stroke="#f97316" stroke-width="1.6"/>
+            <line x1="51" y1="24" x2="67" y2="24" stroke="#f97316" stroke-width="1.3" stroke-dasharray="2,2"/>
+            <path d="M68,11 Q75,8 82,11 L82,33 L68,33 Z" fill="white" stroke="#f97316" stroke-width="1.6"/>
+            <line x1="83" y1="24" x2="94" y2="24" stroke="#f97316" stroke-width="1.3" stroke-dasharray="2,2"/>
+            <path d="M95,14 Q102,11 109,14 L109,33 L95,33 Z" fill="white" stroke="#f97316" stroke-width="1.6"/>
+            <!-- lower teeth (normal spacing) -->
+            <path d="M26,36 L36,36 L36,49 Q31,53 26,49 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M39,36 L50,36 L50,50 Q44.5,53 39,50 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M52,36 L65,36 L65,52 Q58.5,55 52,52 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M66,36 L79,36 L79,52 Q72.5,55 66,52 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M80,36 L91,36 L91,50 Q85.5,53 80,50 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
             <!-- lower gum -->
-            <path d="M 6,60 Q 60,74 114,60 L 114,66 Q 60,80 6,66 Z" fill="#fda4af"/>
+            <path d="M 5,52 Q 60,67 115,52 L 115,58 Q 60,73 5,58 Z" fill="#fda4af"/>
           </svg>
           <div class="pd-stat-card-label">空隙歯列<br><span style="font-size:0.75rem;font-weight:400;color:#78716c;">（すきっ歯）</span></div>
           <div class="pd-stat-card-rate mid">5%</div>
@@ -449,21 +449,22 @@
         <div class="pd-stat-card">
           <svg class="pd-bite-svg" viewBox="0 0 120 68" xmlns="http://www.w3.org/2000/svg">
             <!-- upper gum -->
-            <path d="M 6,22 Q 60,8 114,22 L 114,15 Q 60,1 6,15 Z" fill="#fda4af"/>
-            <!-- crowded upper teeth: overlapping + varying heights -->
-            <rect x="9"  y="17" width="14" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.7" transform="rotate(-10,16,28)"/>
-            <rect x="22" y="13" width="14" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.7" transform="rotate(8,29,24)"/>
-            <rect x="36" y="16" width="14" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.7" transform="rotate(-6,43,27)"/>
-            <rect x="50" y="13" width="14" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.7" transform="rotate(9,57,24)"/>
-            <rect x="64" y="17" width="14" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.7" transform="rotate(-7,71,28)"/>
-            <rect x="78" y="14" width="14" height="22" rx="3" fill="white" stroke="#f97316" stroke-width="1.7" transform="rotate(5,85,25)"/>
-            <!-- lower teeth normal -->
-            <rect x="19" y="41" width="15" height="19" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="36" y="41" width="15" height="19" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="53" y="41" width="15" height="19" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
-            <rect x="70" y="41" width="15" height="19" rx="3" fill="white" stroke="#d1d5db" stroke-width="1.5"/>
+            <path d="M 5,19 Q 60,3 115,19 L 115,13 Q 60,-3 5,13 Z" fill="#fda4af"/>
+            <!-- crowded upper teeth: rotated and overlapping -->
+            <path d="M18,17 Q23,14 28,17 L28,30 Q23,34 18,30 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(-14,23,17)"/>
+            <path d="M27,12 Q33.5,9 40,12 L40,31 L27,31 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(10,33.5,12)"/>
+            <path d="M40,10 Q47,7 54,10 L54,31 L40,31 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(-8,47,10)"/>
+            <path d="M55,10 Q62,7 69,10 L69,31 L55,31 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(9,62,10)"/>
+            <path d="M69,12 Q75.5,9 82,12 L82,31 L69,31 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(-10,75.5,12)"/>
+            <path d="M81,17 Q86,14 91,17 L91,30 Q86,34 81,30 Z" fill="white" stroke="#f97316" stroke-width="1.6" transform="rotate(13,86,17)"/>
+            <!-- lower teeth (normal) -->
+            <path d="M26,35 L36,35 L36,48 Q31,52 26,48 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M39,35 L50,35 L50,49 Q44.5,52 39,49 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M52,35 L65,35 L65,51 Q58.5,54 52,51 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M66,35 L79,35 L79,51 Q72.5,54 66,51 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
+            <path d="M80,35 L91,35 L91,49 Q85.5,52 80,49 Z" fill="white" stroke="#d1d5db" stroke-width="1.3"/>
             <!-- lower gum -->
-            <path d="M 6,60 Q 60,74 114,60 L 114,66 Q 60,80 6,66 Z" fill="#fda4af"/>
+            <path d="M 5,51 Q 60,66 115,51 L 115,57 Q 60,72 5,57 Z" fill="#fda4af"/>
           </svg>
           <div class="pd-stat-card-label">叢生（下顎）<br><span style="font-size:0.75rem;font-weight:400;color:#78716c;">（でこぼこ）</span></div>
           <div class="pd-stat-card-rate mid">28.8%</div>
