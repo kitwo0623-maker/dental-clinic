@@ -1,0 +1,561 @@
+{% extends "base.html" %}
+{% block title %}歯周病治療 | 犬山市キトウ歯科医院{% endblock %}
+{% block description %}犬山市キトウ歯科医院の歯周病治療。痛みがないまま進行する歯周病を早期発見・早期治療。スケーリング・ルートプレーニング（SRP）と定期メンテナンスで歯を守ります。TEL: 0568-62-2580{% endblock %}
+{% block canonical %}https://dental-clinic-wpg6.onrender.com/periodontal{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ===== Hero ===== */
+.perio-hero {
+  background: linear-gradient(135deg, #881337 0%, #be123c 100%);
+  padding: 5rem 0 4rem; color: #fff;
+}
+.perio-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 30px; padding: 0.3rem 1rem;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9); margin-bottom: 1.2rem;
+}
+.perio-hero-h1 {
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-weight: 800; line-height: 1.35; margin-bottom: 1rem;
+}
+.perio-hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, #fda4af, #fb7185);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.perio-hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.82); max-width: 520px; line-height: 1.8; margin-bottom: 1.5rem;
+}
+.perio-hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.perio-hero-tag {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 6px; padding: 0.3rem 0.8rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.88);
+}
+
+/* ===== Sections ===== */
+.perio-section { padding: 4.5rem 0; }
+.perio-section-alt { background: #fff1f2; }
+.perio-section-h2 {
+  font-size: 1.6rem; font-weight: 800; color: #881337;
+  margin-bottom: 0.5rem; text-align: center;
+}
+.perio-section-sub { text-align: center; color: #9f1239; font-size: 0.9rem; margin-bottom: 2.5rem; }
+
+/* ===== Warning symptom cards ===== */
+.perio-warn-card {
+  background: #fff; border: 1.5px solid #fecdd3;
+  border-radius: 14px; padding: 1.4rem 1.5rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+  height: 100%;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.perio-warn-card:hover { box-shadow: 0 6px 24px rgba(136,19,55,0.1); border-color: #be123c; }
+.perio-warn-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, #881337, #be123c);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; margin-top: 0.1rem;
+}
+.perio-warn-text { font-size: 0.88rem; color: #333; line-height: 1.65; margin: 0; font-weight: 500; }
+
+.perio-warn-cta {
+  background: #fff1f2; border: 1.5px solid #fecdd3;
+  border-radius: 12px; padding: 1.2rem 1.6rem;
+  display: flex; align-items: center; gap: 0.8rem;
+  font-size: 0.92rem; font-weight: 700; color: #881337;
+}
+.perio-warn-cta i { color: #be123c; font-size: 1.1rem; flex-shrink: 0; }
+
+/* ===== Disease progression stages ===== */
+.perio-stages {
+  display: flex; align-items: stretch; gap: 0;
+  overflow-x: auto; padding-bottom: 0.5rem;
+}
+.perio-stage { flex: 1; min-width: 200px; position: relative; }
+.perio-stage:not(:last-child)::after {
+  content: '';
+  position: absolute; right: -1px; top: 26px;
+  width: 0; height: 0;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 18px solid #be123c;
+  z-index: 2;
+}
+.perio-stage-head {
+  text-align: center; padding: 0.75rem 1rem 0.75rem 0.8rem;
+  font-size: 0.8rem; font-weight: 800; letter-spacing: 0.04em;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  min-height: 52px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; line-height: 1.3;
+}
+.perio-stage-head--healthy { background: linear-gradient(135deg, #166534, #16a34a); }
+.perio-stage-head--gingivitis { background: linear-gradient(135deg, #854d0e, #ca8a04); }
+.perio-stage-head--moderate { background: linear-gradient(135deg, #9a3412, #ea580c); }
+.perio-stage-head--severe { background: linear-gradient(135deg, #881337, #be123c); }
+.perio-stage-num {
+  font-size: 0.7rem; font-weight: 600; opacity: 0.85;
+  letter-spacing: 0.08em; margin-bottom: 0.15rem;
+}
+.perio-stage-label { font-size: 0.88rem; font-weight: 800; }
+.perio-stage-body {
+  background: #fff; border: 1.5px solid #fecdd3;
+  border-top: none; border-radius: 0 0 10px 10px;
+  padding: 1rem 1.1rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.perio-stage-item {
+  font-size: 0.82rem; color: #444; background: #fff1f2;
+  border-radius: 6px; padding: 0.4rem 0.75rem;
+  border-left: 3px solid #fecdd3; line-height: 1.5;
+}
+.perio-stage-badge {
+  display: inline-block; background: #dcfce7; color: #166534;
+  border-radius: 20px; padding: 0.15rem 0.65rem;
+  font-size: 0.72rem; font-weight: 700; margin-top: 0.25rem;
+}
+
+.perio-warning-box {
+  background: #fff; border: 2px solid #be123c;
+  border-radius: 14px; padding: 1.6rem 2rem;
+  margin-top: 2rem;
+}
+.perio-warning-box-title {
+  font-size: 0.82rem; font-weight: 800; color: #be123c;
+  letter-spacing: 0.06em; margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.perio-warning-box-text {
+  font-size: 0.92rem; font-weight: 700; color: #881337;
+  line-height: 1.85; margin: 0;
+}
+
+/* ===== Systemic connection cards ===== */
+.perio-sys-card {
+  background: #fff; border: 1.5px solid #fecdd3;
+  border-radius: 14px; padding: 1.6rem; height: 100%;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.perio-sys-card:hover { box-shadow: 0 6px 24px rgba(136,19,55,0.09); border-color: #be123c; }
+.perio-sys-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: linear-gradient(135deg, #881337, #be123c);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; margin-bottom: 0.9rem;
+}
+.perio-sys-title { font-size: 1rem; font-weight: 800; color: #881337; margin-bottom: 0.5rem; }
+.perio-sys-desc { font-size: 0.85rem; color: #555; line-height: 1.75; margin: 0; }
+
+/* ===== Treatment approach cards ===== */
+.perio-treat-card {
+  background: #fff; border: 1.5px solid #fecdd3;
+  border-radius: 16px; padding: 1.8rem; height: 100%;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.perio-treat-card:hover { box-shadow: 0 8px 28px rgba(136,19,55,0.1); border-color: #be123c; }
+.perio-treat-icon {
+  width: 50px; height: 50px; border-radius: 13px;
+  background: linear-gradient(135deg, #881337, #be123c);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 1rem;
+}
+.perio-treat-title { font-size: 1.05rem; font-weight: 800; color: #881337; margin-bottom: 0.55rem; }
+.perio-treat-desc { font-size: 0.86rem; color: #555; line-height: 1.8; margin: 0; }
+
+/* ===== Doctor quote ===== */
+.perio-quote {
+  background: linear-gradient(135deg, #881337 0%, #be123c 100%);
+  border-radius: 16px; padding: 2.4rem 2.6rem; color: #fff; position: relative;
+  overflow: hidden;
+}
+.perio-quote::before {
+  content: '\201C';
+  font-size: 8rem; font-family: Georgia, serif; line-height: 0.7;
+  color: rgba(255,255,255,0.1); position: absolute; top: 1rem; left: 1.5rem;
+  pointer-events: none;
+}
+.perio-quote-text {
+  font-size: 1.05rem; line-height: 1.9; color: rgba(255,255,255,0.93);
+  font-weight: 500; position: relative; z-index: 1; padding-left: 1rem;
+}
+.perio-quote-author {
+  margin-top: 1.2rem; font-size: 0.82rem; color: rgba(255,255,255,0.65);
+  text-align: right; position: relative; z-index: 1;
+}
+
+/* ===== Treatment flow steps ===== */
+.perio-flow { display: flex; flex-direction: column; gap: 0; }
+.perio-flow-step {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  position: relative;
+}
+.perio-flow-step:not(:last-child) { margin-bottom: 0; }
+.perio-flow-step:not(:last-child) .perio-flow-line { flex-shrink: 0; }
+.perio-flow-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.perio-flow-num {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, #881337, #be123c);
+  color: #fff; font-size: 1rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; z-index: 1;
+}
+.perio-flow-connector {
+  width: 2px; background: #fecdd3; flex: 1; min-height: 2rem; margin: 0.3rem 0;
+}
+.perio-flow-body {
+  background: #fff; border: 1.5px solid #fecdd3;
+  border-radius: 12px; padding: 1.2rem 1.4rem;
+  flex: 1; margin-bottom: 1rem;
+}
+.perio-flow-title { font-size: 0.95rem; font-weight: 800; color: #881337; margin-bottom: 0.35rem; }
+.perio-flow-desc { font-size: 0.85rem; color: #555; line-height: 1.7; margin: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. Hero -->
+<section class="perio-hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-fade>
+        <div class="perio-hero-eyebrow"><i class="fas fa-tooth"></i> 歯周病治療</div>
+        <h1 class="perio-hero-h1">「痛みがない」は、<em>安心</em>ではありません。</h1>
+        <p class="perio-hero-sub">歯周病は自覚症状がないまま進行し、気づいたときには手遅れになっていることがあります。早期発見・早期治療が、あなたの歯を守る唯一の方法です。</p>
+        <div class="perio-hero-tags">
+          <span class="perio-hero-tag"><i class="fas fa-exclamation-triangle me-1"></i>自覚症状ゼロで進行する</span>
+          <span class="perio-hero-tag"><i class="fas fa-users me-1"></i>日本人成人の約8割が罹患</span>
+          <span class="perio-hero-tag"><i class="fas fa-times-circle me-1"></i>最悪の場合は全歯喪失</span>
+          <span class="perio-hero-tag"><i class="fas fa-heartbeat me-1"></i>全身の健康にも影響</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Warning symptoms (チェックリスト) -->
+<section class="perio-section">
+  <div class="container">
+    <h2 class="perio-section-h2">「まだ大丈夫」と思っていませんか？</h2>
+    <p class="perio-section-sub">こんな症状は、すでに歯周病が始まっているサインかもしれません</p>
+    <div class="row g-3 mb-4">
+      <div class="col-md-6 col-lg-4" data-fade>
+        <div class="perio-warn-card">
+          <div class="perio-warn-icon"><i class="fas fa-tint"></i></div>
+          <p class="perio-warn-text">歯磨きのとき、歯ぐきから血が出る</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade data-fade-delay="80">
+        <div class="perio-warn-card">
+          <div class="perio-warn-icon"><i class="fas fa-fire-alt"></i></div>
+          <p class="perio-warn-text">歯ぐきが赤く腫れている・むずがゆい</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade data-fade-delay="160">
+        <div class="perio-warn-card">
+          <div class="perio-warn-icon"><i class="fas fa-wind"></i></div>
+          <p class="perio-warn-text">口臭が気になる・指摘されたことがある</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade data-fade-delay="80">
+        <div class="perio-warn-card">
+          <div class="perio-warn-icon"><i class="fas fa-arrows-alt-v"></i></div>
+          <p class="perio-warn-text">歯が長くなった気がする（歯ぐきが下がった）</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade data-fade-delay="160">
+        <div class="perio-warn-card">
+          <div class="perio-warn-icon"><i class="fas fa-random"></i></div>
+          <p class="perio-warn-text">歯がぐらつく・噛むと痛い</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-fade data-fade-delay="240">
+        <div class="perio-warn-card">
+          <div class="perio-warn-icon"><i class="fas fa-utensils"></i></div>
+          <p class="perio-warn-text">歯と歯の間に食べ物が詰まりやすくなった</p>
+        </div>
+      </div>
+    </div>
+    <div class="perio-warn-cta" data-fade>
+      <i class="fas fa-clinic-medical"></i>
+      <span>1つでも当てはまる方は、一度ご来院ください。</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Disease progression (進行ステージ) -->
+<section class="perio-section perio-section-alt">
+  <div class="container">
+    <h2 class="perio-section-h2">歯周病は「段階的に」悪化します</h2>
+    <p class="perio-section-sub">痛みが出るころには、すでに重症化していることがほとんどです</p>
+    <div class="perio-stages" data-fade>
+      <!-- Stage 0: 健康 -->
+      <div class="perio-stage">
+        <div class="perio-stage-head perio-stage-head--healthy">
+          <div class="perio-stage-num">STAGE 0</div>
+          <div class="perio-stage-label">健康な歯ぐき</div>
+        </div>
+        <div class="perio-stage-body">
+          <div class="perio-stage-item">歯ぐきはピンクで引き締まっている</div>
+          <div class="perio-stage-item">歯周ポケット 1〜2mm</div>
+          <div class="perio-stage-item">出血・腫れなし</div>
+        </div>
+      </div>
+      <!-- Stage 1: 歯肉炎 -->
+      <div class="perio-stage">
+        <div class="perio-stage-head perio-stage-head--gingivitis">
+          <div class="perio-stage-num">STAGE 1</div>
+          <div class="perio-stage-label">歯肉炎</div>
+        </div>
+        <div class="perio-stage-body">
+          <div class="perio-stage-item">歯ぐきが赤く腫れ出血</div>
+          <div class="perio-stage-item">骨の破壊はまだなし</div>
+          <div class="perio-stage-item">ポケット 3mm</div>
+          <div><span class="perio-stage-badge"><i class="fas fa-redo-alt me-1"></i>逆転可能</span></div>
+        </div>
+      </div>
+      <!-- Stage 2: 軽度〜中等度 -->
+      <div class="perio-stage">
+        <div class="perio-stage-head perio-stage-head--moderate">
+          <div class="perio-stage-num">STAGE 2</div>
+          <div class="perio-stage-label">軽度〜中等度歯周炎</div>
+        </div>
+        <div class="perio-stage-body">
+          <div class="perio-stage-item">骨が少しずつ溶け始める</div>
+          <div class="perio-stage-item">ぐらつきが出てくる</div>
+          <div class="perio-stage-item">ポケット 4〜6mm</div>
+        </div>
+      </div>
+      <!-- Stage 3: 重度 -->
+      <div class="perio-stage">
+        <div class="perio-stage-head perio-stage-head--severe">
+          <div class="perio-stage-num">STAGE 3</div>
+          <div class="perio-stage-label">重度歯周炎</div>
+        </div>
+        <div class="perio-stage-body">
+          <div class="perio-stage-item">骨の大幅な喪失</div>
+          <div class="perio-stage-item">歯が抜け落ちる・抜歯が必要になるケースも</div>
+          <div class="perio-stage-item">ポケット 7mm以上</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="perio-warning-box" data-fade>
+      <div class="perio-warning-box-title">
+        <i class="fas fa-exclamation-circle"></i> 重症化すると選択肢が大幅に狭まります
+      </div>
+      <p class="perio-warning-box-text">
+        重度になると、できる治療の選択肢が大幅に限られます。最悪の場合、すべての歯を失い総入れ歯になる可能性があります。「まだ大丈夫」と思っている間に、歯周病は静かに進行しています。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 全身との関係 -->
+<section class="perio-section">
+  <div class="container">
+    <h2 class="perio-section-h2">歯周病は「口の中だけ」の問題ではありません</h2>
+    <p class="perio-section-sub">歯周病菌や炎症が全身に影響を与える可能性があることが、研究で示されています</p>
+    <div class="row g-4">
+      <div class="col-md-6" data-fade>
+        <div class="perio-sys-card">
+          <div class="perio-sys-icon"><i class="fas fa-tint"></i></div>
+          <div class="perio-sys-title">糖尿病との相互関係</div>
+          <p class="perio-sys-desc">糖尿病は歯周病を悪化させ、歯周病は血糖コントロールを困難にする可能性があります。相互に影響し合う関係が報告されています。</p>
+        </div>
+      </div>
+      <div class="col-md-6" data-fade data-fade-delay="100">
+        <div class="perio-sys-card">
+          <div class="perio-sys-icon"><i class="fas fa-heart"></i></div>
+          <div class="perio-sys-title">心臓疾患・動脈硬化</div>
+          <p class="perio-sys-desc">歯周病菌が血流に乗り、心臓や血管に影響を与える可能性が指摘されています。</p>
+        </div>
+      </div>
+      <div class="col-md-6" data-fade>
+        <div class="perio-sys-card">
+          <div class="perio-sys-icon"><i class="fas fa-lungs"></i></div>
+          <div class="perio-sys-title">誤嚥性肺炎</div>
+          <p class="perio-sys-desc">歯周病菌を含む唾液が誤って肺に入り込み、肺炎を引き起こすリスクがあるとされています。特に高齢者に注意が必要です。</p>
+        </div>
+      </div>
+      <div class="col-md-6" data-fade data-fade-delay="100">
+        <div class="perio-sys-card">
+          <div class="perio-sys-icon"><i class="fas fa-baby"></i></div>
+          <div class="perio-sys-title">早産・低体重児出産</div>
+          <p class="perio-sys-desc">妊娠中の歯周病は、早産や低体重児出産のリスクと関連している可能性が報告されています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. キトウ歯科の治療アプローチ -->
+<section class="perio-section perio-section-alt">
+  <div class="container">
+    <h2 class="perio-section-h2">キトウ歯科の歯周病治療</h2>
+    <p class="perio-section-sub">「削って終わり」ではなく、長期的に歯を守るアプローチを大切にしています</p>
+    <div class="row g-4">
+      <div class="col-md-4" data-fade>
+        <div class="perio-treat-card">
+          <div class="perio-treat-icon"><i class="fas fa-search"></i></div>
+          <div class="perio-treat-title">精密な検査・診断</div>
+          <p class="perio-treat-desc">歯周ポケットの深さ、骨の状態、出血の有無などを詳しく検査します。自覚症状がなくても、検査で初めて歯周病が判明するケースは少なくありません。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="100">
+        <div class="perio-treat-card">
+          <div class="perio-treat-icon"><i class="fas fa-tools"></i></div>
+          <div class="perio-treat-title">スケーリング・ルートプレーニング（SRP）</div>
+          <p class="perio-treat-desc">歯の表面や根面に付着した歯石・歯垢（プラーク）を専門的に除去します。軽度〜中等度の歯周病には、外科処置なしで改善が期待できる場合があります。</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-fade data-fade-delay="200">
+        <div class="perio-treat-card">
+          <div class="perio-treat-icon"><i class="fas fa-calendar-check"></i></div>
+          <div class="perio-treat-title">定期的なメンテナンス</div>
+          <p class="perio-treat-desc">治療が終わっても、定期的なメンテナンスを続けることが再発防止の鍵です。3〜4ヶ月に一度の来院をおすすめしています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 院長からのメッセージ -->
+<section class="perio-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9" data-fade>
+        <div class="perio-quote">
+          <p class="perio-quote-text">歯周病で来院される患者さんを拝見していると、「もう少し早く来てくれていれば」と感じることが少なくありません。歯周病は痛みがないまま進行するため、気づいたときにはすでに重症になっているケースが多いのです。歯ぐきから血が出る、なんとなく口臭が気になる——そんな小さなサインが出ている方は、ぜひ早めにご来院ください。できることの選択肢は、早ければ早いほど多くなります。</p>
+          <div class="perio-quote-author">— キトウ歯科医院 院長</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 治療の流れ -->
+<section class="perio-section perio-section-alt">
+  <div class="container">
+    <h2 class="perio-section-h2">治療の流れ</h2>
+    <p class="perio-section-sub">初診から定期メンテナンスまで、一貫してサポートします</p>
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-fade>
+        <div class="perio-flow">
+
+          <div class="perio-flow-step">
+            <div class="perio-flow-left">
+              <div class="perio-flow-num">1</div>
+              <div class="perio-flow-connector"></div>
+            </div>
+            <div class="perio-flow-body">
+              <div class="perio-flow-title">初診・精密検査</div>
+              <p class="perio-flow-desc">歯周ポケット検査・レントゲン・口腔内写真などで現在の状態を詳しく把握します</p>
+            </div>
+          </div>
+
+          <div class="perio-flow-step">
+            <div class="perio-flow-left">
+              <div class="perio-flow-num">2</div>
+              <div class="perio-flow-connector"></div>
+            </div>
+            <div class="perio-flow-body">
+              <div class="perio-flow-title">診断・治療計画の説明</div>
+              <p class="perio-flow-desc">検査結果をもとに、現在の進行度と治療方針を丁寧にご説明します</p>
+            </div>
+          </div>
+
+          <div class="perio-flow-step">
+            <div class="perio-flow-left">
+              <div class="perio-flow-num">3</div>
+              <div class="perio-flow-connector"></div>
+            </div>
+            <div class="perio-flow-body">
+              <div class="perio-flow-title">歯周基本治療（SRP）</div>
+              <p class="perio-flow-desc">スケーリング・ルートプレーニングで歯石・プラークを除去。複数回に分けて行います</p>
+            </div>
+          </div>
+
+          <div class="perio-flow-step">
+            <div class="perio-flow-left">
+              <div class="perio-flow-num">4</div>
+              <div class="perio-flow-connector"></div>
+            </div>
+            <div class="perio-flow-body">
+              <div class="perio-flow-title">再評価・効果確認</div>
+              <p class="perio-flow-desc">治療後に再度検査を行い、改善度を確認します。必要に応じて外科的処置を検討します</p>
+            </div>
+          </div>
+
+          <div class="perio-flow-step">
+            <div class="perio-flow-left">
+              <div class="perio-flow-num">5</div>
+            </div>
+            <div class="perio-flow-body">
+              <div class="perio-flow-title">定期メンテナンス</div>
+              <p class="perio-flow-desc">3〜4ヶ月ごとの定期来院で、再発を防ぎ長期的に歯を守ります</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Related pages -->
+<section class="related-pages-section">
+  <div class="container">
+    <p class="related-pages-label">関連する診療内容</p>
+    <div class="related-pages-grid">
+      <a href="{{ url_for('prevention') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-shield-alt"></i></div>
+        <div>
+          <div class="related-page-title">予防歯科</div>
+          <div class="related-page-desc">歯周病の最大の予防は定期検診。早期発見で治療の選択肢を広く保ちましょう。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('implant') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-tooth"></i></div>
+        <div>
+          <div class="related-page-title">インプラント</div>
+          <div class="related-page-desc">万が一歯を失ってしまった場合の選択肢。歯周病の予防と治療が前提になります。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('pediatric') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-child"></i></div>
+        <div>
+          <div class="related-page-title">小児歯科</div>
+          <div class="related-page-desc">子どもの頃からの口腔習慣が、将来の歯周病リスクに影響する傾向があります。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="cta-eyebrow">早期来院が最大の予防です</p>
+    <h2 class="cta-title">まず、現在の状態を知ることから始めましょう</h2>
+    <p class="cta-sub">歯周病は自覚症状がないまま進行します。「異常なし」という結果が出ることが、一番の安心です。まずは検査だけでもお越しください。</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="cta-btn-primary">
+        <i class="fas fa-calendar-alt me-2"></i>WEB予約（24時間受付）
+      </a>
+      <a href="tel:0568622580" class="cta-btn-secondary">
+        <i class="fas fa-phone me-2"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
