@@ -12,13 +12,13 @@
       <div class="col-lg-7">
         <span class="hero-badge"><i class="fas fa-map-marker-alt me-1"></i> 愛知県犬山市の歯科医院</span>
         <h1 class="hero-title">
-          あなたの笑顔を守り、<br>
-          健康と美しさを、ともに。
+          世界基準の歯科医療を、<br>
+          犬山で。
         </h1>
-        <p class="hero-purpose">― 健口から健康、そして健幸へ ―</p>
+        <p class="hero-purpose">― 38年の実績と、3つの専門資格 ―</p>
         <p class="hero-desc">
-          虫歯・予防などの保険診療から、インプラント・審美・矯正まで。<br>
-          どんな治療も、お口全体のバランスを見据えて設計する——<br>
+          保険診療からインプラント・審美・矯正まで。<br>
+          お口全体のバランスを見据えて設計する——<br>
           それが、当院の治療哲学です。
         </p>
 
@@ -44,14 +44,14 @@
             <span class="hero-info-icon"><i class="fas fa-clock"></i></span>
             <div>
               <div class="hero-info-label">診療時間</div>
-              <div class="hero-hours">月・火・金 9:30〜19:00 ／ 水・土 9:30〜17:00<br><span style="font-size:0.8em;">（昼休み 12:00〜14:00）木・日・祝 休診</span></div>
+              <div class="hero-hours">月・火・金 9:30〜19:00 ／ 水 9:30〜18:00 ／ 土 9:30〜17:00<br><span style="font-size:0.8em;">（昼休み 12:00〜14:00）木・日・祝 休診</span></div>
             </div>
           </div>
         </div>
 
         <div class="d-flex gap-3 flex-wrap mt-4">
-          <a href="{{ url_for('contact') }}" class="btn-hero-primary">
-            <i class="fas fa-calendar-plus"></i>ご予約はこちら
+          <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
+            <i class="fas fa-calendar-plus"></i>WEB予約（24時間受付）
           </a>
           <a href="tel:0568622580" class="btn-hero-outline">
             <i class="fas fa-phone"></i>電話で予約
@@ -114,11 +114,44 @@
 </section>
 
 <!-- ============================================================
+     お知らせ
+     ============================================================ -->
+<section class="news-section">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-4" data-fade="up">
+      <div>
+        <span class="section-label">News ／ お知らせ</span>
+        <h2 class="section-title mb-0">最新情報</h2>
+      </div>
+    </div>
+    <div class="news-list" data-fade="up" data-fade-delay="100">
+      <a class="news-item" href="{{ url_for('implant') }}">
+        <span class="news-date">2026.03</span>
+        <span class="news-badge news-badge-new">新着</span>
+        <span class="news-title">インプラント治療の専門ページを開設しました</span>
+        <i class="fas fa-chevron-right news-arrow"></i>
+      </a>
+      <a class="news-item" href="{{ url_for('doctor') }}">
+        <span class="news-date">2026.01</span>
+        <span class="news-badge news-badge-info">お知らせ</span>
+        <span class="news-title">副院長・紀藤一将のプロフィールページを公開しました</span>
+        <i class="fas fa-chevron-right news-arrow"></i>
+      </a>
+      <div class="news-item news-item-nolink">
+        <span class="news-date">2025.12</span>
+        <span class="news-badge news-badge-info">お知らせ</span>
+        <span class="news-title">年末年始（12/29〜1/3）は休診いたします。ご迷惑をおかけします。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      First Visit Section（初めての方へ）
      ============================================================ -->
 <section class="first-visit-section">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">First Visit ／ 初めての方へ</span>
       <h2 class="section-title">はじめての方も、<br>安心してご来院ください</h2>
       <div class="section-divider"></div>
@@ -127,7 +160,7 @@
     </div>
     <div class="row g-4 align-items-stretch">
       <div class="col-md-3 col-6">
-        <div class="flow-card">
+        <div class="flow-card" data-fade="up">
           <div class="flow-number">01</div>
           <div class="flow-icon"><i class="fas fa-phone-alt"></i></div>
           <div class="flow-title">ご予約</div>
@@ -135,7 +168,7 @@
         </div>
       </div>
       <div class="col-md-3 col-6">
-        <div class="flow-card">
+        <div class="flow-card" data-fade="up">
           <div class="flow-number">02</div>
           <div class="flow-icon"><i class="fas fa-clipboard-list"></i></div>
           <div class="flow-title">問診票の記入</div>
@@ -143,7 +176,7 @@
         </div>
       </div>
       <div class="col-md-3 col-6">
-        <div class="flow-card">
+        <div class="flow-card" data-fade="up">
           <div class="flow-number">03</div>
           <div class="flow-icon"><i class="fas fa-search"></i></div>
           <div class="flow-title">検査・カウンセリング</div>
@@ -151,7 +184,7 @@
         </div>
       </div>
       <div class="col-md-3 col-6">
-        <div class="flow-card">
+        <div class="flow-card" data-fade="up">
           <div class="flow-number">04</div>
           <div class="flow-icon"><i class="fas fa-tooth"></i></div>
           <div class="flow-title">治療開始</div>
@@ -190,7 +223,7 @@
      ============================================================ -->
 <section class="featured-treatments-section" id="jiyushinryo">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Premium Treatment ／ 自由診療</span>
       <h2 class="section-title">お悩みに合わせた、<br>質の高い自由診療</h2>
       <div class="section-divider"></div>
@@ -200,7 +233,7 @@
 
       <!-- インプラント -->
       <div class="col-lg-4">
-        <div class="ft-card">
+        <a href="{{ url_for('implant') }}" class="ft-card ft-card-link">
           <div class="ft-card-top ft-implant">
             <div class="ft-icon"><i class="fas fa-tooth"></i></div>
             <h3 class="ft-title">インプラント</h3>
@@ -213,16 +246,16 @@
               <li><i class="fas fa-check-circle"></i>噛み合わせを考慮した長持ち設計</li>
               <li><i class="fas fa-check-circle"></i>1本からのご相談も歓迎</li>
             </ul>
-            <a href="{{ url_for('contact') }}" class="ft-cta-btn">
-              <i class="fas fa-comment-medical me-1"></i>無料相談はこちら
-            </a>
+            <div class="ft-cta-btn">
+              <i class="fas fa-arrow-right me-1"></i>詳しく見る
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
       <!-- 審美歯科 -->
       <div class="col-lg-4">
-        <div class="ft-card ft-card-featured">
+        <a href="{{ url_for('aesthetic') }}" class="ft-card ft-card-featured ft-card-link">
           <div class="ft-featured-badge">人気</div>
           <div class="ft-card-top ft-aesthetic">
             <div class="ft-icon"><i class="fas fa-smile-beam"></i></div>
@@ -236,11 +269,11 @@
               <li><i class="fas fa-check-circle"></i>見た目だけでなく「機能美」を追求</li>
               <li><i class="fas fa-check-circle"></i>銀歯の白い歯への交換も対応</li>
             </ul>
-            <a href="{{ url_for('contact') }}" class="ft-cta-btn">
-              <i class="fas fa-comment-medical me-1"></i>無料相談はこちら
-            </a>
+            <span class="ft-cta-btn">
+              <i class="fas fa-arrow-right me-1"></i>詳しく見る
+            </span>
           </div>
-        </div>
+        </a>
       </div>
 
       <!-- 矯正・噛み合わせ -->
@@ -293,14 +326,14 @@
      ============================================================ -->
 <section class="features-section">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Features ／ 医院の特徴</span>
       <h2 class="section-title">キトウ歯科医院が<br>選ばれる理由</h2>
       <div class="section-divider"></div>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-green">
             <i class="fas fa-hand-holding-heart"></i>
           </div>
@@ -313,7 +346,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-blue">
             <i class="fas fa-microscope"></i>
           </div>
@@ -326,7 +359,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-teal">
             <i class="fas fa-comments"></i>
           </div>
@@ -339,7 +372,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-green">
             <i class="fas fa-child"></i>
           </div>
@@ -352,7 +385,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-blue">
             <i class="fas fa-parking"></i>
           </div>
@@ -365,7 +398,7 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
-        <div class="feature-card">
+        <div class="feature-card" data-fade="up">
           <div class="feature-icon-wrap feature-icon-teal">
             <i class="fas fa-shield-alt"></i>
           </div>
@@ -386,7 +419,7 @@
      ============================================================ -->
 <section class="doctors-section">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Doctors ／ 医師紹介</span>
       <h2 class="section-title">38年の実績と、<br>最新技術が揃う医院</h2>
       <div class="section-divider"></div>
@@ -395,7 +428,7 @@
 
       <!-- 院長 -->
       <div class="col-md-6 col-lg-5">
-        <div class="dr-card">
+        <div class="dr-card" data-fade="up">
           <div class="dr-card-header dr-card-director">
             <div class="dr-card-avatar"><i class="fas fa-user-md"></i></div>
             <div>
@@ -543,7 +576,7 @@
   <!-- Core Values -->
   <div class="values-section">
     <div class="container">
-      <div class="text-center mb-5">
+      <div class="text-center mb-5" data-fade="up">
         <span class="section-label">Core Values ／ コアバリューと理念</span>
         <h2 class="section-title">私たちが大切にしていること</h2>
         <div class="section-divider"></div>
@@ -575,7 +608,7 @@
   <!-- Mission -->
   <div class="mission-section">
     <div class="container">
-      <div class="text-center mb-5">
+      <div class="text-center mb-5" data-fade="up">
         <span class="section-label">Mission ／ ミッション</span>
         <h2 class="section-title">私たちの大胆な目標</h2>
         <div class="section-divider"></div>
@@ -613,7 +646,7 @@
      ============================================================ -->
 <section class="services-section">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Services ／ 診療内容</span>
       <h2 class="section-title">あなたのお口の健康を、<br>トータルサポート</h2>
       <div class="section-divider"></div>
@@ -651,7 +684,7 @@
      ============================================================ -->
 <section class="info-section" id="access">
   <div class="container">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-fade="up">
       <span class="section-label">Access ／ アクセス</span>
       <h2 class="section-title">診療時間・アクセス</h2>
       <div class="section-divider"></div>
@@ -740,7 +773,7 @@
     <!-- Google Maps 埋め込み -->
     <div class="map-wrap mt-4">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.6!2d136.9448!3d35.3794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003b12890e53ebb%3A0x2b6c04ef60d62a3d!2z44Kt44OI44Km5q2m56eR5Yyi6Zmi!5e0!3m2!1sja!2sjp!4v1700000000000"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3254.0!2d136.9536097!3d35.3810478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60030e7053b07c0f%3A0x95e4c580ca1afa1c!2z44Kt44OI44Km5q2m56eR5Yyi6Zmi!5e0!3m2!1sja!2sjp!4v1700000000000"
         width="100%"
         height="350"
         style="border:0; border-radius:12px;"
@@ -809,7 +842,7 @@
         <div class="gr-title">Googleでの評判</div>
         <div class="gr-stars">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <span class="gr-score">4.7</span>
+          <span class="gr-score">4.8</span>
           <span class="gr-count">（50件の口コミ）</span>
         </div>
         <p class="gr-note">患者さまからたくさんのご評価をいただいています。<br>詳しくはGoogleマップでご覧ください。</p>
@@ -817,6 +850,29 @@
       <div class="gr-action">
         <a href="https://www.google.com/maps/place/%E3%82%AD%E3%83%88%E3%82%A6%E6%AD%AF%E7%A7%91%E5%8C%BB%E9%99%A2/@35.3810478,136.9536097,17z/data=!3m1!4b1!4m6!3m5!1s0x60030e7053b07c0f:0x95e4c580ca1afa1c!8m2!3d35.3810478!4d136.9536097!16s%2Fg%2F1tgn4nfh" target="_blank" rel="noopener noreferrer" class="gr-btn">
           <i class="fas fa-external-link-alt me-1"></i>口コミを読む
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Instagram
+     ============================================================ -->
+<section class="instagram-section">
+  <div class="container">
+    <div class="instagram-box">
+      <div class="instagram-icon-wrap">
+        <i class="fab fa-instagram"></i>
+      </div>
+      <div class="instagram-content">
+        <div class="instagram-title">Instagram</div>
+        <div class="instagram-handle">@kitoshikaiin</div>
+        <p class="instagram-note">診療日はストーリーを更新中。最新情報はここでチェック！</p>
+      </div>
+      <div class="instagram-action">
+        <a href="https://www.instagram.com/kitoshikaiin" target="_blank" rel="noopener noreferrer" class="instagram-btn">
+          <i class="fab fa-instagram me-1"></i>投稿を見る
         </a>
       </div>
     </div>
@@ -836,13 +892,16 @@
       検診・クリーニング・ホワイトニングのご相談も承っております。
     </p>
     <div class="d-flex gap-3 justify-content-center flex-wrap">
-      <a href="{{ url_for('contact') }}" class="btn-hero-primary">
-        <i class="fas fa-calendar-plus"></i>ご予約・お問い合わせ
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
+        <i class="fas fa-calendar-plus"></i>WEB予約（24時間受付）
       </a>
       <a href="tel:0568622580" class="btn-hero-outline">
         <i class="fas fa-phone"></i>0568-62-2580
       </a>
     </div>
+    <p class="mt-3" style="font-size:0.8rem; color:rgba(255,255,255,0.65);">
+      <a href="{{ url_for('contact') }}" style="color:rgba(255,255,255,0.65);">メールでのお問い合わせはこちら</a>
+    </p>
   </div>
 </section>
 

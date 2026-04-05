@@ -1,0 +1,524 @@
+{% extends "base.html" %}
+{% block title %}インプラント治療 | 犬山市キトウ歯科医院{% endblock %}
+{% block description %}犬山市のキトウ歯科医院のインプラント治療。JSOI専修医・口腔外科認定医・顎咬合学会認定医の3資格を持つ副院長が担当。すべて込み45万円（税抜）の透明料金。3DCT診断・口腔内スキャナー・サージカルガイドによる安心の治療。{% endblock %}
+{% block canonical %}https://dental-clinic-wpg6.onrender.com/implant{% endblock %}
+
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "インプラント治療はいくらかかりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "当院では1本45万円（税抜）のすべて込み価格です。3DCT診断・シミュレーション、サージカルガイド作製、埋入手術、アバットメント・上部構造、口腔内スキャナー印象、10年保証（段階的制度）をすべて含みます。骨造成が必要な場合は別途10〜30万円（税抜）が加算されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "インプラント治療の期間はどのくらいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "通常3〜6ヶ月程度です。骨の状態や症例により異なります。詳細は診査・診断後にご説明いたします。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "インプラントは保険が使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "インプラント治療は自費診療（保険適用外）となります。ただし医療費控除の対象となりますので、確定申告時にご活用いただけます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "骨が少ない場合はインプラントできませんか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "当院では特殊な器具・技術により、骨造成が不要になるケースも多くあります。骨が少ない場合でも、まずはご相談ください。骨造成が必要な場合はCT診断により骨量を精密に測定し、正確な費用をご案内します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "インプラントと入れ歯・ブリッジの違いは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "インプラントは人工歯根を顎骨に埋め込む治療で、天然歯に近い噛み心地・見た目を実現します。入れ歯のように外れる心配がなく、ブリッジのように隣の歯を削る必要もありません。ただし外科手術が必要で治療期間も長くなります。"
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="implant-hero">
+  <div class="container">
+    <nav class="implant-breadcrumb" aria-label="breadcrumb">
+      <a href="{{ url_for('index') }}">ホーム</a>
+      <i class="fas fa-chevron-right mx-2" style="font-size:0.7rem;"></i>
+      <span>インプラント治療</span>
+    </nav>
+    <div class="implant-hero-content">
+      <div class="implant-hero-icon"><i class="fas fa-tooth"></i></div>
+      <h1 class="implant-hero-title">インプラント治療</h1>
+      <p class="implant-hero-sub">失った歯の機能と美しさを、自然に回復する</p>
+      <div class="implant-hero-badges">
+        <span class="ih-badge"><i class="fas fa-check-circle me-1"></i>日本口腔インプラント学会 専修医</span>
+        <span class="ih-badge"><i class="fas fa-check-circle me-1"></i>口腔外科認定医</span>
+        <span class="ih-badge"><i class="fas fa-check-circle me-1"></i>10年保証</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 副院長の考え方 -->
+<section class="implant-philosophy-box">
+  <div class="container">
+    <div class="iph-inner">
+      <div class="iph-icon-wrap"><i class="fas fa-user-md"></i></div>
+      <div class="iph-text">
+        <div class="iph-title">担当医師としての考え</div>
+        <p>インプラントは、周囲の健康な歯を削らず、顎の骨を維持しながら天然歯に最も近い機能を回復できる治療です。外科的処置を伴うため専門性が問われますが、適応症例において非常に信頼できる選択肢です。</p>
+        <div class="iph-sig">副院長 紀藤 一将（口腔外科認定医・JSOI専修医）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- インプラントとは -->
+<section class="implant-intro-section">
+  <div class="container">
+    <h2 class="implant-section-h2">自然な噛み心地と美しさを取り戻す</h2>
+    <p class="implant-intro-text">インプラント治療は、失った歯の機能と美しさを回復する治療法です。人工歯根（インプラント体）を顎の骨に埋め込み、その上に人工歯を装着することで、天然歯とほぼ同じ機能を回復できます。</p>
+    <div class="row g-3 mt-3">
+      <div class="col-md-4">
+        <div class="implant-merit-card">
+          <i class="fas fa-teeth implant-merit-icon"></i>
+          <div class="implant-merit-title">周囲の歯を削らない</div>
+          <p class="implant-merit-desc">ブリッジのように隣の健康な歯を支台にする必要がなく、残存歯を守れます。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="implant-merit-card">
+          <i class="fas fa-bone implant-merit-icon"></i>
+          <div class="implant-merit-title">顎の骨を守る</div>
+          <p class="implant-merit-desc">歯を失うと顎の骨が徐々に吸収されますが、インプラントは骨に直接力をかけるため骨量が維持されます。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="implant-merit-card">
+          <i class="fas fa-utensils implant-merit-icon"></i>
+          <div class="implant-merit-title">天然歯に近い噛み心地</div>
+          <p class="implant-merit-desc">入れ歯のように外れる心配がなく、硬いものも快適に噛むことができます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     01: 三つの専門資格
+     ============================================= -->
+<section class="implant-numbered-section" id="credentials">
+  <div class="container">
+    <div class="implant-num-badge">01</div>
+    <h2 class="implant-num-title">三つの専門資格を持つ担当医師</h2>
+    <p class="implant-num-sub">インプラント・外科・咬合、すべての分野で認定を受けた専門医が担当します</p>
+    <div class="row g-4 mt-2">
+      <div class="col-md-4">
+        <div class="implant-cred-card">
+          <div class="implant-cred-icon implant-cred-blue"><i class="fas fa-tooth"></i></div>
+          <div class="implant-cred-num">01</div>
+          <h3 class="implant-cred-org">日本口腔インプラント学会</h3>
+          <div class="implant-cred-rank">JSOI専修医</div>
+          <p class="implant-cred-desc">インプラント治療の高度な知識と技術を持つ専修医として認定。学術的根拠に基づいた治療を提供します。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="implant-cred-card">
+          <div class="implant-cred-icon implant-cred-red"><i class="fas fa-user-md"></i></div>
+          <div class="implant-cred-num">02</div>
+          <h3 class="implant-cred-org">日本口腔外科学会</h3>
+          <div class="implant-cred-rank">認定医</div>
+          <p class="implant-cred-desc">口腔外科専門医として、外科手技とリスク管理を徹底。安全性の高い手術を実現します。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="implant-cred-card">
+          <div class="implant-cred-icon implant-cred-green"><i class="fas fa-cog"></i></div>
+          <div class="implant-cred-num">03</div>
+          <h3 class="implant-cred-org">日本顎咬合学会</h3>
+          <div class="implant-cred-rank">認定医</div>
+          <p class="implant-cred-desc">噛み合わせの専門知識を持ち、機能的で長持ちするインプラントを実現。長期的な安定を追求します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     02: 明瞭な料金システム
+     ============================================= -->
+<section class="implant-numbered-section implant-fee-section" id="fee">
+  <div class="container">
+    <div class="implant-num-badge">02</div>
+    <h2 class="implant-num-title">明瞭な料金システム</h2>
+    <p class="implant-num-sub">「すべて込み」で安心・透明な料金体系を実現</p>
+
+    <div class="implant-fee-alert">
+      <i class="fas fa-exclamation-triangle me-2"></i>
+      <div>
+        <strong>インプラント料金の表示にご注意ください</strong><br>
+        「15万円〜（手術代のみ）」のような表記では、検査代・被せ物料金が別途必要となり、最終的に高額になるケースがあります。当院では検査から上部構造・保証まで<strong>すべて込みの価格</strong>を明示しています。
+      </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <div class="implant-price-card">
+          <div class="implant-price-icon"><i class="fas fa-tooth"></i></div>
+          <div class="implant-price-label">インプラント 1本</div>
+          <div class="implant-price-num">45万円</div>
+          <div class="implant-price-tax">（税抜）</div>
+          <div class="implant-price-tag">すべて込みの価格</div>
+          <div class="implant-price-note-box">
+            <span class="implant-pct">90%</span> の患者さまがこの料金で治療を完了<small>（2024年度）</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="implant-price-card">
+          <div class="implant-price-icon implant-price-icon-gray"><i class="fas fa-bone"></i></div>
+          <div class="implant-price-label">骨造成（必要な場合）</div>
+          <div class="implant-price-num">10〜30万円</div>
+          <div class="implant-price-tax">（税抜）</div>
+          <div class="implant-price-tag implant-price-tag-blue">CT診断により正確に算出</div>
+          <div class="implant-bone-avoid">
+            <i class="fas fa-shield-alt me-1"></i>特殊技術で骨造成を回避できるケースも多数
+          </div>
+          <p class="implant-bone-note">特殊な器具・技術を用いることで、骨造成が不要になる場合があります。骨が少ない方もまずはご相談ください。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 料金に含まれるもの -->
+    <div class="implant-included-box mt-4">
+      <h3 class="implant-included-title">料金に含まれるもの</h3>
+      <div class="row g-2">
+        <div class="col-md-4 col-6"><div class="implant-included-item"><i class="fas fa-check me-2"></i>3DCT診断・シミュレーション</div></div>
+        <div class="col-md-4 col-6"><div class="implant-included-item"><i class="fas fa-check me-2"></i>サージカルガイド作製</div></div>
+        <div class="col-md-4 col-6"><div class="implant-included-item"><i class="fas fa-check me-2"></i>インプラント埋入手術</div></div>
+        <div class="col-md-4 col-6"><div class="implant-included-item"><i class="fas fa-check me-2"></i>アバットメント・上部構造</div></div>
+        <div class="col-md-4 col-6"><div class="implant-included-item"><i class="fas fa-check me-2"></i>口腔内スキャナーによる精密印象</div></div>
+        <div class="col-md-4 col-6"><div class="implant-included-item"><i class="fas fa-check me-2"></i>10年間の保証（段階的制度）</div></div>
+      </div>
+    </div>
+
+    <!-- 医療費控除 -->
+    <div class="implant-tax-note mt-3">
+      <i class="fas fa-file-invoice-dollar me-2"></i>
+      インプラント治療は<strong>医療費控除の対象</strong>です。確定申告により一部費用が還付される場合があります。
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     03: 安心の治療環境
+     ============================================= -->
+<section class="implant-numbered-section" id="safety">
+  <div class="container">
+    <div class="implant-num-badge">03</div>
+    <h2 class="implant-num-title">安心の治療環境</h2>
+    <p class="implant-num-sub">最新設備と徹底した安全管理で、リスクを最小限に抑制</p>
+    <div class="row g-4 mt-2">
+      <div class="col-md-4">
+        <div class="implant-safety-card">
+          <div class="implant-safety-icon"><i class="fas fa-x-ray"></i></div>
+          <h3 class="implant-safety-title">最新3DCT診断</h3>
+          <p class="implant-safety-desc">骨の状態を立体的に把握し、最適な治療計画を立案。サージカルガイドと組み合わせることで手術の精度と安全性を大幅に向上させます。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="implant-safety-card">
+          <div class="implant-safety-icon"><i class="fas fa-shield-virus"></i></div>
+          <h3 class="implant-safety-title">徹底した感染対策</h3>
+          <p class="implant-safety-desc">厳格な滅菌管理により患者さまごとに滅菌済み器具を使用。プライベートな手術空間により感染リスクを最小限に抑えます。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="implant-safety-card">
+          <div class="implant-safety-icon"><i class="fas fa-syringe"></i></div>
+          <h3 class="implant-safety-title">痛みの少ない麻酔技術</h3>
+          <p class="implant-safety-desc">注射時の痛みを最小限に抑える麻酔技術を習得。注入速度・圧力・角度を手技でコントロールすることで、不快感を抑えた麻酔を実現しています。Googleの口コミでも「麻酔が痛くない」とご評価いただいています。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 口腔内スキャナー -->
+    <div class="implant-scanner-box mt-5">
+      <h3 class="implant-scanner-title"><i class="fas fa-camera me-2"></i>口腔内スキャナーによるデジタル印象</h3>
+      <p class="implant-scanner-desc">従来の「グチュっ」とした型取り材は一切不要。口腔内スキャナーで快適かつ精密な印象採得を行います。</p>
+      <div class="row g-3 mt-2">
+        <div class="col-md-5">
+          <div class="implant-vs-card implant-vs-old">
+            <div class="implant-vs-icon implant-vs-icon-bad"><i class="fas fa-times"></i></div>
+            <div class="implant-vs-label">従来の型取り</div>
+            <ul class="implant-vs-list">
+              <li>グチュっとした不快感</li>
+              <li>嘔吐反射の心配</li>
+              <li>時間がかかる</li>
+              <li>精度にばらつき</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2 d-flex align-items-center justify-content-center">
+          <div class="implant-vs-badge">VS</div>
+        </div>
+        <div class="col-md-5">
+          <div class="implant-vs-card implant-vs-new">
+            <div class="implant-vs-icon implant-vs-icon-good"><i class="fas fa-check"></i></div>
+            <div class="implant-vs-label">口腔内スキャナー</div>
+            <ul class="implant-vs-list">
+              <li>快適なデジタルスキャン</li>
+              <li>嘔吐反射なし</li>
+              <li>短時間で完了</li>
+              <li>高精度なデジタルデータ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10年保証 -->
+    <div class="implant-guarantee-box mt-4">
+      <div class="implant-guarantee-icon"><i class="fas fa-certificate"></i></div>
+      <div>
+        <div class="implant-guarantee-title">10年間の長期保証（段階的制度）</div>
+        <p class="implant-guarantee-desc">丁寧な治療と定期的なメンテナンスを組み合わせることで長期的な安定を目指します。万が一のトラブルにも迅速に対応いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     治療の流れ ＋ 適応症例
+     ============================================= -->
+<section class="implant-flow-section">
+  <div class="container">
+    <div class="row g-5">
+      <!-- 治療の流れ -->
+      <div class="col-lg-7">
+        <h2 class="implant-section-h2">治療の流れ</h2>
+        <div class="implant-flow-list mt-3">
+          <div class="implant-flow-item">
+            <div class="implant-flow-num">1</div>
+            <div class="implant-flow-content">
+              <div class="implant-flow-title">精密検査・診断</div>
+              <p>3DCT撮影による骨量・骨密度の詳細な分析。口腔内スキャナーで精密データを取得し治療計画を立案します。</p>
+            </div>
+          </div>
+          <div class="implant-flow-item">
+            <div class="implant-flow-num">2</div>
+            <div class="implant-flow-content">
+              <div class="implant-flow-title">治療計画・カウンセリング</div>
+              <p>患者さまの状態・ご希望に最適な治療プランをご提案。費用・期間・リスクについて丁寧にご説明します。</p>
+            </div>
+          </div>
+          <div class="implant-flow-item">
+            <div class="implant-flow-num">3</div>
+            <div class="implant-flow-content">
+              <div class="implant-flow-title">インプラント埋入手術</div>
+              <p>サージカルガイドを使用した正確な埋入手術。局所麻酔下で行い、日帰り手術が可能です。</p>
+            </div>
+          </div>
+          <div class="implant-flow-item">
+            <div class="implant-flow-num">4</div>
+            <div class="implant-flow-content">
+              <div class="implant-flow-title">治癒期間</div>
+              <p>インプラントと骨が結合するまで3〜6ヶ月待機します（骨の状態により異なります）。</p>
+            </div>
+          </div>
+          <div class="implant-flow-item">
+            <div class="implant-flow-num">5</div>
+            <div class="implant-flow-content">
+              <div class="implant-flow-title">上部構造（人工歯）の装着</div>
+              <p>口腔内スキャナーで精密印象採得し、天然歯に近い見た目・噛み心地の人工歯を装着します。</p>
+            </div>
+          </div>
+          <div class="implant-flow-item">
+            <div class="implant-flow-num">6</div>
+            <div class="implant-flow-content">
+              <div class="implant-flow-title">定期メンテナンス</div>
+              <p>長期安定のための定期検診・クリーニング・咬合管理。専門医による継続的なフォローを行います。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 適応症例 -->
+      <div class="col-lg-5">
+        <h2 class="implant-section-h2">こんな方にお勧めします</h2>
+        <div class="implant-case-list mt-3">
+          <div class="implant-case-item"><i class="fas fa-check-circle me-2"></i>1本の歯を失った方</div>
+          <div class="implant-case-item"><i class="fas fa-check-circle me-2"></i>複数の歯を失った方</div>
+          <div class="implant-case-item"><i class="fas fa-check-circle me-2"></i>すべての歯を失った方</div>
+          <div class="implant-case-item"><i class="fas fa-check-circle me-2"></i>入れ歯が合わない・不快な方</div>
+          <div class="implant-case-item"><i class="fas fa-check-circle me-2"></i>ブリッジで健康な歯を削りたくない方</div>
+          <div class="implant-case-item"><i class="fas fa-check-circle me-2"></i>噛み合わせをしっかり回復したい方</div>
+        </div>
+
+        <h2 class="implant-section-h2 mt-5">アフターケア</h2>
+        <div class="implant-aftercare-list mt-3">
+          <div class="implant-aftercare-item"><i class="fas fa-calendar-check me-2"></i>定期検診による長期フォロー</div>
+          <div class="implant-aftercare-item"><i class="fas fa-tools me-2"></i>専門的なクリーニング</div>
+          <div class="implant-aftercare-item"><i class="fas fa-tooth me-2"></i>インプラント専用ブラッシング指導</div>
+          <div class="implant-aftercare-item"><i class="fas fa-x-ray me-2"></i>レントゲンによる経過観察</div>
+          <div class="implant-aftercare-item"><i class="fas fa-phone-alt me-2"></i>トラブル時の迅速な対応</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     ⚠️ 治療前にご理解いただきたいこと（ガイドライン必須）
+     ============================================= -->
+<section class="implant-caution-section">
+  <div class="container">
+    <h2 class="implant-caution-title">
+      <i class="fas fa-info-circle me-2"></i>治療前にご理解いただきたいこと
+    </h2>
+    <p class="implant-caution-lead">インプラント治療を検討される際に、メリット・デメリット両方をご理解いただくことが大切です。</p>
+    <div class="row g-4 mt-1">
+      <div class="col-md-4">
+        <div class="implant-caution-card implant-caution-insurance">
+          <div class="implant-caution-icon"><i class="fas fa-yen-sign"></i></div>
+          <h3 class="implant-caution-card-title">保険適用外</h3>
+          <p>インプラント治療は自費診療となり、保険は適用されません。ただし<strong>医療費控除の対象</strong>となりますので、確定申告時にご活用いただけます。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="implant-caution-card implant-caution-period">
+          <div class="implant-caution-icon"><i class="fas fa-calendar-alt"></i></div>
+          <h3 class="implant-caution-card-title">治療期間について</h3>
+          <p>入れ歯やブリッジと比べて治療期間は長くなります（通常3〜6ヶ月）。これは骨との結合を確実にするために必要な期間です。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="implant-caution-card implant-caution-surgery">
+          <div class="implant-caution-icon"><i class="fas fa-procedures"></i></div>
+          <h3 class="implant-caution-card-title">外科手術が必要</h3>
+          <p>インプラント埋入には外科手術が伴います。全身疾患（糖尿病・骨粗鬆症など）や喫煙習慣によりリスクが高まる場合があります。詳細は診査後にご説明します。</p>
+        </div>
+      </div>
+    </div>
+    <div class="implant-caution-support mt-4">
+      <i class="fas fa-comments me-2"></i>
+      <div>これらの点について、カウンセリング時に丁寧にご説明し、患者さまのご不安を解消いたします。治療中・治療後も継続的にサポートいたしますので、まずはお気軽にご相談ください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     よくある質問（FAQ）
+     ============================================= -->
+<section class="implant-faq-section">
+  <div class="container">
+    <h2 class="implant-section-h2 text-center">よくある質問</h2>
+    <div class="implant-faq-list mt-4">
+      <details class="implant-faq-item">
+        <summary class="implant-faq-q">インプラント治療はいくらかかりますか？</summary>
+        <div class="implant-faq-a">
+          当院では1本<strong>45万円（税抜）のすべて込み価格</strong>です。3DCT診断・シミュレーション、サージカルガイド作製、埋入手術、アバットメント・上部構造、口腔内スキャナー印象、10年保証（段階的制度）をすべて含みます。骨造成が必要な場合は別途10〜30万円（税抜）が加算されます。
+        </div>
+      </details>
+      <details class="implant-faq-item">
+        <summary class="implant-faq-q">治療期間はどのくらいですか？</summary>
+        <div class="implant-faq-a">
+          通常3〜6ヶ月程度です。骨の状態や症例により異なります。詳細は診査・診断後にご説明いたします。
+        </div>
+      </details>
+      <details class="implant-faq-item">
+        <summary class="implant-faq-q">保険は使えますか？</summary>
+        <div class="implant-faq-a">
+          インプラント治療は自費診療（保険適用外）となります。ただし<strong>医療費控除の対象</strong>となりますので、確定申告時にご活用いただけます。
+        </div>
+      </details>
+      <details class="implant-faq-item">
+        <summary class="implant-faq-q">骨が少ない場合はできませんか？</summary>
+        <div class="implant-faq-a">
+          当院では特殊な器具・技術により、骨造成が不要になるケースも多くあります。骨が少ない場合でも、まずはご相談ください。CT診断により骨量を精密に測定し、最適な治療計画をご提案します。
+        </div>
+      </details>
+      <details class="implant-faq-item">
+        <summary class="implant-faq-q">入れ歯やブリッジとどう違いますか？</summary>
+        <div class="implant-faq-a">
+          インプラントは顎骨に人工歯根を埋め込む治療で、天然歯に近い機能・見た目を実現します。入れ歯のように外れる心配がなく、ブリッジのように隣の健康な歯を削る必要もありません。ただし外科手術が必要で治療期間も長くなります。
+        </div>
+      </details>
+      <details class="implant-faq-item">
+        <summary class="implant-faq-q">痛みはありますか？</summary>
+        <div class="implant-faq-a">
+          手術中は局所麻酔を使用するため、術中の痛みはほとんどありません。当院では注入速度・圧力・角度を手技でコントロールする麻酔技術を習得しており、注射時の不快感を最小限に抑えています。術後の痛みは処方薬で管理します。
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 関連ページ -->
+<section class="related-pages-section">
+  <div class="container">
+    <p class="related-pages-label">関連する治療</p>
+    <div class="related-pages-grid">
+      <a href="{{ url_for('aesthetic') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-star"></i></div>
+        <div>
+          <div class="related-page-title">審美歯科・セラミック</div>
+          <div class="related-page-desc">インプラントの上部構造にセラミッククラウンを使用することで、より自然な仕上がりに。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('gummy_smile') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-smile"></i></div>
+        <div>
+          <div class="related-page-title">ガミースマイル治療</div>
+          <div class="related-page-desc">笑ったときに歯茎が気になる方へ。外科的アプローチで自然な笑顔をサポートします。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('orthodontics') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-teeth"></i></div>
+        <div>
+          <div class="related-page-title">矯正歯科</div>
+          <div class="related-page-desc">インビザライン・ワイヤー矯正・小児矯正に対応。歯並びを整えることで清潔なお口環境づくりにも繋がります。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="cta-eyebrow">まずはご相談から</p>
+    <h2 class="cta-title">インプラント治療について<br>お気軽にご相談ください</h2>
+    <p class="cta-sub">カウンセリングでご不安を解消し、最適な治療プランをご提案します。</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="cta-btn-primary">
+        <i class="fas fa-calendar-alt me-2"></i>WEB予約（24時間受付）
+      </a>
+      <a href="tel:0568622580" class="cta-btn-secondary">
+        <i class="fas fa-phone me-2"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

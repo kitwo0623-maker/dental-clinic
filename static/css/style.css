@@ -2091,3 +2091,1119 @@ html {
   .google-review-box { flex-direction: column; text-align: center; padding: 1.5rem; }
   .gr-stars { justify-content: center; }
 }
+
+/* ============================================================
+   インプラント治療ページ
+   ============================================================ */
+
+/* Hero */
+.implant-hero {
+  background: linear-gradient(135deg, #1a5c38 0%, var(--primary) 60%, #a0b86e 100%);
+  padding: 4rem 0 3rem;
+  color: #fff;
+}
+.implant-breadcrumb { font-size: 0.78rem; margin-bottom: 1.5rem; opacity: 0.85; }
+.implant-breadcrumb a { color: #fff; text-decoration: none; }
+.implant-breadcrumb a:hover { text-decoration: underline; }
+.implant-hero-content { text-align: center; }
+.implant-hero-icon { font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.9; }
+.implant-hero-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; font-family: var(--font-serif); margin-bottom: 0.5rem; }
+.implant-hero-sub { font-size: 1.05rem; opacity: 0.92; margin-bottom: 1.5rem; }
+.implant-hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+.ih-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); border-radius: 20px; padding: 0.35rem 1rem; font-size: 0.82rem; font-weight: 600; }
+
+/* Philosophy box */
+.implant-philosophy-box { background: #1e3a2a; padding: 2.5rem 0; color: #fff; }
+.iph-inner { display: flex; gap: 1.5rem; align-items: flex-start; max-width: 800px; margin: 0 auto; }
+.iph-icon-wrap { width: 56px; height: 56px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.iph-title { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem; font-weight: 700; text-transform: uppercase; }
+.iph-text p { color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.iph-sig { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+
+/* Intro */
+.implant-intro-section { padding: 4rem 0; background: #fff; }
+.implant-section-h2 { font-size: 1.5rem; font-weight: 800; font-family: var(--font-serif); color: var(--dark); margin-bottom: 0.75rem; }
+.implant-intro-text { font-size: 0.97rem; color: #555; line-height: 1.85; max-width: 800px; }
+.implant-merit-card { background: var(--cream); border-radius: 12px; padding: 1.5rem; height: 100%; }
+.implant-merit-icon { font-size: 1.8rem; color: var(--primary); margin-bottom: 0.75rem; display: block; }
+.implant-merit-title { font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+.implant-merit-desc { font-size: 0.85rem; color: #666; line-height: 1.7; margin: 0; }
+
+/* Numbered sections */
+.implant-numbered-section { padding: 4.5rem 0; }
+.implant-numbered-section:nth-child(even) { background: var(--cream); }
+.implant-num-badge { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; background: var(--accent); color: #fff; border-radius: 50%; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; }
+.implant-num-title { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; font-family: var(--font-serif); color: var(--dark); margin-bottom: 0.4rem; }
+.implant-num-sub { color: #666; font-size: 0.9rem; }
+
+/* Credential cards */
+.implant-cred-card { background: #fff; border-radius: 14px; padding: 1.75rem 1.5rem; height: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.07); position: relative; }
+.implant-cred-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; margin-bottom: 0.75rem; }
+.implant-cred-blue { background: #4285F4; }
+.implant-cred-red  { background: #EA4335; }
+.implant-cred-green{ background: #34A853; }
+.implant-cred-num { position: absolute; top: 1rem; right: 1.25rem; font-size: 1rem; font-weight: 800; color: var(--accent); opacity: 0.6; }
+.implant-cred-org { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
+.implant-cred-rank { font-size: 1rem; font-weight: 800; color: var(--accent); margin-bottom: 0.75rem; }
+.implant-cred-desc { font-size: 0.82rem; color: #666; line-height: 1.7; margin: 0; }
+
+/* Fee section */
+.implant-fee-section { background: #1e3a2a !important; color: #fff; }
+.implant-fee-section .implant-num-title { color: #fff; }
+.implant-fee-section .implant-num-sub { color: rgba(255,255,255,0.75); }
+.implant-fee-alert { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem; line-height: 1.7; margin-top: 1.5rem; }
+.implant-fee-alert i { color: #FBBC05; flex-shrink: 0; margin-top: 0.1rem; }
+.implant-price-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 2rem 1.5rem; text-align: center; height: 100%; }
+.implant-price-icon { width: 56px; height: 56px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff; margin: 0 auto 1rem; }
+.implant-price-icon-gray { background: #6c757d; }
+.implant-price-label { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-bottom: 0.25rem; }
+.implant-price-num { font-size: 2.5rem; font-weight: 900; color: var(--accent); line-height: 1; }
+.implant-price-tax { font-size: 0.75rem; color: rgba(255,255,255,0.65); margin-bottom: 0.5rem; }
+.implant-price-tag { display: inline-block; background: var(--primary); color: #fff; border-radius: 20px; padding: 0.25rem 0.9rem; font-size: 0.78rem; font-weight: 600; margin-bottom: 1rem; }
+.implant-price-tag-blue { background: #4285F4; }
+.implant-price-note-box { background: rgba(255,255,255,0.12); border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.9); }
+.implant-pct { font-size: 1.4rem; font-weight: 900; color: var(--accent); }
+.implant-bone-avoid { background: rgba(52,168,83,0.3); border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #90ee90; margin: 0.5rem 0; }
+.implant-bone-note { font-size: 0.8rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0; }
+.implant-included-box { background: rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem 2rem; }
+.implant-included-title { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.9); text-align: center; margin-bottom: 1rem; }
+.implant-included-item { display: flex; align-items: center; font-size: 0.85rem; color: rgba(255,255,255,0.88); padding: 0.35rem 0; }
+.implant-included-item i { color: #34A853; }
+.implant-tax-note { background: rgba(251,188,5,0.15); border: 1px solid rgba(251,188,5,0.3); border-radius: 8px; padding: 0.75rem 1.25rem; font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 0.5rem; }
+.implant-tax-note i { color: #FBBC05; flex-shrink: 0; }
+
+/* Safety section */
+.implant-safety-card { background: #fff; border-radius: 14px; padding: 2rem 1.5rem; text-align: center; height: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+.implant-safety-icon { width: 64px; height: 64px; background: #7b68ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; margin: 0 auto 1rem; }
+.implant-safety-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; }
+.implant-safety-desc { font-size: 0.85rem; color: #666; line-height: 1.75; margin: 0; }
+
+/* Scanner box */
+.implant-scanner-box { background: var(--cream); border-radius: 16px; padding: 2rem; }
+.implant-scanner-title { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+.implant-scanner-desc { font-size: 0.9rem; color: #666; margin-bottom: 0; }
+.implant-vs-card { border-radius: 12px; padding: 1.5rem; text-align: center; height: 100%; }
+.implant-vs-old { background: #fff0f0; border: 2px solid #f5c6c6; }
+.implant-vs-new { background: #f0fff4; border: 2px solid #c6f5d0; }
+.implant-vs-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #fff; margin: 0 auto 0.75rem; }
+.implant-vs-icon-bad { background: #EA4335; }
+.implant-vs-icon-good { background: #34A853; }
+.implant-vs-label { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.75rem; }
+.implant-vs-old .implant-vs-label { color: #c0392b; }
+.implant-vs-new .implant-vs-label { color: #27ae60; }
+.implant-vs-list { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; }
+.implant-vs-old .implant-vs-list { color: #e74c3c; }
+.implant-vs-new .implant-vs-list { color: #27ae60; }
+.implant-vs-list li { padding: 0.25rem 0; }
+.implant-vs-badge { width: 44px; height: 44px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 0.85rem; }
+
+/* Guarantee */
+.implant-guarantee-box { background: #fff7e0; border: 2px solid var(--accent); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+.implant-guarantee-icon { width: 48px; height: 48px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; flex-shrink: 0; }
+.implant-guarantee-title { font-weight: 700; font-size: 1rem; color: #7a5800; margin-bottom: 0.25rem; }
+.implant-guarantee-desc { font-size: 0.85rem; color: #7a5800; margin: 0; line-height: 1.65; }
+
+/* Flow section */
+.implant-flow-section { padding: 4.5rem 0; background: #fff; }
+.implant-flow-list { display: flex; flex-direction: column; gap: 0; }
+.implant-flow-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem 0; border-bottom: 1px solid #f0f0f0; }
+.implant-flow-item:last-child { border-bottom: none; }
+.implant-flow-num { width: 36px; height: 36px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+.implant-flow-title { font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; font-size: 0.97rem; }
+.implant-flow-content p { font-size: 0.85rem; color: #666; margin: 0; line-height: 1.7; }
+
+/* Cases & aftercare */
+.implant-case-list, .implant-aftercare-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.implant-case-item, .implant-aftercare-item { display: flex; align-items: center; padding: 0.7rem 1rem; background: var(--cream); border-radius: 8px; font-size: 0.88rem; color: var(--dark); }
+.implant-case-item i { color: var(--primary); }
+.implant-aftercare-item i { color: var(--primary); }
+
+/* Caution section */
+.implant-caution-section { padding: 4rem 0; background: #f8f4f0; }
+.implant-caution-title { font-size: 1.35rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
+.implant-caution-lead { font-size: 0.9rem; color: #666; margin-bottom: 0; }
+.implant-caution-card { background: #fff; border-radius: 14px; padding: 1.75rem 1.5rem; height: 100%; border-top: 4px solid #ccc; }
+.implant-caution-insurance { border-top-color: #EA4335; }
+.implant-caution-period     { border-top-color: #FBBC05; }
+.implant-caution-surgery    { border-top-color: #9b59b6; }
+.implant-caution-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+.implant-caution-insurance .implant-caution-icon { color: #EA4335; }
+.implant-caution-period .implant-caution-icon     { color: #f39c12; }
+.implant-caution-surgery .implant-caution-icon    { color: #9b59b6; }
+.implant-caution-card-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; }
+.implant-caution-card p { font-size: 0.85rem; color: #666; line-height: 1.75; margin: 0; }
+.implant-caution-support { background: #e8f4fd; border: 1px solid #b8daf5; border-radius: 10px; padding: 1rem 1.25rem; display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem; color: #1a5276; line-height: 1.7; }
+.implant-caution-support i { color: #2980b9; flex-shrink: 0; margin-top: 0.1rem; }
+
+/* FAQ */
+.implant-faq-section { padding: 4rem 0; background: #fff; }
+.implant-faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+.implant-faq-item { border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; }
+.implant-faq-q { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: var(--dark); list-style: none; background: #fafafa; transition: background 0.2s; }
+.implant-faq-q::-webkit-details-marker { display: none; }
+.implant-faq-q::before { content: "Q"; width: 28px; height: 28px; background: var(--primary); color: #fff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; flex-shrink: 0; }
+.implant-faq-item[open] .implant-faq-q { background: #e8f5ee; }
+.implant-faq-a { padding: 1rem 1.25rem 1rem 3.5rem; font-size: 0.88rem; color: #555; line-height: 1.8; border-top: 1px solid #e8e8e8; }
+
+@media (max-width: 767px) {
+  .iph-inner { flex-direction: column; }
+  .implant-vs-badge { margin: 0.5rem auto; }
+}
+
+/* ============================================================
+   スクロールアニメーション
+   ============================================================ */
+[data-fade] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-fade].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   お知らせセクション
+   ============================================================ */
+.news-section {
+  padding: 3rem 0 2.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.news-list {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.news-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--dark);
+  transition: background 0.15s;
+}
+.news-item:last-child { border-bottom: none; }
+a.news-item:hover { background: var(--cream); }
+.news-item-nolink { cursor: default; }
+.news-date {
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+  font-feature-settings: "tnum";
+  min-width: 4.5rem;
+}
+.news-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.18rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.news-badge-new  { background: var(--primary); color: #fff; }
+.news-badge-info { background: var(--primary-light); color: var(--primary); }
+.news-title {
+  font-size: 0.9rem;
+  flex: 1;
+  line-height: 1.5;
+}
+.news-arrow { color: var(--muted); font-size: 0.75rem; margin-left: auto; flex-shrink: 0; }
+
+/* ============================================================
+   モバイル対応強化
+   ============================================================ */
+@media (max-width: 991px) {
+  /* ナビ */
+  .navbar-collapse {
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+    margin-top: 0.5rem;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.65rem 0.5rem !important;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .navbar-nav .nav-item:last-child .nav-link { border-bottom: none; }
+  .nav-link-cta {
+    margin: 0.5rem 0 0 !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  /* セクション余白 */
+  section { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+  /* セクションタイトル */
+  .section-title { font-size: 1.45rem !important; }
+  .section-sub   { font-size: 0.85rem !important; }
+
+  /* ヒーロー */
+  .hero-section { min-height: auto; padding: 2.5rem 0 2rem; }
+  .hero-headline { font-size: 1.7rem !important; }
+  .hero-sub      { font-size: 0.88rem !important; }
+  .hero-visual-box { margin-top: 2rem; }
+  .btn-hero-primary,
+  .btn-hero-outline {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+  .hero-cta-group { flex-direction: column !important; gap: 0.75rem !important; }
+  .hero-info-bar  { gap: 0.75rem; }
+  .hero-info-item { font-size: 0.78rem; }
+
+  /* お知らせ */
+  .news-item { flex-wrap: wrap; gap: 0.4rem; }
+  .news-title { font-size: 0.85rem; width: 100%; }
+  .news-arrow { display: none; }
+
+  /* 初めての方へ */
+  .flow-card { padding: 1.25rem 1rem; }
+
+  /* 自由診療カード */
+  .ft-card { margin-bottom: 0; }
+
+  /* ドクターカード */
+  .dr-card { padding: 1.5rem 1.25rem; }
+  .dr-card-header { padding: 1.25rem; }
+
+  /* 診療時間テーブル */
+  .hours-table { font-size: 0.78rem; }
+  .hours-table th, .hours-table td { padding: 0.5rem 0.4rem; }
+
+  /* Google口コミ */
+  .google-review-box { padding: 1.25rem; gap: 1rem; }
+  .gr-score { font-size: 1.2rem; }
+
+  /* CTA */
+  .cta-banner { padding: 3rem 1.25rem; }
+  .cta-title  { font-size: 1.6rem !important; }
+  .cta-desc   { font-size: 0.88rem; }
+
+  /* フッター */
+  .site-footer { padding: 2.5rem 0 1.5rem; }
+  .footer-brand { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  /* さらに小さい端末 */
+  .section-title   { font-size: 1.25rem !important; }
+  .hero-headline   { font-size: 1.45rem !important; }
+  .hero-treatment-chips { gap: 0.4rem; }
+  .hero-chip { font-size: 0.72rem; padding: 0.3rem 0.7rem; }
+
+  /* カードグリッド */
+  .col-6 { width: 100% !important; }
+
+  /* インプラントページ */
+  .implant-hero-title { font-size: 1.6rem !important; }
+  .implant-price-main { font-size: 1.8rem !important; }
+}
+
+/* ============================================================
+   WEB予約バナー（contact.html）
+   ============================================================ */
+.web-booking-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 14px;
+  padding: 1.25rem 1.75rem;
+}
+.web-booking-icon {
+  font-size: 2rem;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+.web-booking-body { flex: 1; }
+.web-booking-label { font-size: 1rem; font-weight: 700; margin-bottom: 0.15rem; }
+.web-booking-note  { font-size: 0.82rem; opacity: 0.8; }
+.web-booking-btn {
+  flex-shrink: 0;
+  background: #fff;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.web-booking-btn:hover { opacity: 0.9; color: var(--primary); }
+
+@media (max-width: 575px) {
+  .web-booking-banner { flex-direction: column; text-align: center; padding: 1.25rem; }
+  .web-booking-btn { width: 100%; text-align: center; }
+}
+
+/* ft-card リンク対応 */
+a.ft-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+a.ft-card-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+  color: inherit;
+}
+
+/* ============================================================
+   審美歯科・セラミック治療ページ (aesthetic.html)
+   ============================================================ */
+
+/* Hero */
+.ae-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 4rem 0 3rem;
+  color: #fff;
+}
+.ae-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
+.ae-breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+.ae-breadcrumb a:hover { color: #fff; }
+.ae-hero-content { text-align: center; max-width: 640px; margin: 0 auto; }
+.ae-hero-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, #b8874a, #d4a053);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: #fff;
+  margin: 0 auto 1.25rem;
+  box-shadow: 0 4px 20px rgba(184,135,74,0.4);
+}
+.ae-hero-title { font-size: 2rem; font-weight: 700; margin-bottom: 0.75rem; font-family: 'Noto Serif JP', serif; }
+.ae-hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
+.ae-hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.ae-badge {
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.82rem; color: #fff;
+}
+
+/* Philosophy */
+.ae-philosophy-box { background: #f8f5f0; padding: 2.5rem 0; }
+.ae-iph-inner { display: flex; gap: 1.5rem; align-items: flex-start; max-width: 800px; margin: 0 auto; }
+.ae-iph-icon-wrap {
+  flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%;
+  background: var(--primary, #2e7d6e); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.3rem;
+}
+.ae-iph-title { font-weight: 700; margin-bottom: 0.5rem; color: var(--primary, #2e7d6e); }
+.ae-iph-sig { font-size: 0.82rem; color: #666; margin-top: 0.75rem; font-style: italic; }
+@media (max-width: 575px) {
+  .ae-iph-inner { flex-direction: column; }
+}
+
+/* Section headings */
+.ae-menu-section, .ae-why-section, .ae-flow-section, .ae-faq-section { padding: 4rem 0; }
+.ae-fee-section { padding: 4rem 0; background: #f8f5f0; }
+.ae-section-h2 {
+  font-size: 1.6rem; font-weight: 700; margin-bottom: 0.4rem;
+  color: #1a1a2e; font-family: 'Noto Serif JP', serif;
+  position: relative; padding-bottom: 0.75rem;
+}
+.ae-section-h2::after {
+  content: ''; display: block; width: 40px; height: 3px;
+  background: var(--gold, #b8874a); border-radius: 2px; margin-top: 0.5rem;
+}
+.ae-section-sub { color: #666; margin-bottom: 1.5rem; }
+
+/* Menu cards */
+.ae-menu-card {
+  border: 1px solid #e8e0d5; border-radius: 12px;
+  overflow: hidden; margin-bottom: 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.ae-menu-header {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.1rem 1.5rem; color: #fff; flex-wrap: wrap;
+}
+.ae-color-pearl   { background: linear-gradient(135deg, #2e7d6e 0%, #3a9b8a 100%); }
+.ae-color-zirconia{ background: linear-gradient(135deg, #1a1a2e 0%, #2d3a6e 100%); }
+.ae-color-veneer  { background: linear-gradient(135deg, #7c5c2e 0%, #b8874a 100%); }
+.ae-color-whitening{ background: linear-gradient(135deg, #e8a020 0%, #f5c842 100%); }
+.ae-color-silver  { background: linear-gradient(135deg, #555 0%, #888 100%); }
+.ae-menu-num {
+  font-size: 2rem; font-weight: 900; opacity: 0.3;
+  font-family: 'Noto Serif JP', serif; line-height: 1;
+}
+.ae-menu-icon-wrap {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.ae-menu-name { font-size: 1.1rem; font-weight: 700; }
+.ae-menu-tag { font-size: 0.78rem; opacity: 0.85; margin-top: 0.15rem; }
+.ae-menu-price-badge {
+  margin-left: auto; background: rgba(255,255,255,0.2);
+  padding: 0.3rem 0.85rem; border-radius: 20px;
+  font-size: 1rem; font-weight: 700; white-space: nowrap;
+}
+.ae-menu-price-badge small { font-size: 0.72rem; font-weight: 400; }
+.ae-menu-body { padding: 1.5rem; }
+
+/* Merit list */
+.ae-merit-list { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+.ae-merit-list li { padding: 0.35rem 0; font-size: 0.92rem; display: flex; align-items: center; gap: 0.5rem; }
+.ae-merit-list .fa-check-circle { color: var(--primary, #2e7d6e); }
+
+/* Spec box */
+.ae-spec-box { background: #f8f5f0; border-radius: 8px; overflow: hidden; }
+.ae-spec-row {
+  display: flex; gap: 0.75rem; padding: 0.6rem 1rem;
+  border-bottom: 1px solid #ede8e0; font-size: 0.87rem;
+}
+.ae-spec-row:last-child { border-bottom: none; }
+.ae-spec-label { font-weight: 600; color: #555; min-width: 70px; }
+
+/* Whitening cards */
+.ae-wh-card {
+  border-radius: 10px; padding: 1.25rem; text-align: center;
+  height: 100%;
+}
+.ae-wh-office  { background: linear-gradient(135deg, #e8f5f2, #d4ede9); border: 1px solid #a8d8d0; }
+.ae-wh-home    { background: linear-gradient(135deg, #f0f0ff, #e4e4f8); border: 1px solid #b8b8e8; }
+.ae-wh-dual    { background: linear-gradient(135deg, #fff8e8, #fef0c0); border: 1px solid #e8d060; }
+.ae-wh-icon { font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--primary, #2e7d6e); }
+.ae-wh-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; }
+.ae-wh-desc { font-size: 0.82rem; color: #555; margin-bottom: 0.5rem; }
+.ae-wh-price { font-weight: 700; color: var(--gold, #b8874a); }
+.ae-wh-price small { font-size: 0.75rem; font-weight: 400; }
+.ae-wh-note {
+  background: #fff8e8; border: 1px solid #f0d080; border-radius: 8px;
+  padding: 0.85rem 1rem; font-size: 0.85rem; color: #6b5000; display: flex; align-items: flex-start; gap: 0.25rem;
+}
+
+/* Silver exchange */
+.ae-silver-options { display: flex; flex-direction: column; gap: 0.5rem; }
+.ae-silver-option {
+  display: flex; gap: 0.75rem; align-items: center;
+  padding: 0.5rem 0.75rem; background: #f8f5f0; border-radius: 6px; font-size: 0.87rem;
+}
+.ae-silver-label { font-weight: 600; min-width: 120px; color: #555; }
+.ae-silver-alert {
+  background: #e8f5f2; border: 1px solid #a8d8d0; border-radius: 8px;
+  padding: 1rem 1.1rem; font-size: 0.87rem; color: #1a4a40;
+  display: flex; gap: 0.5rem; align-items: flex-start;
+}
+
+/* Fee table */
+.ae-fee-table-wrap { overflow-x: auto; }
+.ae-fee-table { width: 100%; border-collapse: collapse; }
+.ae-fee-table thead tr { background: var(--primary, #2e7d6e); color: #fff; }
+.ae-fee-table th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+.ae-fee-table tbody tr { border-bottom: 1px solid #e8e0d5; }
+.ae-fee-table tbody tr:nth-child(even) { background: #f8f5f0; }
+.ae-fee-table td { padding: 0.75rem 1rem; font-size: 0.9rem; }
+.ae-fee-num { font-weight: 700; color: var(--gold, #b8874a); }
+.ae-fee-note {
+  background: #fff8e8; border: 1px solid #f0d080; border-radius: 8px;
+  padding: 0.85rem 1rem; font-size: 0.85rem; color: #6b5000; display: flex; align-items: flex-start;
+}
+
+/* Why cards */
+.ae-why-card {
+  background: #fff; border: 1px solid #e8e0d5; border-radius: 12px;
+  padding: 1.75rem 1.5rem; text-align: center; height: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.ae-why-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
+.ae-why-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg, #2e7d6e, #3a9b8a);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: #fff; margin: 0 auto 1rem;
+}
+.ae-why-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+.ae-why-desc { font-size: 0.87rem; color: #555; }
+
+/* Flow */
+.ae-flow-list { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+.ae-flow-item {
+  display: flex; gap: 1.25rem; align-items: flex-start;
+  padding: 1.25rem 0; border-bottom: 1px solid #e8e0d5; position: relative;
+}
+.ae-flow-item:last-child { border-bottom: none; }
+.ae-flow-num {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #2e7d6e, #3a9b8a);
+  color: #fff; font-weight: 700; font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 0.2rem;
+}
+.ae-flow-title { font-weight: 700; margin-bottom: 0.3rem; }
+.ae-flow-content p { font-size: 0.9rem; color: #555; margin: 0; }
+
+/* Caution */
+.ae-caution-section { background: #f8f5f0; padding: 4rem 0; }
+.ae-caution-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: #1a1a2e; }
+.ae-caution-card {
+  background: #fff; border-radius: 10px; padding: 1.5rem;
+  border-top: 3px solid var(--primary, #2e7d6e); height: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.ae-caution-icon { font-size: 1.5rem; color: var(--primary, #2e7d6e); margin-bottom: 0.75rem; }
+.ae-caution-card-title { font-weight: 700; margin-bottom: 0.5rem; }
+.ae-caution-support {
+  background: #e8f5f2; border: 1px solid #a8d8d0; border-radius: 8px;
+  padding: 1rem 1.25rem; font-size: 0.9rem; display: flex; gap: 0.5rem; align-items: flex-start; color: #1a4a40;
+}
+
+/* FAQ */
+.ae-faq-list { max-width: 800px; margin: 0 auto; }
+.ae-faq-item {
+  border-bottom: 1px solid #e8e0d5;
+}
+.ae-faq-item:first-child { border-top: 1px solid #e8e0d5; }
+.ae-faq-q {
+  padding: 1.1rem 2rem 1.1rem 0; font-weight: 600; cursor: pointer;
+  font-size: 0.95rem; list-style: none; position: relative;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.ae-faq-q::before { content: 'Q'; color: var(--gold, #b8874a); font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+.ae-faq-q::after {
+  content: '+'; position: absolute; right: 0; font-size: 1.3rem;
+  color: var(--primary, #2e7d6e); font-weight: 300; transition: transform 0.2s;
+}
+details[open] .ae-faq-q::after { transform: rotate(45deg); }
+.ae-faq-a { padding: 0 0 1.1rem 1.75rem; font-size: 0.9rem; color: #444; line-height: 1.7; }
+
+/* Mobile */
+@media (max-width: 767px) {
+  .ae-hero-title { font-size: 1.5rem; }
+  .ae-menu-header { flex-wrap: wrap; }
+  .ae-menu-price-badge { margin-left: 0; }
+  .ae-silver-option { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .ae-silver-label { min-width: unset; }
+  .ae-iph-inner { flex-direction: column; }
+}
+
+/* 追加メニューカラー */
+.ae-color-bonding  { background: linear-gradient(135deg, #5b7fa6 0%, #7a9dc2 100%); }
+.ae-color-inlay    { background: linear-gradient(135deg, #4a7c6e 0%, #5e9e8c 100%); }
+.ae-color-gummy    { background: linear-gradient(135deg, #9b4a7a 0%, #c26890 100%); }
+
+/* ガミースマイル治療オプション */
+.ae-gummy-options { display: flex; flex-direction: column; gap: 0.75rem; }
+.ae-gummy-option {
+  background: #f8f5f0; border: 1px solid #e0d8ce;
+  border-radius: 8px; padding: 0.85rem 1rem;
+}
+.ae-gummy-option-alt { background: #f5f0f8; border-color: #d8d0e0; }
+.ae-gummy-opt-header {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+  font-weight: 700; font-size: 0.92rem; margin-bottom: 0.4rem;
+}
+.ae-gummy-price {
+  margin-left: auto; font-size: 0.85rem; font-weight: 700;
+  color: var(--gold, #b8874a);
+}
+.ae-gummy-opt-desc { font-size: 0.84rem; color: #555; margin: 0; }
+.ae-gummy-alert {
+  background: #fdf5ff; border: 1px solid #d8b0e8; border-radius: 8px;
+  padding: 1rem 1.1rem; font-size: 0.87rem; color: #4a1a6a;
+  display: flex; gap: 0.5rem; align-items: flex-start;
+}
+
+/* ============================================================
+   ガミースマイル治療ページ (gummy_smile.html)
+   ============================================================ */
+
+/* Hero */
+.gs-hero {
+  background: linear-gradient(135deg, #2d1a3e 0%, #4a1a6a 50%, #6b2a8a 100%);
+  padding: 4rem 0 3rem; color: #fff;
+}
+.gs-breadcrumb { font-size: 0.82rem; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
+.gs-breadcrumb a { color: rgba(255,255,255,0.65); text-decoration: none; }
+.gs-breadcrumb a:hover { color: #fff; }
+.gs-hero-content { text-align: center; max-width: 660px; margin: 0 auto; }
+.gs-hero-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: linear-gradient(135deg, #b8874a, #d4a053);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: #fff;
+  margin: 0 auto 1.25rem;
+  box-shadow: 0 4px 20px rgba(184,135,74,0.4);
+}
+.gs-hero-title { font-size: 2rem; font-weight: 700; margin-bottom: 0.75rem; font-family: 'Noto Serif JP', serif; }
+.gs-hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
+.gs-hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.gs-badge {
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.82rem; color: #fff;
+}
+.gs-badge-gold { background: rgba(184,135,74,0.3); border-color: rgba(184,135,74,0.6); }
+
+/* Philosophy */
+.gs-philosophy-box { background: #f8f5f0; padding: 2.5rem 0; }
+.gs-iph-inner { display: flex; gap: 1.5rem; align-items: flex-start; max-width: 820px; margin: 0 auto; }
+.gs-iph-icon-wrap {
+  flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, #4a1a6a, #6b2a8a);
+  display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.3rem;
+}
+.gs-iph-title { font-weight: 700; margin-bottom: 0.5rem; color: #4a1a6a; }
+.gs-iph-sig { font-size: 0.82rem; color: #666; margin-top: 0.75rem; font-style: italic; }
+@media (max-width: 575px) { .gs-iph-inner { flex-direction: column; } }
+
+/* Section headings */
+.gs-what-section, .gs-process-section, .gs-faq-section { padding: 4rem 0; }
+.gs-flow-section { padding: 4rem 0; background: #f8f5f0; }
+.gs-fee-section { padding: 4rem 0; }
+.gs-section-h2 {
+  font-size: 1.6rem; font-weight: 700; margin-bottom: 0.4rem;
+  color: #1a1a2e; font-family: 'Noto Serif JP', serif;
+  padding-bottom: 0.75rem; position: relative;
+}
+.gs-section-h2::after {
+  content: ''; display: block; width: 40px; height: 3px;
+  background: #b8874a; border-radius: 2px; margin-top: 0.5rem;
+}
+.gs-section-sub { color: #666; margin-bottom: 0.5rem; }
+
+/* Cause list */
+.gs-cause-list { display: flex; flex-direction: column; gap: 1rem; }
+.gs-cause-item { display: flex; gap: 1rem; align-items: flex-start; }
+.gs-cause-icon {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1rem;
+}
+.gs-cause-tooth  { background: linear-gradient(135deg, #2e7d6e, #3a9b8a); }
+.gs-cause-lip    { background: linear-gradient(135deg, #6b2a8a, #9b4aaa); }
+.gs-cause-title  { font-weight: 700; margin-bottom: 0.25rem; }
+.gs-cause-desc   { font-size: 0.87rem; color: #555; margin: 0; }
+
+/* Diagnosis matrix */
+.gs-diagnosis-hint {
+  background: #fff; border: 1px solid #e0d8ce; border-radius: 12px;
+  padding: 1.25rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.gs-dh-title { font-weight: 700; margin-bottom: 0.85rem; font-size: 0.9rem; color: #4a1a6a; }
+.gs-dh-matrix { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 4px; }
+.gs-dh-header { font-size: 0.72rem; font-weight: 600; color: #666; }
+.gs-dh-row { display: contents; }
+.gs-dh-label { font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; color: #444; }
+.gs-dh-cell {
+  padding: 0.6rem 0.5rem; border-radius: 6px; text-align: center;
+  font-size: 0.78rem; font-weight: 700; line-height: 1.3;
+}
+.gs-cell-a    { background: #d4ede9; color: #1a4a40; }
+.gs-cell-b    { background: #e8d8f5; color: #4a1a6a; }
+.gs-cell-c    { background: linear-gradient(135deg, #d4ede9, #e8d8f5); color: #2a1a4a; }
+.gs-cell-none { background: #f0f0f0; color: #aaa; }
+
+/* Protocol cards */
+.gs-protocol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+@media (max-width: 991px) { .gs-protocol-grid { grid-template-columns: 1fr; } }
+
+.gs-protocol-card {
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex; flex-direction: column;
+}
+.gs-proto-a { border-top: 4px solid #2e7d6e; }
+.gs-proto-b { border-top: 4px solid #6b2a8a; }
+.gs-proto-c { border-top: 4px solid #b8874a; }
+
+.gs-proto-header {
+  padding: 1rem 1.25rem 0.75rem; background: #fff;
+  border-bottom: 1px solid #f0e8e0;
+}
+.gs-proto-badge {
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em;
+  color: #888; margin-bottom: 0.5rem;
+}
+.gs-proto-condition { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.gs-cond-tag {
+  font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+}
+.gs-cond-tooth    { background: #ffe0e0; color: #8a2a2a; }
+.gs-cond-tooth-ok { background: #e0f5f0; color: #1a5a40; }
+.gs-cond-lip      { background: #ead8f5; color: #5a1a7a; }
+.gs-cond-lip-ok   { background: #e8eefc; color: #1a2a8a; }
+.gs-cond-plus { font-weight: 700; color: #888; font-size: 0.85rem; }
+
+.gs-proto-treatment {
+  padding: 1.25rem; text-align: center;
+  background: #fff;
+}
+.gs-proto-a .gs-proto-treatment { background: linear-gradient(135deg, #e8f5f2, #f0faf8); }
+.gs-proto-b .gs-proto-treatment { background: linear-gradient(135deg, #f0e8f8, #f8f0fc); }
+.gs-proto-c .gs-proto-treatment { background: linear-gradient(135deg, #fdf5e8, #fff8f0); }
+
+.gs-proto-icon {
+  width: 54px; height: 54px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; color: #fff; margin: 0 auto 0.75rem;
+}
+.gs-proto-a .gs-proto-icon { background: linear-gradient(135deg, #2e7d6e, #3a9b8a); }
+.gs-proto-b .gs-proto-icon { background: linear-gradient(135deg, #6b2a8a, #9b4aaa); }
+.gs-proto-c .gs-proto-icon { background: linear-gradient(135deg, #b8874a, #d4a053); }
+
+.gs-proto-name    { font-weight: 700; font-size: 1rem; font-family: 'Noto Serif JP', serif; }
+.gs-proto-subtitle { font-size: 0.72rem; color: #888; letter-spacing: 0.05em; margin-top: 0.2rem; }
+
+.gs-proto-body    { padding: 1.25rem; background: #fff; flex: 1; }
+.gs-proto-body p  { font-size: 0.87rem; color: #555; }
+.gs-proto-points  { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+.gs-proto-points li { font-size: 0.84rem; padding: 0.25rem 0; display: flex; align-items: center; gap: 0.5rem; }
+.gs-proto-points .fa-check { color: var(--primary, #2e7d6e); font-size: 0.8rem; }
+
+.gs-proto-price {
+  margin-top: 1rem; padding-top: 0.75rem;
+  border-top: 1px solid #f0e8e0;
+  display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap;
+}
+.gs-price-label { font-size: 0.75rem; color: #888; }
+.gs-price-num   { font-size: 1.1rem; font-weight: 700; color: var(--gold, #b8874a); }
+.gs-price-tax   { font-size: 0.72rem; color: #888; }
+
+/* Protocol B options */
+.gs-b-options { display: flex; flex-direction: column; gap: 0.75rem; }
+.gs-b-opt { background: #f8f5f0; border-radius: 8px; padding: 0.85rem 1rem; }
+.gs-b-opt-alt { background: #f5f0f8; }
+.gs-b-opt-title { font-weight: 700; font-size: 0.87rem; margin-bottom: 0.4rem; }
+.gs-b-opt-desc  { font-size: 0.82rem; color: #555; margin: 0 0 0.4rem; }
+.gs-b-opt-price { font-weight: 700; font-size: 0.85rem; color: var(--gold, #b8874a); }
+
+/* Diagnosis box */
+.gs-diagnosis-box {
+  background: #fff; border: 1px solid #d8d0e8; border-left: 4px solid #6b2a8a;
+  border-radius: 8px; padding: 1.25rem 1.5rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.gs-diag-icon {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, #6b2a8a, #9b4aaa);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.1rem;
+}
+.gs-diag-title { font-weight: 700; margin-bottom: 0.3rem; }
+.gs-diag-desc  { font-size: 0.87rem; color: #555; margin: 0; }
+
+/* Fee table */
+.gs-fee-table-wrap { overflow-x: auto; }
+.gs-fee-table { width: 100%; border-collapse: collapse; }
+.gs-fee-table thead tr { background: linear-gradient(135deg, #4a1a6a, #6b2a8a); color: #fff; }
+.gs-fee-table th { padding: 0.75rem 1rem; text-align: left; font-size: 0.88rem; }
+.gs-fee-table tbody tr { border-bottom: 1px solid #e8e0d5; }
+.gs-fee-table tbody tr:nth-child(even) { background: #f8f5f0; }
+.gs-fee-table td { padding: 0.75rem 1rem; font-size: 0.9rem; }
+.gs-fee-num { font-weight: 700; color: var(--gold, #b8874a); }
+.gs-fee-note {
+  background: #fff8e8; border: 1px solid #f0d080; border-radius: 8px;
+  padding: 0.85rem 1rem; font-size: 0.85rem; color: #6b5000;
+  display: flex; align-items: flex-start;
+}
+
+/* Process */
+.gs-process-list { display: flex; flex-direction: column; max-width: 680px; }
+.gs-process-item { display: flex; gap: 1.25rem; padding: 1.25rem 0; border-bottom: 1px solid #e8e0d5; }
+.gs-process-item:last-child { border-bottom: none; }
+.gs-process-num {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #6b2a8a, #9b4aaa);
+  color: #fff; font-weight: 700; font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center; margin-top: 0.2rem;
+}
+.gs-process-title { font-weight: 700; margin-bottom: 0.3rem; }
+.gs-process-content p { font-size: 0.9rem; color: #555; margin: 0; }
+
+/* Caution */
+.gs-caution-section { background: #f8f5f0; padding: 4rem 0; }
+.gs-caution-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: #1a1a2e; }
+.gs-caution-card {
+  background: #fff; border-radius: 10px; padding: 1.5rem;
+  border-top: 3px solid #6b2a8a; height: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.gs-caution-icon { font-size: 1.5rem; color: #6b2a8a; margin-bottom: 0.75rem; }
+.gs-caution-card-title { font-weight: 700; margin-bottom: 0.5rem; }
+.gs-caution-support {
+  background: #f0e8f8; border: 1px solid #c8a8e0; border-radius: 8px;
+  padding: 1rem 1.25rem; font-size: 0.9rem;
+  display: flex; gap: 0.5rem; align-items: flex-start; color: #3a1a5a;
+}
+
+/* FAQ */
+.gs-faq-list { max-width: 800px; margin: 0 auto; }
+.gs-faq-item { border-bottom: 1px solid #e8e0d5; }
+.gs-faq-item:first-child { border-top: 1px solid #e8e0d5; }
+.gs-faq-q {
+  padding: 1.1rem 2rem 1.1rem 0; font-weight: 600; cursor: pointer;
+  font-size: 0.95rem; list-style: none; position: relative;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.gs-faq-q::before { content: 'Q'; color: #b8874a; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+.gs-faq-q::after {
+  content: '+'; position: absolute; right: 0; font-size: 1.3rem;
+  color: #6b2a8a; font-weight: 300; transition: transform 0.2s;
+}
+details[open] .gs-faq-q::after { transform: rotate(45deg); }
+.gs-faq-a { padding: 0 0 1.1rem 1.75rem; font-size: 0.9rem; color: #444; line-height: 1.7; }
+
+/* Mobile */
+@media (max-width: 767px) {
+  .gs-hero-title { font-size: 1.5rem; }
+  .gs-dh-matrix { grid-template-columns: 70px 1fr 1fr; }
+  .gs-dh-cell { font-size: 0.7rem; padding: 0.4rem 0.3rem; }
+  .gs-diagnosis-box { flex-direction: column; }
+}
+
+.ae-gummy-link {
+  display: inline-block; font-size: 0.82rem; font-weight: 700;
+  color: #4a1a6a; text-decoration: none;
+  border-bottom: 1px solid rgba(74,26,106,0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+.ae-gummy-link:hover { color: #6b2a8a; border-color: #6b2a8a; }
+
+/* 外科矯正注意書き */
+.gs-ortho-caution {
+  background: #fff8f0; border: 1px solid #f0c080;
+  border-left: 4px solid #d4720a;
+  border-radius: 8px; padding: 1.1rem 1.4rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.gs-ortho-caution-icon {
+  flex-shrink: 0; color: #d4720a; font-size: 1.2rem; margin-top: 0.1rem;
+}
+.gs-ortho-caution-title {
+  font-weight: 700; font-size: 0.92rem; color: #7a3800; margin-bottom: 0.4rem;
+}
+.gs-ortho-caution-desc {
+  font-size: 0.85rem; color: #5a3000; line-height: 1.7; margin: 0;
+}
+
+/* ============================================================
+   症例写真セクション (aesthetic.html)
+   ============================================================ */
+.ae-cases-section { padding: 4rem 0; background: #fff; }
+
+.ae-case-disclaimer {
+  background: #f0f7f5; border: 1px solid #a8d8d0; border-radius: 8px;
+  padding: 0.85rem 1.1rem; font-size: 0.85rem; color: #1a4a40;
+  display: flex; align-items: flex-start; gap: 0.5rem;
+}
+
+.ae-case-card {
+  border: 1px solid #e8e0d5; border-radius: 12px;
+  overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.ae-case-header {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  background: linear-gradient(135deg, #2e7d6e 0%, #3a9b8a 100%);
+  color: #fff;
+}
+.ae-case-num {
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.05em;
+  background: rgba(255,255,255,0.2); padding: 0.2rem 0.65rem; border-radius: 20px;
+}
+.ae-case-treatment { font-weight: 700; font-size: 0.95rem; }
+.ae-case-fee {
+  margin-left: auto; font-size: 0.85rem;
+  background: rgba(255,255,255,0.15); padding: 0.2rem 0.75rem; border-radius: 20px;
+}
+.ae-case-body { padding: 1.25rem; }
+
+/* 写真ラッパー：アスペクト比固定なし・全体表示 */
+.ae-photo-wrap {
+  position: relative; border-radius: 8px; overflow: hidden;
+  background: #000;
+}
+.ae-case-photo {
+  width: 100%; height: auto; display: block;
+  transition: transform 0.3s;
+}
+.ae-photo-wrap:hover .ae-case-photo { transform: scale(1.02); }
+
+.ae-photo-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0.35rem 0.75rem; font-size: 0.78rem; font-weight: 700;
+  text-align: center; letter-spacing: 0.08em;
+}
+.ae-label-before { background: rgba(60,60,60,0.75); color: #fff; }
+.ae-label-after  { background: rgba(46,125,110,0.82); color: #fff; }
+
+.ae-case-risks {
+  background: #fff8e8; border: 1px solid #f0d080; border-radius: 6px;
+  padding: 0.65rem 1rem; font-size: 0.82rem; color: #6b5000;
+  display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+}
+.ae-case-risks-label { font-weight: 700; white-space: nowrap; }
+
+@media (max-width: 767px) {
+  .ae-case-header { flex-direction: column; align-items: flex-start; }
+  .ae-case-fee { margin-left: 0; }
+}
+
+/* 技工士連携セクション */
+.ae-lab-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+}
+.ae-lab-inner { display: flex; gap: 2rem; align-items: flex-start; }
+.ae-lab-icon-col { flex-shrink: 0; }
+.ae-lab-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, #b8874a, #d4a053);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; color: #fff;
+  box-shadow: 0 4px 20px rgba(184,135,74,0.4);
+}
+.ae-lab-eyebrow {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+  color: #b8874a; margin-bottom: 0.4rem; text-transform: uppercase;
+}
+.ae-lab-title {
+  font-size: 1.5rem; font-weight: 700; font-family: 'Noto Serif JP', serif;
+  margin-bottom: 0.75rem; color: #fff;
+}
+.ae-lab-lead { font-size: 0.95rem; color: rgba(255,255,255,0.82); line-height: 1.8; }
+.ae-lab-point {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 1rem;
+}
+.ae-lab-point-icon {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(184,135,74,0.3); border: 1px solid rgba(184,135,74,0.5);
+  display: flex; align-items: center; justify-content: center;
+  color: #d4a053; font-size: 0.9rem;
+}
+.ae-lab-point-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.25rem; color: #fff; }
+.ae-lab-point-desc { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0; line-height: 1.6; }
+
+/* 症例カード・技工士クレジット */
+.ae-case-lab-credit {
+  font-size: 0.75rem; font-weight: 600;
+  background: rgba(184,135,74,0.35); border: 1px solid rgba(184,135,74,0.6);
+  padding: 0.2rem 0.65rem; border-radius: 20px; color: #f5e0a8;
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .ae-lab-inner { flex-direction: column; }
+  .ae-lab-title { font-size: 1.2rem; }
+  .ae-case-lab-credit { margin-left: 0; }
+}
+
+/* 技工士実績バッジ */
+.ae-lab-credentials {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+}
+.ae-lab-cred-badge {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: rgba(184,135,74,0.15); border: 1px solid rgba(184,135,74,0.4);
+  border-radius: 10px; padding: 0.75rem 1.1rem;
+  flex: 1; min-width: 220px;
+}
+.ae-lab-cred-badge > .fas {
+  font-size: 1.4rem; color: #d4a053; flex-shrink: 0;
+}
+.ae-lab-cred-title { font-weight: 700; font-size: 0.88rem; color: #f0c56a; }
+.ae-lab-cred-desc  { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 0.1rem; }
+
+.ae-flow-note {
+  margin-top: 0.5rem; font-size: 0.8rem; color: #7a5500;
+  background: #fff8e8; border: 1px solid #f0d080;
+  border-radius: 5px; padding: 0.35rem 0.7rem; display: inline-flex; align-items: center;
+}
+
+/* Instagram link */
+.nav-link-instagram {
+  font-size: 1.5rem;
+  color: #c13584 !important;
+  padding: 0.2rem 0.5rem !important;
+  transition: opacity 0.2s;
+}
+.nav-link-instagram:hover {
+  opacity: 0.7;
+}
+.footer-sns-link {
+  display: inline-flex; align-items: center;
+  font-size: 0.88rem; color: rgba(255,255,255,0.6);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-sns-link:hover { color: #e1306c; }
+
+/* Instagram section (homepage) */
+.instagram-section {
+  background: #fff;
+  padding: 0 0 3rem;
+  border-top: 1px solid #f0f0f0;
+}
+.instagram-box {
+  display: flex; align-items: center; gap: 2rem;
+  background: #fff;
+  border: 1.5px solid #e8eaf6;
+  border-radius: 16px; padding: 2rem 2.5rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  max-width: 760px; margin: 0 auto;
+}
+.instagram-icon-wrap {
+  font-size: 2.2rem;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; flex-shrink: 0; line-height: 1;
+}
+.instagram-content { flex: 1; }
+.instagram-title { font-weight: 700; font-size: 1rem; color: #333; margin-bottom: 0.15rem; }
+.instagram-handle { font-size: 0.82rem; color: #c13584; font-weight: 600; margin-bottom: 0.4rem; }
+.instagram-note { font-size: 0.82rem; color: #666; margin: 0; line-height: 1.6; }
+.instagram-action { flex-shrink: 0; }
+.instagram-btn {
+  display: inline-flex; align-items: center;
+  background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+  color: #fff; font-weight: 700; font-size: 0.88rem;
+  padding: 0.55rem 1.4rem; border-radius: 8px;
+  text-decoration: none; transition: opacity 0.2s; white-space: nowrap;
+}
+.instagram-btn:hover { opacity: 0.85; color: #fff; }
+@media (max-width: 576px) {
+  .instagram-box { flex-direction: column; text-align: center; padding: 1.5rem; gap: 1rem; }
+}
+
+/* Related pages section */
+.related-pages-section {
+  background: #f8f9fa; padding: 3rem 0;
+  border-top: 1px solid #eee;
+}
+.related-pages-label {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: #999; margin-bottom: 1rem;
+}
+.related-pages-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;
+}
+.related-page-card {
+  display: flex; align-items: center; gap: 1rem;
+  background: #fff; border: 1.5px solid #e8eaf6; border-radius: 12px;
+  padding: 1.2rem 1.4rem; text-decoration: none;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.related-page-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-color: var(--primary);
+}
+.related-page-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: var(--primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.related-page-title { font-weight: 700; font-size: 0.95rem; color: #222; margin-bottom: 0.2rem; }
+.related-page-desc { font-size: 0.78rem; color: #666; line-height: 1.5; }
+.related-page-arrow { color: #ccc; margin-left: auto; flex-shrink: 0; }

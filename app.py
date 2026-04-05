@@ -158,6 +158,46 @@ def sitemap_xml():
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>{SITE_URL}/implant</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>{SITE_URL}/doctor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{SITE_URL}/aesthetic</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{SITE_URL}/gummy-smile</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{SITE_URL}/orthodontics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{SITE_URL}/oral-training</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{SITE_URL}/prevention</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{SITE_URL}/pediatric</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
     return Response(content, mimetype='application/xml')
 
@@ -224,6 +264,41 @@ def contact():
 @app.route('/doctor')
 def doctor():
     return render_template('doctor.html')
+
+
+@app.route('/implant')
+def implant():
+    return render_template('implant.html')
+
+
+@app.route('/aesthetic')
+def aesthetic():
+    return render_template('aesthetic.html')
+
+
+@app.route('/gummy-smile')
+def gummy_smile():
+    return render_template('gummy_smile.html')
+
+
+@app.route('/orthodontics')
+def orthodontics():
+    return render_template('orthodontics.html')
+
+
+@app.route('/oral-training')
+def oral_training():
+    return render_template('oral_training.html')
+
+
+@app.route('/prevention')
+def prevention():
+    return render_template('prevention.html')
+
+
+@app.route('/pediatric')
+def pediatric():
+    return render_template('pediatric.html')
 
 
 # ==================== Admin Dashboard ====================

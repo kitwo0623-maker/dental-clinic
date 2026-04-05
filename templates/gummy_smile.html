@@ -1,0 +1,465 @@
+{% extends "base.html" %}
+{% block title %}ガミースマイル治療 | 犬山市キトウ歯科医院{% endblock %}
+{% block description %}犬山市キトウ歯科医院のガミースマイル治療。原因に応じて歯冠長延長術・ボツリヌストキシン・粘膜切除術を使い分ける専門的プロトコルで対応。TEL: 0568-62-2580{% endblock %}
+{% block canonical %}https://dental-clinic-wpg6.onrender.com/gummy-smile{% endblock %}
+
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ガミースマイルは治せますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "原因に応じた治療を行うことで改善できます。歯が短い場合は歯冠長延長術、口唇の動きが大きい場合はボツリヌストキシン注射または粘膜切除術、両方が原因の場合は組み合わせて治療します。まずは診査・診断でお口の状態を確認します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ボツリヌストキシン注射の効果はどのくらい続きますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "個人差はありますが、効果は概ね3〜6ヶ月程度です。効果が薄れてきた時点で再注射することで維持できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "手術（歯冠長延長術・粘膜切除術）は痛いですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "手術中は局所麻酔を使用するため、術中の痛みはほとんどありません。術後は処方薬で痛みを管理します。当院では注入速度・圧力・角度を手技でコントロールする麻酔技術を習得しており、麻酔注射時の不快感を最小限に抑えています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "自分はどの治療が適していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ガミースマイルの原因は「歯の長さ」と「口唇の動き（挙上量）」の2つの要素で判断します。診査・カウンセリングでお口の状態を確認し、最適な治療法をご提案します。まずはご相談ください。"
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="gs-hero">
+  <div class="container">
+    <nav class="gs-breadcrumb" aria-label="breadcrumb">
+      <a href="{{ url_for('index') }}">ホーム</a>
+      <i class="fas fa-chevron-right mx-2" style="font-size:0.7rem;"></i>
+      <a href="{{ url_for('aesthetic') }}">審美歯科</a>
+      <i class="fas fa-chevron-right mx-2" style="font-size:0.7rem;"></i>
+      <span>ガミースマイル治療</span>
+    </nav>
+    <div class="gs-hero-content">
+      <div class="gs-hero-icon"><i class="fas fa-smile-beam"></i></div>
+      <h1 class="gs-hero-title">ガミースマイル治療</h1>
+      <p class="gs-hero-sub">原因を正確に診断し、最適な治療法を選択する</p>
+      <div class="gs-hero-badges">
+        <span class="gs-badge"><i class="fas fa-check-circle me-1"></i>歯冠長延長術</span>
+        <span class="gs-badge"><i class="fas fa-check-circle me-1"></i>ボツリヌストキシン</span>
+        <span class="gs-badge"><i class="fas fa-check-circle me-1"></i>粘膜切除術</span>
+        <span class="gs-badge gs-badge-gold"><i class="fas fa-search me-1"></i>原因別・3つのプロトコル</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 副院長コメント -->
+<section class="gs-philosophy-box">
+  <div class="container">
+    <div class="gs-iph-inner">
+      <div class="gs-iph-icon-wrap"><i class="fas fa-user-md"></i></div>
+      <div class="gs-iph-text">
+        <div class="gs-iph-title">ガミースマイル治療への考え</div>
+        <p>ガミースマイルの原因は「歯の長さ」と「口唇の挙上量」の2つの要素で決まります。この2つを正確に評価しなければ、適切な治療法は選べません。当院では診査によってどちらの要因が主体かを判断し、歯冠長延長術・ボツリヌストキシン・粘膜切除術、あるいはその組み合わせで対応します。一律にボツリヌストキシンだけ、というような治療はしておりません。</p>
+        <div class="gs-iph-sig">副院長 紀藤 一将（口腔外科認定医・顎咬合学会認定医）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ガミースマイルとは -->
+<section class="gs-what-section">
+  <div class="container">
+    <h2 class="gs-section-h2">ガミースマイルとは</h2>
+    <div class="row g-4 align-items-center mt-2">
+      <div class="col-md-7">
+        <p>笑ったときに上の歯茎（歯肉）が3mm以上露出する状態を「ガミースマイル」と呼びます。歯茎が多く見えることで、笑顔に自信が持てなかったり、口元が目立ってしまうと感じる方が多くいらっしゃいます。</p>
+        <p class="mt-3">原因は主に2つの要素の組み合わせです。</p>
+        <div class="gs-cause-list mt-3">
+          <div class="gs-cause-item">
+            <div class="gs-cause-icon gs-cause-tooth"><i class="fas fa-tooth"></i></div>
+            <div>
+              <div class="gs-cause-title">① 歯の長さが短い（歯冠が短い）</div>
+              <p class="gs-cause-desc">本来の歯の長さよりも歯冠部が短く、歯茎に覆われている割合が多い状態。歯が小さく見えることもあります。</p>
+            </div>
+          </div>
+          <div class="gs-cause-item">
+            <div class="gs-cause-icon gs-cause-lip"><i class="fas fa-arrows-alt-v"></i></div>
+            <div>
+              <div class="gs-cause-title">② 口唇の挙上量が多い（唇が上がりすぎる）</div>
+              <p class="gs-cause-desc">笑ったときに上唇を引き上げる筋肉の活動量が大きく、歯茎が多く露出してしまう状態。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="gs-diagnosis-hint">
+          <div class="gs-dh-title"><i class="fas fa-lightbulb me-2"></i>2つの要素で治療法が決まる</div>
+          <div class="gs-dh-matrix">
+            <div class="gs-dh-row gs-dh-header">
+              <div></div>
+              <div>唇の挙上：正常</div>
+              <div>唇の挙上：多い</div>
+            </div>
+            <div class="gs-dh-row">
+              <div class="gs-dh-label">歯が短い</div>
+              <div class="gs-dh-cell gs-cell-a">歯冠長延長術</div>
+              <div class="gs-dh-cell gs-cell-c">併用治療</div>
+            </div>
+            <div class="gs-dh-row">
+              <div class="gs-dh-label">歯の長さ<br>は適正</div>
+              <div class="gs-dh-cell gs-cell-none">—</div>
+              <div class="gs-dh-cell gs-cell-b">ボツリヌストキシン<br>or 粘膜切除</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 診断フロー（メインセクション） -->
+<section class="gs-flow-section">
+  <div class="container">
+    <h2 class="gs-section-h2">当院の治療プロトコル</h2>
+    <p class="gs-section-sub">2つの要因を診断し、3つのプロトコルから最適な治療を選択します</p>
+
+    <div class="gs-protocol-grid mt-4">
+
+      <!-- プロトコル A -->
+      <div class="gs-protocol-card gs-proto-a">
+        <div class="gs-proto-header">
+          <div class="gs-proto-badge">PROTOCOL A</div>
+          <div class="gs-proto-condition">
+            <span class="gs-cond-tag gs-cond-tooth">歯冠が短い</span>
+            <span class="gs-cond-plus">＋</span>
+            <span class="gs-cond-tag gs-cond-lip-ok">唇の挙上：正常</span>
+          </div>
+        </div>
+        <div class="gs-proto-treatment">
+          <div class="gs-proto-icon"><i class="fas fa-cut"></i></div>
+          <div class="gs-proto-name">歯冠長延長術</div>
+          <div class="gs-proto-subtitle">Crown Lengthening Surgery</div>
+        </div>
+        <div class="gs-proto-body">
+          <p>歯茎と歯槽骨を外科的に調整し、歯冠（見える部分）を長く露出させます。歯の長さを適正にすることで、笑ったときの歯茎の見え方を改善します。</p>
+          <ul class="gs-proto-points">
+            <li><i class="fas fa-check"></i>持続的な改善効果</li>
+            <li><i class="fas fa-check"></i>歯のプロポーションも整う</li>
+            <li><i class="fas fa-check"></i>セラミック治療との同時計画も可能</li>
+          </ul>
+          <div class="gs-proto-price">
+            <span class="gs-price-label">治療費</span>
+            <span class="gs-price-num">100,000円</span>
+            <span class="gs-price-tax">（税抜）</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- プロトコル B -->
+      <div class="gs-protocol-card gs-proto-b">
+        <div class="gs-proto-header">
+          <div class="gs-proto-badge">PROTOCOL B</div>
+          <div class="gs-proto-condition">
+            <span class="gs-cond-tag gs-cond-tooth-ok">歯の長さ：適正</span>
+            <span class="gs-cond-plus">＋</span>
+            <span class="gs-cond-tag gs-cond-lip">唇の挙上：多い</span>
+          </div>
+        </div>
+        <div class="gs-proto-treatment">
+          <div class="gs-proto-icon"><i class="fas fa-syringe"></i></div>
+          <div class="gs-proto-name">ボツリヌストキシン or 粘膜切除術</div>
+          <div class="gs-proto-subtitle">Botulinum Toxin / Mucosectomy</div>
+        </div>
+        <div class="gs-proto-body">
+          <p>上唇の挙上を抑える2つのアプローチから、患者さまのご希望・状態に応じて選択します。</p>
+          <div class="gs-b-options mt-3">
+            <div class="gs-b-opt">
+              <div class="gs-b-opt-title"><i class="fas fa-syringe me-2"></i>ボツリヌストキシン注射</div>
+              <p class="gs-b-opt-desc">上唇を引き上げる筋肉にボツリヌストキシン製剤を注射し、口唇の挙上量を抑えます。注射のみで手術不要、効果は3〜6ヶ月程度。</p>
+              <div class="gs-b-opt-price">20,000円/片顎（税抜）</div>
+            </div>
+            <div class="gs-b-opt gs-b-opt-alt">
+              <div class="gs-b-opt-title"><i class="fas fa-cut me-2"></i>粘膜切除術（リップリポジショニング）</div>
+              <p class="gs-b-opt-desc">上唇内側の粘膜を一部切除・縫縮することで、唇の挙上量そのものを構造的に制限します。持続的な効果が得られます。</p>
+              <div class="gs-b-opt-price">100,000円（税抜）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- プロトコル C -->
+      <div class="gs-protocol-card gs-proto-c">
+        <div class="gs-proto-header">
+          <div class="gs-proto-badge">PROTOCOL C</div>
+          <div class="gs-proto-condition">
+            <span class="gs-cond-tag gs-cond-tooth">歯冠が短い</span>
+            <span class="gs-cond-plus">＋</span>
+            <span class="gs-cond-tag gs-cond-lip">唇の挙上：多い</span>
+          </div>
+        </div>
+        <div class="gs-proto-treatment">
+          <div class="gs-proto-icon"><i class="fas fa-layer-group"></i></div>
+          <div class="gs-proto-name">併用治療</div>
+          <div class="gs-proto-subtitle">Combined Approach</div>
+        </div>
+        <div class="gs-proto-body">
+          <p>歯冠長延長術と、ボツリヌストキシン or 粘膜切除術を組み合わせます。両方の原因に対処することで、より確実な改善を目指します。</p>
+          <ul class="gs-proto-points">
+            <li><i class="fas fa-check"></i>歯の長さと唇の動き、両方を改善</li>
+            <li><i class="fas fa-check"></i>最も確実な改善が期待できる</li>
+            <li><i class="fas fa-check"></i>診査後に最適な組み合わせをご提案</li>
+          </ul>
+          <div class="gs-proto-price">
+            <span class="gs-price-label">治療費</span>
+            <span class="gs-price-num">診査後にご案内</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 診断ポイント -->
+    <div class="gs-diagnosis-box mt-5">
+      <div class="gs-diag-icon"><i class="fas fa-search"></i></div>
+      <div>
+        <div class="gs-diag-title">どの治療が適しているかは診査で判断します</div>
+        <p class="gs-diag-desc">歯の長さ・歯冠歯根比・口唇の挙上量・歯茎の厚みなどを総合的に評価した上で、治療法・費用・治療期間についてご説明します。まずはカウンセリングをご活用ください。</p>
+      </div>
+    </div>
+
+    <!-- 外科矯正が必要なケースの注意書き -->
+    <div class="gs-ortho-caution mt-4">
+      <div class="gs-ortho-caution-icon"><i class="fas fa-exclamation-triangle"></i></div>
+      <div>
+        <div class="gs-ortho-caution-title">上顎骨の過成長が原因の場合は外科矯正が必要なことがあります</div>
+        <p class="gs-ortho-caution-desc">ガミースマイルの原因が歯茎や口唇ではなく、<strong>上顎骨そのものの過成長（垂直的な骨格的問題）</strong>にある場合、上記の治療だけでは十分な改善が得られないことがあります。その場合は矯正治療と外科手術（上顎骨切り術など）を組み合わせた<strong>外科的矯正治療</strong>が必要になる場合があります。診査の結果そのような状態と判断した場合は、口腔外科・矯正専門医への紹介を含めて適切にご対応いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section class="gs-fee-section">
+  <div class="container">
+    <h2 class="gs-section-h2">料金一覧</h2>
+    <p class="gs-section-sub">すべて税抜価格です</p>
+    <div class="gs-fee-table-wrap">
+      <table class="gs-fee-table">
+        <thead>
+          <tr>
+            <th>治療法</th>
+            <th>概要</th>
+            <th>効果の持続</th>
+            <th>費用（税抜）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>歯冠長延長術</strong></td>
+            <td>歯茎・歯槽骨の外科的調整</td>
+            <td>持続的</td>
+            <td class="gs-fee-num">100,000円</td>
+          </tr>
+          <tr>
+            <td><strong>ボツリヌストキシン注射</strong></td>
+            <td>口唇挙上筋への注射</td>
+            <td>3〜6ヶ月程度</td>
+            <td class="gs-fee-num">20,000円/片顎</td>
+          </tr>
+          <tr>
+            <td><strong>粘膜切除術</strong></td>
+            <td>上唇粘膜の切除・縫縮</td>
+            <td>持続的</td>
+            <td class="gs-fee-num">100,000円</td>
+          </tr>
+          <tr>
+            <td><strong>併用治療</strong></td>
+            <td>上記の組み合わせ</td>
+            <td>持続的</td>
+            <td class="gs-fee-num">診査後にご案内</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="gs-fee-note mt-3">
+      <i class="fas fa-info-circle me-2"></i>
+      ガミースマイル治療は自費診療（保険適用外）です。<strong>医療費控除の対象</strong>となります。詳細な費用は診査後にご案内します。
+    </div>
+  </div>
+</section>
+
+<!-- 治療の流れ -->
+<section class="gs-process-section">
+  <div class="container">
+    <h2 class="gs-section-h2">治療の流れ</h2>
+    <div class="gs-process-list mt-4">
+      <div class="gs-process-item">
+        <div class="gs-process-num">1</div>
+        <div class="gs-process-content">
+          <div class="gs-process-title">カウンセリング・診査</div>
+          <p>口元の状態（歯の長さ・歯茎の量・口唇の動き）を確認します。どのプロトコルが適切かを評価し、治療法・費用・期間をご説明します。</p>
+        </div>
+      </div>
+      <div class="gs-process-item">
+        <div class="gs-process-num">2</div>
+        <div class="gs-process-content">
+          <div class="gs-process-title">治療計画のご提案・同意</div>
+          <p>メリット・デメリット・リスクについて丁寧にご説明し、ご納得いただいた上で治療を開始します。</p>
+        </div>
+      </div>
+      <div class="gs-process-item">
+        <div class="gs-process-num">3</div>
+        <div class="gs-process-content">
+          <div class="gs-process-title">治療（外科処置 or 注射）</div>
+          <p>外科処置は局所麻酔下で行い、日帰りが可能です。ボツリヌストキシン注射は注射のみで当日すぐに終了します。</p>
+        </div>
+      </div>
+      <div class="gs-process-item">
+        <div class="gs-process-num">4</div>
+        <div class="gs-process-content">
+          <div class="gs-process-title">経過観察・アフターフォロー</div>
+          <p>外科処置後は定期的な経過観察を行います。ボツリヌストキシンは効果が薄れた時点で再注射することで効果を維持できます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 注意事項 -->
+<section class="gs-caution-section">
+  <div class="container">
+    <h2 class="gs-caution-title">
+      <i class="fas fa-info-circle me-2"></i>治療前にご理解いただきたいこと
+    </h2>
+    <div class="row g-4 mt-1">
+      <div class="col-md-4">
+        <div class="gs-caution-card">
+          <div class="gs-caution-icon"><i class="fas fa-yen-sign"></i></div>
+          <h3 class="gs-caution-card-title">保険適用外</h3>
+          <p>ガミースマイル治療はすべて自費診療（保険適用外）です。ただし医療費控除の対象となりますので、確定申告時にご活用いただけます。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="gs-caution-card">
+          <div class="gs-caution-icon"><i class="fas fa-sync-alt"></i></div>
+          <h3 class="gs-caution-card-title">ボツリヌストキシンの後戻り</h3>
+          <p>ボツリヌストキシン注射は永続的な効果ではなく、3〜6ヶ月程度で効果が薄れます。定期的な再注射が必要です。効果には個人差があります。</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="gs-caution-card">
+          <div class="gs-caution-icon"><i class="fas fa-procedures"></i></div>
+          <h3 class="gs-caution-card-title">外科処置のリスク</h3>
+          <p>歯冠長延長術・粘膜切除術は外科処置です。術後の腫れ・痛み・出血が生じる場合があります。全身疾患がある方はリスクが高まることがあります。</p>
+        </div>
+      </div>
+    </div>
+    <div class="gs-caution-support mt-4">
+      <i class="fas fa-comments me-2"></i>
+      <div>いずれの治療も、カウンセリングで詳しくご説明します。ご不安なことは何でもお聞きください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="gs-faq-section">
+  <div class="container">
+    <h2 class="gs-section-h2 text-center">よくある質問</h2>
+    <div class="gs-faq-list mt-4">
+      <details class="gs-faq-item">
+        <summary class="gs-faq-q">自分はどの治療が合っていますか？</summary>
+        <div class="gs-faq-a">
+          ガミースマイルの原因は「歯の長さ」と「口唇の挙上量」の2つの要素で判断します。どちらが原因かは診査をしなければわかりません。まずはカウンセリングでお口の状態を確認し、最適な治療法をご提案します。
+        </div>
+      </details>
+      <details class="gs-faq-item">
+        <summary class="gs-faq-q">ボツリヌストキシン注射と手術、どちらがおすすめですか？</summary>
+        <div class="gs-faq-a">
+          原因が「唇の挙上量が多い」場合に限っては、まずボツリヌストキシン注射を試して効果・変化を確認してから、粘膜切除術（永続的処置）を検討する流れが患者さまにとってリスクが低いといえます。ただし最終的にはご希望・ご状況に応じてご提案します。
+        </div>
+      </details>
+      <details class="gs-faq-item">
+        <summary class="gs-faq-q">手術後はすぐに仕事に戻れますか？</summary>
+        <div class="gs-faq-a">
+          外科処置（歯冠長延長術・粘膜切除術）後は、術後数日間は腫れが出る場合があります。人前に出るお仕事の方は数日間の余裕を持ったスケジュールをお勧めします。ボツリヌストキシン注射は当日から通常通りお過ごしいただけます。
+        </div>
+      </details>
+      <details class="gs-faq-item">
+        <summary class="gs-faq-q">他院でボツリヌストキシンを勧められましたが、それだけで大丈夫ですか？</summary>
+        <div class="gs-faq-a">
+          歯冠が短いことが主な原因の場合、ボツリヌストキシンだけでは根本的な改善が難しいことがあります。当院では歯の長さと口唇の動きを総合的に評価した上で治療法を選択しますので、一度診査を受けられることをお勧めします。
+        </div>
+      </details>
+      <details class="gs-faq-item">
+        <summary class="gs-faq-q">費用はどのくらいかかりますか？</summary>
+        <div class="gs-faq-a">
+          歯冠長延長術・粘膜切除術は各100,000円（税抜）、ボツリヌストキシン注射は20,000円/片顎（税抜）です。併用治療の場合は診査後に詳細をご案内します。すべて医療費控除の対象です。
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 関連ページ -->
+<section class="related-pages-section">
+  <div class="container">
+    <p class="related-pages-label">関連する治療</p>
+    <div class="related-pages-grid">
+      <a href="{{ url_for('aesthetic') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-star"></i></div>
+        <div>
+          <div class="related-page-title">審美歯科・セラミック</div>
+          <div class="related-page-desc">歯の色・形・質感を整えるセラミック治療。ガミースマイル治療と組み合わせることでより美しい笑顔へ。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+      <a href="{{ url_for('implant') }}" class="related-page-card">
+        <div class="related-page-icon"><i class="fas fa-tooth"></i></div>
+        <div>
+          <div class="related-page-title">インプラント</div>
+          <div class="related-page-desc">失った歯を天然歯に近い感覚で取り戻す治療。機能と審美を同時に回復します。</div>
+        </div>
+        <i class="fas fa-chevron-right related-page-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <p class="cta-eyebrow">まずはご相談から</p>
+    <h2 class="cta-title">ガミースマイルについて<br>お気軽にご相談ください</h2>
+    <p class="cta-sub">診査・カウンセリングで原因を確認し、最適な治療法をご提案します。</p>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+      <a href="https://reservation.stransa.co.jp/c93d01d054b12ed6f7a40ada538d9d37" target="_blank" rel="noopener noreferrer" class="cta-btn-primary">
+        <i class="fas fa-calendar-alt me-2"></i>WEB予約（24時間受付）
+      </a>
+      <a href="tel:0568622580" class="cta-btn-secondary">
+        <i class="fas fa-phone me-2"></i>0568-62-2580
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
