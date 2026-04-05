@@ -198,6 +198,11 @@ def sitemap_xml():
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>{SITE_URL}/periodontal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>"""
     return Response(content, mimetype='application/xml')
 
@@ -299,6 +304,11 @@ def prevention():
 @app.route('/pediatric')
 def pediatric():
     return render_template('pediatric.html')
+
+
+@app.route('/periodontal')
+def periodontal():
+    return render_template('periodontal.html')
 
 
 # ==================== Admin Dashboard ====================
