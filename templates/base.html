@@ -95,15 +95,91 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
           <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">ホーム</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('implant') }}">インプラント</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('aesthetic') }}">審美歯科</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('orthodontics') }}">矯正歯科</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('prevention') }}">予防歯科</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('periodontal') }}">歯周病</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('pediatric') }}">小児歯科</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#jiyushinryo">自由診療</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('doctor') }}">医師紹介</a></li>
+
+          <!-- 診療メニュー ドロップダウン -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              診療メニュー
+            </a>
+            <ul class="dropdown-menu nav-dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="{{ url_for('implant') }}">
+                  <span class="nav-dd-icon"><i class="fas fa-tooth"></i></span>
+                  <span>
+                    <span class="nav-dd-title">インプラント</span>
+                    <span class="nav-dd-sub">欠損歯の根本的な解決</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('aesthetic') }}">
+                  <span class="nav-dd-icon"><i class="fas fa-star"></i></span>
+                  <span>
+                    <span class="nav-dd-title">審美歯科・セラミック</span>
+                    <span class="nav-dd-sub">美しく機能的な笑顔へ</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('orthodontics') }}">
+                  <span class="nav-dd-icon"><i class="fas fa-teeth"></i></span>
+                  <span>
+                    <span class="nav-dd-title">矯正歯科</span>
+                    <span class="nav-dd-sub">インビザライン・ワイヤー矯正</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('prevention') }}">
+                  <span class="nav-dd-icon"><i class="fas fa-shield-alt"></i></span>
+                  <span>
+                    <span class="nav-dd-title">予防歯科・定期検診</span>
+                    <span class="nav-dd-sub">歯を失わないための習慣</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('periodontal') }}">
+                  <span class="nav-dd-icon"><i class="fas fa-heartbeat"></i></span>
+                  <span>
+                    <span class="nav-dd-title">歯周病治療</span>
+                    <span class="nav-dd-sub">早期発見・早期治療が鍵</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('pediatric') }}">
+                  <span class="nav-dd-icon"><i class="fas fa-child"></i></span>
+                  <span>
+                    <span class="nav-dd-title">小児歯科</span>
+                    <span class="nav-dd-sub">歯が生えたらすぐ来院を</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('oral_training') }}">
+                  <span class="nav-dd-icon"><i class="fas fa-dumbbell"></i></span>
+                  <span>
+                    <span class="nav-dd-title">お口のトレーニング</span>
+                    <span class="nav-dd-sub">MFT・プレオルソ</span>
+                  </span>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="{{ url_for('index') }}#jiyushinryo">
+                  <span class="nav-dd-icon"><i class="fas fa-list"></i></span>
+                  <span>
+                    <span class="nav-dd-title">自由診療一覧</span>
+                    <span class="nav-dd-sub">料金・メニュー一覧</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#vision">ビジョン</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('doctor') }}">医師紹介</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('shop') }}">オンラインショップ</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">お問い合わせ</a></li>
           <li class="nav-item">
