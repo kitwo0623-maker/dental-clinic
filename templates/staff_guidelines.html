@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+
+{% block title %}スタッフ就労基準 | キトウ歯科医院{% endblock %}
+{% block description %}キトウ歯科医院のスタッフ向け就労基準について{% endblock %}
+
+{% block extra_css %}
+<style>
+  .guidelines-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    padding: 3.5rem 0 2.5rem;
+    text-align: center;
+  }
+  .guidelines-hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .guidelines-hero p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  .guidelines-body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* セクションカード */
+  .gl-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .gl-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-light);
+  }
+  .gl-card-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .gl-card-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 0;
+    letter-spacing: 0.04em;
+  }
+
+  /* バッジ */
+  .gl-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.65rem;
+    border-radius: 4px;
+    margin-bottom: 0.6rem;
+  }
+  .gl-badge-standard {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+  }
+  .gl-badge-benefit {
+    background: var(--gold-light);
+    color: var(--gold);
+    border: 1px solid #e8c98a;
+  }
+
+  /* ブロック */
+  .gl-block {
+    margin-bottom: 1.5rem;
+  }
+  .gl-block:last-child {
+    margin-bottom: 0;
+  }
+  .gl-block-body {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-size: 0.93rem;
+    line-height: 1.8;
+    color: var(--dark);
+  }
+  .gl-block-body.benefit {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+  }
+
+  /* チェアー配置テーブル */
+  .chair-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin-top: 0.25rem;
+  }
+  .chair-table th {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.55rem 1rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .chair-table td {
+    padding: 0.55rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .chair-table tr:last-child td {
+    border-bottom: none;
+  }
+  .chair-table tr:nth-child(even) td {
+    background: #f7f9f9;
+  }
+
+  /* 注釈 */
+  .gl-note {
+    font-size: 0.83rem;
+    color: var(--muted);
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: #f5f5f5;
+    border-radius: 6px;
+    line-height: 1.75;
+  }
+  .gl-note i {
+    color: var(--primary);
+    margin-right: 0.3rem;
+  }
+
+  /* 印刷ボタン */
+  .print-bar {
+    text-align: right;
+    margin-bottom: 1.5rem;
+  }
+  .btn-print {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-print:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  /* 印刷時 */
+  @media print {
+    .navbar, footer, .print-bar, .guidelines-hero p { display: none !important; }
+    .guidelines-hero { padding: 1.5rem 0; }
+    .guidelines-body { padding: 1rem 0; }
+    .gl-card { box-shadow: none; page-break-inside: avoid; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="guidelines-hero">
+  <div class="container">
+    <h1><i class="fas fa-clipboard-list me-2"></i>スタッフ就労基準</h1>
+    <p>キトウ歯科医院 ／ Staff Guidelines</p>
+  </div>
+</div>
+
+<div class="guidelines-body">
+
+  <div class="print-bar">
+    <button class="btn-print" onclick="window.print()">
+      <i class="fas fa-print me-1"></i>印刷する
+    </button>
+  </div>
+
+  <!-- ① チェアー配置 -->
+  <div class="gl-card" data-fade data-fade-delay="0">
+    <div class="gl-card-header">
+      <div class="gl-card-icon"><i class="fas fa-chair"></i></div>
+      <h2 class="gl-card-title">① チェアーに対する適正人数</h2>
+    </div>
+
+    <div class="gl-block">
+      <span class="gl-badge gl-badge-standard">基　準</span>
+      <div class="gl-block-body">
+        <table class="chair-table">
+          <thead>
+            <tr>
+              <th>チェアー</th>
+              <th>担当スタッフ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>１番</td><td>DH①</td></tr>
+            <tr><td>２番</td><td>DH②</td></tr>
+            <tr><td>３番</td><td>DA①</td></tr>
+            <tr><td>４番</td><td>DA②</td></tr>
+          </tbody>
+        </table>
+        <div class="gl-note">
+          <i class="fas fa-info-circle"></i>
+          １チェアーに１人が歯科医院における基本配置です。
+        </div>
+      </div>
+    </div>
+
+    <div class="gl-block">
+      <span class="gl-badge gl-badge-benefit">優　遇</span>
+      <div class="gl-block-body benefit">
+        上記基準に対して <strong>＋１名</strong> の配置とし、余裕を持った働き方ができる環境を整えています。<br>
+        <small style="color:var(--muted);">※ 当たり前の基準が変わりやすいため、定期的に振り返りを行います。</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 残業 -->
+  <div class="gl-card" data-fade data-fade-delay="80">
+    <div class="gl-card-header">
+      <div class="gl-card-icon"><i class="fas fa-clock"></i></div>
+      <h2 class="gl-card-title">② 残　業</h2>
+    </div>
+
+    <div class="gl-block">
+      <span class="gl-badge gl-badge-standard">基　準</span>
+      <div class="gl-block-body">
+        <strong>勤務終了時間：19:30</strong><br><br>
+        歯科医院は急患・治療内容の変更など、イレギュラーが連続する職場です。
+        そのため時間通りに終わらないことがある点をご理解ください。<br><br>
+        例えば 19:10 に終われた場合、残りの <strong>20分はボーナス</strong> です。
+        早く終わるための工夫をすればするほど、自分の時間が増えます。
+      </div>
+    </div>
+
+    <div class="gl-block">
+      <span class="gl-badge gl-badge-benefit">考え方</span>
+      <div class="gl-block-body benefit">
+        <strong>固定残業代として捉えてください。</strong><br>
+        1分単位での残業清算は行いません。理由は次のとおりです。
+        <ul style="margin: 0.6rem 0 0; padding-left: 1.2rem; line-height: 1.9;">
+          <li>皆さんの給与水準を守るため</li>
+          <li>頑張る意欲を失わせないため</li>
+          <li>ダラダラ残業を生まないため</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 休み -->
+  <div class="gl-card" data-fade data-fade-delay="160">
+    <div class="gl-card-header">
+      <div class="gl-card-icon"><i class="fas fa-calendar-alt"></i></div>
+      <h2 class="gl-card-title">③ 休　み</h2>
+    </div>
+
+    <div class="gl-block">
+      <span class="gl-badge gl-badge-standard">基　準</span>
+      <div class="gl-block-body">
+        <strong>週休 2.5 日（隔週で週休 3 日）</strong>
+      </div>
+    </div>
+
+    <div class="gl-block">
+      <span class="gl-badge gl-badge-benefit">優　遇</span>
+      <div class="gl-block-body benefit">
+        上記に加えて <strong>＋α</strong> の休暇を設けています。<br>
+        <small style="color:var(--muted);">
+          ※ これはキトウ歯科医院の善意による措置です。権利・基準としてではなく、
+          クリニックからの気持ちとして受け取ってください。
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 有休 -->
+  <div class="gl-card" data-fade data-fade-delay="240">
+    <div class="gl-card-header">
+      <div class="gl-card-icon"><i class="fas fa-umbrella-beach"></i></div>
+      <h2 class="gl-card-title">④ 有給休暇</h2>
+    </div>
+
+    <div class="gl-block">
+      <span class="gl-badge gl-badge-standard">基　準</span>
+      <div class="gl-block-body">
+        <strong>3ヶ月前までに申請</strong>してください。<br>
+        労働基準法の規定に準じて付与・取得していただけます。
+      </div>
+    </div>
+
+    <div class="gl-block">
+      <span class="gl-badge gl-badge-benefit">優　遇</span>
+      <div class="gl-block-body benefit">
+        <strong>体調不良による欠勤の際</strong>、「欠勤」または「有給休暇」のどちらを使うか
+        <strong>ご自身で選択</strong>できます。
+      </div>
+    </div>
+  </div>
+
+  <!-- まとめ -->
+  <div class="gl-note" style="font-size:0.88rem; margin-top: 0.5rem;">
+    <i class="fas fa-heart" style="color:var(--gold);"></i>
+    <strong>基準</strong>はルールです。<strong style="color:var(--gold);">優遇</strong>はキトウ歯科医院からの善意です。
+    優遇は基準として捉えず、感謝の気持ちを持って受け取ってください。
+  </div>
+
+</div>
+{% endblock %}

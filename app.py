@@ -301,6 +301,11 @@ def pediatric():
     return render_template('pediatric.html')
 
 
+@app.route('/staff-guidelines')
+def staff_guidelines():
+    return render_template('staff_guidelines.html')
+
+
 # ==================== Admin Dashboard ====================
 
 @app.route('/admin')
