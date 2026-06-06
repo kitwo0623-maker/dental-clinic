@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, Response
-from database import db, Patient, Appointment, MedicalRecord, Invoice, InvoiceItem, Staff, Shift, Product, SubRecord, MaintenanceItem
+from database import db, Patient, Appointment, MedicalRecord, Invoice, InvoiceItem, Staff, Shift, Attendance, Product, SubRecord, MaintenanceItem
 from datetime import datetime, date
 import json
 import os
@@ -783,6 +783,95 @@ def shift_save():
         shift = Shift(staff_id=staff_id, shift_date=shift_date,
                       shift_type=shift_type, start_time=start_time, end_time=end_time)
         db.session.add(shift)
+    db.session.commit()
+    return jsonify({'success': True})
+
+
+# ==================== Attendance ====================
+
+_BAD_STATUSES = frozenset(['遅刻', '早退', '遅刻早退', '半休', '欠勤', '無断欠勤'])
+
+_STATUS_BTN_CLASS = {
+    '出勤':    ('btn-success',   '出'),
+    '遅刻':    ('btn-warning',   '遅'),
+    '早退':    ('btn-warning',   '早'),
+    '遅刻早退': ('btn-warning',  '遅早'),
+    '半休':    ('btn-warning',   '半'),
+    '欠勤':    ('btn-danger',    '欠'),
+    '無断欠勤': ('btn-danger',   '無'),
+    '有給':    ('btn-info',      '有'),
+    '公休':    ('btn-secondary', '公'),
+}
+
+_STATUS_LIST = [
+    ('出勤',    'success',   '出'),
+    ('遅刻',    'warning',   '遅'),
+    ('早退',    'warning',   '早'),
+    ('遅刻早退', 'warning',  '遅早'),
+    ('半休',    'warning',   '半'),
+    ('欠勤',    'danger',    '欠'),
+    ('無断欠勤', 'danger',   '無'),
+    ('有給',    'info',      '有'),
+    ('公休',    'secondary', '公'),
+]
+
+
+@app.route('/admin/attendance')
+def attendance():
+    import calendar
+    year = int(request.args.get('year', date.today().year))
+    month = int(request.args.get('month', date.today().month))
+    staff_all = Staff.query.filter_by(is_active=True).all()
+
+    days_in_month = calendar.monthrange(year, month)[1]
+    day_of_week = {d: date(year, month, d).weekday() for d in range(1, days_in_month + 1)}
+
+    att_records = Attendance.query.filter(
+        db.extract('year', Attendance.date) == year,
+        db.extract('month', Attendance.date) == month
+    ).all()
+
+    att_map = {s.id: {} for s in staff_all}
+    for a in att_records:
+        if a.staff_id in att_map:
+            att_map[a.staff_id][a.date.day] = a
+
+    summary = []
+    for member in staff_all:
+        records = att_map[member.id]
+        bad_count = sum(1 for a in records.values() if a.status in _BAD_STATUSES)
+        work_count = sum(1 for a in records.values() if a.status == '出勤')
+        allowance = 10000 if bad_count == 0 and work_count > 0 else 0
+        summary.append({
+            'staff': member,
+            'bad_count': bad_count,
+            'work_count': work_count,
+            'allowance': allowance,
+        })
+
+    return render_template('admin/attendance.html',
+        staff_all=staff_all, att_map=att_map,
+        year=year, month=month,
+        days_in_month=days_in_month,
+        day_of_week=day_of_week,
+        summary=summary,
+        status_btn_class=_STATUS_BTN_CLASS,
+        status_list=_STATUS_LIST,
+    )
+
+
+@app.route('/admin/attendance/save', methods=['POST'])
+def attendance_save():
+    data = request.get_json()
+    staff_id = int(data['staff_id'])
+    att_date = datetime.strptime(data['date'], '%Y-%m-%d').date()
+    status = data.get('status', '出勤')
+
+    existing = Attendance.query.filter_by(staff_id=staff_id, date=att_date).first()
+    if existing:
+        existing.status = status
+    else:
+        db.session.add(Attendance(staff_id=staff_id, date=att_date, status=status))
     db.session.commit()
     return jsonify({'success': True})
 

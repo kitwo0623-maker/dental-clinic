@@ -144,6 +144,19 @@ class MaintenanceItem(db.Model):
     is_active = db.Column(db.Boolean, default=True)
 
 
+class Attendance(db.Model):
+    __tablename__ = 'attendance'
+    id = db.Column(db.Integer, primary_key=True)
+    staff_id = db.Column(db.Integer, db.ForeignKey('staff.id'), nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    # 出勤/遅刻/早退/遅刻早退/半休/欠勤/無断欠勤/有給/公休
+    status = db.Column(db.String(20), default='出勤')
+    notes = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    __table_args__ = (db.UniqueConstraint('staff_id', 'date', name='uq_attendance_staff_date'),)
+
+
 class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
